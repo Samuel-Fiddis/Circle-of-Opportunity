@@ -1,13 +1,13 @@
-<head>
-  <title>circle-of-opportunity</title>
-</head>
-
-<body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
-  {{> info}}
-</body>
+<template name="HomeLayout">
+	{{> Header}}
+	<main>
+    <body>
+      <h1>Welcome to Meteor!</h1>
+      {{> hello}}
+      {{> info}}
+    </body>
+	</main>
+</template>
 
 <template name="hello">
   <h1>Data Testing</h1>

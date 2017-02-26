@@ -1,0 +1,14 @@
+<template name="Universities">
+	{{> NewUniversity }}
+	<section class="universities">
+		{{#if Template.subscriptionsReady}}
+			{{#each universities}}
+				{{> University}}
+			{{/each}}
+		{{else}}
+			<p>Loading</p>
+		{{/if}}
+
+	</section>
+
+</template>
