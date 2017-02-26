@@ -34,6 +34,10 @@ UniversitySchema = new SimpleSchema({
 		autoform: {
 			type: "hidden"
 		}
+<<<<<<< HEAD
+=======
+	}
+>>>>>>> 1a4a39e1b61c3565bd8bdb057f74f993dae965d4
 });
 
 Universities.attachSchema( UniversitySchema );
