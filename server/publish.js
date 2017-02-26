@@ -4,5 +4,5 @@ Meteor.publish('universities', function(){
 
 Meteor.publish('singleUniversity', function(id){
 	check(id, String);
-	return Recipes.find({_id: id});
+	return Universities.find({_id: id});
 });

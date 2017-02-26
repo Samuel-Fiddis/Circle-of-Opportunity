@@ -9,7 +9,7 @@ Template.UniversitySingle.onCreated(function() {
 
 
 Template.UniversitySingle.helpers({
-	recipe: ()=> {
+	university: ()=> {
 		var id = FlowRouter.getParam('id')
 		return Universities.findOne({_id: id});
 	}
