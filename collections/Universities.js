@@ -34,6 +34,6 @@ UniversitySchema = new SimpleSchema({
 		autoform: {
 			type: "hidden"
 		}
-})
+});
 
 Universities.attachSchema( UniversitySchema );
