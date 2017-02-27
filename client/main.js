@@ -6,6 +6,8 @@ import './main.html';
 Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0
   this.counter = new ReactiveVar(0);
+  EthBlocks.init();
+  EthAccounts.init();
 });
 
 Template.hello.helpers({
@@ -20,3 +22,36 @@ Template.hello.events({
     instance.counter.set(instance.counter.get() + 1);
   },
 });
+
+Template.latestBlock.helpers({
+  currentBlock() {
+
+    return EthBlocks.latest.number;
+  },
+  
+  accounts() {
+   //var myAccounts = EthAccounts.find().fetch();
+   var myPrimaryAccount = EthAccounts.findOne({name: 'Coinbase'});
+    //return EthAccounts.find({});
+    //return myPrimaryAccount.address;  
+return 'ok';
+  },
+});
+/*
+Template.balance.helpers({
+  balance() {
+    var i =0; 
+    eth.accounts.forEach( function(e){
+    console.log("  eth.accounts["+i+"]: " +  e + " \tbalance: " + web3.fromWei(eth.getBalance(e), "ether") + " ether"); 
+    i++; 
+    })
+  },
+});
+
+Template.balance.events({
+  'click button'(event, instance) {
+    // increment the counter when button is clicked
+    balance();
+  },
+});
+*/
