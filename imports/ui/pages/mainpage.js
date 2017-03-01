@@ -3,4 +3,4 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './mainpage.html';
 
-import '../components/navBar.js'
+import '../components/navBar.js';
