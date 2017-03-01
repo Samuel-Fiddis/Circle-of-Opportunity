@@ -7,7 +7,7 @@
 
   {{> hello}}
   {{> latestBlock}}
-{{> balance}}
+  <!--{{> balance}}-->
   {{> info}}
 </body>
 
@@ -17,16 +17,25 @@
   <p>You've pressed the button {{counter}} times.</p>
 </template>
 
+
 <template name="latestBlock">
   <p>The latest block's number is {{currentBlock}}.</p>
-
+  <p> All accounts:</p>
+  <!--{{#each accounts}}
+      <li>{{this}}</li>
+  {{/each}}-->
   <p>The accounts {{accounts}}.</p>
+  <!--<script>
+      var allAccounts = {{accounts}};
+      console.log(allAccounts);
+  </script>-->
 </template>
-
+<!--
 <template name="balance">
-  
+
   <p>The balances {{balance}}.</p>
 </template>
+-->
 
 <template name="info">
   <h2>Learn Meteor!</h2>

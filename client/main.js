@@ -23,27 +23,33 @@ Template.hello.events({
   },
 });
 
+
 Template.latestBlock.helpers({
   currentBlock() {
-
     return EthBlocks.latest.number;
   },
-  
+
   accounts() {
-   //var myAccounts = EthAccounts.find().fetch();
-   var myPrimaryAccount = EthAccounts.findOne({name: 'Coinbase'});
+    //var myAccounts = EthAccounts.find().fetch();
+    //var myPrimaryAccount = EthAccounts.findAll().fetch();
+    var myPrimaryAccount = web3.eth.accounts;
+    console.log(myPrimaryAccount);
+     //findOne({name: 'Coinbase'});
     //return EthAccounts.find({});
-    //return myPrimaryAccount.address;  
-return 'ok';
+    //return myPrimaryAccount.address;
+    return myPrimaryAccount;
   },
+
 });
+
+
 /*
 Template.balance.helpers({
   balance() {
-    var i =0; 
+    var i =0;
     eth.accounts.forEach( function(e){
-    console.log("  eth.accounts["+i+"]: " +  e + " \tbalance: " + web3.fromWei(eth.getBalance(e), "ether") + " ether"); 
-    i++; 
+    console.log("  eth.accounts["+i+"]: " +  e + " \tbalance: " + web3.fromWei(eth.getBalance(e), "ether") + " ether");
+    i++;
     })
   },
 });
