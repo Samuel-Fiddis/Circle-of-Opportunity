@@ -29,17 +29,25 @@ Template.latestBlock.helpers({
     return EthBlocks.latest.number;
   },
 
-  accounts() {
-    //var myAccounts = EthAccounts.find().fetch();
-    //var myPrimaryAccount = EthAccounts.findAll().fetch();
+  allAccounts() {
+    // Lists all accounts in the keystore
     var myPrimaryAccount = web3.eth.accounts;
-    console.log(myPrimaryAccount);
-     //findOne({name: 'Coinbase'});
-    //return EthAccounts.find({});
-    //return myPrimaryAccount.address;
+
     return myPrimaryAccount;
   },
+/*
+  createAccount() {
 
+  },
+
+  accountBalance(address publicKey) {
+
+  },
+
+  sendTransactions(address to, address from, int wei) {
+
+  },
+*/
 });
 
 
