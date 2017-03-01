@@ -8,7 +8,7 @@ import '../../ui/pages/mainpage.js';
 import '../../ui/pages/howitworks.js';
 import '../../ui/pages/studentoverview.js';
 import '../../ui/pages/viewthecircle.js';
-import '../../components/navBar.html'
+import '../../ui/components/navBar.js'
 
 
 // Import to override accounts templates
