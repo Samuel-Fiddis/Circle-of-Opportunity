@@ -3,11 +3,16 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import { AccountsTemplates } from 'meteor/useraccounts:core';
 
 // Import to load these templates
-// e.g. import '../../ui/layouts/app-body.js';
+import '../../ui/pages/homepage.js';
+import '../../ui/pages/mainpage.js';
+import '../../ui/pages/howitworks.js';
+import '../../ui/pages/studentoverview.js';
+import '../../ui/pages/viewthecircle.js';
+import '../../components/navBar.html'
 
 
 // Import to override accounts templates
-// e.g. import '../../ui/accounts/accounts-templates.js';
+
 
 // Below here are the route definitions
 
