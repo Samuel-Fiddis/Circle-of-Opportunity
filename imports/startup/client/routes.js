@@ -19,27 +19,27 @@ import '../../ui/components/navBar.js'
 FlowRouter.route('/', {
   name: 'homepage',
   action(){
-    BlazeLayout.render('mainpage', {main: 'homepage'})
-  }
+    BlazeLayout.render('mainpage', {main: 'homepage'});
+  },
 });
 
 FlowRouter.route('/students', {
   name: 'studentsoverview',
   action(){
-    BlazeLayout.render('mainpage', {main: 'studentsoverview'})
-  }
+    BlazeLayout.render('mainpage', {main: 'studentsoverview'});
+  },
 });
 
 FlowRouter.route('/howitworks', {
   name: 'howitworks',
   action(){
-    BlazeLayout.render('mainpage', {main: 'howitworks'})
-  }
+    BlazeLayout.render('mainpage', {main: 'howitworks'});
+  },
 });
 
 FlowRouter.route('/viewthecircle', {
   name: 'viewthecircle',
   action(){
-    BlazeLayout.render('mainpage', {main: 'viewthecircle'})
-  }
+    BlazeLayout.render('mainpage', {main: 'viewthecircle'});
+  },
 });
