@@ -9,7 +9,7 @@ Template.UniversitySingle.onCreated(function() {
 	self.autorun(function() {
 		var id = FlowRouter.getParam('id');
 		self.subscribe('singleUniversity', id);
-
+		self.subscribe('userData');
 	});
 });
 
@@ -21,3 +21,8 @@ Template.UniversitySingle.helpers({
 	}
 });
 
+Template.UniversitySingle.helpers({
+	thisUser: ()=> {
+		return Meteor.users.findOne();
+	}
+});

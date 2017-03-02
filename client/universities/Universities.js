@@ -8,6 +8,6 @@ Template.Universities.onCreated(function() {
 
 Template.Universities.helpers({
 	universities: ()=> {
-		return Universities.find({});
+		return Universities.find({author: Meteor.userId()});
 	}
 });
