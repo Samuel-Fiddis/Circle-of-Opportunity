@@ -1,6 +1,8 @@
 import { Template } from 'meteor/templating';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { _ } from 'meteor/underscore'
 
-import '../../collections/Universities.js'
+import { Universities } from '../../collections/Universities.js'
 import './UniversitySingle.html'
 
 // Template level subscription
