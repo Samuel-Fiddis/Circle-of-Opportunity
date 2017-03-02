@@ -1,4 +1,4 @@
-Universities = new Mongo.Collection('universities');
+Universities = new Mongo.Collection('Universities');
 
 Universities.allow({
   insert: function(userId, doc) {
@@ -7,15 +7,15 @@ Universities.allow({
 });
 
 UniversitySchema = new SimpleSchema({
-  name: {
-    type: String,
-    label: "Name"
-  },
-  address: {
-    type: String,
-    label: "Address"
-  },
-  author: {
+	name: {
+		type: String,
+		label: "Name"
+	},
+	address: {
+		type: String,
+		label: "Address"
+	},
+	author: {
 		type: String,
 		label: "Author",
 		autoValue: function() {
@@ -34,10 +34,11 @@ UniversitySchema = new SimpleSchema({
 		autoform: {
 			type: "hidden"
 		}
-<<<<<<< HEAD
-=======
 	}
->>>>>>> 1a4a39e1b61c3565bd8bdb057f74f993dae965d4
 });
 
 Universities.attachSchema( UniversitySchema );
+
+
+Factory.define('university', Universities, {
+});

@@ -33,3 +33,11 @@ meteortoys:allthings
 
 
 check
+
+# Testing
+practicalmeteor:mocha
+dburles:factory
+xolvio:cleaner
+underscore
+templating
+blaze
