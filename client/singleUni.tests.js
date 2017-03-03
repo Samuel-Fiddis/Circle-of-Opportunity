@@ -36,7 +36,7 @@ describe('UniversitySingle', function () {
     };
 
     withRenderedTemplate('UniversitySingle', data, (el) => {
-      chai.assert.equal($(el).find('.uni_name').text(), "A University");
+      chai.assert.equal($(el).find('.uni_name').text(), university);
     });
   });
 });
