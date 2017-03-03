@@ -2,11 +2,9 @@
 
 <template name="mainpage">
   <header>
-  <h1>
-    This is the mainpage, the navbar should appear here if you can make it work!
-  </h1>
+{{> navBar}}
   </header>
   <div>
-    {{> Template.dynamic template = main}}
+    {{> Template.dynamic template=main}}
   </div>
 </template>
