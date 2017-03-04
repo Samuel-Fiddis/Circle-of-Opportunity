@@ -7,7 +7,7 @@
 
   {{> hello}}
   {{> latestBlock}}
-  <!--{{> balance}}-->
+  {{> accounts}}
   {{> info}}
 </body>
 
@@ -22,26 +22,15 @@
     <p>The latest block's number is {{currentBlock}}.</p>
     <p>The accounts {{allAccounts}}.</p>
     <p>Etherscan Balance is {{EtherscanAccountBalance}}.</p>
-    <!-- <p>
-        https://testnet.etherscan.io/api?module=account&action=balance&address=0x5097D17e4C8b2372Ae6082CEA32Ac7AFdFDE3c28&tag=latest&apikey=HBVQZ9YIPPDFF94WR7H4FTRTIMYI8IJN3V:
-        <br>
-        StartData
-        <br>
-        <script>
-        //$.get("https://testnet.etherscan.io/api?module=account&action=balance&address=0x5097D17e4C8b2372Ae6082CEA32Ac7AFdFDE3c28&tag=latest&apikey=HBVQZ9YIPPDFF94WR7H4FTRTIMYI8IJN3V", function(data, status){
-        // $.get("http://vopa.social", function(data, status){
-        //     documen.write("Data: " + data + "\nStatus: " + status);
-        // });
-        $.getJSON("https://testnet.etherscan.io/api?module=account&action=balance&address=0x5097D17e4C8b2372Ae6082CEA32Ac7AFdFDE3c28&tag=latest&apikey=HBVQZ9YIPPDFF94WR7H4FTRTIMYI8IJN3V", function(result){
-              $.each(result, function(i, field){
-                  //$("div").append(field + " ");
-                  document.write(field);
-              });
-          });
-        </script>
-        <br>
-        EndData
-    </p> -->
+  <p>The latest block's number is {{currentBlock}}.</p>
+
+</template>
+
+<template name="accounts">
+  <p>The accounts {{allAccounts}}.</p>
+  <button>Create accounts</button>
+
+  <!--  <p>You created the account {{createAccount}}.</p>-->
 </template>
 <!--
 <template name="balance">

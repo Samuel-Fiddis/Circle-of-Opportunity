@@ -6,8 +6,6 @@ import './main.html';
 Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0
   this.counter = new ReactiveVar(0);
-  EthBlocks.init();
-  EthAccounts.init();
 });
 
 Template.hello.helpers({
@@ -23,16 +21,35 @@ Template.hello.events({
   },
 });
 
+Template.latestBlock.onCreated(function latestBlockOnCreated() {
+
+  EthBlocks.init();
+});
 
 Template.latestBlock.helpers({
   currentBlock() {
     return EthBlocks.latest.number;
   },
+});
 
+Template.accounts.onCreated(function accountsOnCreated() {
+    this.counter = new String("");
+});
+
+Template.accounts.events({
+  'click button'(event, instance) {
+  web3.personal.newAccount('password');
+  /*  var myAdrr = web3.personal.newAccount('password');
+    instance.counter = myAdrr;
+    console.log(myAdrr);
+    console.log(instance.counter);*/
+  },
+});
+
+Template.accounts.helpers({
   allAccounts() {
     // Lists all accounts in the keystore
     var myPrimaryAccount = web3.eth.accounts;
-
     return myPrimaryAccount;
   },
   EtherscanAccountBalance() {
@@ -53,9 +70,9 @@ Template.latestBlock.helpers({
   }
 /*
   createAccount() {
-
+    //return Template.instance().counter.get();
   },
-
+/*
   accountBalance(address publicKey) {
 
   },
