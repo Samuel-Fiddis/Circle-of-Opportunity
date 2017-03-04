@@ -1,12 +1,22 @@
+// publish University collection
+// *****************************
+
 Meteor.publish('universities', function(){
 	return Universities.find({});
 });
+
+// Need to look into what this is doing more
+// *****************************************
 
 Meteor.publish('singleUniversity', function(id){
 	check(id, String);
 	return Universities.find({_id: id});
 });
 
+// Publishing User Data with added fields
+// ***************************************
+
+// Is this actually being used or can we delete it?
 Meteor.publish('userData2', function() {
 	var currentUser;
 	currentUser = this.userId;
@@ -24,6 +34,8 @@ Meteor.publish('userData2', function() {
 		return this.ready();
 	}
 });
+
+// Need to get this private
 Meteor.publish('userData', function () {
 	return Meteor.users.find();
 });
