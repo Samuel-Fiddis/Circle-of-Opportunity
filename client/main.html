@@ -7,7 +7,7 @@
 
   {{> hello}}
   {{> latestBlock}}
-  <!--{{> balance}}-->
+  {{> accounts}}
   {{> info}}
 </body>
 
@@ -20,8 +20,14 @@
 
 <template name="latestBlock">
   <p>The latest block's number is {{currentBlock}}.</p>
-  <p>The accounts {{allAccounts}}.</p>
 
+</template>
+
+<template name="accounts">
+  <p>The accounts {{allAccounts}}.</p>
+  <button>Create accounts</button>
+
+  <!--  <p>You created the account {{createAccount}}.</p>-->
 </template>
 <!--
 <template name="balance">
