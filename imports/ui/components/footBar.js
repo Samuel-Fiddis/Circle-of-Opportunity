@@ -1,0 +1,1 @@
+import './footBar.html';

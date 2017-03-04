@@ -9,6 +9,8 @@ import '../../ui/pages/studentoverview.js';
 import '../../ui/pages/viewthecircle.js';
 import '../../ui/pages/donorregister.js';
 import '../../ui/pages/studentregister.js';
+import '../../ui/pages/contact.js';
+import '../../ui/pages/donatenow.js';
 import '../../ui/components/navBar.js';
 
 
@@ -56,5 +58,19 @@ FlowRouter.route('/donorregister', {
   name: 'donorregister',
   action(){
     BlazeLayout.render('mainpage', {main: 'donorregister'});
+  },
+});
+
+FlowRouter.route('/contact', {
+  name: 'contact',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'contact'});
+  },
+});
+
+FlowRouter.route('/donatenow', {
+  name: 'donatenow',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'donatenow'});
   },
 });
