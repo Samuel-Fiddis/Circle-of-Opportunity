@@ -1,0 +1,13 @@
+<!-- This is the layout for the overall page -->
+
+<template name="mainpage">
+  <header>
+{{> navBar}}
+  </header>
+  <div>
+    {{> Template.dynamic template=main}}
+  </div>
+  <footer>
+{{> footBar}}
+  </footer>
+</template>
