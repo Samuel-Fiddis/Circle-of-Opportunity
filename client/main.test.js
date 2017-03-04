@@ -10,8 +10,7 @@ describe('my module', function () {
 });
 
 */
-
-describe('Hello', function(){
+describe('Hgello', function(){
   describe('#counter', function(){
     it('should return -1 when no value or negative ') // placeholder
     it('should return the value when value is positive', function(){
