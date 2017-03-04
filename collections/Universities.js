@@ -41,4 +41,6 @@ Universities.attachSchema( UniversitySchema );
 
 
 Factory.define('university', Universities, {
+	name: "A University",
+	address: "An Address"
 });

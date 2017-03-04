@@ -1,6 +1,5 @@
-import { Template } from 'meteor/templating';
 
-import '../../collections/Universities.js'
+//import { Universities } from '../../collections/Universities.js'
 import './UniversitySingle.html'
 
 // Template level subscription
@@ -16,8 +15,8 @@ Template.UniversitySingle.onCreated(function() {
 
 Template.UniversitySingle.helpers({
 	university: ()=> {
-		var id = FlowRouter.getParam('id')
-		return Universities.findOne({_id: id});
+		var id = FlowRouter.getParam('id');
+		return Universities.findOne({});
 	}
 });
 
