@@ -1,0 +1,6 @@
+TODO
+
+1. restructure ethereum and etherscan functions into imports/server
+2. call these functions from server/main.js
+3. call these functions from client.main.js (through the server) - option
+4. write tests for etherscan.js and ethereum.js
