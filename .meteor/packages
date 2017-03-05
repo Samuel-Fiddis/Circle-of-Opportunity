@@ -37,3 +37,14 @@ matb33:bootstrap-glyphicons
 msavin:jetsetter
 zimme:active-route
 gwendall:auth-client-callbacks
+
+meteortoys:allthings
+
+
+# Testing
+practicalmeteor:mocha
+dburles:factory
+xolvio:cleaner
+underscore
+templating
+blaze

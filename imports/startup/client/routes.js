@@ -11,6 +11,7 @@ import '../../ui/pages/donorregister.js';
 import '../../ui/pages/studentregister.js';
 import '../../ui/pages/contact.js';
 import '../../ui/pages/donatenow.js';
+import '../../ui/pages/studentRegForm.js';
 import '../../ui/components/navBar.js';
 
 
@@ -50,7 +51,7 @@ FlowRouter.route('/viewthecircle', {
 FlowRouter.route('/studentregister', {
   name: 'studentregister',
   action(){
-    BlazeLayout.render('mainpage', {main: 'studentregister'});
+    BlazeLayout.render('mainpage', {main: 'studentregister', form: 'studentRegForm'});
   },
 });
 
