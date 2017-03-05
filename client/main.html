@@ -1,5 +1,5 @@
 <head>
-  <title>myDapp</title>
+  <title>Our First Dapp</title>
 </head>
 
 <body>
@@ -8,6 +8,7 @@
   {{> hello}}
   {{> latestBlock}}
   {{> accounts}}
+  {{> balance}}
   {{> info}}
 </body>
 
@@ -20,24 +21,19 @@
 
 <template name="latestBlock">
     <p>The latest block's number is {{currentBlock}}.</p>
-    <p>The accounts {{allAccounts}}.</p>
-    <p>Etherscan Balance is {{EtherscanAccountBalance}}.</p>
-  <p>The latest block's number is {{currentBlock}}.</p>
-
 </template>
 
 <template name="accounts">
   <p>The accounts {{allAccounts}}.</p>
   <button>Create accounts</button>
-
   <!--  <p>You created the account {{createAccount}}.</p>-->
 </template>
-<!--
+
 <template name="balance">
 
-  <p>The balances {{balance}}.</p>
+   <p>Etherscan Balance is {{EtherscanAccountBalance}}.</p>
 </template>
--->
+
 
 <template name="info">
   <h2>Learn Meteor!</h2>
