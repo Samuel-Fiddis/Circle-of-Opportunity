@@ -30,7 +30,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/students', {
   name: 'studentsoverview',
   action(){
-    BlazeLayout.render('mainpage', {main: 'studentsoverview'});
+    BlazeLayout.render('mainpage', {main: 'studentoverview'});
   },
 });
 
