@@ -1,16 +1,16 @@
 // ****************************************************************************
-// Events and Helpers allocated to the studentView Template
+// Events and Helpers allocated to the studentOverview Template
 // ****************************************************************************
 
 // Template Level subscription
 // ---------------------------
 
-// The onCreated function is run the moment the page is rendered
-Template.studentView.onCreated( function() {
+// Note: The onCreated function is run the moment the page is rendered
+Template.studentOverview.onCreated( function() {
 
   // Subscribe to overall userData publication
   // *****************************************
-  this.subscribe('userData')
+  this.subscribe('userData');
 
   /*
   this.autorun(function() {
@@ -25,8 +25,13 @@ Template.studentView.onCreated( function() {
 // studentView Helper to pass on the information of the users
 // ----------------------------------------------------------
 
-Template.UniversitySingle.helpers({
-	thisUser: ()=> {
-		return Meteor.users.findOne();
-	}
+// below returns all the users
+// Note: user: ()=> { return Meteor.users.find();} did not work
+//       is equivalent to
+//       user: function() { return Meteor.users.find(); }
+
+Template.studentOverview.helpers({
+  user: ()=> {
+    return Meteor.users.find();
+  }
 });

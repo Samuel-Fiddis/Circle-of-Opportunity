@@ -1,0 +1,15 @@
+<!-- *********************************************************************** -->
+<!-- Template for the student overview page -->
+<!-- *********************************************************************** -->
+
+<template name = "studentOverview">
+
+  <!-- Enumerate over each user -->
+  {{#each user}}
+
+    <!-- Call StudentView for each user -->
+    {{ >studentView}}
+
+  {{/each}}
+
+</template>

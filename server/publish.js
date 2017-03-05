@@ -37,5 +37,5 @@ Meteor.publish('userData2', function() {
 
 // Need to get this private
 Meteor.publish('userData', function () {
-	return Meteor.users.find();
+	return Meteor.users.find({});
 });
