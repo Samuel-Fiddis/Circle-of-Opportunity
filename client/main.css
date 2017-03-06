@@ -137,3 +137,32 @@ p {
 
 }
 
+
+/* Student Registration Form */
+.studentRegForm {
+    padding: 10px 30px;
+}
+.studentRegForm > input {
+    display: block;
+    text-align: center;
+    width: 250px;
+    margin: 15px auto;
+}
+
+#studentRegSubmit {
+    width: 120px;
+}
+
+/* Student View */
+.studentView {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    height: auto;
+    background: #eee;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px #ccc;
+
+}
+

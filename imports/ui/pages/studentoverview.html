@@ -1,3 +1,12 @@
-<template name="studentsoverview">
-  <h1>This is the student overview page</h1>
+<template name="studentoverview">
+	<h1>View Students</h1>
+	<!-- Enumerate over each user -->
+	<div class="container">
+	{{#each user}}
+
+		<!-- Call StudentView for each user -->
+		{{ >studentView}}
+
+	{{/each}}
+	</div>
 </template>
