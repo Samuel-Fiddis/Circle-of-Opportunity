@@ -7,14 +7,8 @@ import { Meteor } from 'meteor/meteor';
 Meteor.methods({
   signup: function(options) {
 
-    // debugging
-    /*
-    console.log('inside the signup method');
-    console.log(options.first_name);
-    */
-
-    // Error Handling
-    // --------------
+    // Error Handling: making sure the form is properly filled in?
+    // ----------------------------------------------------------
 
     // ensure the user is logged in
     /*
@@ -24,31 +18,34 @@ Meteor.methods({
     }
     */
 
-    // ensure the user has a name
-    /*
-    if(!user.email)
-    {
-      throw new Meteor.Error(422, 'Please fill in an email address');
-    }
-    */
+    // Make sure all non-optional fields are filled in
+    // ***********************************************
 
-    // ensure there is an email
-    /*
-    if(!user.password)
+    // ensure the user has a first and last name
+
+    if(!options.name.first)
     {
-      throw new Meteor.Error(424, 'Please fill in a password');
+      throw new Meteor.Error("No_firstName","Please fill in a first name");
     }
-    */
+
+    if(!options.name.last)
+    {
+      throw new Meteor.Error("No_lastName","Please fill in a last name");
+    }
+
+    // Syntax for Meteor.Error("identifier","reason")
+    // the identifier can be used to reference the error
+    // The reason appears in the console log to explain what went wrong
+
 
     // Create the user from the server
     // -------------------------------
 
-    // debugging
-    /*
-    console.log('calling createUser');
-    */
-    
     var userId = Accounts.createUser(options);
+
+    // On the server side, accounts.createUser does not actually have callback capacities
+    // Any errors related to actually creating the user are currently stored in the account-creations.js
+
 
     // Add in a send enrollment email for example
     // ------------------------------------------

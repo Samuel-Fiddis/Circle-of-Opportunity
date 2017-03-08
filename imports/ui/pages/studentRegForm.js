@@ -15,12 +15,7 @@ Template.studentRegForm.events({
   // Create the submit form function
   // *******************************
 
-  'submit form': function(event) {  // -- the "event" inside the function might be optional
-
-  //debugging
-  /*
-  console.log('register.event started');
-  */
+  'submit form': function(event, template) {  // not sure what the template is....
 
     // prevents the default functionality of the form
     // **********************************************
@@ -32,15 +27,14 @@ Template.studentRegForm.events({
     // *******************************************************************************************************************
 
     var options = {
-
-      // $('input[name=email]') grabs the value in the html file at input[name=email]
-      // -> .val turns it into a js value
-      // -> all of it gets stored into the field name email
-
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
       age: $('input[name=age]').val()
     }
+
+    // $('input[name=email]') grabs the value in the html file at input[name=email]
+    // -> .val turns it into a js value
+    // -> all of it gets stored into the field name email
 
     // add in all embedded document information to options
     // ***************************************************
@@ -50,41 +44,30 @@ Template.studentRegForm.events({
       last: $('input[name=lastName]').val()
     }
 
-    // debugging
-    /*
-    console.log(options.first_name);
-    */
-
     // Pass the values options with all user fields onto User Accounts
     // ***************************************************************************
 
-    // debugging
-    /*
-    console.log('calling Meteor.call signup method');
-    */
+    Meteor.call('signup',options, function(error, result) {
 
-    Meteor.call('signup',options);
-
-    /*
-    // Need to change to Meteor.call('signup',user,function(error,id))
-    // function(error,id) is a callback function
-    // see: http://docs.meteor.com/api/methods.html#Meteor-call
-
-    Meteor.call('signup', user, function(error,id) {
+      // What happens if methods function returns an error
+      // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
       if(error) {
-        // display the error to the user
-        console.log(error);
+        // display the error on the console log of the website
+        console.log(error.reason);
       }
+
+      // What happens if methods function works fine
+      // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
       else {
         // redirect the user to another page after registration
-        router.go('/');
+        FlowRouter.go('/students')
       }
 
-      }
-    })
-    */
+    });
 
+    // function(error,result) is a callback function
+    // see: http://docs.meteor.com/api/methods.html#Meteor-call
   }
 });
