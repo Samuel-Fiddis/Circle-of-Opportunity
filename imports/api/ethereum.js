@@ -2,8 +2,6 @@ import '../../client/main.html';
 
 import { ReactiveVar } from 'meteor/reactive-var';
 
-EthBlocks.init();
-
 ethGetLatestBlock = function ethGetLatestBlock() {
     return EthBlocks.latest.number;
 }
