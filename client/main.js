@@ -5,7 +5,9 @@ import '../imports/startup/client/ethereum.js';
 import '../imports/api/ethereum.js';
 import '../imports/api/etherscan.js';
 
-console.log(web3);
+Meteor.call('runCode', function (err, response) {
+  console.log(response);
+});
 
 Template.accounts.events({
     'click button'(event, instance) {

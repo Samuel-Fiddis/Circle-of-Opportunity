@@ -5,6 +5,9 @@ ethGetLatestBlock = function ethGetLatestBlock() {
   return obj.number;
 }
 
+// 2/2 statements
+// 1/1 branches
+
 ethCreateAccount = function ethCreateAccount(password) {
     // WE SHOULD MAKE THIS FUNCTION RETURN THE PUBLIC KEY OF THE ACCOUNT
     web3.personal.newAccount(password);
@@ -14,10 +17,16 @@ ethCreateAccount = function ethCreateAccount(password) {
     // console.log(instance.counter);
 }
 
+// 0/1 statements
+// 0/1 branches
+
 ethAllAccounts = function ethAllAccounts(){
   var myPrimaryAccount = web3.eth.accounts;
   return myPrimaryAccount;
 }
+
+// 0/2 statements
+// 0/1 branches
 
 /*
 Template.balance.helpers({

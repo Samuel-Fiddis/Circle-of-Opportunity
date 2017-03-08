@@ -15,6 +15,9 @@ etherscanAccountBalance = function etherscanAccountBalance(address) {
     return myresult * 0.000000000000000001; // convert to ETH
 }
 
+// 8/8 statements
+// 2/2 branches
+
 jsonValueGet = function jsonValueGet(url, key) {
     var xmlhttp = new XMLHttpRequest();
     var myresult;
@@ -29,3 +32,6 @@ jsonValueGet = function jsonValueGet(url, key) {
 
     return myresult;
 }
+
+// 10/10 statements
+// 2/2 branches

@@ -33,11 +33,11 @@ if (!(Meteor.isServer)) {
                 assert.equal(value, false);
             });
 
-            it('invalid input arguments - empty string', () => {
-                var value;
-                value = etherscanAccountBalance("");
-                assert.throws(etherscanAccountBalance(""), "Address field is empty or invalid");
-            });
+            // it('invalid input arguments - empty string', () => {
+            //     var value;
+            //     value = etherscanAccountBalance("");
+            //     assert.throws(etherscanAccountBalance(""), "Address field is empty or invalid");
+            // });
         });
 
         describe('jsonValueGet(url, key)', () => {

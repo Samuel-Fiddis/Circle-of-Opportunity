@@ -21,6 +21,8 @@ if (!(Meteor.isServer)) {
               var files_before = 3;
               ethCreateAccount('password');
               assert.equal(files_before+1, 4);
+
+              assert.equal(0, 1);
             });
         });
 
@@ -29,6 +31,7 @@ if (!(Meteor.isServer)) {
               var value;
               value = ethAllAccounts('password');
               assert.equal(0, 0);
+              assert.equal(0, 1);
             });
         });
     })
