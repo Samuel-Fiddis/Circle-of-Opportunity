@@ -5,6 +5,18 @@ import { Template } from 'meteor/templating';
 import '../imports/api/ethereum.js';
 import '../imports/api/etherscan.js';
 
+Template.accounts.events({
+    'click button'(event, instance) {
+        ethCreateAccount('password')
+    },
+});
+
+Template.latestBlock.helpers({
+  currentBlock() {
+    return ethGetLatestBlock();
+  },
+});
+
 Template.balance.helpers({
   oneEtherscanAccountBalance() {
       try {

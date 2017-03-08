@@ -4,47 +4,23 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 EthBlocks.init();
 
-// Template.hello.onCreated(function helloOnCreated() {
-//   // counter starts at 0
-//   this.counter = new ReactiveVar(0);
-// });
-//
-// Template.hello.events({
-//   'click button'(event, instance) {
-//     // increment the counter when button is clicked
-//     instance.counter.set(instance.counter.get() + 1);
-//   },
-// });
-//
-// Template.hello.helpers({
-//   counter() {
-//     return Template.instance().counter.get();
-//   },
-// });
-
-// Template.latestBlock.onCreated(function latestBlockOnCreated() {
-//     // EthBlocks.init();
-// });
-
-Template.latestBlock.helpers({
-  currentBlock() {
+ethGetLatestBlock = function ethGetLatestBlock() {
     return EthBlocks.latest.number;
-  },
-});
+}
 
-Template.accounts.onCreated(function accountsOnCreated() {
-    this.counter = new String("");
-});
+// COLINE WHAT DID THIS DO???
+// Template.accounts.onCreated(function accountsOnCreated() {
+//     this.counter = new String("");
+// });
 
-Template.accounts.events({
-  'click button'(event, instance) {
-  web3.personal.newAccount('password');
-  /*  var myAdrr = web3.personal.newAccount('password');
-    instance.counter = myAdrr;
-    console.log(myAdrr);
-    console.log(instance.counter);*/
-  },
-});
+ethCreateAccount = function ethCreateAccount(password) {
+    // WE SHOULD MAKE THIS FUNCTION RETURN THE PUBLIC KEY OF THE ACCOUNT
+    web3.personal.newAccount(password);
+    // var myAdrr = web3.personal.newAccount('password');
+    // instance.counter = myAdrr;
+    // console.log(myAdrr);
+    // console.log(instance.counter);
+}
 
 Template.accounts.helpers({
   allAccounts() {
