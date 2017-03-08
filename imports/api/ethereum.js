@@ -1,13 +1,9 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 
 ethGetLatestBlock = function ethGetLatestBlock() {
-    return EthBlocks.latest.number;
+  var obj = web3.eth.getBlock("latest");
+  return obj.number;
 }
-
-// COLINE WHAT DID THIS DO???
-// Template.accounts.onCreated(function accountsOnCreated() {
-//     this.counter = new String("");
-// });
 
 ethCreateAccount = function ethCreateAccount(password) {
     // WE SHOULD MAKE THIS FUNCTION RETURN THE PUBLIC KEY OF THE ACCOUNT

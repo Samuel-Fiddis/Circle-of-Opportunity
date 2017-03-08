@@ -1,9 +1,11 @@
 import { Template } from 'meteor/templating';
 
-EthBlocks.init();
+import '../imports/startup/client/ethereum.js';
 
 import '../imports/api/ethereum.js';
 import '../imports/api/etherscan.js';
+
+console.log(web3);
 
 Template.accounts.events({
     'click button'(event, instance) {
@@ -34,7 +36,7 @@ Template.accounts.helpers({
   allAccounts() {
     // Lists all accounts in the keystore
     return ethAllAccounts();
-  
+
   },
 /*
   sendTransactions(address to, address from, int wei) {
