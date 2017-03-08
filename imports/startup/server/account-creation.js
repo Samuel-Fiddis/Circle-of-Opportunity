@@ -5,11 +5,16 @@
 
 Accounts.onCreateUser(function(options,user) {
 
-  // debugging
-  /*
-  console.log('in onCreateUser');
-  console.log(options.first_name);
-  */
+  // Error Handling: making sure the account has not already been created
+  // ====================================================================
+
+  var newEmail = options.email;
+  //console.log(newEmail);
+  var emailAlreadyExists = Meteor.users.find({"emails.address": newEmail});
+
+  if(emailAlreadyExists == true) {
+    throw new Meteor.Error("emailAlreadyExists", "email already registered");
+  }
 
   // Basic set up of this function that we want to implement
   // -------------------------------------------------------
