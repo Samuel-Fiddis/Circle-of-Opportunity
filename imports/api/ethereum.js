@@ -1,5 +1,3 @@
-import '../../client/main.html';
-
 import { ReactiveVar } from 'meteor/reactive-var';
 
 ethGetLatestBlock = function ethGetLatestBlock() {
@@ -20,19 +18,10 @@ ethCreateAccount = function ethCreateAccount(password) {
     // console.log(instance.counter);
 }
 
-Template.accounts.helpers({
-  allAccounts() {
-    // Lists all accounts in the keystore
-    var myPrimaryAccount = web3.eth.accounts;
-    return myPrimaryAccount;
-  },
-/*
-  sendTransactions(address to, address from, int wei) {
-
-  },
-*/
-});
-
+ethAllAccounts = function ethAllAccounts(){
+  var myPrimaryAccount = web3.eth.accounts;
+  return myPrimaryAccount;
+}
 
 /*
 Template.balance.helpers({

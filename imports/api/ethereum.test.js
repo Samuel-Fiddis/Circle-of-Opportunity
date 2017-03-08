@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { assert } from 'meteor/practicalmeteor:chai';
 
-import './etherscan.js';
+import './ethereum.js';
 
 if (!(Meteor.isServer)) {
     describe('Ethereum function library', () => {

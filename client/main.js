@@ -1,5 +1,4 @@
 import { Template } from 'meteor/templating';
-//import { ReactiveVar } from 'meteor/reactive-var';
 
 EthBlocks.init();
 
@@ -29,4 +28,17 @@ Template.balance.helpers({
       }
       return result;
   },
+});
+
+Template.accounts.helpers({
+  allAccounts() {
+    // Lists all accounts in the keystore
+    return ethAllAccounts();
+  
+  },
+/*
+  sendTransactions(address to, address from, int wei) {
+
+  },
+*/
 });
