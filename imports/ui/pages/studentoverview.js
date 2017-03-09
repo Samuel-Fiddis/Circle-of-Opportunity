@@ -22,13 +22,20 @@ Template.studentoverview.onCreated( function() {
 
   // Notes: this.subscribe() attaches subscriptionReady() (whereas Meteor.subscribe() doesnt)
   // Notes: this.autorun automatically re-initializes the subscription if something changes
+
+  // Subscribe to overall Universities publication
+  // *********************************************
+
+  // Playing around with subscriptions --> to be changed
+  this.subscribe('universities');
+
 });
 
 // studentView Helper to pass on the information of the users
 // ----------------------------------------------------------
 
 // below returns all the users
-// Note: user: ()=> { return Meteor.users.find();} did not work
+// Note: user: ()=> { return Meteor.users.find();}
 //       is equivalent to
 //       user: function() { return Meteor.users.find(); }
 

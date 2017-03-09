@@ -40,6 +40,19 @@ Accounts.onCreateUser(function(options,user) {
     user.age = options.age;
   }
 
+  console.log("in accountOnCreate function");
+  // Add in the university information to the user document
+  if(options.university) {
+    console.log(options.university);
+    var uni = Universities.findOne({name: options.university});
+    user.university = uni._id;
+  }
+
+  // Syntax of Collection.findOne({fields to identify}, {fields to return or exclude})
+  // Fields to identify collection by: fieldName: what it needs to be equal to
+  // Fields to return/exclude: fieldName: boolean (1 if return, 0 if exclude) --> can only do one or the other
+  // findOne() returns a document whereas find() returns a cursor to the doc
+
   // Want to keep the default hook's profile behavior
   if(options.profile) {
     user.profile = options.profile;

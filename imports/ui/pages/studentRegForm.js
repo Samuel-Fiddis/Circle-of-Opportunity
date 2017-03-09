@@ -29,7 +29,8 @@ Template.studentRegForm.events({
     var options = {
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
-      age: $('input[name=age]').val()
+      age: $('input[name=age]').val(),
+      university: $('input[name=university]').val()
     }
 
     // $('input[name=email]') grabs the value in the html file at input[name=email]
