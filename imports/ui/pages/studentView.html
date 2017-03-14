@@ -1,8 +1,9 @@
 <template name = "studentView">
- 	<div class="row">
- 		<div class="studentView col-xs-4 col-xs-offset-4">
-			<h3> {{name.first}} {{name.last}} </h3>
-			<span> Age: {{age}} </span>
-		</div>
+	<div class="studentView col-xs-4 col-xs-offset-1">
+		<img class="studentImage" src="images/profile_pics/{{image}}">
+		<h3> {{name.first}} {{name.last}} </h3>
+		<span> {{university}} - {{program}} </span>
+		<br>
+		<span> Age: {{age}} </span>
 	</div>
 </template>

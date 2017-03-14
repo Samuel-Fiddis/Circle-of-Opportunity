@@ -40,6 +40,11 @@ Accounts.onCreateUser(function(options,user) {
     user.age = options.age;
   }
 
+  // Add in image field to user document
+  if(options.image) {
+    user.image = options.image;
+  }
+
   // Want to keep the default hook's profile behavior
   if(options.profile) {
     user.profile = options.profile;

@@ -29,7 +29,8 @@ Template.studentRegForm.events({
     var options = {
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
-      age: $('input[name=age]').val()
+      age: $('input[name=age]').val(),
+      image: $('input[name=image]').val()
     }
 
     // $('input[name=email]') grabs the value in the html file at input[name=email]
@@ -44,14 +45,17 @@ Template.studentRegForm.events({
       last: $('input[name=lastName]').val()
     }
 
+
+    //Accounts.createUser(options);
+
     // Pass the values options with all user fields onto User Accounts
     // ***************************************************************************
-
-    Meteor.call('signup',options, function(error, result) {
+    
+    Meteor.call('signup', options, function(error, result) {
 
       // What happens if methods function returns an error
       // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-
+      
       if(error) {
         // display the error on the console log of the website
         console.log(error.reason);
@@ -61,11 +65,13 @@ Template.studentRegForm.events({
       // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
       else {
+        Meteor.loginWithPassword(options.email, options.password);
         // redirect the user to another page after registration
         FlowRouter.go('/students')
       }
 
     });
+    
 
     // function(error,result) is a callback function
     // see: http://docs.meteor.com/api/methods.html#Meteor-call

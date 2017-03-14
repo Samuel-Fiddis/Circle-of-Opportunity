@@ -35,5 +35,8 @@ Template.studentoverview.onCreated( function() {
 Template.studentoverview.helpers({
   user: ()=> {
     return Meteor.users.find();
+  },
+  secondStudent: function (index) {
+    return (index + 1) % 2 === 0;
   }
 });

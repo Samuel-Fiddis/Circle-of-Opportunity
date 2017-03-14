@@ -5,8 +5,9 @@ import { Meteor } from 'meteor/meteor';
 // **********************************************************************
 
 Meteor.methods({
+  
   signup: function(options) {
-
+    var userId;
     // Error Handling: making sure the form is properly filled in?
     // ----------------------------------------------------------
 
@@ -41,8 +42,9 @@ Meteor.methods({
     // Create the user from the server
     // -------------------------------
 
-    var userId = Accounts.createUser(options);
-
+    userId = Accounts.createUser(options);
+    console.log(userId);
+    return userId;
     // On the server side, accounts.createUser does not actually have callback capacities
     // Any errors related to actually creating the user are currently stored in the account-creations.js
 
@@ -53,7 +55,9 @@ Meteor.methods({
     /*
     if(userID)
     {
-      Accounts.sendEnrollmentEmail(userID);
+      console.log("userId");
+      console.log(userId);
+      //Accounts.sendEnrollmentEmail(userID);
       return userID;
     }
     */
