@@ -1,0 +1,27 @@
+<head>
+  <title>Our First Dapp</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> latestBlock}}
+  {{> accounts}}
+  {{> balance}}
+</body>
+
+
+<template name="latestBlock">
+    <p>The latest block's number is {{currentBlock}}.</p>
+</template>
+
+<template name="accounts">
+  <p>The accounts {{allAccounts}}.</p>
+  <button>Create accounts</button>
+  <!--  <p>You created the account {{createAccount}}.</p>-->
+</template>
+
+<template name="balance">
+
+   <p>Etherscan Balance is {{oneEtherscanAccountBalance}}.</p>
+</template>

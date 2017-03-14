@@ -48,3 +48,6 @@ templating
 blaze
 lmieulet:meteor-coverage
 practicalmeteor:mocha-console-runner
+
+
+ethereum:web3
