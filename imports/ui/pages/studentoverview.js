@@ -4,30 +4,49 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import './studentoverview.html';
 import './studentView.html';
 
+
+console.log('bwahhhahaha');
+
+//console.log(Universities.findOne());
+
 // Template Level subscription
 // ---------------------------
 
 // Note: The onCreated function is run the moment the page is rendered
 Template.studentoverview.onCreated( function() {
 
-  // Subscribe to overall userData publication
-  // *****************************************
-  this.subscribe('userData');
+  var self = this;
+  self.autorun ( function() {
 
-  /*
-  this.autorun(function() {
-    this.subscribe('userData');
+    // Subscribe to overall userData publication
+    // *****************************************
+    console.log("hi");
+    self.subscribe('userData', function() {
+      //console.log(Meteor.users.findOne({}));
+    });
+
+    /*
+    this.autorun(function() {
+      this.subscribe('userData');
+    });
+    */
+
+    // Notes: this.subscribe() attaches subscriptionReady() (whereas Meteor.subscribe() doesnt)
+    // Notes: this.autorun automatically re-initializes the subscription if something changes
+
+    // Subscribe to overall Universities publication
+    // *********************************************
+
+    // Playing around with subscriptions --> to be changed
+    console.log("playing");
+
+    Meteor.subscribe('universities', function() {
+      console.log("i need hot chocolate");
+      //console.log(Universities.findOne({}));
+    });
+
+    // console.log("bye");
   });
-  */
-
-  // Notes: this.subscribe() attaches subscriptionReady() (whereas Meteor.subscribe() doesnt)
-  // Notes: this.autorun automatically re-initializes the subscription if something changes
-
-  // Subscribe to overall Universities publication
-  // *********************************************
-
-  // Playing around with subscriptions --> to be changed
-  this.subscribe('universities');
 
 });
 
@@ -44,3 +63,10 @@ Template.studentoverview.helpers({
     return Meteor.users.find();
   }
 });
+/*
+Template.studentoverview.helpers({
+  universities: () => {
+    return Meteor.universities.find();
+  }
+});
+*/

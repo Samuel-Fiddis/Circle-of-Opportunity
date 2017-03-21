@@ -43,7 +43,7 @@ Accounts.onCreateUser(function(options,user) {
   console.log("in accountOnCreate function");
   // Add in the university information to the user document
   if(options.university) {
-    console.log(options.university);
+    // console.log(options.university);
     var uni = Universities.findOne({name: options.university});
     user.university = uni._id;
   }

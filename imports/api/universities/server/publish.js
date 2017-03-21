@@ -6,7 +6,10 @@ import { Universities } from '../universities.js';
 // *****************************
 
 Meteor.publish('universities', function(){
-	return Universities.find({});
+	console.log("Jack needs hot chocolate");
+	var pointer = Meteor.Universities.find({});
+	console.log("bloop");
+	return pointer;
 });
 
 // Need to look into what this is doing more
