@@ -14,7 +14,7 @@ import '../../ui/pages/donatenow.js';
 import '../../ui/pages/studentRegForm.js';
 import '../../ui/components/navBar.js';
 
-import '../../ui/pages/etherTest.js';
+//import '../../ui/pages/etherTest.js';
 
 
 // Import to override accounts templates
@@ -82,6 +82,7 @@ FlowRouter.route('/donatenow', {
 FlowRouter.route('/etherTest', {
   name: 'etherTest',
   action(){
-    BlazeLayout.render('etherTest');
+    BlazeLayout.render('mainpage', {main: 'etherTest'});
+    //BlazeLayout.render('etherTest');
   },
 });

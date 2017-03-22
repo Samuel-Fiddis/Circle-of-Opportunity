@@ -53,16 +53,9 @@ Accounts.onCreateUser(function(options,user) {
   // Create ethereum account
   // Store account address and Public Key
 
-  /*
-  user.ethereum = {
-    address = 
-    pubKey =
+  if(options.ethereum) {
+    user.ethereum = options.ethereum;
   }
-  */
-
-
-
-
-
+  
 	return user;
 });
