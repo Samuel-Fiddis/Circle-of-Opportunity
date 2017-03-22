@@ -9,7 +9,6 @@ Accounts.onCreateUser(function(options,user) {
   // ====================================================================
 
   var newEmail = options.email;
-  //console.log(newEmail);
   var emailAlreadyExists = Meteor.users.find({"emails.address": newEmail});
 
   if(emailAlreadyExists == true) {
@@ -30,9 +29,21 @@ Accounts.onCreateUser(function(options,user) {
   // Add in non-default parameters
   // -----------------------------
 
+  /* Note: the default parameters automatically added in are email and password */
+
   // Add in name field to user document
   if(options.name) {
     user.name = options.name;
+  }
+
+  // Add in contact field to user document (currently just phone)
+  if(options.phone) {
+    user.phone = options.phone;
+  }
+
+  // Add in address field to user document
+  if(options.address) {
+    user.address = options.address;
   }
 
   // Add in age field to user document
@@ -53,9 +64,19 @@ Accounts.onCreateUser(function(options,user) {
   // Create ethereum account
   // Store account address and Public Key
 
+<<<<<<< HEAD
+  /*
+  user.ethereum = {
+    address =
+    pubKey =
+  }
+  */
+
+=======
   if(options.ethereum) {
     user.ethereum = options.ethereum;
   }
   
+>>>>>>> c9bbb2424a05df4f36fd4787048ec1ff6a1b1399
 	return user;
 });

@@ -27,22 +27,45 @@ Template.studentRegForm.events({
     // *******************************************************************************************************************
 
     var options = {
+
+      // user info
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
+
+      // Contact info
+      /*
+      phone: $('input[name=phoneNumber]').val(),
+      */
+
+      // personal information
       age: $('input[name=age]').val(),
       image: $('input[name=image]').val()
+
     }
 
-    // $('input[name=email]') grabs the value in the html file at input[name=email]
-    // -> .val turns it into a js value
-    // -> all of it gets stored into the field name email
+    /* Note:
+     $('input[name=email]') grabs the value in the html file at input[name=email]
+     -> .val turns it into a js value
+     -> all of it gets stored into the field name email
+     */
 
     // add in all embedded document information to options
     // ***************************************************
 
+    // Name embedded document
     options.name = {
       first: $('input[name=firstName]').val(),
+      middle: $('input[name=middleName]').val(),
       last: $('input[name=lastName]').val()
+    }
+
+
+    // Address embedded document
+    options.address = {
+      country: $('input[name=country]').val(),
+      city: $('input[name=city]').val(),
+      street: $('input[name=street]').val(),
+      zipCode: $('input[name=zipCode]').val()
     }
 
     // call the method ethereum to create an account
@@ -50,7 +73,7 @@ Template.studentRegForm.events({
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
 
-    //Accounts.createUser(options);
+
 
     // Pass the values options with all user fields onto User Accounts
     // ***************************************************************************
@@ -76,8 +99,9 @@ Template.studentRegForm.events({
 
     });
 
-
-    // function(error,result) is a callback function
-    // see: http://docs.meteor.com/api/methods.html#Meteor-call
+    /* Note:
+    function(error,result) is a callback function
+    see: http://docs.meteor.com/api/methods.html#Meteor-call
+    */
   }
 });
