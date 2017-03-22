@@ -1,10 +1,11 @@
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './etherTest.html';
 
-import '/imports/startup/client/ethereum.js';
-import '/imports/api/ethereum/ethereum.js';
-import '/imports/api/ethereum/etherscan.js';
+// import '/imports/startup/client/ethereum.js';
+// import '/imports/api/ethereum/ethereum.js';
+// import '/imports/api/ethereum/etherscan.js';
 
 Meteor.call('runCode', function (err, response) {
   console.log(response);

@@ -64,6 +64,7 @@ Accounts.onCreateUser(function(options,user) {
   // Create ethereum account
   // Store account address and Public Key
 
+<<<<<<< HEAD
   /*
   user.ethereum = {
     address =
@@ -71,5 +72,11 @@ Accounts.onCreateUser(function(options,user) {
   }
   */
 
+=======
+  if(options.ethereum) {
+    user.ethereum = options.ethereum;
+  }
+  
+>>>>>>> c9bbb2424a05df4f36fd4787048ec1ff6a1b1399
 	return user;
 });

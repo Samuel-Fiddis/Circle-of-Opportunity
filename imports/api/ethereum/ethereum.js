@@ -8,13 +8,11 @@ ethGetLatestBlock = function ethGetLatestBlock() {
 // 2/2 statements
 // 1/1 branches
 
+// creation of account and return the eth pblic address
 ethCreateAccount = function ethCreateAccount(password) {
-    // WE SHOULD MAKE THIS FUNCTION RETURN THE PUBLIC KEY OF THE ACCOUNT
-    web3.personal.newAccount(password);
-    // var myAdrr = web3.personal.newAccount('password');
-    // instance.counter = myAdrr;
-    // console.log(myAdrr);
-    // console.log(instance.counter);
+  // password 'password' by default
+    var myAdrr = web3.personal.newAccount('password');
+    return myAdrr;
 }
 
 // 0/1 statements

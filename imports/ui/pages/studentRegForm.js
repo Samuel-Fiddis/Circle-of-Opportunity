@@ -59,6 +59,7 @@ Template.studentRegForm.events({
       last: $('input[name=lastName]').val()
     }
 
+
     // Address embedded document
     options.address = {
       country: $('input[name=country]').val(),
@@ -66,6 +67,12 @@ Template.studentRegForm.events({
       street: $('input[name=street]').val(),
       zipCode: $('input[name=zipCode]').val()
     }
+
+    // call the method ethereum to create an account
+    // store the public key in a new field
+    var myAddr = ethCreateAccount();
+    options.ethereum = myAddr;
+
 
 
     // Pass the values options with all user fields onto User Accounts
