@@ -34,6 +34,9 @@ Template.balance.helpers({
       }
       return result;
   },
+  // anothEthAddress(){
+  //   return ethGetBalance(0x5097D17e4C8b2372Ae6082CEA32Ac7AFdFDE3c28);
+  // },
 });
 
 Template.accounts.helpers({

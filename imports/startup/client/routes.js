@@ -14,7 +14,7 @@ import '../../ui/pages/donatenow.js';
 import '../../ui/pages/studentRegForm.js';
 import '../../ui/components/navBar.js';
 
-//import '../../ui/pages/etherTest.js';
+// import '../../ui/pages/etherTest.js';
 
 
 // Import to override accounts templates
