@@ -5,9 +5,11 @@ import { Meteor } from 'meteor/meteor';
 // **********************************************************************
 
 Meteor.methods({
-  
+
   signup: function(options) {
+
     var userId;
+
     // Error Handling: making sure the form is properly filled in?
     // ----------------------------------------------------------
 
@@ -34,20 +36,23 @@ Meteor.methods({
       throw new Meteor.Error("No_lastName","Please fill in a last name");
     }
 
-    // Syntax for Meteor.Error("identifier","reason")
-    // the identifier can be used to reference the error
-    // The reason appears in the console log to explain what went wrong
-
+    /* Note:
+    Syntax for Meteor.Error("identifier","reason")
+    the identifier can be used to reference the error
+    The reason appears in the console log to explain what went wrong
+    */
 
     // Create the user from the server
     // -------------------------------
 
     userId = Accounts.createUser(options);
-    console.log(userId);
+    //console.log(userId);
     return userId;
-    // On the server side, accounts.createUser does not actually have callback capacities
-    // Any errors related to actually creating the user are currently stored in the account-creations.js
 
+    /* Note:
+    On the server side, accounts.createUser does not actually have callback capacities
+    Any errors related to actually creating the user are currently stored in the account-creations.js
+    */
 
     // Add in a send enrollment email for example
     // ------------------------------------------
