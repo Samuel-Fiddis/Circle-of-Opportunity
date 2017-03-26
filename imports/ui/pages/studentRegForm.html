@@ -8,6 +8,11 @@
 
 		  	<form class = "studentRegForm col-xs-6 col-xs-offset-3">
 
+          <!-- Trying to see the error messages -->
+          {{#if errorMessage}}
+            <div class="ui error message"> {{errorMessage}} </div>
+          {{/if}}
+
           <!-- user info -->
 			    <input type="input" name="email" placeholder="Email" class="form-control">
 			    <input type="password" name="password" placeholder="Password" class="form-control">
@@ -31,7 +36,9 @@
 			    <input type="input" name="image" placeholder="Image" class="form-control">
 
 			    <input id="studentRegSubmit" type = "submit" class="btn btn-default" value= "Register">
-		  	</form>
+          
+
+        </form>
 	  	</div>
 	</div>
 </template>

@@ -56,27 +56,17 @@ Accounts.onCreateUser(function(options,user) {
     user.image = options.image;
   }
 
+  // Store Ethereum Public Key for this student
+  if(options.ethereum) {
+    user.ethereum = options.ethereum;
+  }
+
   // Want to keep the default hook's profile behavior
   if(options.profile) {
     user.profile = options.profile;
   }
 
-  // Create ethereum account
-  // Store account address and Public Key
 
-<<<<<<< HEAD
-  /*
-  user.ethereum = {
-    address =
-    pubKey =
-  }
-  */
 
-=======
-  if(options.ethereum) {
-    user.ethereum = options.ethereum;
-  }
-  
->>>>>>> c9bbb2424a05df4f36fd4787048ec1ff6a1b1399
 	return user;
 });

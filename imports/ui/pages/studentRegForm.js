@@ -1,11 +1,28 @@
-// *********************************
-// Events allocated to Register Page
-// *********************************
-
-
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import './studentRegForm.html';
+
+// *****************************************
+// What happens when you create the template
+// *****************************************
+
+// OnCreated function for the template
+// -----------------------------------
+
+Template.studentRegForm.onCreated(function() {
+
+  // Declare a global variable called lastError
+  this.lastError = new ReactiveVar(null);
+
+  //template.lastError.set("hi");
+
+});
+
+
+
+// *********************************
+// Events allocated to Register Page
+// *********************************
 
 // Event to define what happens when you submit the register form
 // --------------------------------------------------------------
@@ -33,9 +50,7 @@ Template.studentRegForm.events({
       password: $('input[name=password]').val(),
 
       // Contact info
-      /*
       phone: $('input[name=phoneNumber]').val(),
-      */
 
       // personal information
       age: $('input[name=age]').val(),
@@ -68,12 +83,12 @@ Template.studentRegForm.events({
       zipCode: $('input[name=zipCode]').val()
     }
 
-    // call the method ethereum to create an account
-    // store the public key in a new field
+    // Create an ethereum account & store public key address
+    // ******************************************************
+    /*
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
-
-
+    */
 
     // Pass the values options with all user fields onto User Accounts
     // ***************************************************************************
@@ -84,15 +99,26 @@ Template.studentRegForm.events({
       // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
       if(error) {
+
         // display the error on the console log of the website
         console.log(error.reason);
+
+        // Set the lastError variable
+        template.lastError.set(error.reason);
+
       }
 
       // What happens if methods function works fine
       // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
       else {
+
+        // Set the lastError to null
+        template.lastError.set(null);
+
+        // automatic login for the user
         Meteor.loginWithPassword(options.email, options.password);
+
         // redirect the user to another page after registration
         FlowRouter.go('/students')
       }
@@ -103,5 +129,17 @@ Template.studentRegForm.events({
     function(error,result) is a callback function
     see: http://docs.meteor.com/api/methods.html#Meteor-call
     */
+  }
+});
+
+//console.log(Template.instance.lastError.get());
+
+// *************************************
+// Events allocated to Registration Form
+// *************************************
+
+Template.studentRegForm.helpers({
+  errorMessage: function () {
+    return Template.instance().lastError.get();
   }
 });
