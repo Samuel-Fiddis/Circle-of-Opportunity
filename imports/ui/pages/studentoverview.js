@@ -38,5 +38,14 @@ Template.studentoverview.helpers({
   },
   secondStudent: function (index) {
     return (index + 1) % 2 === 0;
-  }
+  },
+
+
+});
+
+Template.studentView.helpers({
+  balance : function (){
+    var myEthAddr = this.ethereum;
+    return ethGetBalance(myEthAddr);
+  },
 });
