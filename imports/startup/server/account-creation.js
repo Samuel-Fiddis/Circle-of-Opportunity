@@ -56,6 +56,21 @@ Accounts.onCreateUser(function(options,user) {
     user.image = options.image;
   }
 
+  // Add in university information to user document
+  if(options.uni_info) {
+    user.uni_info = options.uni_info;
+
+    // Checking if Imperial College already exists
+    // NOTE: To be deleted or changed after University interface is set up
+    if(Universities.findOne({name: options.uni_info.uni}) == null) {
+      Universities.insert({name: options.uni_info.uni, address: "huxley"});
+    }
+
+    // Changing the university name field to the university _id of db doc
+    var uni = Universities.findOne({name: options.uni_info.uni});
+    user.uni_info.uni = uni._id;
+  }
+
   // Store Ethereum Public Key for this student
   if(options.ethereum) {
     user.ethereum = options.ethereum;

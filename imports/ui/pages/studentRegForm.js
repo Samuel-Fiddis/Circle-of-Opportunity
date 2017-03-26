@@ -14,8 +14,6 @@ Template.studentRegForm.onCreated(function() {
   // Declare a global variable called lastError
   this.lastError = new ReactiveVar(null);
 
-  //template.lastError.set("hi");
-
 });
 
 
@@ -82,6 +80,15 @@ Template.studentRegForm.events({
       street: $('input[name=street]').val(),
       zipCode: $('input[name=zipCode]').val()
     }
+
+    // University info embedded document
+    options.uni_info = {
+      uni: $('input[name=uni]').val(),
+      program: $('input[name=program]').val(),
+      eStatus: $('select[name=enrolmentStatus]').val()
+    }
+
+    console.log(options.uni_info.eStatus);
 
     // Create an ethereum account & store public key address
     // ******************************************************
