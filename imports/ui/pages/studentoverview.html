@@ -2,11 +2,18 @@
 	<h1>View Students</h1>
 	<!-- Enumerate over each user -->
 	<div class="container">
-	{{#each user}}
+		<div class="row">
+		{{#each user}}
+			<!-- Call StudentView for each user -->
+			
+				{{ >studentView}}
 
-		<!-- Call StudentView for each user -->
-		{{ >studentView}}
+			{{#if secondStudent @index}}
+				
+			{{/if}}
 
-	{{/each}}
+		{{/each}}
+		</div>
+	
 	</div>
 </template>

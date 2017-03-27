@@ -15,6 +15,8 @@ import '../../ui/pages/studentRegForm.js';
 import '../../ui/pages/profilepage.js';
 import '../../ui/components/navBar.js';
 
+// import '../../ui/pages/etherTest.js';
+
 
 // Import to override accounts templates
 
@@ -81,5 +83,13 @@ FlowRouter.route('/profilepage', {
   name: 'profilepage',
   action(){
     BlazeLayout.render('mainpage', {main: 'profilepage'});
+  },
+});
+
+FlowRouter.route('/etherTest', {
+  name: 'etherTest',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'etherTest'});
+    //BlazeLayout.render('etherTest');
   },
 });

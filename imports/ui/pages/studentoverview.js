@@ -35,5 +35,17 @@ Template.studentoverview.onCreated( function() {
 Template.studentoverview.helpers({
   user: ()=> {
     return Meteor.users.find();
-  }
+  },
+  secondStudent: function (index) {
+    return (index + 1) % 2 === 0;
+  },
+
+
+});
+
+Template.studentView.helpers({
+  balance : function (){
+    var myEthAddr = this.ethereum;
+    return ethGetBalance(myEthAddr);
+  },
 });
