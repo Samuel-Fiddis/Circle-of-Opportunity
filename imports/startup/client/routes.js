@@ -12,6 +12,7 @@ import '../../ui/pages/studentregister.js';
 import '../../ui/pages/contact.js';
 import '../../ui/pages/donatenow.js';
 import '../../ui/pages/studentRegForm.js';
+import '../../ui/pages/profilepage.js';
 import '../../ui/components/navBar.js';
 
 
@@ -73,5 +74,12 @@ FlowRouter.route('/donatenow', {
   name: 'donatenow',
   action(){
     BlazeLayout.render('mainpage', {main: 'donatenow'});
+  },
+});
+
+FlowRouter.route('/profilepage', {
+  name: 'profilepage',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'profilepage'});
   },
 });
