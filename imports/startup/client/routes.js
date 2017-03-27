@@ -79,6 +79,12 @@ FlowRouter.route('/donatenow', {
   },
 });
 
+FlowRouter.route('/profilepage', {
+  name: 'profilepage',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'profilepage'});
+  },
+});
 
 FlowRouter.route('/etherTest', {
   name: 'etherTest',
@@ -87,7 +93,6 @@ FlowRouter.route('/etherTest', {
     //BlazeLayout.render('etherTest');
   },
 });
-
 
 FlowRouter.route('/profilepage', {
   name: 'profilepage',

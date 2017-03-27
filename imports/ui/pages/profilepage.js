@@ -5,6 +5,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './profilepage.html';
 
+
 // Template level subscription
 // ---------------------------
 
@@ -25,14 +26,19 @@ Template.profilepage.onCreated( function() {
 Template.profilepage.helpers({
 
     profileinfo: function() {
-      /*
+
       var user = Meteor.user();
+      var email = user.emails[0].address;
+
+
+      /*
       var profile = {
         var email = user.emails[0].address;
         var age = user.age;
       }
-      console.log(age);
-      return profile;
       */
+
+      return email;
+
     },
 });
