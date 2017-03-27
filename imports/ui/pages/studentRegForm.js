@@ -56,6 +56,10 @@ Template.studentRegForm.events({
 
     }
 
+    // console.log("Options.age is: ");
+    // console.log(options.age);
+    // console.log("!");
+
     /* Note:
      $('input[name=email]') grabs the value in the html file at input[name=email]
      -> .val turns it into a js value
@@ -87,8 +91,6 @@ Template.studentRegForm.events({
       program: $('input[name=program]').val(),
       eStatus: $('select[name=enrolmentStatus]').val()
     }
-
-    console.log(options.uni_info.eStatus);
 
     // Create an ethereum account & store public key address
     // ******************************************************
@@ -138,8 +140,6 @@ Template.studentRegForm.events({
     */
   }
 });
-
-//console.log(Template.instance.lastError.get());
 
 // *************************************
 // Events allocated to Registration Form

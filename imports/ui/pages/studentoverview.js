@@ -33,15 +33,25 @@ Template.studentoverview.onCreated( function() {
 //       user: function() { return Meteor.users.find(); }
 
 Template.studentoverview.helpers({
+
   user: ()=> {
     return Meteor.users.find();
   },
+
   secondStudent: function (index) {
     return (index + 1) % 2 === 0;
   },
 
+  /*
+  uni_name: function () {
+    return Universities.findOne({_id:this.uni_info.uni},{name: 1});
+  },
+  */
 
 });
+
+// studentView Helper to pass on ethereum information based on public key
+// -----------------------------------------------------------------------
 
 Template.studentView.helpers({
   balance : function (){

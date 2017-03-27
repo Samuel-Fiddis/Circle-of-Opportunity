@@ -60,7 +60,7 @@ Accounts.onCreateUser(function(options,user) {
   if(options.uni_info) {
     user.uni_info = options.uni_info;
 
-    // Checking if Imperial College already exists
+    // Checking if Imperial College already exists (if it doesnt, create it)
     // NOTE: To be deleted or changed after University interface is set up
     if(Universities.findOne({name: options.uni_info.uni}) == null) {
       Universities.insert({name: options.uni_info.uni, address: "huxley"});
@@ -80,8 +80,6 @@ Accounts.onCreateUser(function(options,user) {
   if(options.profile) {
     user.profile = options.profile;
   }
-
-
 
 	return user;
 });

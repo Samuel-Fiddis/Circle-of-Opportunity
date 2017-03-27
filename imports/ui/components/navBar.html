@@ -37,6 +37,16 @@
       </form>
     -->
       <ul class="nav navbar-nav navbar-right">
+
+        <li>{{> loginButtons}}</li>
+        {{#if currentUser}}
+        <li><a href="/profilepage">My Profile</a></li>
+        {{else}}
+        <li><a href="/studentregister">Register as Student</a></li>
+        <li><a href="/donorregister">Register as Donor</a></li>
+        {{/if}}
+
+        <!--
         <li><a href="/studentregister">Register as Student</a></li>
         <li><a href="/donorregister">Register as Donor</a></li>
         <li class="dropdown">
@@ -45,8 +55,10 @@
             <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
             <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
             <button type="button" class="btn btn-default">Log In</button>
+          -
           </ul>
         </li>
+      -->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -12,6 +12,7 @@ import '../../ui/pages/studentregister.js';
 import '../../ui/pages/contact.js';
 import '../../ui/pages/donatenow.js';
 import '../../ui/pages/studentRegForm.js';
+import '../../ui/pages/profilepage.js';
 import '../../ui/components/navBar.js';
 
 // import '../../ui/pages/etherTest.js';
@@ -84,5 +85,13 @@ FlowRouter.route('/etherTest', {
   action(){
     BlazeLayout.render('mainpage', {main: 'etherTest'});
     //BlazeLayout.render('etherTest');
+  },
+});
+
+
+FlowRouter.route('/profilepage', {
+  name: 'profilepage',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'profilepage'});
   },
 });
