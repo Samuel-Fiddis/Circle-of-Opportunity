@@ -94,10 +94,10 @@ Template.studentRegForm.events({
 
     // Create an ethereum account & store public key address
     // ******************************************************
-    /*
+
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
-    */
+    
 
     // Pass the values options with all user fields onto User Accounts
     // ***************************************************************************
