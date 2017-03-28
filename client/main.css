@@ -131,6 +131,17 @@ p {
     margin: 15px auto;
 }
 
+/* Donor Registration Form */
+.donorregform {
+    padding: 10px 30px;
+}
+.donorregform > input {
+    display: block;
+    text-align: center;
+    width: 250px;
+    margin: 15px auto;
+}
+
 #studentRegSubmit {
     width: 120px;
 }
@@ -149,7 +160,7 @@ p {
 }
 
 .studentImage {
-    width:55px; 
+    width:55px;
     height:60px;
     float: left;
     margin: 5px -40px 5px 15px;
