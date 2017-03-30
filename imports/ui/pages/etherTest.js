@@ -1,10 +1,11 @@
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './etherTest.html';
 
-import '/imports/startup/client/ethereum.js';
-import '/imports/api/ethereum/ethereum.js';
-import '/imports/api/ethereum/etherscan.js';
+// import '/imports/startup/client/ethereum.js';
+// import '/imports/api/ethereum/ethereum.js';
+// import '/imports/api/ethereum/etherscan.js';
 
 Meteor.call('runCode', function (err, response) {
   console.log(response);
@@ -33,6 +34,9 @@ Template.balance.helpers({
       }
       return result;
   },
+  // anothEthAddress(){
+  //   return ethGetBalance(0x5097D17e4C8b2372Ae6082CEA32Ac7AFdFDE3c28);
+  // },
 });
 
 Template.accounts.helpers({

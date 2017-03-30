@@ -12,9 +12,10 @@ import '../../ui/pages/studentregister.js';
 import '../../ui/pages/contact.js';
 import '../../ui/pages/donatenow.js';
 import '../../ui/pages/studentRegForm.js';
+import '../../ui/pages/profilepage.js';
 import '../../ui/components/navBar.js';
-
-import '../../ui/pages/etherTest.js';
+import '../../ui/pages/donorregform.js';
+// import '../../ui/pages/etherTest.js';
 
 
 // Import to override accounts templates
@@ -60,7 +61,7 @@ FlowRouter.route('/studentregister', {
 FlowRouter.route('/donorregister', {
   name: 'donorregister',
   action(){
-    BlazeLayout.render('mainpage', {main: 'donorregister'});
+    BlazeLayout.render('mainpage', {main: 'donorregister', form: 'donorregform'});
   },
 });
 
@@ -78,10 +79,24 @@ FlowRouter.route('/donatenow', {
   },
 });
 
+FlowRouter.route('/profilepage', {
+  name: 'profilepage',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'profilepage'});
+  },
+});
 
 FlowRouter.route('/etherTest', {
   name: 'etherTest',
   action(){
-    BlazeLayout.render('etherTest');
+    BlazeLayout.render('mainpage', {main: 'etherTest'});
+    //BlazeLayout.render('etherTest');
+  },
+});
+
+FlowRouter.route('/profilepage', {
+  name: 'profilepage',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'profilepage'});
   },
 });

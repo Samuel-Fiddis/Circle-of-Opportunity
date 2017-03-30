@@ -5,22 +5,24 @@ import { Meteor } from 'meteor/meteor';
 // **********************************************************************
 
 Meteor.methods({
-  
-  signup: function(options) {
-    var userId;
-    // Error Handling: making sure the form is properly filled in?
-    // ----------------------------------------------------------
 
-    // ensure the user is logged in
-    /*
-    if (!user)
-    {
-      throw new Meteor.Error(401, "Can't make a user without a user object");
-    }
-    */
+  signup: function(options) {
+
+    var userId;
+
+    // Error Handling: making sure the form is properly filled in
+    // ----------------------------------------------------------
 
     // Make sure all non-optional fields are filled in
     // ***********************************************
+
+    // ensure the user filled out a password
+    // NOTE: the email is automatically checked by meteor
+
+    if(!options.password)
+    {
+      throw new Meteor.Error("No_password","Please fill out a password");
+    }
 
     // ensure the user has a first and last name
 
@@ -34,20 +36,23 @@ Meteor.methods({
       throw new Meteor.Error("No_lastName","Please fill in a last name");
     }
 
-    // Syntax for Meteor.Error("identifier","reason")
-    // the identifier can be used to reference the error
-    // The reason appears in the console log to explain what went wrong
-
+    /* NOTE:
+    Syntax for Meteor.Error("identifier","reason")
+    the identifier can be used to reference the error
+    The reason appears in the console log to explain what went wrong
+    */
 
     // Create the user from the server
     // -------------------------------
 
     userId = Accounts.createUser(options);
-    console.log(userId);
+    //console.log(userId);
     return userId;
-    // On the server side, accounts.createUser does not actually have callback capacities
-    // Any errors related to actually creating the user are currently stored in the account-creations.js
 
+    /* NOTE:
+    On the server side, accounts.createUser does not actually have callback capacities
+    Any errors related to actually creating the user are currently stored in the account-creations.js
+    */
 
     // Add in a send enrollment email for example
     // ------------------------------------------

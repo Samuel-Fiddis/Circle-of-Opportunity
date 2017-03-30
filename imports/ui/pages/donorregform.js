@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import './studentRegForm.html';
+import './donorregform.html';
 
 // *****************************************
 // What happens when you create the template
@@ -9,7 +9,7 @@ import './studentRegForm.html';
 // OnCreated function for the template
 // -----------------------------------
 
-Template.studentRegForm.onCreated(function() {
+Template.donorregform.onCreated(function() {
 
   // Declare a global variable called lastError
   this.lastError = new ReactiveVar(null);
@@ -25,7 +25,7 @@ Template.studentRegForm.onCreated(function() {
 // Event to define what happens when you submit the register form
 // --------------------------------------------------------------
 
-Template.studentRegForm.events({
+Template.donorregform.events({
 
   // Create the submit form function
   // *******************************
@@ -86,18 +86,17 @@ Template.studentRegForm.events({
     }
 
     // University info embedded document
-    options.uni_info = {
-      uni: $('input[name=uni]').val(),
-      program: $('input[name=program]').val(),
-      eStatus: $('select[name=enrolmentStatus]').val()
+    options.company_info = {
+      uni: $('input[name=company]').val(),
+      program: $('input[name=possition]').val(),
     }
 
     // Create an ethereum account & store public key address
     // ******************************************************
-
+    /*
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
-    
+    */
 
     // Pass the values options with all user fields onto User Accounts
     // ***************************************************************************
@@ -129,7 +128,7 @@ Template.studentRegForm.events({
         Meteor.loginWithPassword(options.email, options.password);
 
         // redirect the user to another page after registration
-        FlowRouter.go('/students')
+        FlowRouter.go('/donors')
       }
 
     });
@@ -145,7 +144,7 @@ Template.studentRegForm.events({
 // Events allocated to Registration Form
 // *************************************
 
-Template.studentRegForm.helpers({
+Template.donorregform.helpers({
   errorMessage: function () {
     return Template.instance().lastError.get();
   }
