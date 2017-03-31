@@ -6,7 +6,7 @@ Meteor.publish('userData', function () {
 });
 
 // All variables to publish are kept in the fields option
-Meteor.publish('userData', function () {
+Meteor.publish('donorData', function () {
 	return Meteor.users.find({userType: "donor"},{fields: {'name': 1,'age': 1, 'company_info': 1}});
 });
 
