@@ -44,9 +44,10 @@ Template.donorregform.events({
     var options = {
 
       // user info
+      user_type: "donor",
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
-
+      password_verification: $('input[name=password_verification]').val(),
       // Contact info
       phone: $('input[name=phoneNumber]').val(),
 
@@ -88,7 +89,7 @@ Template.donorregform.events({
     // University info embedded document
     options.company_info = {
       uni: $('input[name=company]').val(),
-      program: $('input[name=possition]').val(),
+      program: $('input[name=position]').val(),
     }
 
     // Create an ethereum account & store public key address

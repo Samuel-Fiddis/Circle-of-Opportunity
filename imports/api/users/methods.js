@@ -46,7 +46,7 @@ Meteor.methods({
     // -------------------------------
 
     userId = Accounts.createUser(options);
-    //console.log(userId);
+    console.log(userId);
     return userId;
 
     /* NOTE:

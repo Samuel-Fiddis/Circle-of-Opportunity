@@ -34,26 +34,23 @@ Template.studentRegForm.events({
 
     // prevents the default functionality of the form
     // **********************************************
-
     event.preventDefault();
-
 
     // Store all the values of the user fields in a variable called options to pass on to the onCreateUser Server function
     // *******************************************************************************************************************
 
     var options = {
-
       // user info
+      userType: "student",
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
-
+      password_verification: $('input[name=password_verification]').val(),
       // Contact info
       phone: $('input[name=phoneNumber]').val(),
 
       // personal information
       age: $('input[name=age]').val(),
       image: $('input[name=image]').val()
-
     }
 
     // console.log("Options.age is: ");
@@ -76,7 +73,6 @@ Template.studentRegForm.events({
       last: $('input[name=lastName]').val()
     }
 
-
     // Address embedded document
     options.address = {
       country: $('input[name=country]').val(),
@@ -94,14 +90,11 @@ Template.studentRegForm.events({
 
     // Create an ethereum account & store public key address
     // ******************************************************
-
-    var myAddr = ethCreateAccount();
-    options.ethereum = myAddr;
-    
+    //var myAddr = ethCreateAccount();
+    //options.ethereum = myAddr;
 
     // Pass the values options with all user fields onto User Accounts
     // ***************************************************************************
-
     Meteor.call('signup', options, function(error, result) {
 
       // What happens if methods function returns an error
