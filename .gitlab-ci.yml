@@ -3,3 +3,4 @@ before_script:
 runtests:
     script:
         - cd imports/api/universities
+        - node universities.tests.js
