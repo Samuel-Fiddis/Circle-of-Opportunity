@@ -2,4 +2,4 @@ before_script:
     
 runtests:
     script:
-        - meteor test --driver-package practicalmeteor:mocha --port 4000
+        - cd imports/api/universities
