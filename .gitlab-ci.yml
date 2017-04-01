@@ -2,4 +2,4 @@ before_script:
     
 runtests:
     script:
-        - cd imports/api/universitier
+        - cd imports/api/universities
