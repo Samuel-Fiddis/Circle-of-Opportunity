@@ -1,31 +1,33 @@
 import { Meteor } from 'meteor/meteor';
 
-// *********************************************************************
+// *****************************************************************************
 // File holding all the methods used to connect the server to the client
-// **********************************************************************
+// *****************************************************************************
 
 Meteor.methods({
+
+  // Function for the signup method
+  // ------------------------------
 
   signup: function(options) {
 
     var userId;
 
     // Error Handling: making sure the form is properly filled in
-    // ----------------------------------------------------------
+    // **********************************************************
 
-    // Make sure all non-optional fields are filled in
-    // ***********************************************
+    /*
+    NOTE: the email is automatically checked by meteor
+    */
+
 
     // ensure the user filled out a password
-    // NOTE: the email is automatically checked by meteor
-
     if(!options.password)
     {
       throw new Meteor.Error("No_password","Please fill out a password");
     }
 
     // ensure the user has a first and last name
-
     if(!options.name.first)
     {
       throw new Meteor.Error("No_firstName","Please fill in a first name");
@@ -36,17 +38,62 @@ Meteor.methods({
       throw new Meteor.Error("No_lastName","Please fill in a last name");
     }
 
-    /* NOTE:
-    Syntax for Meteor.Error("identifier","reason")
+    /*
+    NOTE: Syntax for Meteor.Error("identifier","reason")
     the identifier can be used to reference the error
     The reason appears in the console log to explain what went wrong
     */
+
+    // Validation check
+    // *****************
+
+    /*
+    NOTE: Doing a validation check on the argument passed to a Method is:
+    1. For security purposes
+    2. Generally recognized as good practice
+    3. Can be done using simpleSchema or check package
+
+    see also:
+    https://docs.meteor.com/api/check.html
+    https://themeteorchef.com/blog/securing-meteor-applications
+    http://meteortips.com/first-meteor-tutorial/methods/
+    */
+
+    check(options,
+      {
+        email: String,
+        password: String,
+        phone: String,
+        age: String,
+        image: String,
+        // ethereum: String,
+        name:
+        {
+          first: String,
+          middle: String,
+          last: String,
+        },
+        address:
+        {
+          country: String,
+          city: String,
+          street: String,
+          zipCode: String,
+        },
+        uni_info:
+        {
+          uni: String,
+          program: String,
+          eStatus: String,
+        },
+      }
+    )
+
 
     // Create the user from the server
     // -------------------------------
 
     userId = Accounts.createUser(options);
-    //console.log(userId);
     return userId;
 
     /* NOTE:
@@ -66,5 +113,79 @@ Meteor.methods({
       return userID;
     }
     */
+
+},
+
+// Function for the updateUser method
+// ----------------------------------
+
+updateUser: function(options) {
+
+  // validation check
+  // ****************
+
+  /*
+  NOTE:
+  Doing a validation check on the argument passed to a Method is:
+  1. For security purposes
+  2. Generally recognized as good practice
+  3. Can be done using simpleSchema or check package
+
+  see also:
+  https://docs.meteor.com/api/check.html
+  https://themeteorchef.com/blog/securing-meteor-applications
+  http://meteortips.com/first-meteor-tutorial/methods/
+  */
+
+  check(options,
+    {
+      phone: String,
+      age: String,
+      bio: String,
+
+      name:
+      {
+        first: String,
+        middle: String,
+        last: String,
+      },
+
+      address:
+      {
+        country: String,
+        city: String,
+        street: String,
+        zipCode: String,
+      }
+    });
+
+
+    // Conditional statement: only LoggedIn User can call this Method
+    // **************************************************************
+
+    var currentUserId = Meteor.userId();
+
+    if(currentUserId)
+    {
+      // Call Meteor.users.update()
+      // **************************
+
+      Meteor.users.update(
+        { _id: currentUserId },
+        { $set:
+          {
+            bio: options.bio,
+            age: options.age,
+            phone: options.phone,
+            name: options.name,
+            address: options.address,
+          }
+        }
+      );
+
+    }
+
   }
+
+
 });

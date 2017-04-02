@@ -1,18 +1,36 @@
 import { Meteor } from 'meteor/meteor';
 import { Universities } from '../universities.js';
 
+// *****************************************************************************
+// File holding all the University related publications subscribed to by client
+// *****************************************************************************
 
-// publish University collection
-// *****************************
+
+// Publish the full University collection
+// --------------------------------------
 
 Meteor.publish('universities', function(){
+
+	// Return pointer to full collection
+	// ---------------------------------
+
 	return Universities.find({});
+
 });
 
-// Need to look into what this is doing more
-// *****************************************
+// Publish the document of a single university (identified by id)
+// --------------------------------------------------------------
 
 Meteor.publish('singleUniversity', function(id){
+
+	// validation check (security purposes)
+	// ------------------------------------
+
 	check(id, String);
+
+	// return document
+	// ---------------
+
 	return Universities.find({_id: id});
+
 });

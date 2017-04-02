@@ -1,0 +1,73 @@
+<template name="updateForm">
+
+  {{#if currentUser}}
+
+  <h1> Update your Profile Information </h1>
+
+  <div class="container">
+    <div class="row">
+
+      <form class = "studentRegForm col-xs-6 col-xs-offset-3">
+
+        <!-- Trying to see the error messages -->
+        <!--
+        {{#if errorMessage}}
+        <div class="ui error message"> {{errorMessage}} </div>
+        {{/if}}
+      -->
+
+      {{#with userData}}
+
+      <!-- Name info -->
+
+      <input type="text" name="firstName" placeholder="First Name" value = {{name.first}} class="form-control">
+      <input type="text" name="middleName" placeholder="Middle Name" value = {{name.middle}} class="form-control">
+      <input type="text" name="lastName" placeholder="Last Name" value = {{name.last}} class="form-control">
+
+      <!-- Story -->
+      Your Story
+      <textarea name="bio" cols="60" rows="10" class="form-control">
+        {{bio}}
+      </textarea>
+
+      <!-- Contact info -->
+
+      <input type="text" name="phoneNumber" placeholder="Phone Number" value = {{phone}} class="form-control">
+
+      <!-- Address info -->
+
+      <input type="text" name="country" placeholder="Country" value = {{address.country}} class="form-control">
+      <input type="text" name="city" placeholder="City" value = {{address.city}} class="form-control">
+      <input type="text" name="street" placeholder="Street" value = {{address.street}} class="form-control">
+      <input type="text" name="zipCode" placeholder="Zip Code" value = {{address.zipCode}} class="form-control">
+
+      <!-- Personal information -->
+
+      <input type="number" name="age" placeholder="Age" value = {{age}} class="form-control">
+
+      <!-- Personal Photo -->
+      <!--
+      <label for="photo"> Your Photo </label>
+      <input type="file" id="photo" name="image" placeholder="Image" class="form-control">
+    -->
+
+
+    {{/with}}
+    <!-- submit button -->
+
+    <input id="updateFormSubmit" type = "submit" class="btn btn-default" value= "Update">
+
+
+  </form>
+</div>
+</div>
+
+{{else}}
+
+<h1> Please LogIn to update your Profile Information </h1>
+
+{{/if}}
+
+
+
+</template>

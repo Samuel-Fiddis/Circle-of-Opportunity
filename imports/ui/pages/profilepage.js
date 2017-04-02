@@ -1,44 +1,60 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-/*import { Profiles } from '../api/profiles.js'*/
-
 import './profilepage.html';
 
+// *****************************************************************************
+// What happens when you create the template
+// *****************************************************************************
 
-// Template level subscription
-// ---------------------------
+// OnCreated function for the template --> is run when page is rendered
+// --------------------------------------------------------------------
 
 Template.profilepage.onCreated( function() {
 
-  console.log("created");
+  // Template level subscriptions
+  // ****************************
 
-  // Subscribe to the entire user document about the currently logged in user
+  // Subscribe thisUser publication: returns the entire user document for the currently logged in user
   var userId = Meteor.userId();
   this.subscribe('thisUser', userId);
 
 });
 
 
-// Template level helpers
-// ----------------------
+
+// *****************************************************************************
+// Template level Helpers
+// *****************************************************************************
+
+// Helpers function for the template --> defines all the helpers needed
+// ---------------------------------------------------------------------
 
 Template.profilepage.helpers({
 
-    profileinfo: function() {
+  // userData is the currentUser's document
+  // **************************************
 
-      var user = Meteor.user();
-      var email = user.emails[0].address;
+  userData: function() {
+    return Meteor.user();
+  },
 
+  /*
+  NOTE: not sure why, i cant seem to access emails directly on the html page with {{emails[0].address}}
+  1. check to see if i can access using 'emails.0.address'
+  */
 
-      /*
-      var profile = {
-        var email = user.emails[0].address;
-        var age = user.age;
-      }
-      */
+  email: function() {
+    return Meteor.user().emails[0].address;
+  },
 
-      return email;
+  // balance is the balance on the current user's ethereum account
+  // *************************************************************
 
-    },
+  // need to check that the "this" here still works the same way as in studentView
+  balance: function() {
+    var myEthAddr = this.ethereum;
+    return ethGetBalance(myEthAddr);
+  },
+
 });

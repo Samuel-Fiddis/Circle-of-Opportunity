@@ -1,12 +1,21 @@
-// ************************************************************
-// Function to pass the new field parameters to user accounts
-// ************************************************************
+// *****************************************************************************
+// Function extending the fields in user accounts
+// *****************************************************************************
 
 
 Accounts.onCreateUser(function(options,user) {
 
-  // Error Handling: making sure the account has not already been created
-  // ====================================================================
+  /*
+  NOTE: : Basic set up of this function that we want to implement
+   Fill all common info
+    If student:
+  fill student info
+    If donor:
+  fill account info
+  */
+
+  // Error Handling: making sure the username/email has not already been created
+  // ---------------------------------------------------------------------------
 
   var newEmail = options.email;
   var emailAlreadyExists = Meteor.users.find({"emails.address": newEmail});
@@ -15,21 +24,13 @@ Accounts.onCreateUser(function(options,user) {
     throw new Meteor.Error("emailAlreadyExists", "email already registered");
   }
 
-  // Basic set up of this function that we want to implement
-  // -------------------------------------------------------
-
-  /*
-   Fill all common info
-    If student:
-  fill student info
-    If donor:
-  fill account info
-  */
 
   // Add in non-default parameters
   // -----------------------------
 
-  /* Note: the default parameters automatically added in are email and password */
+  /*
+  NOTE: the default parameters automatically added in are email and password
+  */
 
   // Add in name field to user document
   if(options.name) {
@@ -57,13 +58,15 @@ Accounts.onCreateUser(function(options,user) {
   }
 
   // Add in university information to user document
-  if(options.uni_info) {
+  if(options.uni_info)
+  {
     user.uni_info = options.uni_info;
 
     // Checking if Imperial College already exists (if it doesnt, create it)
     // NOTE: To be deleted or changed after University interface is set up
     if(Universities.findOne({name: options.uni_info.uni}) == null) {
       Universities.insert({name: options.uni_info.uni, address: "huxley"});
+
     }
 
     // Changing the university name field to the university _id of db doc

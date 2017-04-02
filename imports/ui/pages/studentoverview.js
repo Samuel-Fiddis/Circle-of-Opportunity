@@ -4,43 +4,72 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import './studentoverview.html';
 import './studentView.html';
 
-// Template Level subscription
-// ---------------------------
+// *****************************************************************************
+// What happens when you create the template
+// *****************************************************************************
 
-// Note: The onCreated function is run the moment the page is rendered
+// OnCreated function for the template --> is run when page is rendered
+// --------------------------------------------------------------------
+
 Template.studentoverview.onCreated( function() {
 
-  // Subscribe to overall userData publication
-  // *****************************************
+  // Template level subscriptions
+  // ****************************
+
+  // subscribe to userData publication: returns all documents in user accounts
   this.subscribe('userData');
 
   /*
+  NOTE: improvements that can be made
+  1. Use following format:
+
   this.autorun(function() {
     this.subscribe('userData');
   });
+
+  this.subscribe() attaches subscriptionReady() (whereas Meteor.subscribe() doesnt)
+  this.autorun automatically re-initializes the subscription if something changes
   */
 
-  // Notes: this.subscribe() attaches subscriptionReady() (whereas Meteor.subscribe() doesnt)
-  // Notes: this.autorun automatically re-initializes the subscription if something changes
 });
 
-// studentView Helper to pass on the information of the users
-// ----------------------------------------------------------
 
-// below returns all the users
-// Note: user: ()=> { return Meteor.users.find();} did not work
-//       is equivalent to
-//       user: function() { return Meteor.users.find(); }
+
+// *****************************************************************************
+// Template level Helpers
+// *****************************************************************************
+
+// Helpers function for the template --> defines all the helpers needed
+// ---------------------------------------------------------------------
+
+/* NOTE: javascript syntax for the functions used
+
+user: ()=> { return Meteor.users.find();}
+is equivalent to
+user: function() { return Meteor.users.find(); }
+
+*/
 
 Template.studentoverview.helpers({
+
+  // user returns a pointer to all the user documents in subscription
+  // ****************************************************************
 
   user: ()=> {
     return Meteor.users.find();
   },
 
+  // secondStudent returns ??
+  // ************************
+
+  // NOTE: check what secondStudent returns!!!
+
   secondStudent: function (index) {
     return (index + 1) % 2 === 0;
   },
+
+  // uni_name returns the name of the university affiliated with this student
+  // ************************************************************************
 
   /*
   uni_name: function () {
@@ -52,6 +81,8 @@ Template.studentoverview.helpers({
 
 // studentView Helper to pass on ethereum information based on public key
 // -----------------------------------------------------------------------
+
+// NOTE: Check where this is working and move it accordingly!!!!
 
 Template.studentView.helpers({
   balance : function (){

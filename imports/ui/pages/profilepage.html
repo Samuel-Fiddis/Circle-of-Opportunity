@@ -1,10 +1,46 @@
 
 <template name="profilepage">
 
+
   {{#if currentUser}}
-  <h1>This is your profile page user
-  {{profileinfo}}
-  </h1>
+  <h1>This is your profile page</h1>
+
+  <!-- Loading profile information -->
+
+  <div class="container">
+
+    {{#with userData}}
+    Name: {{name.first}}  {{name.middle}} {{name.last}}
+    <br>
+    Age: {{age}}
+    <br>
+    Phone: {{phone}}
+    <br>
+    Email: {{email}}
+    <br>
+    Address: {{address.street}} {{address.city}} {{address.country}} {{address.zipCode}}
+    <br>
+    Bio: {{bio}}
+    <br>
+    University: {{uni_info.uni}}
+    <br>
+    Program: {{uni_info.program}}
+    <br>
+    Status: {{uni_info.eStatus}}
+    <br>
+
+    <!-- Add in the ethereum functions here and take out of studentView -->
+    Ethereum public key: {{ethereum}}
+    <br>
+    Ethereum balance: {{balance}}
+    <br>
+    {{/with}}
+
+    <!-- Submit form button to go to update form -->
+    <a href="updateForm">Update My Profile</a>
+
+  </div>
+
   {{else}}
   <h1>Please log in (or register) to see and adjust your personal profile page</h1>
   {{/if}}
