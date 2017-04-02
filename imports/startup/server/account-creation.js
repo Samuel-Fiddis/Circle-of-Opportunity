@@ -14,8 +14,11 @@ Accounts.onCreateUser(function(options,user) {
   fill account info
   */
 
-  // Error Handling: making sure the username/email has not already been created
-  // ---------------------------------------------------------------------------
+  // Error Handling:
+  // ---------------
+
+  // making sure the username/email has not already been created
+  // ************************************************************
 
   var newEmail = options.email;
   var emailAlreadyExists = Meteor.users.find({"emails.address": newEmail});
@@ -23,6 +26,52 @@ Accounts.onCreateUser(function(options,user) {
   if(emailAlreadyExists == true) {
     throw new Meteor.Error("emailAlreadyExists", "email already registered");
   }
+
+  // making sure the password matches password verification
+  // ******************************************************
+
+  var password = options.password;
+  var password_verification = options.password_verification;
+
+  if(password != password_verification) {
+    throw new Meteor.Error("passwordsDontMatch", "passwords do not match");
+  }
+  // Basic set up of this function that we want to implement
+  // -------------------------------------------------------
+
+  // Student only Information
+  if(options.userType == "student") {
+    user.userType = options.userType;
+
+    // Add in university information to user document
+    if(options.uni_info) {
+      user.uni_info = options.uni_info;
+
+      // Checking if Imperial College already exists (if it doesnt, create it)
+      // NOTE: To be deleted or changed after University interface is set up
+      if(Universities.findOne({name: options.uni_info.uni}) == null) {
+        Universities.insert({name: options.uni_info.uni, address: "huxley"});
+      }
+
+      // Changing the university name field to the university _id of db doc
+      var uni = Universities.findOne({name: options.uni_info.uni});
+      user.uni_info.uni = uni._id;
+    }
+  }
+
+  if(options.userType == "donor") {
+    user.userType = options.userType;
+    if(options.uni_info) {
+      user.uni_info = options.uni_info;
+    }
+  }
+  /*
+   Fill all common info
+    If student:
+  fill student info
+    If donor:
+  fill account info
+  */
 
 
   // Add in non-default parameters
@@ -55,23 +104,6 @@ Accounts.onCreateUser(function(options,user) {
   // Add in image field to user document
   if(options.image) {
     user.image = options.image;
-  }
-
-  // Add in university information to user document
-  if(options.uni_info)
-  {
-    user.uni_info = options.uni_info;
-
-    // Checking if Imperial College already exists (if it doesnt, create it)
-    // NOTE: To be deleted or changed after University interface is set up
-    if(Universities.findOne({name: options.uni_info.uni}) == null) {
-      Universities.insert({name: options.uni_info.uni, address: "huxley"});
-
-    }
-
-    // Changing the university name field to the university _id of db doc
-    var uni = Universities.findOne({name: options.uni_info.uni});
-    user.uni_info.uni = uni._id;
   }
 
   // Store Ethereum Public Key for this student

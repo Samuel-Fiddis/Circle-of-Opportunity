@@ -1,0 +1,5 @@
+before_script:
+    
+runtests:
+    script:
+        - cd imports/api/universities

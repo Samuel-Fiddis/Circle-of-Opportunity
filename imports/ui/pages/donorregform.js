@@ -1,16 +1,15 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import './donorregform.html';
 
-import './studentRegForm.html';
-
-// *****************************************************************************
+// *****************************************
 // What happens when you create the template
-// *****************************************************************************
+// *****************************************
 
 // OnCreated function for the template
 // -----------------------------------
 
-Template.studentRegForm.onCreated(function() {
+Template.donorregform.onCreated(function() {
 
   // Declare a global variable called lastError
   this.lastError = new ReactiveVar(null);
@@ -19,53 +18,57 @@ Template.studentRegForm.onCreated(function() {
 
 
 
-// *****************************************************************************
+// *********************************
 // Events allocated to Register Page
-// *****************************************************************************
+// *********************************
 
-// Events function for the Registration Form: defines all events allocated to form
-// --------------------------------------------------------------------------------
+// Event to define what happens when you submit the register form
+// --------------------------------------------------------------
 
-Template.studentRegForm.events({
+Template.donorregform.events({
 
-  // Event to define what happens when you submit the register form
-  // **************************************************************
+  // Create the submit form function
+  // *******************************
 
-  'submit form': function(event, template) {
+  'submit form': function(event, template) {  // not sure what the template is....
 
-
-    // prevent the default functionality of the form
-    // *============================================
+    // prevents the default functionality of the form
+    // **********************************************
 
     event.preventDefault();
 
+
     // Store all the values of the user fields in a variable called options to pass on to the onCreateUser Server function
-    // ===================================================================================================================
+    // *******************************************************************************************************************
 
     var options = {
 
       // user info
-      userType: "student",
+      user_type: "donor",
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
       password_verification: $('input[name=password_verification]').val(),
-
       // Contact info
       phone: $('input[name=phoneNumber]').val(),
 
       // personal information
       age: $('input[name=age]').val(),
       image: $('input[name=image]').val()
+
     }
 
-    /*
-    NOTE: $('input[name=email]') grabs the value in the html file at input[name=email]
+    // console.log("Options.age is: ");
+    // console.log(options.age);
+    // console.log("!");
+
+    /* Note:
+     $('input[name=email]') grabs the value in the html file at input[name=email]
      -> .val turns it into a js value
      -> all of it gets stored into the field name email
      */
 
-    // Add in all embedded document information to options
-    // ===================================================
+    // add in all embedded document information to options
+    // ***************************************************
 
     // Name embedded document
     options.name = {
@@ -73,6 +76,7 @@ Template.studentRegForm.events({
       middle: $('input[name=middleName]').val(),
       last: $('input[name=lastName]').val()
     }
+
 
     // Address embedded document
     options.address = {
@@ -83,38 +87,25 @@ Template.studentRegForm.events({
     }
 
     // University info embedded document
-    options.uni_info = {
-      uni: $('input[name=uni]').val(),
-      program: $('input[name=program]').val(),
-      eStatus: $('select[name=enrolmentStatus]').val()
+    options.company_info = {
+      uni: $('input[name=company]').val(),
+      program: $('input[name=position]').val(),
     }
 
-
     // Create an ethereum account & store public key address
-<<<<<<< HEAD
-    // =====================================================
-
+    // ******************************************************
     /*
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
     */
 
-
-    // Call signup Method passing options as an argument
-    // =================================================
-
-=======
-    // ******************************************************
-    //var myAddr = ethCreateAccount();
-    //options.ethereum = myAddr;
-
     // Pass the values options with all user fields onto User Accounts
     // ***************************************************************************
->>>>>>> 6f5283292015fa79f4d965d066a58df4c9d07a1c
+
     Meteor.call('signup', options, function(error, result) {
 
       // What happens if methods function returns an error
-      // +++++++++++++++++++++++++++++++++++++++++++++++++
+      // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
       if(error) {
 
@@ -127,7 +118,7 @@ Template.studentRegForm.events({
       }
 
       // What happens if methods function works fine
-      // ++++++++++++++++++++++++++++++++++++++++++++
+      // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
       else {
 
@@ -138,36 +129,24 @@ Template.studentRegForm.events({
         Meteor.loginWithPassword(options.email, options.password);
 
         // redirect the user to another page after registration
-        FlowRouter.go('/students')
+        FlowRouter.go('/donors')
       }
 
     });
 
-    /*
-    NOTE: function(error,result) is a callback function
+    /* Note:
+    function(error,result) is a callback function
     see: http://docs.meteor.com/api/methods.html#Meteor-call
     */
-
   }
-
 });
 
+// *************************************
+// Events allocated to Registration Form
+// *************************************
 
-
-// *****************************************************************************
-// Template level Helpers
-// *****************************************************************************
-
-// Helpers function for the Registration Form --> defines all the helpers needed
-// -----------------------------------------------------------------------------
-
-Template.studentRegForm.helpers({
-
-  // errorMessage returns the last error message logged by template
-  // **************************************************************
-
+Template.donorregform.helpers({
   errorMessage: function () {
     return Template.instance().lastError.get();
   }
-
 });

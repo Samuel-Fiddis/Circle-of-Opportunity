@@ -1,12 +1,12 @@
 <!-- ********************************************* -->
-<!-- Template Layout for the student register page -->
+<!-- Template Layout for the donor register page -->
 <!-- ********************************************* -->
 
-<template name = "studentRegForm">
+<template name = "donorregform">
   	<div class="container">
 	  	<div class="row">
 
-		  	<form class = "studentRegForm col-xs-6 col-xs-offset-3">
+		  	<form class = "donorregform col-xs-6 col-xs-offset-3">
 
           <!-- Trying to see the error messages -->
           {{#if errorMessage}}
@@ -22,7 +22,6 @@
 			    <input type="text" name="firstName" placeholder="First Name" class="form-control">
           <input type="text" name="middleName" placeholder="Middle Name" class="form-control">
     	    <input type="text" name="lastName" placeholder="Last Name" class="form-control">
-
 
           <!-- Contact info -->
           <input type="text" name="phoneNumber" placeholder="Phone Number" class="form-control">
@@ -40,17 +39,11 @@
 			    <input type="file" id="photo" name="image" placeholder="Image" class="form-control">
 
           <!-- University information -->
-          <input type="text" name="uni" placeholder="University" value="Imperial College" readonly class="form-control">
-          <input type="text" name="program" placeholder="Program" value="Msc of Computing Science" readonly class="form-control">
-
-          <label for="eStatus">Enrolment Status</label>
-          <select id="eStatus" name="enrolmentStatus" class="form-control">
-            <option value="Currently Applying"> Currently Applying </option>
-            <option value="Accepted"> Accepted </option>
-          </select>
+          <input type="text" name="company" placeholder="Company" class="form-control">
+          <input type="text" name="position" placeholder="Position" class="form-control">
 
           <!-- submit button -->
-			    <input id="studentRegSubmit" type = "submit" class="btn btn-default" value= "Register">
+			    <input id="donorRegSubmit" type = "submit" class="btn btn-default" value= "Register">
 
 
         </form>
