@@ -36,10 +36,11 @@ Accounts.onCreateUser(function(options,user) {
   if(password != password_verification) {
     throw new Meteor.Error("passwordsDontMatch", "passwords do not match");
   }
-  // Basic set up of this function that we want to implement
-  // -------------------------------------------------------
+
 
   // Student only Information
+  // ------------------------
+
   if(options.userType == "student") {
     user.userType = options.userType;
 
@@ -59,19 +60,20 @@ Accounts.onCreateUser(function(options,user) {
     }
   }
 
+  // Donor only information
+  // ----------------------
+
+  /*
+  NOTE: Why is there the uni_info here???
+  */
+
   if(options.userType == "donor") {
     user.userType = options.userType;
     if(options.uni_info) {
       user.uni_info = options.uni_info;
     }
   }
-  /*
-   Fill all common info
-    If student:
-  fill student info
-    If donor:
-  fill account info
-  */
+
 
 
   // Add in non-default parameters
@@ -106,7 +108,7 @@ Accounts.onCreateUser(function(options,user) {
     user.image = options.image;
   }
 
-  // Store Ethereum Public Key for this student
+  // Store Ethereum Public Key for this user
   if(options.ethereum) {
     user.ethereum = options.ethereum;
   }

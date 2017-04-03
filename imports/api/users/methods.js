@@ -48,6 +48,11 @@ Meteor.methods({
     // *****************
 
     /*
+    NOTE: Need to look into an if statement if it gets called from the donor as well
+    or maybe putting somethings as null here...
+    */
+
+    /*
     NOTE: Doing a validation check on the argument passed to a Method is:
     1. For security purposes
     2. Generally recognized as good practice
@@ -63,6 +68,7 @@ Meteor.methods({
       {
         email: String,
         password: String,
+        password_verification: String,
         phone: String,
         age: String,
         image: String,
@@ -94,7 +100,6 @@ Meteor.methods({
     // -------------------------------
 
     userId = Accounts.createUser(options);
-    // console.log(userId);
     return userId;
 
     /* NOTE:

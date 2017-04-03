@@ -35,7 +35,7 @@ Template.studentRegForm.events({
 
 
     // prevent the default functionality of the form
-    // *============================================
+    // =============================================
 
     event.preventDefault();
 
@@ -91,7 +91,6 @@ Template.studentRegForm.events({
 
 
     // Create an ethereum account & store public key address
-<<<<<<< HEAD
     // =====================================================
 
     /*
@@ -103,14 +102,6 @@ Template.studentRegForm.events({
     // Call signup Method passing options as an argument
     // =================================================
 
-=======
-    // ******************************************************
-    //var myAddr = ethCreateAccount();
-    //options.ethereum = myAddr;
-
-    // Pass the values options with all user fields onto User Accounts
-    // ***************************************************************************
->>>>>>> 6f5283292015fa79f4d965d066a58df4c9d07a1c
     Meteor.call('signup', options, function(error, result) {
 
       // What happens if methods function returns an error

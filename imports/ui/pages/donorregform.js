@@ -2,9 +2,9 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import './donorregform.html';
 
-// *****************************************
+// *****************************************************************************
 // What happens when you create the template
-// *****************************************
+// *****************************************************************************
 
 // OnCreated function for the template
 // -----------------------------------
@@ -18,12 +18,12 @@ Template.donorregform.onCreated(function() {
 
 
 
-// *********************************
+// *****************************************************************************
 // Events allocated to Register Page
-// *********************************
+// *****************************************************************************
 
-// Event to define what happens when you submit the register form
-// --------------------------------------------------------------
+// Events function for the Registration Form: defines all events allocated to form
+// --------------------------------------------------------------------------------
 
 Template.donorregform.events({
 
@@ -33,13 +33,13 @@ Template.donorregform.events({
   'submit form': function(event, template) {  // not sure what the template is....
 
     // prevents the default functionality of the form
-    // **********************************************
+    // ==============================================
 
     event.preventDefault();
 
 
     // Store all the values of the user fields in a variable called options to pass on to the onCreateUser Server function
-    // *******************************************************************************************************************
+    // ===================================================================================================================
 
     var options = {
 
@@ -48,6 +48,7 @@ Template.donorregform.events({
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
       password_verification: $('input[name=password_verification]').val(),
+
       // Contact info
       phone: $('input[name=phoneNumber]').val(),
 
@@ -57,18 +58,14 @@ Template.donorregform.events({
 
     }
 
-    // console.log("Options.age is: ");
-    // console.log(options.age);
-    // console.log("!");
-
-    /* Note:
-     $('input[name=email]') grabs the value in the html file at input[name=email]
+    /*
+    NOTE: $('input[name=email]') grabs the value in the html file at input[name=email]
      -> .val turns it into a js value
      -> all of it gets stored into the field name email
      */
 
     // add in all embedded document information to options
-    // ***************************************************
+    // ===================================================
 
     // Name embedded document
     options.name = {
@@ -93,19 +90,19 @@ Template.donorregform.events({
     }
 
     // Create an ethereum account & store public key address
-    // ******************************************************
+    // =====================================================
     /*
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
     */
 
-    // Pass the values options with all user fields onto User Accounts
-    // ***************************************************************************
+    // Call signup Method passing options as an argument
+    // =================================================
 
     Meteor.call('signup', options, function(error, result) {
 
       // What happens if methods function returns an error
-      // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+      // +++++++++++++++++++++++++++++++++++++++++++++++++
 
       if(error) {
 
@@ -118,7 +115,7 @@ Template.donorregform.events({
       }
 
       // What happens if methods function works fine
-      // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+      // ++++++++++++++++++++++++++++++++++++++++++++
 
       else {
 
@@ -141,11 +138,18 @@ Template.donorregform.events({
   }
 });
 
-// *************************************
-// Events allocated to Registration Form
-// *************************************
+// *****************************************************************************
+// Template level Helpers
+// *****************************************************************************
+
+// Helpers function for the Registration Form --> defines all the helpers needed
+// -----------------------------------------------------------------------------
 
 Template.donorregform.helpers({
+
+  // errorMessage returns the last error message logged by template
+  // **************************************************************
+
   errorMessage: function () {
     return Template.instance().lastError.get();
   }
