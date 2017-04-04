@@ -64,6 +64,7 @@ Meteor.methods({
     http://meteortips.com/first-meteor-tutorial/methods/
     */
 
+    /*
     check(options,
       {
         email: String,
@@ -94,7 +95,7 @@ Meteor.methods({
         },
       }
     )
-
+    */
 
     // Create the user from the server
     // -------------------------------

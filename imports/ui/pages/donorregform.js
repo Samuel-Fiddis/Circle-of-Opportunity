@@ -91,10 +91,10 @@ Template.donorregform.events({
 
     // Create an ethereum account & store public key address
     // =====================================================
-
+    /*
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
-    
+    */
 
     // Call signup Method passing options as an argument
     // =================================================
@@ -126,7 +126,7 @@ Template.donorregform.events({
         Meteor.loginWithPassword(options.email, options.password);
 
         // redirect the user to another page after registration
-        FlowRouter.go('/donors')
+        FlowRouter.go('/howitworks')
       }
 
     });
