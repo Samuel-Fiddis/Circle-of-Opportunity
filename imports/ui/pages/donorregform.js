@@ -85,16 +85,16 @@ Template.donorregform.events({
 
     // University info embedded document
     options.company_info = {
-      uni: $('input[name=company]').val(),
-      program: $('input[name=position]').val(),
+      company: $('input[name=company]').val(),
+      position: $('input[name=position]').val(),
     }
 
     // Create an ethereum account & store public key address
     // =====================================================
-    /*
+
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
-    */
+    
 
     // Call signup Method passing options as an argument
     // =================================================

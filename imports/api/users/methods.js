@@ -64,16 +64,18 @@ Meteor.methods({
     http://meteortips.com/first-meteor-tutorial/methods/
     */
 
-    /*
+
     check(options,
       {
+        // All users will have the following upon registration
+        userType: String,
         email: String,
         password: String,
         password_verification: String,
         phone: String,
         age: String,
         image: String,
-        // ethereum: String,
+        ethereum: String,
         name:
         {
           first: String,
@@ -87,15 +89,24 @@ Meteor.methods({
           street: String,
           zipCode: String,
         },
-        uni_info:
+
+        // Only students will have the following fields upon registration
+        uni_info: Match.Maybe(
         {
-          uni: String,
-          program: String,
-          eStatus: String,
-        },
+          uni: Match.Maybe(String),
+          program: Match.Maybe(String),
+          eStatus: Match.Maybe(String),
+        }),
+
+        // Only donors will have the following fields upon registration
+        company_info: Match.Maybe(
+        {
+          company: Match.Maybe(String),
+          position: Match.Maybe(String),
+        }),
       }
     )
-    */
+
 
     // Create the user from the server
     // -------------------------------
