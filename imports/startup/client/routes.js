@@ -96,13 +96,6 @@ FlowRouter.route('/etherTest', {
   },
 });
 
-FlowRouter.route('/profilepage', {
-  name: 'profilepage',
-  action(){
-    BlazeLayout.render('mainpage', {main: 'profilepage'});
-  },
-});
-
 FlowRouter.route('/updateForm', {
   name: 'updateForm',
   action () {

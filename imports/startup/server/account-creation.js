@@ -63,14 +63,14 @@ Accounts.onCreateUser(function(options,user) {
   // Donor only information
   // ----------------------
 
-  /*
-  NOTE: Why is there the uni_info here???
-  */
-
   if(options.userType == "donor") {
+
+    // Add in the user type
     user.userType = options.userType;
-    if(options.uni_info) {
-      user.uni_info = options.uni_info;
+
+    // Add in the company_info
+    if(options.company_info) {
+      user.company_info = options.company_info;
     }
   }
 
