@@ -16,7 +16,11 @@
     <br>
     Phone: {{phone}}
     <br>
-    Email: {{email}}
+
+    {{#each emails}}
+    Email: {{address}}
+    {{/each}}
+    
     <br>
     Address: {{address.street}} {{address.city}} {{address.country}} {{address.zipCode}}
     <br>
