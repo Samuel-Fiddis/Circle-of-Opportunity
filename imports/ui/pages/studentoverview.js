@@ -56,7 +56,12 @@ Template.studentoverview.helpers({
   // ****************************************************************
 
   user: ()=> {
-    return Meteor.users.find();
+    var selectionCriteria = Session.get("orderselection");
+    var sortOrder = {};
+    sortOrder[selectionCriteria] = 1;
+    console.log("Database query");
+    console.log(selectionCriteria);
+    return Meteor.users.find({}, {sort: sortOrder});
   },
 
   // secondStudent returns ??
@@ -88,5 +93,25 @@ Template.studentView.helpers({
   balance : function (){
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
+  },
+});
+
+Template.orderButton.events({
+  'click': function(){
+        console.log("You clicked something");
+    },
+  'change #orderselecter' : function (evt){
+    var newValue = $(evt.target).val();
+    console.log("newValue");
+    console.log(newValue);
+    var oldValue = Session.get("orderselection");
+    console.log("oldValue");
+    console.log(oldValue);
+    if (newValue != oldValue){
+      //something
+    }
+    Session.set("orderselection", newValue)
+    console.log("done");
+    return true;
   },
 });

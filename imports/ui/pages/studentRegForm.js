@@ -96,7 +96,7 @@ Template.studentRegForm.events({
 
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
-    
+
 
 
     // Call signup Method passing options as an argument
