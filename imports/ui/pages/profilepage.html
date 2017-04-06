@@ -2,35 +2,35 @@
 <template name="profilepage">
 
 
-  {{#if currentUser}}
+  {{#if ownProfile}}
   <h1>This is your profile page</h1>
-
+  {{/if}}
   <!-- Loading profile information -->
 
   <div class="container">
 
-    {{#with userData}}
-    Name: {{name.first}}  {{name.middle}} {{name.last}}
+    <!--{{#with userData}}-->
+    Name: {{userProfile.name.first}}  {{suerProfile.name.middle}} {{userProfile.name.last}}
     <br>
-    Age: {{age}}
+    Age: {{userProfile.age}}
     <br>
-    Phone: {{phone}}
+    Phone: {{userProfile.phone}}
     <br>
 
     {{#each emails}}
-    Email: {{address}}
+    Email: {{userProfile.address}}
     {{/each}}
-    
+
     <br>
-    Address: {{address.street}} {{address.city}} {{address.country}} {{address.zipCode}}
+    Address: {{userProfile.address.street}} {{userProfile.address.city}} {{userProfile.address.country}} {{userProfile.address.zipCode}}
     <br>
-    Bio: {{bio}}
+    Bio: {{userProfile.bio}}
     <br>
-    University: {{uni_info.uni}}
+    University: {{userProfile.uni_info.uni}}
     <br>
-    Program: {{uni_info.program}}
+    Program: {{userProfile.uni_info.program}}
     <br>
-    Status: {{uni_info.eStatus}}
+    Status: {{userProfile.uni_info.eStatus}}
     <br>
 
     <!-- Add in the ethereum functions here and take out of studentView -->
@@ -38,15 +38,19 @@
     <br>
     Ethereum balance: {{balance}}
     <br>
-    {{/with}}
+    <!--{{/with}}-->
 
+    {{#if ownProfile}}
     <!-- Submit form button to go to update form -->
-    <a href="updateForm">Update My Profile</a>
+    <a href="/updateForm">Update My Profile</a>
+    {{else}}
+    <a href="/profilepage/{{userProfile._id}}">Donate To Student</a>
+    {{/if}}
 
   </div>
-
+<!--
   {{else}}
   <h1>Please log in (or register) to see and adjust your personal profile page</h1>
   {{/if}}
-
+-->
 </template>

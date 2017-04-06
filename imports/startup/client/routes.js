@@ -81,7 +81,7 @@ FlowRouter.route('/donatenow', {
   },
 });
 
-FlowRouter.route('/profilepage', {
+FlowRouter.route('/profilepage/:id', {
   name: 'profilepage',
   action(){
     BlazeLayout.render('mainpage', {main: 'profilepage'});

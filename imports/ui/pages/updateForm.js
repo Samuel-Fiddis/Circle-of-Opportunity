@@ -103,9 +103,9 @@ Template.updateForm.events({
         1. Set the lastError to null
         2. template.lastError.set(null);
         */
-
+        var userid = Meteor.userId();
         // redirect the user to their profile page after update
-        FlowRouter.go('/profilepage');
+        FlowRouter.go('profilepage', {id: userid});
       }
 
     });

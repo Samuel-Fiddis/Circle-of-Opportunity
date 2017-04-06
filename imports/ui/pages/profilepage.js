@@ -16,8 +16,13 @@ Template.profilepage.onCreated( function() {
   // ****************************
 
   // Subscribe thisUser publication: returns the entire user document for the currently logged in user
-  var userId = Meteor.userId();
-  this.subscribe('thisUser', userId);
+  var self = this;
+  self.autorun(function() {
+    var id = FlowRouter.getParam('id');
+    self.subscribe('singleUser', id);
+  });
+  //var userId = Meteor.userId();
+  //this.subscribe('thisUser', userId);
 
 });
 
@@ -32,11 +37,18 @@ Template.profilepage.onCreated( function() {
 
 Template.profilepage.helpers({
 
-  // userData is the currentUser's document
+  // userData is the selected User's document
   // **************************************
 
-  userData: function() {
-    return Meteor.user();
+  userProfile: ()=> {
+    var id = FlowRouter.getParam('id');
+    return Meteor.users.findOne({_id: id});
+  },
+
+  // test to see if this profile is their profilepage
+  ownProfile: ()=> {
+    var id = FlowRouter.getParam('id');
+    return Meteor.userId() == id;
   },
 
   // balance is the balance on the current user's ethereum account

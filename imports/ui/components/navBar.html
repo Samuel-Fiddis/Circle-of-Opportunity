@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>{{> loginButtons}}</li>
         {{#if currentUser}}
-        <li><a href="/profilepage">My Profile</a></li>
+        <li><a href="/profilepage/{{user}}">My Profile</a></li>
         {{else}}
         <li><a href="/studentregister">Register as Student</a></li>
         <li><a href="/donorregister">Register as Donor</a></li>
