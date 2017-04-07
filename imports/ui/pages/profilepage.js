@@ -1,44 +1,63 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-/*import { Profiles } from '../api/profiles.js'*/
-
 import './profilepage.html';
 
+// *****************************************************************************
+// What happens when you create the template
+// *****************************************************************************
 
-// Template level subscription
-// ---------------------------
+// OnCreated function for the template --> is run when page is rendered
+// --------------------------------------------------------------------
 
 Template.profilepage.onCreated( function() {
 
-  console.log("created");
+  // Template level subscriptions
+  // ****************************
 
-  // Subscribe to the entire user document about the currently logged in user
-  var userId = Meteor.userId();
-  this.subscribe('thisUser', userId);
+  // Subscribe thisUser publication: returns the entire user document for the currently logged in user
+  var self = this;
+  self.autorun(function() {
+    var id = FlowRouter.getParam('id');
+    self.subscribe('singleUser', id);
+  });
+  //var userId = Meteor.userId();
+  //this.subscribe('thisUser', userId);
 
 });
 
 
-// Template level helpers
-// ----------------------
+
+// *****************************************************************************
+// Template level Helpers
+// *****************************************************************************
+
+// Helpers function for the template --> defines all the helpers needed
+// ---------------------------------------------------------------------
 
 Template.profilepage.helpers({
 
-    profileinfo: function() {
+  // userData is the selected User's document
+  // **************************************
 
-      var user = Meteor.user();
-      var email = user.emails[0].address;
+  userProfile: ()=> {
+    var id = FlowRouter.getParam('id');
+    return Meteor.users.findOne({_id: id});
+  },
 
+  // test to see if this profile is their profilepage
+  ownProfile: ()=> {
+    var id = FlowRouter.getParam('id');
+    return Meteor.userId() == id;
+  },
 
-      /*
-      var profile = {
-        var email = user.emails[0].address;
-        var age = user.age;
-      }
-      */
+  // balance is the balance on the current user's ethereum account
+  // *************************************************************
 
-      return email;
+  // need to check that the "this" here still works the same way as in studentView
+  balance: function() {
+    var myEthAddr = this.ethereum;
+    return ethGetBalance(myEthAddr);
+  },
 
-    },
 });
