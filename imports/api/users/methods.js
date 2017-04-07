@@ -203,7 +203,8 @@ updateUser: function(options) {
 
     }
 
-  }
+  },
+
 
 
 });

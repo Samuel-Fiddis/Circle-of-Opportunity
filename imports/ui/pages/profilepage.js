@@ -50,14 +50,55 @@ Template.profilepage.helpers({
     var id = FlowRouter.getParam('id');
     return Meteor.userId() == id;
   },
-
   // balance is the balance on the current user's ethereum account
   // *************************************************************
 
-  // need to check that the "this" here still works the same way as in studentView
+  // not working
   balance: function() {
-    var myEthAddr = this.ethereum;
+    var id = FlowRouter.getParam('id');
+    console.log(id);
+    var user = Meteor.users.findOne({_id: id});
+    console.log(user);
+    var myEthAddr = user.ethereum;
+    console.log(myEthAddr);
     return ethGetBalance(myEthAddr);
   },
 
+});
+
+Template.profilepage.events({
+  'click button'(event) {
+    var idS = FlowRouter.getParam('id');
+    var idD = Meteor.userId();
+    var a = 0.01 ;
+    console.log("donate !!");
+    var trans = ethSendEtherTransaction(idDonor, idStudent,amount);
+    var options = {
+      type : "DtS",
+      idStudent: idS,
+      idDonor: idD,
+      amount: a,
+      transactionHash: trans,
+  }
+
+  Meteor.call('createTransaction', options, function(error, result) {
+    // What happens if methods function returns an error
+    // +++++++++++++++++++++++++++++++++++++++++++++++++
+
+    if(error) {
+      // display the error on the console log of the website
+      console.log(error.reason);
+      // Set the lastError variable
+      template.lastError.set(error.reason);
+    }
+    // What happens if methods function works fine
+    else {
+      // Set the lastError to null
+      template.lastError.set(null);
+      console.log("transaction done");
+      // redirect the user to another page after registration
+    //  FlowRouter.go('/??')
+    }
+  });
+  },
 });
