@@ -21,9 +21,7 @@ ethAllAccounts = function ethAllAccounts(){
 
 // Get the balance of an account given the public key, returns a number
 ethGetBalance = function ethGetBalance(myEthAddr){
-  console.log(myEthAddr);
   var myBalance = web3.fromWei(web3.eth.getBalance(myEthAddr), "ether");
-  console.log(myBalance);
   // convert from Big Number to number
   return myBalance.toNumber();
 }
@@ -48,7 +46,7 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
 
   result = web3.eth.sendTransaction(transactionObject);
   // TODO: test above function does not fail from insufficient funds
-
+  
   return result;
 }
 
