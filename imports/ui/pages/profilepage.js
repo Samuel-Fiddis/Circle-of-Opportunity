@@ -16,13 +16,18 @@ Template.profilepage.onCreated( function() {
   // ****************************
 
   // Subscribe thisUser publication: returns the entire user document for the currently logged in user
+  // Subscribe singleUser pub: returns just public info of single user
   var self = this;
   self.autorun(function() {
     var id = FlowRouter.getParam('id');
-    self.subscribe('singleUser', id);
+    var userid = Meteor.userId();
+    if(id == userid){
+      self.subscribe('thisUser', userid);
+    }
+    else{
+      self.subscribe('singleUser', id);
+    }
   });
-  //var userId = Meteor.userId();
-  //this.subscribe('thisUser', userId);
 
 });
 
