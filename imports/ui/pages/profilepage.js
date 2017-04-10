@@ -17,6 +17,9 @@ Template.profilepage.onCreated( function() {
 
   // Subscribe thisUser publication: returns the entire user document for the currently logged in user
   // Subscribe singleUser pub: returns just public info of single user
+
+// ADD HERE FULL SUBSCRIPTION IF UNI
+
   var self = this;
   self.autorun(function() {
     var id = FlowRouter.getParam('id');
