@@ -17,8 +17,7 @@ Template.profilepage.onCreated( function() {
 
   // Subscribe thisUser publication: returns the entire user document for the currently logged in user
   // Subscribe singleUser pub: returns just public info of single user
-
-// ADD HERE FULL SUBSCRIPTION IF UNI
+  // Subscribe uniData returns data of all students -> relevant for university after login page
 
   var self = this;
   self.autorun(function() {
@@ -26,6 +25,9 @@ Template.profilepage.onCreated( function() {
     var userid = Meteor.userId();
     if(id == userid){
       self.subscribe('thisUser', userid);
+      if (Meteor.users.findOne({"emails.address":"uni@uni.uni"})){
+        self.subscribe('uniData');
+      }
     }
     else{
       self.subscribe('singleUser', id);

@@ -13,10 +13,15 @@ Meteor.publish('donorData', function () {
 // Private publication for the data of currently logged in user
 Meteor.publish('thisUser', function(userId) {
 	return Meteor.users.find({_id: userId});
-})
+});
 
 // Publish just one users info depending on their id
 Meteor.publish('singleUser', function (id) {
 	check(id, String);
 	return Meteor.users.find({_id: id},{fields: {'_id': 1,'name': 1,'age': 1, 'bio': 1, 'uni_info': 1, 'address.city': 1, 'address.country': 1}});
+});
+
+// Publish studentdata for university
+Meteor.publish('uniData', function () {
+	return Meteor.users.find({userType: "student"},{fields: {'_id': 1,'name': 1,'age': 1, 'address.city': 1, 'address.country': 1, 'uni_info.eStatus': 1}});
 });
