@@ -1,4 +1,3 @@
-
 <template name="profilepage">
 
 
@@ -10,25 +9,19 @@
   <div class="container">
 
     <!--{{#with userData}}-->
-    Name: {{userProfile.name.first}}  {{suerProfile.name.middle}} {{userProfile.name.last}}
+    Name: {{userProfile.name.first}}  {{userProfile.name.middle}} {{userProfile.name.last}}
     <br>
     Age: {{userProfile.age}}
     <br>
-
-    {{#if ownProfile}}
     Phone: {{userProfile.phone}}
     <br>
 
-    {{#each userProfile.emails}}
-    <div>Email: {{address}}</div>
+    {{#each emails}}
+    Email: {{userProfile.address}}
     {{/each}}
-    {{/if}}
 
-    Address: {{userProfile.address.street}}
-    {{#if ownProfile}}, {{/if}}
-    {{userProfile.address.city}}, {{userProfile.address.country}}
-    {{#if ownProfile}}, {{/if}}
-    {{userProfile.address.zipCode}}
+    <br>
+    Address: {{userProfile.address.street}} {{userProfile.address.city}} {{userProfile.address.country}} {{userProfile.address.zipCode}}
     <br>
     Bio: {{userProfile.bio}}
     <br>
@@ -40,7 +33,7 @@
     <br>
 
     <!-- Add in the ethereum functions here and take out of studentView -->
-    Ethereum public key: {{ethereum}}
+    Ethereum public key: {{userProfile.ethereum}}
     <br>
     Ethereum balance: {{balance}}
     <br>
@@ -50,7 +43,8 @@
     <!-- Submit form button to go to update form -->
     <a href="/updateForm">Update My Profile</a>
     {{else}}
-    <a href="/profilepage/{{userProfile._id}}">Donate To Student</a>
+      <button>Donate To Student</button>
+    <!--<a href="/profilepage/{{userProfile._id}}" id="button" >Donate To Student</a> -->
     {{/if}}
 
   </div>
