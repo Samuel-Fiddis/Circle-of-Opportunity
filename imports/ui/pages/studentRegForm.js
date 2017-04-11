@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './studentRegForm.html';
+import '../components/uploadForm.js'
 
 // *****************************************************************************
 // What happens when you create the template
@@ -98,7 +99,6 @@ Template.studentRegForm.events({
     options.ethereum = myAddr;
 
 
-
     // Call signup Method passing options as an argument
     // =================================================
 
@@ -130,6 +130,10 @@ Template.studentRegForm.events({
 
         // redirect the user to another page after registration
         FlowRouter.go('/students')
+
+        // The code below should work to redirect to the students page but it doesn't
+        //var userid = FlowRouter.getParam('id');
+        //FlowRouter.go('profilepage', if)
       }
 
     });

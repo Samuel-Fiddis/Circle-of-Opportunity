@@ -4,3 +4,5 @@ import './account-creation.js';
 // This defines all the collections, publications and methods that the application provides
 // as an API to the client.
 import './register-api.js';
+
+import '/imports/api/image_upload/server/publish.js'
