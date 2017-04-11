@@ -19,6 +19,9 @@ Template.studentoverview.onCreated( function() {
   // subscribe to userData publication: returns all documents in user accounts
   this.subscribe('userData');
 
+  // subscribe to universities publication: returns all documents in Universities
+  this.subscribe('universities');
+
   /*
   NOTE: improvements that can be made
   1. Use following format:
@@ -102,16 +105,16 @@ Template.orderButton.events({
     },
   'change #orderselecter' : function (evt){
     var newValue = $(evt.target).val();
-    console.log("newValue");
-    console.log(newValue);
+    // console.log("newValue");
+    // console.log(newValue);
     var oldValue = Session.get("orderselection");
-    console.log("oldValue");
-    console.log(oldValue);
+    // console.log("oldValue");
+    // console.log(oldValue);
     if (newValue != oldValue){
       //something
     }
     Session.set("orderselection", newValue)
-    console.log("done");
+    // console.log("done");
     return true;
   },
 });

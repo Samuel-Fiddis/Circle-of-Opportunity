@@ -1,4 +1,14 @@
-Universities = new Mongo.Collection('Universities');
+import { Mongo } from 'meteor/mongo';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+
+export const Universities = new Mongo.Collection('Universities');
+ 
+if (Meteor.isServer) {
+  // This code only runs on the server
+  Meteor.publish('universities', function universitiesPublication() {
+    return Universities.find();
+  });
+}
 
 Universities.allow({
   insert: function(userId, doc) {
@@ -41,6 +51,10 @@ UniversitySchema = new SimpleSchema({
 
 Universities.attachSchema( UniversitySchema );
 
+Universities.publicFields = {
+  name: 1,
+  address: 1
+};
 
 Factory.define('university', Universities, {
 	name: "A University",
