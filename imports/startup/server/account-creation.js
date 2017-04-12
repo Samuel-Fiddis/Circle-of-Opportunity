@@ -2,6 +2,7 @@
 // Function extending the fields in user accounts
 // *****************************************************************************
 
+import { Universities } from '/imports/api/universities/universities.js';
 
 Accounts.onCreateUser(function(options,user) {
 
