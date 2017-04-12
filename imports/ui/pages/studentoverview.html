@@ -1,3 +1,13 @@
+<template name = "orderButton">
+	<select id="orderselecter">
+		<option value disabled selected>-- Order by --</option>
+		<option value='name.first'>First Name</option>
+		<option value='name.last'>Last Name</option>
+		<option value='age'>Age</option>
+		<!-- <option value='date'>Date of registration</option> -->
+ 	</select>
+</template>
+
 <template name="studentoverview">
 	<h1>View Students</h1>
 	<!-- Enumerate over each user -->
@@ -19,15 +29,4 @@
 		</div>
 
 	</div>
-</template>
-
-
-<template name = "orderButton">
-	<select id=orderselecter>
- <option value disabled selected>-- Order by --</option>
- <option value='name.first'>First Name</option>
- <option value='name.last'>Last Name</option>
- <option value='age'>Age</option>
- <!-- <option value='date'>Date of registration</option> -->
- </select>
 </template>

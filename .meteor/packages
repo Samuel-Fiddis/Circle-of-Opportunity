@@ -29,6 +29,7 @@ spiderable
 fastclick
 raix:handlebar-helpers
 aldeed:collection2
+aldeed:autoform
 accounts-ui
 accounts-password
 matb33:bootstrap-glyphicons

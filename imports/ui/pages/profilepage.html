@@ -14,15 +14,21 @@
     <br>
     Age: {{userProfile.age}}
     <br>
+
+    {{#if ownProfile}}
     Phone: {{userProfile.phone}}
     <br>
 
-    {{#each emails}}
-    Email: {{userProfile.address}}
+    {{#each userProfile.emails}}
+    <div>Email: {{address}}</div>
     {{/each}}
+    {{/if}}
 
-    <br>
-    Address: {{userProfile.address.street}} {{userProfile.address.city}} {{userProfile.address.country}} {{userProfile.address.zipCode}}
+    Address: {{userProfile.address.street}}
+    {{#if ownProfile}}, {{/if}}
+    {{userProfile.address.city}}, {{userProfile.address.country}}
+    {{#if ownProfile}}, {{/if}}
+    {{userProfile.address.zipCode}}
     <br>
     Bio: {{userProfile.bio}}
     <br>
