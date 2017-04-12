@@ -1,25 +1,30 @@
+import { Mongo } from 'meteor/mongo';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+
 Transactions = new Mongo.Collection('transactions');
+
+//export const Universities = new Mongo.Collection('Universities');
 
 TransactionSchema = new SimpleSchema({
 	type: {
 		type: String,
-		label: "Type"
+		label: "type"
 	},
 	idStudent: {
 		type: String,
-		label: "IdStudent"
+		label: "idStudent"
 	},
   idDonor: {
 		type: String,
-		label: "IdDonor"
+		label: "idDonor"
 	},
   amount: {
 		type: String,
-		label: "Amount"
+		label: "amount"
 	},
   transactionHash: {
 		type: String,
-		label: "TransactionHash"
+		label: "transactionHash"
 	},
 });
 

@@ -1,5 +1,3 @@
-
-
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -22,6 +20,9 @@ Template.profilepage.onCreated( function() {
   self.autorun(function() {
     var id = FlowRouter.getParam('id');
     self.subscribe('singleUser', id);
+
+    var idD = Meteor.userId();
+    self.subscribe('thisUser', idD);
   });
   //var userId = Meteor.userId();
   //this.subscribe('thisUser', userId);
@@ -58,9 +59,7 @@ Template.profilepage.helpers({
   // not working
   balance: function() {
     var id = FlowRouter.getParam('id');
-    console.log(id);
     var user = Meteor.users.findOne({_id: id});
-    console.log(user);
     var myEthAddr = user.ethereum;
     console.log(myEthAddr);
     return ethGetBalance(myEthAddr);
@@ -72,9 +71,11 @@ Template.profilepage.events({
   'click button'(event) {
     var idS = FlowRouter.getParam('id');
     var idD = Meteor.userId();
-    var a = 0.01 ;
-    console.log("donate !!");
-    var trans = ethSendEtherTransaction(idDonor, idStudent,amount);
+    var a = 0.00001 ;
+    var ethD = Meteor.users.findOne({_id: idD}).ethereum;
+    var ethS = Meteor.users.findOne({_id: idS}).ethereum;
+    var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);
+    console.log(trans);
     var options = {
       type : "DtS",
       idStudent: idS,
@@ -82,6 +83,8 @@ Template.profilepage.events({
       amount: a,
       transactionHash: trans,
   }
+
+  console.log(options);
 
   Meteor.call('createTransaction', options, function(error, result) {
     // What happens if methods function returns an error
