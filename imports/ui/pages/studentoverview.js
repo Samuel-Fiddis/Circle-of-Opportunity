@@ -3,6 +3,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './studentoverview.html';
 import './studentView.html';
+import './orderButton.html';
 
 // *****************************************************************************
 // What happens when you create the template

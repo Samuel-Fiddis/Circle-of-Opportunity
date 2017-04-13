@@ -2,6 +2,8 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './profilepage.html';
+import './studentViewUni.html';
+import './orderButton.html';
 
 // *****************************************************************************
 // What happens when you create the template
@@ -82,4 +84,65 @@ Template.profilepage.helpers({
     return ethGetBalance(myEthAddr);
   },
 
+});
+
+Template.studentViewUni.helpers({
+
+  // user returns a pointer to all the user documents in subscription
+  // ****************************************************************
+
+  user: ()=> {
+    var selectionCriteria = Session.get("orderselection");
+    var sortOrder = {};
+    sortOrder[selectionCriteria] = 1;
+    console.log("Database query");
+    console.log(selectionCriteria);
+    return Meteor.users.find({}, {sort: sortOrder});
+  },
+
+  // secondStudent returns ??
+  // ************************
+
+  // NOTE: check what secondStudent returns!!!
+
+  secondStudent: function (index) {
+    return (index + 1) % 2 === 0;
+  },
+
+  // uni_name returns the name of the university affiliated with this student
+  // ************************************************************************
+
+  /*
+  uni_name: function () {
+    return Universities.findOne({_id:this.uni_info.uni},{name: 1});
+  },
+  */
+
+});
+
+Template.studentViewUniHelper.helpers({
+  balance : function (){
+    var myEthAddr = this.ethereum;
+    return ethGetBalance(myEthAddr);
+  },
+});
+
+Template.orderButton.events({
+  'click': function(){
+        console.log("You clicked something");
+    },
+  'change #orderselecter' : function (evt){
+    var newValue = $(evt.target).val();
+    console.log("newValue");
+    console.log(newValue);
+    var oldValue = Session.get("orderselection");
+    console.log("oldValue");
+    console.log(oldValue);
+    if (newValue != oldValue){
+      //something
+    }
+    Session.set("orderselection", newValue)
+    console.log("done");
+    return true;
+  },
 });
