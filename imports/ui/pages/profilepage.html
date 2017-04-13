@@ -3,6 +3,14 @@
 
 
 <!-- IF UNI THEN DISPLAY STUDENTS AND THEIR STATUS -->
+{{#ifCond uniProfile '&&' ownProfile}}
+
+  <h1> UNIII </h1>
+
+{{/ifCond}}
+<!-- IF NOT UNI THEN DISPLAY REGULAR PROFILE PAGE -->
+<!--{{#ifCond uniProfile '!&' ownProfile}} -->
+
 
   {{#if ownProfile}}
   <h1>This is your profile page</h1>
@@ -61,4 +69,6 @@
   <h1>Please log in (or register) to see and adjust your personal profile page</h1>
   {{/if}}
 -->
+
+<!--{{/ifCond}} -->
 </template>

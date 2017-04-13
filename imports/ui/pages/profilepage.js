@@ -61,6 +61,11 @@ Template.profilepage.helpers({
     return Meteor.userId() == id;
   },
 
+  // check if it is the university user
+  uniProfile: ()=> {
+    return Meteor.users.findOne({"emails.address":"uni@uni.uni"});
+  },
+
   // balance is the balance on the current user's ethereum account
   // *************************************************************
 
@@ -70,4 +75,34 @@ Template.profilepage.helpers({
     return ethGetBalance(myEthAddr);
   },
 
+});
+
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+    switch (operator) {
+        case '==':
+            return (v1 == v2) ? options.fn(this) : options.inverse(this);
+        case '===':
+            return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!=':
+            return (v1 != v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+            return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        case '<':
+            return (v1 < v2) ? options.fn(this) : options.inverse(this);
+        case '<=':
+            return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+        case '>':
+            return (v1 > v2) ? options.fn(this) : options.inverse(this);
+        case '>=':
+            return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+        case '&&':
+            return (v1 && v2) ? options.fn(this) : options.inverse(this);
+        case '!&':
+            return (!(v1 && v2)) ? options.fn(this) : options.inverse(this);
+        case '||':
+            return (v1 || v2) ? options.fn(this) : options.inverse(this);
+        default:
+            return options.inverse(this);
+    }
 });
