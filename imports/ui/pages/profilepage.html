@@ -35,7 +35,7 @@
     <!-- Add in the ethereum functions here and take out of studentView -->
     Ethereum public key: {{userProfile.ethereum}}
     <br>
-    Ethereum balance: {{userProfile.balance}}
+    Ethereum balance: {{balance}}
     <br>
     <!--{{/with}}-->
 
@@ -43,10 +43,14 @@
     <!-- Submit form button to go to update form -->
     <a href="/updateForm">Update My Profile</a>
     {{else}}
-      <!--<button href="/donate/{{userProfile._id}}">Donate To Student</button> -->
-    <a href="/donate/{{userProfile._id}}" id="button" >Donate To Student</a>
+      <button>Donate To Student</button>
+    <a href="/donate/{{userProfile._id}}" id="button" >Link to Donate To Student Page</a>
     {{/if}}
 
+    <!-- Simple Live Feed for each profile (shows only donations to them) -->
+    {{#each transaction}}
+      <li>From: {{this.idDonor}} Amount Donated: {{this.amount}}</li>
+    {{/each}}
   </div>
 <!--
   {{else}}

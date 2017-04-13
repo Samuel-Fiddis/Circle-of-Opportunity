@@ -1,9 +1,13 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-Transactions = new Mongo.Collection('transactions');
+export const Transactions = new Mongo.Collection('transactions');
 
-//export const Universities = new Mongo.Collection('Universities');
+Transactions.allow({
+  insert: function(userId, doc) {
+    return !!userId;
+  }
+});
 
 TransactionSchema = new SimpleSchema({
 	type: {
@@ -19,7 +23,7 @@ TransactionSchema = new SimpleSchema({
 		label: "idDonor"
 	},
   amount: {
-		type: String,
+		type: Number,
 		label: "amount"
 	},
   transactionHash: {

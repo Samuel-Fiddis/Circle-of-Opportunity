@@ -1,5 +1,7 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Transactions } from '/imports/api/transactions/transactions.js';
+
 
 import './profilepage.html';
 
@@ -23,6 +25,7 @@ Template.profilepage.onCreated( function() {
 
     var idD = Meteor.userId();
     self.subscribe('thisUser', idD);
+    self.subscribe('transactions');
   });
   //var userId = Meteor.userId();
   //this.subscribe('thisUser', userId);
@@ -53,11 +56,16 @@ Template.profilepage.helpers({
     var id = FlowRouter.getParam('id');
     return Meteor.userId() == id;
   },
+
+  transaction: ()=> {
+    var idS = FlowRouter.getParam('id');
+    return Transactions.find({idStudent: idS});
+  },
   // balance is the balance on the current user's ethereum account
   // *************************************************************
 
   // not working
-  balance: function() {
+  balance: ()=> {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     var myEthAddr = user.ethereum;
@@ -68,7 +76,7 @@ Template.profilepage.helpers({
 });
 
 Template.profilepage.events({
-  'click button'(event) {
+  'click button': function(event,template) {
     var idS = FlowRouter.getParam('id');
     var idD = Meteor.userId();
     var a = 0.00001 ;
@@ -80,18 +88,30 @@ Template.profilepage.events({
       type : "DtS",
       idStudent: idS,
       idDonor: idD,
-      amount: a,
+      amount: 1,    //Amount needs to be changed as the schema only allows for it to be an integer
       transactionHash: trans,
-  }
+    }
 
   console.log(options);
+
+  if(Transactions.insert(options)) {
+    console.log("Transaction Added");
+  }
+  else {
+    // Need error handeling here
+  }
+
+/*
+// Not sure if a method call is necessary. Insert validates data by default.
 
   Meteor.call('createTransaction', options, function(error, result) {
     // What happens if methods function returns an error
     // +++++++++++++++++++++++++++++++++++++++++++++++++
+    console.log("Entered Method Flag");
 
     if(error) {
       // display the error on the console log of the website
+      console.log("Error Flag");
       console.log(error.reason);
       // Set the lastError variable
       template.lastError.set(error.reason);
@@ -104,6 +124,6 @@ Template.profilepage.events({
       // redirect the user to another page after registration
     //  FlowRouter.go('/??')
     }
-  });
+  });*/
   },
 });
