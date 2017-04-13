@@ -85,19 +85,16 @@ Template.studentoverview.helpers({
   },
   */
 
-});
+  // studentoverView Helper to pass on ethereum information based on public key
+  // --------------------------------------------------------------------------
 
-// studentView Helper to pass on ethereum information based on public key
-// -----------------------------------------------------------------------
-
-// NOTE: Check where this is working and move it accordingly!!!!
-
-Template.studentView.helpers({
   balance : function (){
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
   },
+
 });
+
 
 Template.orderButton.events({
   'click': function(){

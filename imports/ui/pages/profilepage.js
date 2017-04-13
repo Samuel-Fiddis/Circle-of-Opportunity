@@ -60,6 +60,7 @@ Template.profilepage.helpers({
   // *************************************************************
 
   // need to check that the "this" here still works the same way as in studentView
+  // nope it doesnt -- need to fix this 
   balance: function() {
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
