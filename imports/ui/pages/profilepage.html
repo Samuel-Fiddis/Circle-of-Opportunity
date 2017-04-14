@@ -43,8 +43,10 @@
     <!-- Submit form button to go to update form -->
     <a href="/updateForm">Update My Profile</a>
     {{else}}
-      <button>Donate To Student</button>
-    <a href="/donate/{{userProfile._id}}" id="button" >Link to Donate To Student Page</a>
+
+      <input type="number" name="amount" placeholder="Donation Amount" value=0.0001 >
+      <button>Donate To that Student</button>
+    <!-- <a href="/donate/{{userProfile._id}}" id="button" >Link to Donate To Student Page</a> -->
     {{/if}}
 
     <!-- Simple Live Feed for each profile (shows only donations to them) -->

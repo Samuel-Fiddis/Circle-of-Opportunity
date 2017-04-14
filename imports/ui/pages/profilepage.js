@@ -76,24 +76,39 @@ Template.profilepage.helpers({
 });
 
 Template.profilepage.events({
+  //button donate
   'click button': function(event,template) {
+    // get ids of studentand donor
     var idS = FlowRouter.getParam('id');
     var idD = Meteor.userId();
-    var a = 0.00001 ;
+
+    // read the amount of ethSendEtherTransaction
+    //default value :0.001
+
+    // TODO : error handling if not number
+    var a =  $('input[name=amount]').val() ;
+    a =0.001;
+    // query the database to get th epublic key
     var ethD = Meteor.users.findOne({_id: idD}).ethereum;
     var ethS = Meteor.users.findOne({_id: idS}).ethereum;
+
+    // TODO integrate the first part extern donor's account to COO donor's account
+
+    //second transaction :  COO donor's account to COO student's account
+
+    // call the function to make the transaction
     var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);
-    console.log(trans);
+
+    // buils the options to store the transaction in the db
     var options = {
       type : "DtS",
       idStudent: idS,
       idDonor: idD,
-      amount: 1,    //Amount needs to be changed as the schema only allows for it to be an integer
+      amount: 1,    // TODO Amount needs to be changed as the schema only allows for it to be an integer
       transactionHash: trans,
     }
 
-  console.log(options);
-
+    console.log(options);
   if(Transactions.insert(options)) {
     console.log("Transaction Added");
   }

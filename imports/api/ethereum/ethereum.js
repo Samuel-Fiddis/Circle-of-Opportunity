@@ -36,7 +36,11 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
   var transactionObject = {
     from: fromAddress,
     to: toAddress,
-    value: web3.toWei(valueEther, 'ether'),
+    // valueEther in ether, convert it in wei
+    // value: web3.toWei(valueEther, 'ether'),
+    // TODO : find the gasprice. It returns an array actually
+    value: web3.toWei(valueEther, 'ether')- web3.eth.gasPrice.toNumber()*21000,
+    gas: 21000,
   };
   console.log(transactionObject);
 
@@ -44,9 +48,16 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
   //with asynchronous callback function
   //result = web3.eth.sendTransaction(transactionObject, function() {  });
 
-  result = web3.eth.sendTransaction(transactionObject);
-  // TODO: test above function does not fail from insufficient funds
-  
+// test above function does not fail from insufficient funds
+  if (transactionObject.value > web3.eth.getBalance(fromAddress) ){
+    console.log("insufficent funds");
+    // TODO : handling the error and false statement
+    return false;
+  }
+  else{
+    result = web3.eth.sendTransaction(transactionObject);
+    console.log(result);
+  }
   return result;
 }
 
