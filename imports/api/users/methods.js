@@ -92,21 +92,22 @@ Meteor.methods({
 
         // Only students will have the following fields upon registration
         uni_info: Match.Maybe(
-        {
-          uni: Match.Maybe(String),
-          program: Match.Maybe(String),
-          eStatus: Match.Maybe(String),
-        }),
+          {
+            uni: Match.Maybe(String),
+            program: Match.Maybe(String),
+            eStatus: Match.Maybe(String),
+          }
+        ),
 
         // Only donors will have the following fields upon registration
         company_info: Match.Maybe(
-        {
-          company: Match.Maybe(String),
-          position: Match.Maybe(String),
-        }),
+          {
+            company: Match.Maybe(String),
+            position: Match.Maybe(String),
+          }
+        ),
       }
     )
-
 
     // Create the user from the server
     // -------------------------------
@@ -123,60 +124,57 @@ Meteor.methods({
     // ------------------------------------------
 
     /*
-    if(userID)
-    {
-      console.log("userId");
-      console.log(userId);
-      //Accounts.sendEnrollmentEmail(userID);
-      return userID;
-    }
+      if(userID)
+      {
+        console.log("userId");
+        console.log(userId);
+        //Accounts.sendEnrollmentEmail(userID);
+        return userID;
+      }
+    */
+  },
+
+  // Function for the updateUser method
+  // ----------------------------------
+
+  updateUser: function(options) {
+
+    // validation check
+    // ****************
+
+    /*
+    NOTE: Doing a validation check on the argument passed to a Method is:
+    1. For security purposes
+    2. Generally recognized as good practice
+    3. Can be done using simpleSchema or check package
+
+    see also:
+    https://docs.meteor.com/api/check.html
+    https://themeteorchef.com/blog/securing-meteor-applications
+    http://meteortips.com/first-meteor-tutorial/methods/
     */
 
-},
+    check(options,
+        {
+          phone: String,
+          age: String,
+          bio: String,
 
-// Function for the updateUser method
-// ----------------------------------
+          name:
+          {
+            first: String,
+            middle: String,
+            last: String,
+          },
 
-updateUser: function(options) {
-
-  // validation check
-  // ****************
-
-  /*
-  NOTE:
-  Doing a validation check on the argument passed to a Method is:
-  1. For security purposes
-  2. Generally recognized as good practice
-  3. Can be done using simpleSchema or check package
-
-  see also:
-  https://docs.meteor.com/api/check.html
-  https://themeteorchef.com/blog/securing-meteor-applications
-  http://meteortips.com/first-meteor-tutorial/methods/
-  */
-
-  check(options,
-    {
-      phone: String,
-      age: String,
-      bio: String,
-
-      name:
-      {
-        first: String,
-        middle: String,
-        last: String,
-      },
-
-      address:
-      {
-        country: String,
-        city: String,
-        street: String,
-        zipCode: String,
-      }
-    });
-
+          address:
+          {
+            country: String,
+            city: String,
+            street: String,
+            zipCode: String,
+          }
+        });
 
     // Conditional statement: only LoggedIn User can call this Method
     // **************************************************************
@@ -202,8 +200,80 @@ updateUser: function(options) {
       );
 
     }
+  },
 
+  // Function to update DonorInterest in student method
+  // --------------------------------------------------
+
+  updateInterest: function(studentId) {
+
+    // validation check
+    // ================
+
+    // want to check that the studentId belongs to an actual student
+    var matchingStudent = Meteor.users.find({_id: studentId, userType: "student"}).count();
+    console.log(matchingStudent);
+
+    if(matchingStudent == 0) {
+      throw new Meteor.Error('not-authorized','you are not registering interest in a student')
+    }
+
+    // authentication check
+    // ====================
+
+    // want to check that the person calling this function is the currentUser
+    var currentUserId = Meteor.userId();
+
+    if(! currentUserId ) {
+      throw new Meteor.Error('not-authorized','you are not logged in');
+    }
+
+    // want to check that the person calling this function is an actual donor
+    var user = Meteor.users.findOne({_id: currentUserId});
+
+    if(user.userType != 'donor') {
+      throw new Meteor.Error('not-authorized','you are not a donor');
+    }
+
+    // want to check that the person calling this function has not registered an interest in this student before
+    var matchingDoc = Meteor.users.find({_id: currentUserId, interestStudent: studentId}).count();
+
+    if(matchingDoc>0) {
+      throw new Meteor.Error('not-authorized','you have already registered interest for this student');
+    }
+
+
+    // update studentUser Interest field
+    // =================================
+
+    Meteor.users.update(
+      { _id: studentId },
+      {
+        // increment number of donors interested by 1
+        $inc:
+        {
+          number_dInterest: 1,
+        },
+
+        // add the _id of interested donors in an array
+        $addToSet:
+        {
+          interestedDonors: currentUserId,
+        },
+      }
+    );
+
+    // update the Donor's fields
+    Meteor.users.update(
+      { _id: currentUserId },
+      {
+        // add the _id of the student the donor is interested in
+        $addToSet:
+        {
+          interestStudent: studentId,
+        },
+      }
+    );
   }
-
 
 });

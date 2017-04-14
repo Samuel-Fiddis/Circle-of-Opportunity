@@ -31,6 +31,69 @@ Template.profilepage.onCreated( function() {
 
 });
 
+// *****************************************************************************
+// Events allocated to Profile Page
+// *****************************************************************************
+
+// Events function for the Profile Page: defines all events allocated to form
+// -----------------------------------------------------------------------------
+
+Template.profilepage.events({
+
+  // Event to define what happens when you submit the register form
+  // **************************************************************
+
+  'click button': function(event,template) {
+
+    // get the id of the student with this profile page
+    var studentId = FlowRouter.getParam('id');
+
+
+
+    // call the updateInterest method passing on the studentId
+    // =======================================================
+
+    /*
+    NOTE: You should avoid passing userId's to meteor methods (because then anyone can update that field)
+    so this needs to be improved
+    */
+
+    Meteor.call('updateInterest', studentId, function(error, result) {
+
+      // What happens if methods function returns an error
+      // +++++++++++++++++++++++++++++++++++++++++++++++++
+
+      if(error) {
+
+        // display the error on the console log of the website
+        console.log(error.reason);
+
+        // Set the lastError variable
+        /*
+        template.lastError.set(error.reason);
+        */
+
+      }
+
+      // What happens if methods function works fine
+      // ++++++++++++++++++++++++++++++++++++++++++++
+
+      else {
+
+        // Set the lastError to null
+        /*
+        template.lastError.set(null);
+        */
+
+        // redirect the user to another page
+        FlowRouter.go('/')
+      };
+
+    });
+
+  }
+
+});
 
 
 // *****************************************************************************
@@ -60,10 +123,25 @@ Template.profilepage.helpers({
   // *************************************************************
 
   // need to check that the "this" here still works the same way as in studentView
-  // nope it doesnt -- need to fix this 
+  // nope it doesnt -- need to fix this
   balance: function() {
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
   },
+
+  // checking if user is a student
+
+  student: function () {
+
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    var userType = user.userType;
+
+    if( userType == "student" ) {
+      return true;
+    }
+
+    return false;
+  }
 
 });

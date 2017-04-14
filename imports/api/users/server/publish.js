@@ -32,10 +32,14 @@ Meteor.publish('singleUser', function (id) {
 		{_id: id},
 		{fields:
 			{'_id': 1,
+			'userType': 1,
 			'name': 1,
 			'age': 1,
 			'bio': 1,
-			'uni_info': 1, 
+			'uni_info': 1,
 			'address.city': 1,
-			'address.country': 1}});
+			'address.country': 1,
+			'number_dInterest': 1,
+			'interestedDonors': 1
+		}});
 });
