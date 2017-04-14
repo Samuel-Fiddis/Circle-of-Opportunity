@@ -8,9 +8,10 @@
 
   <!-- Loading Donor Interest information if student profile -->
 
-  {{#if student}}
+
   <div class = "container">
 
+    {{#if student}}
     <!-- register interest button -->
     <button> Register Interest </button>
     <br>
@@ -25,8 +26,17 @@
     <br>
     {{/each}}
 
+    {{else}}
+    Registered interest in:
+    <br>
+    {{#each userProfile.interestStudent}}
+    Student id: {{.[0]}}
+    {{/each}}
+
+    {{/if}}
+
   </div>
-  {{/if}}
+
 
 
   <!-- Loading profile information -->
