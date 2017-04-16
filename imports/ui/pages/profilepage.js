@@ -16,17 +16,35 @@ Template.profilepage.onCreated( function() {
   // ****************************
 
   // Subscribe thisUser publication: returns the entire user document for the currently logged in user
-  // Subscribe singleUser pub: returns just public info of single user
+  // Subscribe singleUser publication: returns just public info of single user
   var self = this;
+
   self.autorun(function() {
+
     var id = FlowRouter.getParam('id');
     var userid = Meteor.userId();
+
+    // subscribe to personal profile info
+
     if(id == userid){
       self.subscribe('thisUser', userid);
     }
+
     else{
       self.subscribe('singleUser', id);
     }
+
+    // NOTE: Not sure how to selectively subscribe to donorData or studentData depending on userType
+
+
+    // Subscribe to limited donor data to get the name and all that of donors
+    self.subscribe('donorData');
+
+    // subscribe to limited student data to get the name and all that of students
+    self.subscribe('studentData');
+
+
+
   });
 
 });
@@ -130,6 +148,7 @@ Template.profilepage.helpers({
   },
 
   // checking if user is a student
+  // *****************************
 
   student: function () {
 
@@ -142,6 +161,26 @@ Template.profilepage.helpers({
     }
 
     return false;
+  },
+
+  // getting the donor's information on a student profile
+  // ****************************************************
+
+  donorInfo: function(index) {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    var donorId = user.interestedDonors[index];
+    return Meteor.users.findOne({_id: donorId});
+  },
+
+  // getting the student's information on a donor profile
+  // ****************************************************
+  
+  studentInfo: function(index) {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    var studentId = user.interestStudent[index];
+    return Meteor.users.findOne({_id: studentId});
   }
 
 });

@@ -15,7 +15,12 @@ Meteor.publish('userData', function () {
 			'ethereum': 1}});
 });
 
-// All variables to publish are kept in the fields option
+// Publication of a limited amount of student info (available to all users)
+Meteor.publish('studentData', function () {
+	return Meteor.users.find({userType: "student"},{fields: {'name': 1,'age': 1}});
+});
+
+// Publication of a limited amount of donor info (available to all users)
 Meteor.publish('donorData', function () {
 	return Meteor.users.find({userType: "donor"},{fields: {'name': 1,'age': 1, 'company_info': 1}});
 });
@@ -40,6 +45,7 @@ Meteor.publish('singleUser', function (id) {
 			'address.city': 1,
 			'address.country': 1,
 			'number_dInterest': 1,
-			'interestedDonors': 1
+			'interestedDonors': 1,
+			'interestStudent': 1
 		}});
 });

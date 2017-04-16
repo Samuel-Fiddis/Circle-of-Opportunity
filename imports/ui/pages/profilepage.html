@@ -21,9 +21,14 @@
     <br>
 
     <!-- information about each donor -->
-    {{#each userProfile.interestedDonors}}
-    Donor id: {{.[0]}}
+    Interested Donors:
     <br>
+    {{#each userProfile.interestedDonors}}
+    id: {{.[0]}}
+    {{#with donorInfo @index}}
+    Name: {{name.first}} {{name.last}}
+    <br>
+    {{/with}}
     {{/each}}
 
     {{else}}
@@ -31,6 +36,9 @@
     <br>
     {{#each userProfile.interestStudent}}
     Student id: {{.[0]}}
+    {{#with studentInfo @index}}
+    Name: {{name.first}} {{name.last}}
+    {{/with}}
     {{/each}}
 
     {{/if}}
