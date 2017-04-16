@@ -22,7 +22,7 @@ Meteor.publish('studentData', function () {
 
 // Publication of a limited amount of donor info (available to all users)
 Meteor.publish('donorData', function () {
-	return Meteor.users.find({userType: "donor"},{fields: {'name': 1,'age': 1, 'company_info': 1}});
+	return Meteor.users.find({userType: "donor"},{fields: {'name': 1,'age': 1, 'company_info': 1, 'interestStudent': 1}});
 });
 
 // Private publication for the data of currently logged in user

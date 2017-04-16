@@ -175,12 +175,27 @@ Template.profilepage.helpers({
 
   // getting the student's information on a donor profile
   // ****************************************************
-  
+
   studentInfo: function(index) {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     var studentId = user.interestStudent[index];
     return Meteor.users.findOne({_id: studentId});
-  }
+  },
+
+  // boolean to see if the loggedIn user has registered interest in this student before
+  // **********************************************************************************
+
+  hasRegisteredInterest: function() {
+    var id = Meteor.userId();
+    var studentId = FlowRouter.getParam('id');
+    var matchingDoc = Meteor.users.find({_id: id, interestStudent: studentId}).count();
+    if(matchingDoc == 0) {
+      return false;
+    }
+    return true;
+  },
+
+
 
 });
