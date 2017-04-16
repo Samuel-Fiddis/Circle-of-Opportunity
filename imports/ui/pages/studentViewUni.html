@@ -7,13 +7,9 @@
 
   <div class="row">
   {{#each user}}
-    <!-- Call StudentView for each user -->
+    <!-- Call StudentViewUniHelper for each user -->
 
       {{ >studentViewUniHelper}}
-
-    {{#if secondStudent @index}}
-
-    {{/if}}
 
   {{/each}}
   </div>
@@ -22,16 +18,10 @@
 </template>
 
 <template name = "studentViewUniHelper">
-	<div class="studentView col-xs-4 col-xs-offset-1">
+	<div class="studentView col-xs-10 col-xs-offset-1">
 		<img class="studentImage" src="images/profile_pics/{{image}}">
-		<h3>{{name.first}} {{name.last}} </h3>
-		<a href="/profilepage/{{_id}}"> View Profile </a><br>
-		<span> University: {{uni_info.uni}} - {{uni_info.program}} </span>
-		<br>
-		<span> Age: {{age}} </span>
-		<span> Ethereum public key : {{ethereum}} </span>
-		<br>
-		<span> Ethereum balance : {{balance}} </span>
-		<br>
+		<a href="/profilepage/{{_id}}"> <h3>{{name.first}} {{name.last}}</h3> </a>
+		<h4> <!--Age: {{age}} --> Email(s): {{#each emails}} {{address}} {{/each}}
+      <br> Status: {{uni_info.eStatus}}</h4>
 	</div>
 </template>

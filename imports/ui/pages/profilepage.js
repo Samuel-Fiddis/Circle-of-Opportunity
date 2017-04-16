@@ -100,15 +100,6 @@ Template.studentViewUni.helpers({
     return Meteor.users.find({}, {sort: sortOrder});
   },
 
-  // secondStudent returns ??
-  // ************************
-
-  // NOTE: check what secondStudent returns!!!
-
-  secondStudent: function (index) {
-    return (index + 1) % 2 === 0;
-  },
-
   // uni_name returns the name of the university affiliated with this student
   // ************************************************************************
 
