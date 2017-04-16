@@ -12,7 +12,7 @@ Template.homepage.onCreated( function() {
 
   // subscribe to universities publication: returns all documents in universities
   this.subscribe('universities');
-  
+
 
   /*
   NOTE: improvements that can be made

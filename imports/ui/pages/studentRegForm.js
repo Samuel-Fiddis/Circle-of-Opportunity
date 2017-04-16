@@ -15,6 +15,7 @@ Template.studentRegForm.onCreated(function() {
   // Declare a global variable called lastError
   this.lastError = new ReactiveVar(null);
 
+
 });
 
 
@@ -159,6 +160,14 @@ Template.studentRegForm.helpers({
 
   errorMessage: function () {
     return Template.instance().lastError.get();
+  },
+
+  // Fake helper to work out how to test template helpers
+  // ****************************************************
+
+  testingHelpers: function() {
+    var arr = [];
+    return arr;
   }
 
 });

@@ -5,12 +5,45 @@
   {{#if ownProfile}}
   <h1>This is your profile page</h1>
   {{/if}}
-  <!-- Loading profile information -->
 
+  <!-- Loading Donor Interest information if student profile -->
+
+
+  <div class = "container">
+
+    {{#if student}}
+    <!-- register interest button -->
+    <button> Register Interest </button>
+    <br>
+
+    <!-- Number of donors interested -->
+    Number of donors interested : {{userProfile.number_dInterest}}
+    <br>
+
+    <!-- information about each donor -->
+    {{#each userProfile.interestedDonors}}
+    Donor id: {{.[0]}}
+    <br>
+    {{/each}}
+
+    {{else}}
+    Registered interest in:
+    <br>
+    {{#each userProfile.interestStudent}}
+    Student id: {{.[0]}}
+    {{/each}}
+
+    {{/if}}
+
+  </div>
+
+
+
+  <!-- Loading profile information -->
   <div class="container">
 
     <!--{{#with userData}}-->
-    Name: {{userProfile.name.first}}  {{suerProfile.name.middle}} {{userProfile.name.last}}
+    Name: {{userProfile.name.first}}  {{userProfile.name.middle}} {{userProfile.name.last}}
     <br>
     Age: {{userProfile.age}}
     <br>
@@ -40,7 +73,7 @@
     <br>
 
     <!-- Add in the ethereum functions here and take out of studentView -->
-    Ethereum public key: {{ethereum}}
+    Ethereum public key: {{userProfile.ethereum}}
     <br>
     Ethereum balance: {{balance}}
     <br>
@@ -50,7 +83,10 @@
     <!-- Submit form button to go to update form -->
     <a href="/updateForm">Update My Profile</a>
     {{else}}
+    {{#if student}}
     <a href="/profilepage/{{userProfile._id}}">Donate To Student</a>
+    <br>
+    {{/if}}
     {{/if}}
 
   </div>

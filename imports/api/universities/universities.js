@@ -55,8 +55,3 @@ Universities.publicFields = {
   name: 1,
   address: 1
 };
-
-Factory.define('university', Universities, {
-	name: "A University",
-	address: "An Address"
-});
