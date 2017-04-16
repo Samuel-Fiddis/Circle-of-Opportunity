@@ -137,3 +137,23 @@ Template.orderButton.events({
     return true;
   },
 });
+
+Template.statusButton.events({
+  'click': function(){
+        console.log("You clicked something");
+    },
+  /*'change #orderselecter' : function (evt){
+    var newValue = $(evt.target).val();
+    console.log("newValue");
+    console.log(newValue);
+    var oldValue = Session.get("orderselection");
+    console.log("oldValue");
+    console.log(oldValue);
+    if (newValue != oldValue){
+      //something
+    }
+    Session.set("orderselection", newValue)
+    console.log("done");
+    return true;
+  },*/
+});
