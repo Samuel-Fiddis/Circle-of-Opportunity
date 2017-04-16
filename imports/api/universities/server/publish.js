@@ -9,16 +9,15 @@ import { Universities } from '../universities.js';
 
 // Publish the full University collection
 // --------------------------------------
-
+*/
 Meteor.publish('universities', function(){
 
 	// Return pointer to full collection
 	// ---------------------------------
 
-	return Universities.find({ fields: Universities.publicFields });
+	return Universities.find({}, { fields: Universities.publicFields });
 
 });
-*/
 
 // Publish the document of a single university (identified by id)
 // --------------------------------------------------------------
@@ -36,3 +35,4 @@ Meteor.publish('singleUniversity', function(id){
 	return Universities.find({_id: id});
 
 });
+

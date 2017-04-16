@@ -10,7 +10,7 @@ Template.homepage.onCreated( function() {
   // Template level subscriptions
   // ****************************
 
-  // subscribe to userData publication: returns all documents in user accounts
+  // subscribe to universities publication: returns all documents in universities
   this.subscribe('universities');
 
 
