@@ -42,6 +42,8 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
     value: web3.toWei(valueEther, 'ether')- web3.eth.gasPrice.toNumber()*21000,
     gas: 21000,
   };
+  console.log(web3.toWei(valueEther, 'ether'));
+  console.log(web3.eth.gasPrice.toNumber());
   console.log(transactionObject);
 
   var result;
@@ -49,7 +51,7 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
   //result = web3.eth.sendTransaction(transactionObject, function() {  });
 
 // test above function does not fail from insufficient funds
-  if (transactionObject.value > web3.eth.getBalance(fromAddress) ){
+  if (web3.toWei(valueEther, 'ether') > web3.eth.getBalance(fromAddress) ){
     console.log("insufficent funds");
     // TODO : handling the error and false statement
     return false;

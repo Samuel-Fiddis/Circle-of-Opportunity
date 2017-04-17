@@ -24,6 +24,7 @@ TransactionSchema = new SimpleSchema({
 	},
   amount: {
 		type: Number,
+    decimal: true,
 		label: "amount"
 	},
   transactionHash: {

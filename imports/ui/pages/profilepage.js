@@ -86,8 +86,14 @@ Template.profilepage.events({
     //default value :0.001
 
     // TODO : error handling if not number
-    var a =  $('input[name=amount]').val() ;
-    a =0.001;
+    var a =  parseFloat($('input[name=amount]').val()) ;
+
+    // check if the amount is a float. If not throw an error
+    if (typeof(a) != "number"){
+        console.log("enter amount number");
+        throw new Meteor.Error("Wrong amount","Please fill out a real number");
+    }
+
     // query the database to get th epublic key
     var ethD = Meteor.users.findOne({_id: idD}).ethereum;
     var ethS = Meteor.users.findOne({_id: idS}).ethereum;
@@ -104,11 +110,12 @@ Template.profilepage.events({
       type : "DtS",
       idStudent: idS,
       idDonor: idD,
-      amount: 1,    // TODO Amount needs to be changed as the schema only allows for it to be an integer
+      amount: a,
       transactionHash: trans,
     }
 
-    console.log(options);
+
+  console.log(options);
   if(Transactions.insert(options)) {
     console.log("Transaction Added");
   }
