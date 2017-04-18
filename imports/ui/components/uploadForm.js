@@ -6,12 +6,19 @@ import './uploadForm.html';
 
 Template.uploadForm.onCreated(function () {
   this.currentUpload = new ReactiveVar(false);
+  // Variable used to set the image path
+  //  Value within hidden input field
+  this.fileId = new ReactiveVar("No Image");
 });
 
 Template.uploadForm.helpers({
   currentUpload: function () {
     return Template.instance().currentUpload.get();
-  }
+  },
+  // function to get the fileId variable in upload form
+  fileId: function () {
+    return Template.instance().fileId.get();
+  },
 });
 
 Template.uploadForm.events({
@@ -35,11 +42,17 @@ Template.uploadForm.events({
         } else {
           alert('File "' + fileObj.name + '" successfully uploaded');
         }
+        // Reset upload file input
+        //  Should be the name of the uploaded file
+        //  upload.config.name
         template.currentUpload.set(false);
+        // Set the variable 'fileId' to the image path
+        //  'fileId' is the value in the hidden input 'image'
+        template.fileId.set(upload.config.path);
       });
 
       upload.start();
-      return upload;
+      //return upload;
     }
   }
 });

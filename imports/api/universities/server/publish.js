@@ -14,7 +14,7 @@ Meteor.publish('universities', function(){
 	// Return pointer to full collection
 	// ---------------------------------
 
-	return Universities.find({});
+	return Universities.find();
 
 });
 
