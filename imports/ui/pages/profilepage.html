@@ -57,11 +57,8 @@
     {{/each}}
     {{/if}}
 
-    Address: {{userProfile.address.street}}
-    {{#if ownProfile}}, {{/if}}
-    {{userProfile.address.city}}, {{userProfile.address.country}}
-    {{#if ownProfile}}, {{/if}}
-    {{userProfile.address.zipCode}}
+    <!--Address is formatted to only show full address if it is the full profile-->
+    Address: {{userProfile.address.street}}{{#if ownProfile}}, {{/if}}{{userProfile.address.city}}, {{userProfile.address.country}}{{#if ownProfile}}, {{/if}}{{userProfile.address.zipCode}}
     <br>
     Bio: {{userProfile.bio}}
     <br>

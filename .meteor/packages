@@ -37,8 +37,9 @@ msavin:jetsetter
 zimme:active-route
 gwendall:auth-client-callbacks
 
-meteortoys:allthings
 
+meteortoys:allthings
+ostrio:files
 
 # Testing
 practicalmeteor:mocha@2.4.5_6
@@ -52,6 +53,5 @@ practicalmeteor:mocha-console-runner
 
 
 ethereum:web3
-# houston:admin
 sach:flow-db-admin
 check

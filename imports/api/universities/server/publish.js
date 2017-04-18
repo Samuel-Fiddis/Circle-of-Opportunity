@@ -14,7 +14,6 @@ Meteor.publish('universities', function(){
 
 	// Return pointer to full collection
 	// ---------------------------------
-
 	return Universities.find({}, { fields: Universities.publicFields });
 
 });
@@ -26,12 +25,10 @@ Meteor.publish('singleUniversity', function(id){
 
 	// validation check (security purposes)
 	// ------------------------------------
-
 	check(id, String);
 
 	// return document
 	// ---------------
-
 	return Universities.find({_id: id});
 
 });

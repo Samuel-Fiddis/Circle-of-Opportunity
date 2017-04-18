@@ -29,6 +29,10 @@ userSchema: new SimpleSchema({
      type: String,
    },
 
+   phone: {
+     type: String,
+   },
+
    userType: {
      type: String,
    },
