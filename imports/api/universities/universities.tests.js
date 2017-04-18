@@ -11,14 +11,14 @@ import { Universities } from './universities.js';
 
 describe('Universities', function () {
   beforeEach(function () {
-    resetDatabase(); 
+    resetDatabase();
   });
   it('builds correctly from factory', function () {
-    
+
     const university = Factory.build('university');
     assert.typeOf(university, 'object');
-    assert.typeOf(university.name, 'string' )
-    
+    assert.typeOf(university.name, 'string' );
+
   });
 });
 

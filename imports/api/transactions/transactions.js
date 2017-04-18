@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import faker from 'faker';
 
 export const Transactions = new Mongo.Collection('transactions');
 
@@ -34,3 +35,12 @@ TransactionSchema = new SimpleSchema({
 });
 
 Transactions.attachSchema( TransactionSchema );
+
+Factory.define('transaction', Transactions, {
+	type: () => faker.lorem.sentence(),
+	idStudent: () => faker.lorem.sentence(),
+  idDonor: () => faker.lorem.sentence(),
+  amount: 0.01,
+  transactionHash: () => faker.lorem.sentence(),
+
+});
