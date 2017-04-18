@@ -147,20 +147,14 @@ Template.profilepage.helpers({
     return ethGetBalance(myEthAddr);
   },
 
-  // checking if user is a student
-  // *****************************
+  // checking if profile belongs to a student
+  // ****************************************
 
   student: function () {
 
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
-    var userType = user.userType;
-
-    if( userType == "student" ) {
-      return true;
-    }
-
-    return false;
+    return user.userType.isStudent;
   },
 
   // getting the donor's information on a student profile

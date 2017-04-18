@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 // All variables to publish are kept in the fields option
 Meteor.publish('userData', function () {
 	return Meteor.users.find(
-		{userType: "student"},
+		{"userType.isStudent": true},
 		{fields:
 			{'_id': 1,
 			'name': 1,
@@ -18,12 +18,12 @@ Meteor.publish('userData', function () {
 
 // Publication of a limited amount of student info (available to all users)
 Meteor.publish('studentData', function () {
-	return Meteor.users.find({userType: "student"},{fields: {'name': 1,'age': 1}});
+	return Meteor.users.find({"userType.isStudent": true},{fields: {'name': 1,'age': 1}});
 });
 
 // Publication of a limited amount of donor info (available to all users)
 Meteor.publish('donorData', function () {
-	return Meteor.users.find({userType: "donor"},{fields: {'name': 1,'age': 1, 'company_info': 1, 'interestStudent': 1}});
+	return Meteor.users.find({"userType.isDonor": true},{fields: {'name': 1,'age': 1, 'company_info': 1, 'interestStudent': 1}});
 });
 
 // Private publication for the data of currently logged in user

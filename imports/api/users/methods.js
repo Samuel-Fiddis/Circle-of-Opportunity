@@ -68,7 +68,11 @@ Meteor.methods({
     check(options,
       {
         // All users will have the following upon registration
-        userType: String,
+        userType: {
+          isStudent: Boolean,
+          isDonor: Boolean,
+          isUniAdmin: Boolean,
+        },
         email: String,
         password: String,
         password_verification: String,
@@ -212,7 +216,7 @@ Meteor.methods({
     check(studentId, String);
 
     // want to check that the studentId belongs to an actual student
-    var matchingStudent = Meteor.users.find({_id: studentId, userType: "student"}).count();
+    var matchingStudent = Meteor.users.find({_id: studentId, "userType.isStudent": true}).count();
     console.log(matchingStudent);
 
     if(matchingStudent == 0) {
@@ -232,7 +236,7 @@ Meteor.methods({
     // want to check that the person calling this function is an actual donor
     var user = Meteor.users.findOne({_id: currentUserId});
 
-    if(user.userType != 'donor') {
+    if(!user.userType.isDonor) {
       throw new Meteor.Error('not-authorized','you are not a donor');
     }
 

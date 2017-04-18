@@ -44,7 +44,6 @@ Template.donorregform.events({
     var options = {
 
       // user info
-      userType: "donor",
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
       password_verification: $('input[name=password_verification]').val(),
@@ -66,6 +65,13 @@ Template.donorregform.events({
 
     // add in all embedded document information to options
     // ===================================================
+
+    // userType embedded document
+    options.userType = {
+      isStudent: false,
+      isDonor: true,
+      isUniAdmin: false,
+    },
 
     // Name embedded document
     options.name = {
@@ -94,7 +100,7 @@ Template.donorregform.events({
 
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
-    
+
 
     // Call signup Method passing options as an argument
     // =================================================

@@ -42,8 +42,7 @@ Accounts.onCreateUser(function(options,user) {
   // Student only Information
   // ------------------------
 
-  if(options.userType == "student") {
-    user.userType = options.userType;
+  if(options.userType.isStudent) {
 
     // Add in university information to user document
     if(options.uni_info) {
@@ -61,20 +60,16 @@ Accounts.onCreateUser(function(options,user) {
     }
   }
 
-  // Donor only information
-  // ----------------------
-
-  if(options.userType == "donor") {
-
-    // Add in the user type
+  // Add in the userType
+  if(options.userType) {
     user.userType = options.userType;
-
-    // Add in the company_info
-    if(options.company_info) {
-      user.company_info = options.company_info;
-    }
   }
 
+
+  // Add in the company_info
+  if(options.company_info) {
+    user.company_info = options.company_info;
+  }
 
 
   // Add in non-default parameters

@@ -46,8 +46,6 @@ Template.studentRegForm.events({
 
     var options = {
 
-      // user info
-      userType: "student",
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),
       password_verification: $('input[name=password_verification]').val(),
@@ -68,6 +66,13 @@ Template.studentRegForm.events({
 
     // Add in all embedded document information to options
     // ===================================================
+
+    // userType embedded document
+    options.userType = {
+      isStudent: true,
+      isDonor: true,
+      isUniAdmin: false
+    }
 
     // Name embedded document
     options.name = {
