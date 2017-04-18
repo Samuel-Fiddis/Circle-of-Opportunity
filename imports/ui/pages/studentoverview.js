@@ -17,7 +17,7 @@ Template.studentoverview.onCreated( function() {
   // ****************************
 
   // subscribe to userData publication: returns all documents in user accounts
-  this.subscribe('userData');
+  this.subscribe('studentDataOverview');
 
   // subscribe to universities publication: returns all documents in Universities
   this.subscribe('universities');

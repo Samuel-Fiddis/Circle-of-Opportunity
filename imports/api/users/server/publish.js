@@ -1,18 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 
 // All variables to publish are kept in the fields option
-Meteor.publish('userData', function () {
+Meteor.publish('studentDataOverview', function () {
 	return Meteor.users.find(
 		{"userType.isStudent": true},
 		{fields:
 			{'_id': 1,
 			'name': 1,
 			'age': 1,
-			'bio': 1,
-			'image': 1,
 			'uni_info': 1,
-			'address.city': 1,
-			'address.country': 1,
 			'ethereum': 1}});
 });
 
