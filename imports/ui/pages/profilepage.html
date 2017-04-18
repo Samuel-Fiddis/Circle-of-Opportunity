@@ -4,6 +4,8 @@
 
   {{#if ownProfile}}
   <h1>This is your profile page</h1>
+  {{else}}
+  <h1>Profile page of {{userProfile.name.first}} {{userProfile.name.last}}</h1>
   {{/if}}
 
   <!-- Loading Donor Interest information if student profile -->
@@ -11,26 +13,50 @@
 
   <div class = "container">
 
+    <!-- Show register interest button only on a students profile page -->
     {{#if student}}
+
+    <!-- not on their own profile -->
+    {{#unless ownProfile}}
+    <!-- Does not show button if donor has already registered interest -->
+    {{#if hasRegisteredInterest}}
+
+    You have already registered interest in this student
+    <br>
+    <br>
+
+    {{else}}
     <!-- register interest button -->
     <button> Register Interest </button>
     <br>
+
+    {{/if}}
+    {{/unless}}
 
     <!-- Number of donors interested -->
     Number of donors interested : {{userProfile.number_dInterest}}
     <br>
 
     <!-- information about each donor -->
-    {{#each userProfile.interestedDonors}}
-    Donor id: {{.[0]}}
+    Interested Donors:
     <br>
+    {{#each userProfile.interestedDonors}}
+    id: {{.[0]}}
+    {{#with donorInfo @index}}
+    Name: {{name.first}} {{name.last}}
+    <br>
+    {{/with}}
     {{/each}}
 
     {{else}}
+    <!-- information about each student interested in -->
     Registered interest in:
     <br>
     {{#each userProfile.interestStudent}}
     Student id: {{.[0]}}
+    {{#with studentInfo @index}}
+    Name: {{name.first}} {{name.last}}
+    {{/with}}
     {{/each}}
 
     {{/if}}

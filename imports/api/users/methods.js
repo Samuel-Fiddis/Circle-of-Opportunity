@@ -209,6 +209,7 @@ Meteor.methods({
 
     // validation check
     // ================
+    check(studentId, String);
 
     // want to check that the studentId belongs to an actual student
     var matchingStudent = Meteor.users.find({_id: studentId, userType: "student"}).count();
