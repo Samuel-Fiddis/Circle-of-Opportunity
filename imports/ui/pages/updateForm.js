@@ -139,13 +139,4 @@ Template.updateForm.helpers({
     return Meteor.user();
   },
 
-  /*
-  NOTE: not sure why, i cant seem to access emails directly on the html page with {{emails[0].address}}
-  1. check to see if i can access using 'emails.0.address'
-  */
-
-  email: function() {
-    return Meteor.user().emails[0].address;
-  },
-
 });
