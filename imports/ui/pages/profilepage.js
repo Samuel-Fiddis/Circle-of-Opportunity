@@ -133,7 +133,7 @@ Template.orderButton.events({
       //something
     }
     Session.set("orderselection", newValue)
-    console.log("done");
+    console.log("done selecting order");
     return true;
   },
 });
@@ -142,18 +142,33 @@ Template.statusButton.events({
   'click': function(){
         console.log("You clicked something");
     },
-  /*'change #orderselecter' : function (evt){
+  'change #statusselecter' : function (evt){
     var newValue = $(evt.target).val();
     console.log("newValue");
     console.log(newValue);
-    var oldValue = Session.get("orderselection");
-    console.log("oldValue");
-    console.log(oldValue);
-    if (newValue != oldValue){
-      //something
-    }
-    Session.set("orderselection", newValue)
-    console.log("done");
+
+    var updateUser = Meteor.users.findOne({_id: this._id});
+    console.log("user found with id");
+    console.log(updateUser);
+
+
+    Meteor.users.update(updateUser, {
+       $set: {"age": "20"}
+    });
+
+
+
+
+    console.log("newValue");
+    console.log(newValue);
+    //console.log( JSON.stringify(this.uni_info.eStatus) );
+    console.log("value in db before");
+    console.log(this.uni_info.eStatus);
+    this.uni_info.eStatus = newValue;
+    console.log("value in db after");
+    console.log(this.uni_info.eStatus);
+    //uni_info.eStatus = newValue;
+    console.log("done setting eStatus");
     return true;
-  },*/
+  },
 });
