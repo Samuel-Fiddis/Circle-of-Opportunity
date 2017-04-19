@@ -142,33 +142,31 @@ Template.statusButton.events({
   'click': function(){
         console.log("You clicked something");
     },
+
   'change #statusselecter' : function (evt){
+    // get selected value
     var newValue = $(evt.target).val();
-    console.log("newValue");
-    console.log(newValue);
+    //get studentID
+    var updateUser = this._id;
 
-    var updateUser = Meteor.users.findOne({_id: this._id});
-    console.log("user found with id");
-    console.log(updateUser);
+    Meteor.call('updateStatus', this._id, newValue, function(error, result) {
 
+      // What happens if methods function returns an error
+      // +++++++++++++++++++++++++++++++++++++++++++++++++
 
-    Meteor.users.update(updateUser, {
-       $set: {"age": "20"}
+      if(error) {
+
+        // display the error on the console log of the website
+        console.log(error.reason);
+
+        // Set the lastError variable
+        /*
+        template.lastError.set(error.reason);
+        */
+
+      };
+
     });
 
-
-
-
-    console.log("newValue");
-    console.log(newValue);
-    //console.log( JSON.stringify(this.uni_info.eStatus) );
-    console.log("value in db before");
-    console.log(this.uni_info.eStatus);
-    this.uni_info.eStatus = newValue;
-    console.log("value in db after");
-    console.log(this.uni_info.eStatus);
-    //uni_info.eStatus = newValue;
-    console.log("done setting eStatus");
-    return true;
   },
 });
