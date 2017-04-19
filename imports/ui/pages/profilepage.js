@@ -2,7 +2,6 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Transactions } from '/imports/api/transactions/transactions.js';
 
-
 import './profilepage.html';
 
 // *****************************************************************************
