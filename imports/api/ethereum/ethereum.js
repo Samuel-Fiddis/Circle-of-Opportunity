@@ -29,25 +29,42 @@ ethGetBalance = function ethGetBalance(myEthAddr){
 // Send Ether from one account to another, returns the transaction hash
 // fromAccount should be an account in keystore
 ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPassword, toAddress, valueEther){
-  // unlock the account with appropriate passphrase
+  // unlock the account with appropritae passphrase
   web3.personal.unlockAccount(fromAddress, fromPassword);
   // TODO: test above function does not fail from no keyfile or incorrect password
 
   var transactionObject = {
     from: fromAddress,
     to: toAddress,
-    // valueEther in ether, convert it in wei
-    value: web3.toWei(valueEther, 'ether') - web3.eth.gasPrice.toNumber()*21000,
-    gas: 21000,
+    value: web3.toWei(valueEther, 'ether'),
   };
+  console.log(transactionObject);
 
-  // transactionObject.value<=0
+  var result;
+  //with asynchronous callback function
+  //result = web3.eth.sendTransaction(transactionObject, function() {  });
+
+  result = web3.eth.sendTransaction(transactionObject);
+  // TODO: test above function does not fail from insufficient funds
   
-  // test above function does not fail from insufficient fund
-  if (web3.toWei(valueEther, 'ether') > web3.eth.getBalance(fromAddress).toNumber()){
-    return false;
-  }
-  else{
-    return web3.eth.sendTransaction(transactionObject);
-  }
+  return result;
 }
+
+/*
+Template.balance.helpers({
+  balance() {
+    var i =0;
+    eth.accounts.forEach( function(e){
+    console.log("  eth.accounts["+i+"]: " +  e + " \tbalance: " + web3.fromWei(eth.getBalance(e), "ether") + " ether");
+    i++;
+    })
+  },
+});
+
+Template.balance.events({
+  'click button'(event, instance) {
+    // increment the counter when button is clicked
+    balance();
+  },
+});
+*/
