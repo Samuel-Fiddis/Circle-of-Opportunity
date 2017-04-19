@@ -6,9 +6,7 @@ etherscanAccountBalance = function etherscanAccountBalance(address) {
     var balance_url = testnet_url + balance_action + address + "&tag=latest&apikey=" + ETHERSCAN_API_KEY;
 
     var myresult = jsonValueGet(balance_url, "result");
-    // console.log(myresult);
     if (myresult == "Error!") {
-      // console.log(myresult);
       throw "Address field is empty or invalid";
       return false;
     }
