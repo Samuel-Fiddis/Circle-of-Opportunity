@@ -90,7 +90,6 @@ Template.profilepage.events({
 
     // check if the amount is a float. If not throw an error
     if (typeof(a) != "number"){
-        console.log("enter amount number");
         throw new Meteor.Error("Wrong amount","Please fill out a real number");
     }
 
