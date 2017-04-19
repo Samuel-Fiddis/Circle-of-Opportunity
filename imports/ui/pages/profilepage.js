@@ -149,7 +149,7 @@ Template.statusButton.events({
     //get studentID
     var updateUser = this._id;
 
-    Meteor.call('updateStatus', this._id, newValue, function(error, result) {
+    Meteor.call('updateStatus', updateUser, newValue, function(error, result) {
 
       // What happens if methods function returns an error
       // +++++++++++++++++++++++++++++++++++++++++++++++++
