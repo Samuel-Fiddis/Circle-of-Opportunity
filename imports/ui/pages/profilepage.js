@@ -89,7 +89,6 @@ Template.profilepage.events({
 
     // check if the amount is a float. If not throw an error
     if (typeof(a) != "number"){
-        console.log("enter amount number");
         throw new Meteor.Error("Wrong amount","Please fill out a real number");
     }
 
@@ -104,23 +103,28 @@ Template.profilepage.events({
     // call the function to make the transaction
     var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);
 
-    // buils the options to store the transaction in the db
-    var options = {
-      type : "DtS",
-      idStudent: idS,
-      idDonor: idD,
-      amount: a,
-      transactionHash: trans,
+    // insufficient funds
+    if (trans == false){
+      throw new Meteor.Error("Insuficcient funds","Please send ether on your wallet");
     }
-
-
-  console.log(options);
-  if(Transactions.insert(options)) {
-    console.log("Transaction Added");
-  }
-  else {
-    // Need error handeling here
-  }
+    
+    else{
+      // buils the options to store the transaction in the db
+      var options = {
+        type : "DtS",
+        idStudent: idS,
+        idDonor: idD,
+        amount: a,
+        transactionHash: trans,
+      }
+      console.log(options);
+      if(Transactions.insert(options)) {
+        console.log("Transaction Added");
+      }
+      else {
+        // Need error handeling here
+      }
+    }
 
 /*
 // Not sure if a method call is necessary. Insert validates data by default.
