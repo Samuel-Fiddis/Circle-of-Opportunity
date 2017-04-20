@@ -217,7 +217,6 @@ Meteor.methods({
 
     // want to check that the studentId belongs to an actual student
     var matchingStudent = Meteor.users.find({_id: studentId, "userType.isStudent": true}).count();
-    console.log(matchingStudent);
 
     if(matchingStudent == 0) {
       throw new Meteor.Error('not-authorized','you are not registering interest in a student')
