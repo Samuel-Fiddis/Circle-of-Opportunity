@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import './donorregform.html';
+import '../components/uploadForm.js'
 
 // *****************************************************************************
 // What happens when you create the template
