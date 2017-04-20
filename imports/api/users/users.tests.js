@@ -28,7 +28,6 @@ describe('Users', function () {
 
       if (testUser._id) {
         Meteor.users.remove(testUser._id);
-        console.log("ran afterEach function");
       };
     })
 
@@ -135,12 +134,12 @@ describe('Users', function () {
 
     // Check that signup throws an error with appropriate error message if email is missing
     // ************************************************************************************
-    it('Signup: error thrown when email is missing', function() {
+    it('Signup: error thrown when password is missing', function() {
 
       testUser = {
-        // common info - missing email field
+        // common info - missing password
         userType: "donor",
-        password: "password",
+        email: "test@test.net",
         password_verification: "password",
         age: "25",
         phone: "123456789",
@@ -155,7 +154,7 @@ describe('Users', function () {
         name: {
           first: "firstName",
           middle: "middleName",
-          last: "lastName"
+          last: "lastName",
         }
       }
 
@@ -165,8 +164,77 @@ describe('Users', function () {
         "No_password",
         "Error Thrown" );
 
-      })
+      });
 
+
+
+    // Check that signup throws an error with appropriate error message if firstName is missing
+    // ************************************************************************************
+    it('Signup: error thrown when firstName is missing', function() {
+
+        testUser = {
+          // common info - missing email field
+          userType: "donor",
+          email: "test@test.net",
+          password: "password",
+          password_verification: "password",
+          age: "25",
+          phone: "123456789",
+          image: "photo",
+          ethereum: "etherKey",
+          address: {
+            country: "myCountry",
+            city: "myCity",
+            street: "myStreet",
+            zipCode: "201Hello",
+          },
+          name: {
+            middle: "middleName",
+            last: "lastName"
+          }
+        }
+
+        // Call the function to test
+        assert.throws(
+          function() { Meteor.call('signup', testUser) },
+          "No_firstName",
+          "Error Thrown" );
+
+        })
+
+        // Check that signup throws an error with appropriate error message if lastName is missing
+        // ************************************************************************************
+        it('Signup: error thrown when lastName is missing', function() {
+
+          testUser = {
+            // common info - missing lastName field
+            userType: "donor",
+            email: "test@test.net",
+            password: "password",
+            password_verification: "password",
+            age: "25",
+            phone: "123456789",
+            image: "photo",
+            ethereum: "etherKey",
+            address: {
+              country: "myCountry",
+              city: "myCity",
+              street: "myStreet",
+              zipCode: "201Hello",
+            },
+            name: {
+              first: "firstName",
+              middle: "middleName",
+            }
+          }
+
+          // Call the function to test
+          assert.throws(
+            function() { Meteor.call('signup', testUser) },
+            "No_lastName",
+            "Error Thrown" );
+
+          })
     });
 
 
