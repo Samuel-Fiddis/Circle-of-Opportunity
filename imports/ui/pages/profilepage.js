@@ -3,6 +3,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Transactions } from '/imports/api/transactions/transactions.js';
 
 import './profilepage.html';
+import '/imports/ui/components/liveFeed.js';
 
 // *****************************************************************************
 // What happens when you create the template
@@ -21,13 +22,9 @@ Template.profilepage.onCreated( function() {
   self.autorun(function() {
     var id = FlowRouter.getParam('id');
     self.subscribe('singleUser', id);
-
-    var idD = Meteor.userId();
-    self.subscribe('thisUser', idD);
-    self.subscribe('transactions');
+    var userId = Meteor.userId();
+    self.subscribe('singleUser', userId);
   });
-  //var userId = Meteor.userId();
-  //this.subscribe('thisUser', userId);
 
 });
 
@@ -56,10 +53,6 @@ Template.profilepage.helpers({
     return Meteor.userId() == id;
   },
 
-  transaction: ()=> {
-    var idS = FlowRouter.getParam('id');
-    return Transactions.find({idStudent: idS});
-  },
   // balance is the balance on the current user's ethereum account
   // *************************************************************
 
@@ -82,7 +75,7 @@ Template.profilepage.events({
     var idD = Meteor.userId();
 
     // read the amount of ethSendEtherTransaction
-    //default value :0.001
+    // default value: 0.001
 
     // TODO : error handling if not number
     var a =  parseFloat($('input[name=amount]').val()) ;
@@ -96,24 +89,30 @@ Template.profilepage.events({
     var ethD = Meteor.users.findOne({_id: idD}).ethereum;
     var ethS = Meteor.users.findOne({_id: idS}).ethereum;
 
+    // query the database to get the nameStudent
+    var nS = Meteor.users.findOne({_id: idS}).name;
+    var nD = Meteor.user().name;
+
     // TODO integrate the first part extern donor's account to COO donor's account
 
     //second transaction :  COO donor's account to COO student's account
 
     // call the function to make the transaction
-    var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);
+    var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);//"0x531ba6af30694bf481bc0cb6789bfbe3f225a1e407ef3c4b8f8ecedddfce42a8";
 
     // insufficient funds
     if (trans == false){
       throw new Meteor.Error("Insuficcient funds","Please send ether on your wallet");
     }
-    
+
     else{
       // buils the options to store the transaction in the db
       var options = {
         type : "DtS",
         idStudent: idS,
+        nameStudent: nS.first + " " + nS.last,
         idDonor: idD,
+        nameDonor: nD.first + " " + nD.last,
         amount: a,
         transactionHash: trans,
       }

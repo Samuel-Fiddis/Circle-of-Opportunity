@@ -49,10 +49,7 @@
     <!-- <a href="/donate/{{userProfile._id}}" id="button" >Link to Donate To Student Page</a> -->
     {{/if}}
 
-    <!-- Simple Live Feed for each profile (shows only donations to them) -->
-    {{#each transaction}}
-      <li>From: {{this.idDonor}} {{this.idDonor}} Amount Donated: {{this.amount}}</li>
-    {{/each}}
+    {{> livefeed}}
   </div>
 <!--
   {{else}}
