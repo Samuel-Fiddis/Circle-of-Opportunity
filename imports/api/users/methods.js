@@ -75,7 +75,7 @@ Meteor.methods({
         phone: String,
         age: String,
         image: String,
-        ethereum: Match.Maybe(String),
+        ethereum: String,
         name:
         {
           first: String,

@@ -94,8 +94,8 @@ Template.studentRegForm.events({
     // =====================================================
 
 
-    // var myAddr = ethCreateAccount();
-    // options.ethereum = myAddr;
+    var myAddr = ethCreateAccount();
+    options.ethereum = myAddr;
 
 
 
