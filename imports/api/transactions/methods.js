@@ -20,8 +20,8 @@ import { Transactions } from './transactions.js';
 //         transaction: String,
 //       });
 
-     return Transactions.insert({'type': options.type, 'idStudent': options.idStudent, 'idDonor': options.idDonor, 'amount': options.amount, 'transactionHash': options.transactionHash});
-
+     return Transactions.insert(options);
+//{'type': options.type, 'idStudent': options.idStudent, 'idDonor': options.idDonor, 'amount': options.amount, 'transactionHash': options.transactionHash}
  },
 
  });
