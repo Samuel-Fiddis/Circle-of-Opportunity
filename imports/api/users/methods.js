@@ -279,6 +279,62 @@ Meteor.methods({
         },
       }
     );
+  },
+
+updateStatus: function(studentId, newStatus) {
+
+  // validation check
+  // ================
+  check(studentId, String);
+
+  // want to check that the studentId belongs to an actual student
+  /*var matchingStudent = Meteor.users.find({_id: studentId, "userType.isStudent": true}).count();
+  console.log(matchingStudent);
+
+  if(matchingStudent == 0) {
+    throw new Meteor.Error('not-authorized','you are not registering interest in a student')
   }
+
+  // authentication check
+  // ====================
+
+  // want to check that the person calling this function is the currentUser
+  var currentUserId = Meteor.userId();
+
+  if(! currentUserId ) {
+    throw new Meteor.Error('not-authorized','you are not logged in');
+  }
+
+  // want to check that the person calling this function is an actual donor
+  var user = Meteor.users.findOne({_id: currentUserId});
+
+  if(!user.userType.isDonor) {
+    throw new Meteor.Error('not-authorized','you are not a donor');
+  }
+
+  // want to check that the person calling this function has not registered an interest in this student before
+  var matchingDoc = Meteor.users.find({_id: currentUserId, interestStudent: studentId}).count();
+
+  if(matchingDoc>0) {
+    throw new Meteor.Error('not-authorized','you have already registered interest for this student');
+  }*/
+
+
+  // update studentUser Interest field
+  // =================================
+
+  Meteor.users.update(
+    { _id: studentId },
+    {
+      // set new status
+      $set:
+      {
+        "uni_info.eStatus": newStatus,
+      }
+    }
+  );
+
+}
+
 
 });
