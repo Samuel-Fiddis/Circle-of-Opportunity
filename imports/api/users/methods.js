@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 // File holding all the methods used to connect the server to the client
 // *****************************************************************************
 
+
 Meteor.methods({
 
   // Function for the signup method

@@ -3,6 +3,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './profilepage.html';
 import './studentViewUni.html';
+import '/imports/api/users/helpers.js';
 //import './orderButton.html';  <<<<<<<<<< BREAKS HERE!!! DUNNO WHY
 
 // *****************************************************************************
@@ -169,7 +170,6 @@ Template.profilepage.helpers({
   // ****************************************
 
   student: function () {
-
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.userType.isStudent;
@@ -206,6 +206,17 @@ Template.profilepage.helpers({
       return false;
     }
     return true;
+  },
+
+
+  donorImage : function (){
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    //Meteor.users.findOne({"emails.address":{$regex:"@coreygarvey.com"}});
+    if(typeof user.userImage().currentFile !== "undefined"){
+      currentFile = user.userImage().currentFile;
+    }
+    return currentFile;
   },
 
 

@@ -5,4 +5,5 @@ import './account-creation.js';
 // as an API to the client.
 import './register-api.js';
 
-import '/imports/api/image_upload/server/publish.js'
+import '/imports/api/image_upload/server/publish.js';
+import '/imports/api/users/helpers.js';

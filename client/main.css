@@ -163,3 +163,11 @@ p {
     float: left;
     margin: 5px -40px 5px 15px;
 }
+
+.donorImage {
+    position: relative;
+    display: block;    
+    margin: 10px auto;
+    width:100px;
+    height:100px;
+}

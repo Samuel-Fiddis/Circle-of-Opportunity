@@ -78,7 +78,8 @@
 
   <!-- Loading profile information -->
   <div class="container">
-
+    
+    <img class="donorImage" src="{{fileURL donorImage}}">
     <!--{{#with userData}}-->
     Name: {{userProfile.name.first}}  {{userProfile.name.middle}} {{userProfile.name.last}}
     <br>
@@ -93,6 +94,8 @@
     <div>Email: {{address}}</div>
     {{/each}}
     {{/if}}
+    
+    
 
     <!--Address is formatted to only show full address if it is the full profile-->
     Address: {{userProfile.address.street}}{{#if ownProfile}}, {{/if}}{{userProfile.address.city}}, {{userProfile.address.country}}{{#if ownProfile}}, {{/if}}{{userProfile.address.zipCode}}

@@ -8,6 +8,7 @@ Meteor.publish('studentDataOverview', function () {
 			{'_id': 1,
 			'name': 1,
 			'age': 1,
+			'image': 1,
 			'uni_info': 1,
 			'ethereum': 1}});
 });

@@ -3,6 +3,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './studentoverview.html';
 import './studentView.html';
+import '/imports/api/users/helpers.js';
 
 // *****************************************************************************
 // What happens when you create the template
@@ -22,6 +23,8 @@ Template.studentoverview.onCreated( function() {
   // subscribe to universities publication: returns all documents in Universities
   this.subscribe('universities');
 
+
+  
   /*
   NOTE: improvements that can be made
   1. Use following format:
@@ -65,6 +68,7 @@ Template.studentoverview.helpers({
     console.log("Database query");
     console.log(selectionCriteria);
     return Meteor.users.find({}, {sort: sortOrder});
+
   },
 
   // secondStudent returns ??
@@ -92,6 +96,16 @@ Template.studentoverview.helpers({
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
   },
+
+  userImage : function (){
+    const user = this;
+    //Meteor.users.findOne({"emails.address":{$regex:"@coreygarvey.com"}});
+    if(typeof user.userImage().currentFile !== "undefined"){
+      console.log(user.userImage().currentFile);
+      currentFile = user.userImage().currentFile;
+    }
+    return currentFile;
+  }
 
 });
 

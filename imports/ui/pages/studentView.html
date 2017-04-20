@@ -1,6 +1,6 @@
 <template name = "studentView">
 	<div class="studentView col-xs-4 col-xs-offset-1">
-		<img class="studentImage" src="images/profile_pics/{{image}}">
+		<img class="studentImage" src="{{userImage.link}}">
 		<h3>{{name.first}} {{name.last}} </h3>
 		<a href="/profilepage/{{_id}}"> View Profile </a><br>
 		<span> University: {{uni_info.uni}} - {{uni_info.program}} </span>

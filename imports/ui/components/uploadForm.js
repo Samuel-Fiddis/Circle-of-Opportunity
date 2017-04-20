@@ -48,10 +48,11 @@ Template.uploadForm.events({
         template.currentUpload.set(false);
         // Set the variable 'fileId' to the image path 'fileName'
         //  'fileId' is the value in the hidden input 'image'
+        console.log(upload);
         var fileId = upload.config.fileId;
         var fileExt = upload.config.fileData.extension;
         var fileName = fileId + "." + fileExt;
-        template.fileId.set(fileName);
+        template.fileId.set(fileId);
       });
       upload.start();
     }
