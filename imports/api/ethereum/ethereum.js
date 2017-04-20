@@ -37,12 +37,14 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
     from: fromAddress,
     to: toAddress,
     // valueEther in ether, convert it in wei
-    value: web3.toWei(valueEther, 'ether')- web3.eth.gasPrice.toNumber()*21000,
+    value: web3.toWei(valueEther, 'ether') - web3.eth.gasPrice.toNumber()*21000,
     gas: 21000,
   };
 
+  // transactionObject.value<=0
+  
   // test above function does not fail from insufficient fund
-  if (web3.toWei(valueEther, 'ether') > web3.eth.getBalance(fromAddress).toNumber() ){
+  if (web3.toWei(valueEther, 'ether') > web3.eth.getBalance(fromAddress).toNumber()){
     return false;
   }
   else{

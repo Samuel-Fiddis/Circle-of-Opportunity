@@ -28,8 +28,6 @@ Template.profilepage.onCreated( function() {
 
 });
 
-
-
 // *****************************************************************************
 // Template level Helpers
 // *****************************************************************************
@@ -77,7 +75,6 @@ Template.profilepage.events({
     // read the amount of ethSendEtherTransaction
     // default value: 0.001
 
-    // TODO : error handling if not number
     var a =  parseFloat($('input[name=amount]').val()) ;
 
     // check if the amount is a float. If not throw an error
@@ -116,38 +113,35 @@ Template.profilepage.events({
         amount: a,
         transactionHash: trans,
       }
-      console.log(options);
-      if(Transactions.insert(options)) {
-        console.log("Transaction Added");
-      }
-      else {
-        // Need error handeling here
-      }
-    }
 
-/*
-// Not sure if a method call is necessary. Insert validates data by default.
+    //   if(Transactions.insert(options)) {
+    //     console.log("Transaction Added");
+    //   }
+    //   else {
+    //   //  Need error handeling here
+    //  }
 
-  Meteor.call('createTransaction', options, function(error, result) {
-    // What happens if methods function returns an error
-    // +++++++++++++++++++++++++++++++++++++++++++++++++
-    console.log("Entered Method Flag");
+      Meteor.call('createTransaction', options, function(error, result) {
+        // What happens if methods function returns an error
+        // +++++++++++++++++++++++++++++++++++++++++++++++++
+        console.log("Entered Method Flag");
 
-    if(error) {
-      // display the error on the console log of the website
-      console.log("Error Flag");
-      console.log(error.reason);
-      // Set the lastError variable
-      template.lastError.set(error.reason);
+        if(error) {
+          // display the error on the console log of the website
+          console.log("Error Flag");
+          console.log(error.reason);
+          // Set the lastError variable
+          //template.lastError.set(error.reason);
+        }
+        // What happens if methods function works fine
+        else {
+          // Set the lastError to null
+          //template.lastError.set(null);
+          console.log("transaction done");
+        // redirect the user to another page after registration
+        //  FlowRouter.go('/??')
+        }
+      });
     }
-    // What happens if methods function works fine
-    else {
-      // Set the lastError to null
-      template.lastError.set(null);
-      console.log("transaction done");
-      // redirect the user to another page after registration
-    //  FlowRouter.go('/??')
-    }
-  });*/
-  },
-});
+  }
+})
