@@ -39,7 +39,11 @@ describe('Users', function () {
 
       testUser = {
         // common info
-        userType: "student",
+        userType: {
+          isStudent: true,
+          isDonor: true,
+          isUniAdmin: false,
+        },
         email: "test@test.com",
         password: "password",
         password_verification: "password",
@@ -90,7 +94,11 @@ describe('Users', function () {
 
       testUser = {
         // common info
-        userType: "donor",
+        userType: {
+          isStudent: false,
+          isDonor: true,
+          isUniAdmin: false,
+        },
         email: "test@test.com",
         password: "password",
         password_verification: "password",
@@ -138,7 +146,11 @@ describe('Users', function () {
 
       testUser = {
         // common info - missing password
-        userType: "donor",
+        userType: {
+          isStudent: true,
+          isDonor: true,
+          isUniAdmin: false,
+        },
         email: "test@test.net",
         password_verification: "password",
         age: "25",
@@ -173,8 +185,12 @@ describe('Users', function () {
     it('Signup: error thrown when firstName is missing', function() {
 
         testUser = {
-          // common info - missing email field
-          userType: "donor",
+          // common info - missing firstName field
+          userType: {
+            isStudent: true,
+            isDonor: true,
+            isUniAdmin: false,
+          },
           email: "test@test.net",
           password: "password",
           password_verification: "password",
@@ -208,7 +224,11 @@ describe('Users', function () {
 
           testUser = {
             // common info - missing lastName field
-            userType: "donor",
+            userType: {
+              isStudent: true,
+              isDonor: true,
+              isUniAdmin: false,
+            },
             email: "test@test.net",
             password: "password",
             password_verification: "password",
@@ -246,82 +266,73 @@ describe('Users', function () {
     beforeEach(function () {
       resetDatabase();
 
-      testUser = {
-        // common info
-        userType: "student",
-        email: "test@test.com",
-        password: "password",
-        password_verification: "password",
-        age: "25",
-        phone: "123456789",
-        image: "photo",
-        ethereum: "etherKey",
-        address: {
-          country: "myCountry",
-          city: "myCity",
-          street: "myStreet",
-          zipCode: "201Hello",
-        },
-        name: {
-          first: "firstName",
-          middle: "middleName",
-          last: "lastName"
-        },
-      }
+      // Create a user if there are none
+      if(!Meteor.users.findOne({email: 'test-user@test.net'})) {
 
-      testUser._id = Meteor.call('signup', testUser);
-      console.log(testUser._id);
+        testUser = {
+          email: "test-user@test.net",
+          password: "testing",
+        };
+
+        testUser._id = Accounts.createUser(testUser);
+      };
+
 
     });
 
     afterEach(function () {
+
+      // remove fake user
       if (testUser._id) {
         Meteor.users.remove(testUser._id);
       };
+
     })
 
-    // Check that update appropriately updates a user
-    // **********************************************
+    // Check that update calls Meteor.update once
+    // *******************************************
 
-    it('Update: updates a student user', function (done) {
+    it('Update: calls Meteor.update once when no errors happen', function (done) {
 
-      // declare updateInfo
-      let updateInfo
+      // Stub the Meteor.userId() so it returns the id of the created testUser
+      var userId = sinon.stub(Meteor,'userId');
+      userId.returns(testUser._id);
 
-      // define updateInfo
-      updateInfo = {
+      // Stub the Meteor.users.update()
+      var update = sinon.stub(Meteor.users,'update');
 
-        age: "newAge",
-        phone: "newPhone",
-        bio: "myStory in detail",
+      // Get the variable that will be passed on the updateUser
+      var updateInfo = {
 
-        address: {
-          country: "newCountry",
-          city: "newCity",
-          street: "newStreet",
-          zipCode: "newZipCode",
+        phone: "myPhone",
+        age: "myAge",
+        bio: "myBio",
+
+        name:
+        {
+          first: "myfirstName",
+          middle: "mymiddleName",
+          last: "mylastName",
         },
 
-        name: {
-          first: "newFirstName",
-          middle: "newMiddleName",
-          last: "newLastName"
-        },
+        address:
+        {
+          country: "myCountry",
+          city: "myCity",
+          street: "myStreet",
+          zipCode: "myZipCode",
+        }
       };
 
-      // grab the information before the call --> check that equal to previous information
-      Meteor.call('updateUser', updateInfo);
+      // call updateUser
+      Meteor.call('updateUser',updateInfo);
 
-      // grab the information after the call --> check that equal to updateInfo
+      // correctly restore the functionality of stubs
+      userId.restore('userId');
+      update.restore('update');
 
-      // get the first user created
-      const users = Meteor.users.find({_id: testUser._id}).fetch();
-      const user = users[0];
-
-      // Check that the user exist and matches the _id in the user database
-      assert.isNotNull(user);
-      assert.isDefined(user);
-      assert.equal(user._id, testUser._id);
+      // check update was called once
+      sinon.assert.calledOnce(update);
 
       done();
     });
