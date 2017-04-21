@@ -45,7 +45,9 @@ Meteor.publish('singleUser', function (id) {
 			'address.country': 1,
 			'number_dInterest': 1,
 			'interestedDonors': 1,
-			'interestStudent': 1
+			'interestStudent': 1,
+			'ethereum': 1,
+			'balance': 1
 		}});
 });
 

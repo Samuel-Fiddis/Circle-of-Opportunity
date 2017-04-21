@@ -38,7 +38,7 @@
 
     {{else}}
     <!-- register interest button -->
-    <button> Register Interest </button>
+    <button class = "updateinterest"> Register Interest </button>
     <br>
 
     {{/if}}
@@ -78,7 +78,7 @@
 
   <!-- Loading profile information -->
   <div class="container">
-    
+
     <img class="donorImage" src="{{fileURL donorImage}}">
     <!--{{#with userData}}-->
     Name: {{userProfile.name.first}}  {{userProfile.name.middle}} {{userProfile.name.last}}
@@ -94,8 +94,8 @@
     <div>Email: {{address}}</div>
     {{/each}}
     {{/if}}
-    
-    
+
+
 
     <!--Address is formatted to only show full address if it is the full profile-->
     Address: {{userProfile.address.street}}{{#if ownProfile}}, {{/if}}{{userProfile.address.city}}, {{userProfile.address.country}}{{#if ownProfile}}, {{/if}}{{userProfile.address.zipCode}}
@@ -117,15 +117,16 @@
     <!--{{/with}}-->
 
     {{#if ownProfile}}
-    <!-- Submit form button to go to update form -->
-    <a href="/updateForm">Update My Profile</a>
-    {{else}}
-    {{#if student}}
-    <a href="/profilepage/{{userProfile._id}}">Donate To Student</a>
-    <br>
-    {{/if}}
-    {{/if}}
+      <!-- Submit form button to go to update form -->
+      <a href="/updateForm">Update My Profile</a>
+      {{else}}
 
+        <input type="number" name="amount" min =0.001 placeholder="Donation Amount" value=0.1 >
+        <button class = "createTrans">Donate To that Student</button>
+      <!-- <a href="/donate/{{userProfile._id}}" id="button" >Link to Donate To Student Page</a> -->
+      {{/if}}
+
+      {{> livefeed}}
   </div>
 {{/if}}
 </template>
