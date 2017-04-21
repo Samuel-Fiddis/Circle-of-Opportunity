@@ -7,7 +7,6 @@ import './studentViewUni.html';
 import '/imports/api/users/helpers.js';
 
 import '/imports/ui/components/liveFeed.js';
-//import './orderButton.html';  <<<<<<<<<< BREAKS HERE!!! DUNNO WHY
 
 // *****************************************************************************
 // What happens when you create the template
@@ -37,6 +36,7 @@ Template.profilepage.onCreated( function() {
     if(id == userid){
       self.subscribe('thisUser', userid);
       if (Meteor.users.findOne({"emails.address":"uni@uni.uni"})){
+        console.log("subscribing to uniData here")
         self.subscribe('uniData');
       }
     }
