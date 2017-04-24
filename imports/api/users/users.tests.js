@@ -13,185 +13,43 @@ var assert = chai.assert;
 
 describe('Users', function () {
 
-  let testUser;
+
 
   // Tests for the Signup Method go here
   // ***********************************
 
   describe('Signup Method', function() {
 
-    beforeEach(function () {
-      resetDatabase();
-    });
+    if(Meteor.isServer) {
 
-    afterEach(function () {
+      let testUser;
 
-      if (testUser._id) {
-        Meteor.users.remove(testUser._id);
-      };
-    })
-
-    // Check that signup correctly creates a user when testUser is of the right format
-    // *******************************************************************************
-    it('Signup: creates a student user', function (done) {
-
-      // define testUser
-
-      testUser = {
-        // common info
-        userType: {
-          isStudent: true,
-          isDonor: true,
-          isUniAdmin: false,
-        },
-        email: "test@test.com",
-        password: "password",
-        password_verification: "password",
-        age: "25",
-        phone: "123456789",
-        image: "photo",
-        ethereum: "etherKey",
-        address: {
-          country: "myCountry",
-          city: "myCity",
-          street: "myStreet",
-          zipCode: "201Hello",
-        },
-        name: {
-          first: "firstName",
-          middle: "middleName",
-          last: "lastName"
-        },
-        // Student only info
-        uni_info: {
-          uni: "myUni",
-          program: "myProgram",
-          eStatus: "myStatus"
-        }
-      };
-
-      // Call the function to test
-      testUser._id = Meteor.call('signup', testUser);
-
-      // get the first user created
-      const users = Meteor.users.find({_id: testUser._id}).fetch();
-      const user = users[0];
-
-      // Check that the user exist and matches the _id in the user database
-      assert.isNotNull(user);
-      assert.isDefined(user);
-      assert.equal(user._id, testUser._id);
-
-      done();
-
-    });
-
-    // Check that signup correctly creates a user when testUser is of the right format
-    // *******************************************************************************
-    it('Signup: creates a donor user', function (done) {
-
-      // define testUser
-
-      testUser = {
-        // common info
-        userType: {
-          isStudent: false,
-          isDonor: true,
-          isUniAdmin: false,
-        },
-        email: "test@test.com",
-        password: "password",
-        password_verification: "password",
-        age: "25",
-        phone: "123456789",
-        image: "photo",
-        ethereum: "etherKey",
-        address: {
-          country: "myCountry",
-          city: "myCity",
-          street: "myStreet",
-          zipCode: "201Hello",
-        },
-        name: {
-          first: "firstName",
-          middle: "middleName",
-          last: "lastName"
-        },
-        // donor specific info
-        company_info: {
-          company: "myCompany",
-          position: "myPosition",
-        }
-      };
-
-      // Call the function to test
-      testUser._id = Meteor.call('signup', testUser);
-
-      // get the first user created
-      const users = Meteor.users.find({_id: testUser._id}).fetch();
-      const user = users[0];
-
-      // Check that the user exist and matches the _id in the user database
-      assert.isNotNull(user);
-      assert.isDefined(user);
-      assert.equal(user._id, testUser._id);
-
-      done();
-
-    });
-
-    // Check that signup throws an error with appropriate error message if email is missing
-    // ************************************************************************************
-    it('Signup: error thrown when password is missing', function() {
-
-      testUser = {
-        // common info - missing password
-        userType: {
-          isStudent: true,
-          isDonor: true,
-          isUniAdmin: false,
-        },
-        email: "test@test.net",
-        password_verification: "password",
-        age: "25",
-        phone: "123456789",
-        image: "photo",
-        ethereum: "etherKey",
-        address: {
-          country: "myCountry",
-          city: "myCity",
-          street: "myStreet",
-          zipCode: "201Hello",
-        },
-        name: {
-          first: "firstName",
-          middle: "middleName",
-          last: "lastName",
-        }
-      }
-
-      // Call the function to test
-      assert.throws(
-        function() { Meteor.call('signup', testUser) },
-        "No_password",
-        "Error Thrown" );
-
+      beforeEach(function () {
+        resetDatabase();
       });
 
+      afterEach(function () {
 
+        if (testUser._id) {
+          Meteor.users.remove(testUser._id);
+        };
 
-    // Check that signup throws an error with appropriate error message if firstName is missing
-    // ************************************************************************************
-    it('Signup: error thrown when firstName is missing', function() {
+      })
+
+      // Check that signup correctly creates a user when testUser is of the right format
+      // *******************************************************************************
+      it('Signup: creates a student user', function (done) {
+
+        // define testUser
 
         testUser = {
-          // common info - missing firstName field
+          // common info
           userType: {
             isStudent: true,
             isDonor: true,
             isUniAdmin: false,
           },
-          email: "test@test.net",
+          email: "test@test.com",
           password: "password",
           password_verification: "password",
           age: "25",
@@ -205,25 +63,132 @@ describe('Users', function () {
             zipCode: "201Hello",
           },
           name: {
+            first: "firstName",
             middle: "middleName",
             last: "lastName"
+          },
+          // Student only info
+          uni_info: {
+            uni: "myUni",
+            program: "myProgram",
+            eStatus: "myStatus"
+          }
+        };
+
+        // Call the function to test
+        testUser._id = Meteor.call('signup', testUser);
+
+        // get the first user created
+        const users = Meteor.users.find({_id: testUser._id}).fetch();
+        const user = users[0];
+
+        // Check that the user exist and matches the _id in the user database
+        assert.isNotNull(user);
+        assert.isDefined(user);
+        assert.equal(user._id, testUser._id);
+
+        done();
+
+      });
+
+      // Check that signup correctly creates a user when testUser is of the right format
+      // *******************************************************************************
+      it('Signup: creates a donor user', function (done) {
+
+        // define testUser
+
+        testUser = {
+          // common info
+          userType: {
+            isStudent: false,
+            isDonor: true,
+            isUniAdmin: false,
+          },
+          email: "test@test.com",
+          password: "password",
+          password_verification: "password",
+          age: "25",
+          phone: "123456789",
+          image: "photo",
+          ethereum: "etherKey",
+          address: {
+            country: "myCountry",
+            city: "myCity",
+            street: "myStreet",
+            zipCode: "201Hello",
+          },
+          name: {
+            first: "firstName",
+            middle: "middleName",
+            last: "lastName"
+          },
+          // donor specific info
+          company_info: {
+            company: "myCompany",
+            position: "myPosition",
+          }
+        };
+
+        // Call the function to test
+        testUser._id = Meteor.call('signup', testUser);
+
+        // get the first user created
+        const users = Meteor.users.find({_id: testUser._id}).fetch();
+        const user = users[0];
+
+        // Check that the user exist and matches the _id in the user database
+        assert.isNotNull(user);
+        assert.isDefined(user);
+        assert.equal(user._id, testUser._id);
+
+        done();
+
+      });
+
+      // Check that signup throws an error with appropriate error message if email is missing
+      // ************************************************************************************
+      it('Signup: error thrown when password is missing', function() {
+
+        testUser = {
+          // common info - missing password
+          userType: {
+            isStudent: true,
+            isDonor: true,
+            isUniAdmin: false,
+          },
+          email: "test@test.net",
+          password_verification: "password",
+          age: "25",
+          phone: "123456789",
+          image: "photo",
+          ethereum: "etherKey",
+          address: {
+            country: "myCountry",
+            city: "myCity",
+            street: "myStreet",
+            zipCode: "201Hello",
+          },
+          name: {
+            first: "firstName",
+            middle: "middleName",
+            last: "lastName",
           }
         }
 
         // Call the function to test
         assert.throws(
           function() { Meteor.call('signup', testUser) },
-          "No_firstName",
+          "No_password",
           "Error Thrown" );
 
-        })
+        });
 
-        // Check that signup throws an error with appropriate error message if lastName is missing
-        // ************************************************************************************
-        it('Signup: error thrown when lastName is missing', function() {
+      // Check that signup throws an error with appropriate error message if firstName is missing
+      // ************************************************************************************
+      it('Signup: error thrown when firstName is missing', function() {
 
           testUser = {
-            // common info - missing lastName field
+            // common info - missing firstName field
             userType: {
               isStudent: true,
               isDonor: true,
@@ -243,19 +208,63 @@ describe('Users', function () {
               zipCode: "201Hello",
             },
             name: {
-              first: "firstName",
               middle: "middleName",
+              last: "lastName"
             }
-          }
+          };
 
           // Call the function to test
           assert.throws(
             function() { Meteor.call('signup', testUser) },
-            "No_lastName",
+            "No_firstName",
             "Error Thrown" );
 
-          })
-    });
+        });
+
+      // Check that signup throws an error with appropriate error message if lastName is missing
+      // ************************************************************************************
+      it('Signup: error thrown when lastName is missing', function() {
+
+            testUser = {
+              // common info - missing lastName field
+              userType: {
+                isStudent: true,
+                isDonor: true,
+                isUniAdmin: false,
+              },
+              email: "test@test.net",
+              password: "password",
+              password_verification: "password",
+              age: "25",
+              phone: "123456789",
+              image: "photo",
+              ethereum: "etherKey",
+              address: {
+                country: "myCountry",
+                city: "myCity",
+                street: "myStreet",
+                zipCode: "201Hello",
+              },
+              name: {
+                first: "firstName",
+                middle: "middleName",
+              }
+            };
+
+            // Call the function to test
+            assert.throws(
+              function() { Meteor.call('signup', testUser) },
+              "No_lastName",
+              "Error Thrown" );
+
+            });
+
+    }
+
+
+  });
+
+
 
 
   // Tests for the Update Method go here
@@ -263,82 +272,204 @@ describe('Users', function () {
 
   describe('Update Method', function () {
 
-    beforeEach(function () {
-      resetDatabase();
+    if(Meteor.isServer) {
 
-      // Create a user if there are none
-      if(!Meteor.users.findOne({email: 'test-user@test.net'})) {
+      let testUser;
 
-        testUser = {
-          email: "test-user@test.net",
-          password: "testing",
+      beforeEach(function () {
+        resetDatabase();
+
+        // Create a user if there are none
+        if(!Meteor.users.findOne({email: 'test-user@test.net'})) {
+
+          testUser = {
+            email: "test-user@test.net",
+            password: "testing",
+          };
+
+          testUser._id = Accounts.createUser(testUser);
         };
 
-        testUser._id = Accounts.createUser(testUser);
-      };
+
+      });
+
+      afterEach(function () {
+
+        // remove fake user
+        if (testUser._id) {
+          Meteor.users.remove(testUser._id);
+        };
 
 
-    });
+      });
 
-    afterEach(function () {
+      // Check that update calls Meteor.update once
+      // *******************************************
 
-      // remove fake user
-      if (testUser._id) {
-        Meteor.users.remove(testUser._id);
-      };
+      it('Update: calls Meteor.update once when no errors happen', function (done) {
 
-    })
+        // Stub the Meteor.userId() so it returns the id of the created testUser
+        var userId = sinon.stub(Meteor,'userId');
+        userId.returns(testUser._id);
 
-    // Check that update calls Meteor.update once
-    // *******************************************
+        // Stub the Meteor.users.update()
+        var update = sinon.stub(Meteor.users,'update');
 
-    it('Update: calls Meteor.update once when no errors happen', function (done) {
+        // Get the variable that will be passed on the updateUser
+        var updateInfo = {
 
-      // Stub the Meteor.userId() so it returns the id of the created testUser
-      var userId = sinon.stub(Meteor,'userId');
-      userId.returns(testUser._id);
+          phone: "myPhone",
+          age: "myAge",
+          bio: "myBio",
 
-      // Stub the Meteor.users.update()
-      var update = sinon.stub(Meteor.users,'update');
+          name:
+          {
+            first: "myfirstName",
+            middle: "mymiddleName",
+            last: "mylastName",
+          },
 
-      // Get the variable that will be passed on the updateUser
-      var updateInfo = {
+          address:
+          {
+            country: "myCountry",
+            city: "myCity",
+            street: "myStreet",
+            zipCode: "myZipCode",
+          }
+        };
 
-        phone: "myPhone",
-        age: "myAge",
-        bio: "myBio",
+        // call updateUser
+        Meteor.call('updateUser',updateInfo);
 
-        name:
-        {
-          first: "myfirstName",
-          middle: "mymiddleName",
-          last: "mylastName",
-        },
+        // correctly restore the functionality of stubs
+        userId.restore('userId');
+        update.restore('update');
 
-        address:
-        {
-          country: "myCountry",
-          city: "myCity",
-          street: "myStreet",
-          zipCode: "myZipCode",
-        }
-      };
+        // check update was called once
+        sinon.assert.calledOnce(update);
 
-      // call updateUser
-      Meteor.call('updateUser',updateInfo);
+        done();
+      });
 
-      // correctly restore the functionality of stubs
-      userId.restore('userId');
-      update.restore('update');
+      // write more server side tests for the update method here
 
-      // check update was called once
-      sinon.assert.calledOnce(update);
+    }
 
-      done();
-    });
+    // write more non-server tests for the update method here
 
-    // write more tests for the update method here
+  });
 
-  })
+  // Tests for the updateInterest Method go here
+  // *******************************************
+
+  describe('UpdateInterest Method', function () {
+
+    if(Meteor.isServer) {
+
+      let donor;
+      let student;
+
+      beforeEach(function () {
+
+        //console.log("started updateInterest beforeEach");
+        resetDatabase();
+
+        // create a fake "loggedIn" donor
+        if(!Meteor.users.findOne({email: 'donor@loggedIn.net'})) {
+
+          donor = {
+            email: 'donor@loggedIn.net',
+            password: "donorTest",
+          };
+
+          donor._id = Accounts.createUser(donor);
+
+        };
+
+        // create a fake studentId to register interest in
+        if(!Meteor.users.findOne({email: 'student@fake.net'})) {
+
+          student = {
+            email: 'student@fake.net',
+            password: "studentTest",
+          };
+
+          student._id = Accounts.createUser(student);
+          //console.log(studentId);
+        };
+        //console.log("fin de updateInterest beforeEach");
+      });
+
+      afterEach(function () {
+
+        //console.log("started updateInterest afterEach");
+
+        // remove fake loggedIn donor
+        if(donor._id) {
+          Meteor.users.remove(donor._id);
+        };
+
+        if(student._id) {
+          Meteor.users.remove(student._id);
+        };
+
+        //console.log("fin de updateInterest afterEach");
+
+      });
+
+      it('UpdateInterest: throws an error if studentId doesnt belong to a student', function() {
+
+        /*
+        // Stub Meteor.users.find().count() so it returns 0
+        var studentfind = sinon.stub(Meteor.users,'find');
+        var fakeCount = {
+          count: sinon.stub()
+        };
+
+        studentfind.returns([fakeCount]);
+        */
+        // Call update interest to test if it properly throws an error
+        assert.throws(
+          function() { Meteor.call('updateInterest', student._id)},
+          "not-authorized1",
+          "Error Thrown"
+        );
+
+        /*
+        // restore stub
+        studentfind.restore();
+        //fakeCount.restore();
+        */
+      });
+
+      it('UpdateInterest: throws an error if the person calling this isnt loggedIn', function() {
+
+        //console.log("started updateInterest error thrown test");
+        //console.log(studentId);
+
+        // Stub Meteor.userId() so it returns fake loggedIn donor id
+        var userId = sinon.stub(Meteor,'userId');
+        userId.returns(null);
+
+        // call UpdateInterest to test it properly throws an error
+        assert.throws(
+          function () { Meteor.call('updateInterest', student._id) },
+          "not-authorized2",
+          "Error Thrown" );
+
+          userId.restore('userId');
+
+        //console.log("fin de updateInterest error thrown test");
+      });
+
+      // write more server-side tests for the updateInterest method here
+    }
+
+    // write more non-server side tests for the updateInterest method here
+
+  });
+
+
+// Write more tests for the USER suite here
 
 });

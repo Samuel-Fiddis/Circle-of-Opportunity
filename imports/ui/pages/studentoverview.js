@@ -24,7 +24,7 @@ Template.studentoverview.onCreated( function() {
   this.subscribe('universities');
 
 
-  
+
   /*
   NOTE: improvements that can be made
   1. Use following format:
@@ -105,7 +105,7 @@ Template.studentoverview.helpers({
       currentFile = user.userImage().currentFile;
     }
     return currentFile;
-  }
+  },
 
 });
 
