@@ -1,0 +1,5 @@
+<template name="livefeed">
+  {{#each transaction}}
+    <li>From: {{this.nameDonor}} To: <a href="/profilepage/{{this.idStudent}}"> {{this.nameStudent}} </a> Amount Donated: {{this.amount}} Date: {{this.createdAt}} Hash: <a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> {{this.transactionHash}}</a></li>
+  {{/each}}
+</template>

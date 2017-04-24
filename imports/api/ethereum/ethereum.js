@@ -32,7 +32,7 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
   // unlock the account with appropritae passphrase
   web3.personal.unlockAccount(fromAddress, fromPassword);
   // TODO: test above function does not fail from no keyfile or incorrect password
-
+  console.log("ok");
   var transactionObject = {
     from: fromAddress,
     to: toAddress,
@@ -46,7 +46,7 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
 
   result = web3.eth.sendTransaction(transactionObject);
   // TODO: test above function does not fail from insufficient funds
-  
+
   return result;
 }
 

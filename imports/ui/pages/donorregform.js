@@ -99,9 +99,9 @@ Template.donorregform.events({
     // Create an ethereum account & store public key address
     // =====================================================
 
-    var myAddr = ethCreateAccount();
-    options.ethereum = myAddr;
-
+    // var myAddr = ethCreateAccount();
+    // options.ethereum = myAddr;
+options.ethereum = '0x0b0be3d00a30095b38cb4838b355f83ed6693423';
 
     // Call signup Method passing options as an argument
     // =================================================

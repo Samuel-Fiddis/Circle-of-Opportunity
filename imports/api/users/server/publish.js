@@ -45,11 +45,13 @@ Meteor.publish('singleUser', function (id) {
 			'address.country': 1,
 			'number_dInterest': 1,
 			'interestedDonors': 1,
-			'interestStudent': 1
+			'interestStudent': 1,
+			'ethereum': 1,
+			'balance': 1
 		}});
 });
 
 // Publish studentdata for university
 Meteor.publish('uniData', function () {
-	return Meteor.users.find({userType: "student"},{fields: {'_id': 1,'name': 1,'age': 1, 'address.city': 1, 'address.country': 1, 'uni_info.eStatus': 1, 'emails.address': 1}});
+	return Meteor.users.find({"userType.isStudent": true},{fields: {'_id': 1,'name': 1,'age': 1, 'address.city': 1, 'address.country': 1, 'uni_info.eStatus': 1, 'emails.address': 1}});
 });
