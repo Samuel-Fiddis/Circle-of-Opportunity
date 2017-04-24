@@ -25,6 +25,16 @@ userSchema: new SimpleSchema({
       type: String,
     },
 
+  "userType.isStudent": {
+    type: Boolean,
+  },
+  "userType.isDonor": {
+    type: Boolean,
+  },
+  "userType.isUniAdmin": {
+    type: Boolean,
+  },
+
   age: {
      type: String,
    },
@@ -40,15 +50,12 @@ userSchema: new SimpleSchema({
    "address.country": {
      type: String,
    },
-
    "address.city": {
      type: String,
    },
-
   "address.street": {
     type: String,
   },
-
   "address.zipCode": {
     type: String,
   },
@@ -56,11 +63,9 @@ userSchema: new SimpleSchema({
   "uni_info.uni": {
     type: String,
   },
-
   "uni_info.program": {
     type: String,
   },
-
   "uni_info.eStatus": {
     type: String,
   },
