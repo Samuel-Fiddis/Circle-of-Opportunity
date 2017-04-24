@@ -114,5 +114,21 @@ Accounts.onCreateUser(function(options,user) {
     user.profile = options.profile;
   }
 
+  // Send email notifying user their profile has been created
+  //  Must set environment variable MAIL_URL
+  //    MAIL_URL='smtp://USERNAME:PASSWORD@HOST:PORT'
+  //    export MAIL_URL
+  //    For Gmail: HOST=smtp.gmail.com, PORT=587
+  /*
+  to_email = user.name.first + " <" + newEmail + ">"
+  Meteor.call(
+    'sendEmail',
+    to_email,
+    // from email is being set to MAIL_URL email above
+    'from_email@not_working.com',
+    'Hello from COO!',
+    'This is a test of Email.send.'
+  );
+  */
 	return user;
 });
