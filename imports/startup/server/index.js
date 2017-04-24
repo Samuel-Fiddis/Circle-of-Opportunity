@@ -7,3 +7,8 @@ import './register-api.js';
 
 import '/imports/api/image_upload/server/publish.js';
 import '/imports/api/users/helpers.js';
+
+import '../../api/ethereum/ethereum.js';
+import '../../api/ethereum/etherscan.js';
+
+import './ethereum.js';

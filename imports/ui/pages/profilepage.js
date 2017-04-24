@@ -132,8 +132,8 @@ Template.profilepage.events({
     }
 
     // query the database to get th epublic key
-    var ethD = Meteor.users.findOne({_id: idD}).ethereum;
-    var ethS = Meteor.users.findOne({_id: idS}).ethereum;
+    // var ethD = Meteor.users.findOne({_id: idD}).ethereum;
+    // var ethS = Meteor.users.findOne({_id: idS}).ethereum;
 
     // query the database to get the nameStudent
     var nS = Meteor.users.findOne({_id: idS}).name;
@@ -144,13 +144,13 @@ Template.profilepage.events({
     //second transaction :  COO donor's account to COO student's account
 
     // call the function to make the transaction
-    var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);
-    // insufficient funds
-    if (trans == false){
-      throw new Meteor.Error("Insuficcient funds","Please send ether on your wallet");
-    }
+    // var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);
+    // // insufficient funds
+    // if (trans == false){
+    //   throw new Meteor.Error("Insuficcient funds","Please send ether on your wallet");
+    // }
 
-    else{
+    //else{
       // buils the options to store the transaction in the db
       var options = {
         type : "DtS",
@@ -159,7 +159,7 @@ Template.profilepage.events({
         idDonor: idD,
         nameDonor: nD.first + " " + nD.last,
         amount: a,
-        transactionHash: trans,
+        //transactionHash: trans,
       }
 
       //   if(Transactions.insert(options)) {
@@ -187,7 +187,7 @@ Template.profilepage.events({
           //  FlowRouter.go('/??')
         }
       });
-    }
+    //}
   }
 
 });

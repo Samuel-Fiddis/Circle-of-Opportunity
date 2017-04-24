@@ -30,21 +30,31 @@ ethGetBalance = function ethGetBalance(myEthAddr){
 // fromAccount should be an account in keystore
 ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPassword, toAddress, valueEther){
   // unlock the account with appropritae passphrase
+
+//  web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'))
+
+ web3 = new Web3();
+  // web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
+
+  //Here is the problem. Everything is null
+  console.log(web3.eth.getBlock('latest'));
+  console.log('ok');
   web3.personal.unlockAccount(fromAddress, fromPassword);
-  // TODO: test above function does not fail from no keyfile or incorrect password
-  console.log("ok");
+
+
+  // TODO: test above function does not fail from no keyfile or incorrect password;
   var transactionObject = {
     from: fromAddress,
     to: toAddress,
     value: web3.toWei(valueEther, 'ether'),
   };
-  console.log(transactionObject);
 
   var result;
   //with asynchronous callback function
   //result = web3.eth.sendTransaction(transactionObject, function() {  });
 
   result = web3.eth.sendTransaction(transactionObject);
+  console.log(result);
   // TODO: test above function does not fail from insufficient funds
 
   return result;
