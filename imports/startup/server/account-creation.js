@@ -125,9 +125,9 @@ Accounts.onCreateUser(function(options,user) {
     'sendEmail',
     to_email,
     // from email is being set to MAIL_URL email above
-    'from_email@not_working.com',
+    'from_email@coo.com',
     'Hello from COO!',
-    'This is a test of Email.send.'
+    "<p><strong>This is a test email</strong>. Welcome to the COO.</p>",
   );
   */
 	return user;
