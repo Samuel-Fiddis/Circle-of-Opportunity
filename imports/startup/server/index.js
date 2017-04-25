@@ -11,4 +11,4 @@ import '/imports/api/users/helpers.js';
 import '../../api/ethereum/ethereum.js';
 import '../../api/ethereum/etherscan.js';
 
-import './ethereum.js';
+import '../../startup/server/ethereum.js';
