@@ -4,7 +4,6 @@ import { Transactions } from './transactions.js';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-
 //I'm not sure this is necessary.
 //Using insert already validates against the schema by default.
 Meteor.methods({
@@ -35,7 +34,6 @@ Meteor.methods({
   //   else{
        options.transactionHash = trans;
 
-       console.log(options);
        return Transactions.insert(options);
     //  }
       //return Transactions.insert(options);
