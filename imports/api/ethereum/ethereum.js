@@ -33,6 +33,8 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
   // define the web3 object on the server side
   var Web3 = require('web3');
   web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
+  // Server Configuration
+  //web3 = new Web3(new Web3.providers.HttpProvider('http://146.169.45.137:8545'));
 
   // unlock the account with appropritae passphrase
   web3.personal.unlockAccount(fromAddress, fromPassword);

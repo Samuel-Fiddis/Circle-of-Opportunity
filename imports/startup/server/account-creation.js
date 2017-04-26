@@ -119,13 +119,13 @@ Accounts.onCreateUser(function(options,user) {
   //    MAIL_URL='smtp://USERNAME:PASSWORD@HOST:PORT'
   //    export MAIL_URL
   //    For Gmail: HOST=smtp.gmail.com, PORT=587
-  /*
+  /*  
   to_email = user.name.first + " <" + newEmail + ">"
   Meteor.call(
     'sendEmail',
     to_email,
     // from email is being set to MAIL_URL email above
-    'from_email@coo.com',
+    'registration@coo.com',
     'Hello from COO!',
     "<p><strong>This is a test email</strong>. Welcome to the COO.</p>",
   );

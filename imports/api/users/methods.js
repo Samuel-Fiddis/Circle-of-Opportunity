@@ -209,7 +209,7 @@ Meteor.methods({
 
   // Function to update DonorInterest in student method
   // --------------------------------------------------
-  
+
   updateInterest: function(studentId) {
 
     // validation check
@@ -240,11 +240,16 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized3','you are not a donor');
     }
 
+    // want to check that a student is not calling registerInterest on themselves
+    if(currentUserId == studentId) {
+      throw new Meteor.Error('not-authorized4','you can not register interest in yourself');
+    }
+
     // want to check that the person calling this function has not registered an interest in this student before
     var matchingDoc = Meteor.users.find({_id: currentUserId, interestStudent: studentId}).count();
 
     if(matchingDoc>0) {
-      throw new Meteor.Error('not-authorized4','you have already registered interest for this student');
+      throw new Meteor.Error('not-authorized5','you have already registered interest for this student');
     }
 
 
@@ -281,60 +286,35 @@ Meteor.methods({
     );
   },
 
-updateStatus: function(studentId, newStatus) {
 
-  // validation check
-  // ================
-  check(studentId, String);
+  updateStatus: function(studentId, newStatus) {
 
-  // want to check that the studentId belongs to an actual student
-  /*var matchingStudent = Meteor.users.find({_id: studentId, "userType.isStudent": true}).count();
-  console.log(matchingStudent);
-
-  if(matchingStudent == 0) {
-    throw new Meteor.Error('not-authorized','you are not registering interest in a student')
-  }
-
-  // authentication check
-  // ====================
-
-  // want to check that the person calling this function is the currentUser
-  var currentUserId = Meteor.userId();
-
-  if(! currentUserId ) {
-    throw new Meteor.Error('not-authorized','you are not logged in');
-  }
-
-  // want to check that the person calling this function is an actual donor
-  var user = Meteor.users.findOne({_id: currentUserId});
-
-  if(!user.userType.isDonor) {
-    throw new Meteor.Error('not-authorized','you are not a donor');
-  }
-
-  // want to check that the person calling this function has not registered an interest in this student before
-  var matchingDoc = Meteor.users.find({_id: currentUserId, interestStudent: studentId}).count();
-
-  if(matchingDoc>0) {
-    throw new Meteor.Error('not-authorized','you have already registered interest for this student');
-  }*/
+    // validation check
+    // ================
+    check(studentId, String);
 
 
-  // update studentUser Interest field
-  // =================================
+    // authentication check
+    // ====================
 
-  Meteor.users.update(
-    { _id: studentId },
-    {
-      // set new status
-      $set:
+
+    // update studentUser eStatus field
+    // =================================
+
+    Meteor.users.update(
+      { _id: studentId },
       {
-        "uni_info.eStatus": newStatus,
+        // set new status
+        $set:
+        {
+          "uni_info.eStatus": newStatus,
+        }
       }
-    }
-  );
+    );
 
-}
+  },
 
+
+  // Add more methods that pertain to Metor.users here
 
 });
