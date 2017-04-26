@@ -390,7 +390,7 @@ describe('Users', function () {
             password_verification: "studentTest",
             userType: {
               isStudent: true,
-              isDonor: false,
+              isDonor: true,
               isUniAdmin: false,
             }
           };
@@ -465,8 +465,26 @@ describe('Users', function () {
 
       it('updateInterest: throws an error if the person calling this is not a donor', function() {
 
+        // create a fake nondonor
+        if(!Meteor.users.findOne({email: 'notdonor@loggedIn.net'})) {
+
+          nondonor = {
+            email: 'notdonor@loggedIn.net',
+            password: "notdonorTest",
+            password_verification: "notdonorTest",
+            userType: {
+              isStudent: false,
+              isDonor: false,
+              isUniAdmin: true,
+            },
+          };
+
+          nondonor._id = Accounts.createUser(nondonor);
+
+        };
+
         var userId = sinon.stub(Meteor,'userId');
-        userId.returns(student._id);
+        userId.returns(nondonor._id);
 
         // call updateInterest to test it properly throws an error
         assert.throws(
@@ -476,7 +494,24 @@ describe('Users', function () {
         );
 
         userId.restore('userId');
+        if(nondonor._id) {
+          Meteor.users.remove(nondonor._id);
+        }
 
+      });
+
+      it('updateInterest: throws an error if student is registering interest in themselves', function() {
+
+        var userId = sinon.stub(Meteor,'userId');
+        userId.returns(student._id);
+
+        assert.throws(
+          function () { Meteor.call('updateInterest', student._id) },
+          "not-authorized4",
+          "Error Thrown"
+        );
+
+        userId.restore('userId');
       });
 
       // it('updateInterest: throws an error if person has registered interest in this person before', function() {
@@ -504,6 +539,7 @@ describe('Users', function () {
         Meteor.call('updateInterest',student._id);
 
         userId.restore('userId');
+        update.restore('update');
 
         sinon.assert.calledTwice(update);
 
