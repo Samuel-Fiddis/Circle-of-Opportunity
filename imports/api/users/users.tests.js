@@ -265,8 +265,6 @@ describe('Users', function () {
   });
 
 
-
-
   // Tests for the Update Method go here
   // ***********************************
 
@@ -285,6 +283,12 @@ describe('Users', function () {
           testUser = {
             email: "test-user@test.net",
             password: "testing",
+            password_verification: "testing",
+            userType: {
+              isStudent: true,
+              isDonor: true,
+              isUniAdmin: false,
+            },
           };
 
           testUser._id = Accounts.createUser(testUser);
@@ -359,6 +363,7 @@ describe('Users', function () {
 
   });
 
+
   // Tests for the updateInterest Method go here
   // *******************************************
 
@@ -374,17 +379,7 @@ describe('Users', function () {
         //console.log("started updateInterest beforeEach");
         resetDatabase();
 
-        // create a fake "loggedIn" donor
-        if(!Meteor.users.findOne({email: 'donor@loggedIn.net'})) {
 
-          donor = {
-            email: 'donor@loggedIn.net',
-            password: "donorTest",
-          };
-
-          donor._id = Accounts.createUser(donor);
-
-        };
 
         // create a fake studentId to register interest in
         if(!Meteor.users.findOne({email: 'student@fake.net'})) {
@@ -392,12 +387,37 @@ describe('Users', function () {
           student = {
             email: 'student@fake.net',
             password: "studentTest",
+            password_verification: "studentTest",
+            userType: {
+              isStudent: true,
+              isDonor: false,
+              isUniAdmin: false,
+            }
           };
 
           student._id = Accounts.createUser(student);
           //console.log(studentId);
         };
         //console.log("fin de updateInterest beforeEach");
+
+        // create a fake "loggedIn" donor
+        if(!Meteor.users.findOne({email: 'donor@loggedIn.net'})) {
+
+          donor = {
+            email: 'donor@loggedIn.net',
+            password: "donorTest",
+            password_verification: "donorTest",
+            userType: {
+              isStudent: false,
+              isDonor: true,
+              isUniAdmin: false,
+            },
+            // interestStudent: [student._id],
+          };
+
+          donor._id = Accounts.createUser(donor);
+
+        };
       });
 
       afterEach(function () {
@@ -419,33 +439,16 @@ describe('Users', function () {
 
       it('UpdateInterest: throws an error if studentId doesnt belong to a student', function() {
 
-        /*
-        // Stub Meteor.users.find().count() so it returns 0
-        var studentfind = sinon.stub(Meteor.users,'find');
-        var fakeCount = {
-          count: sinon.stub()
-        };
-
-        studentfind.returns([fakeCount]);
-        */
         // Call update interest to test if it properly throws an error
         assert.throws(
-          function() { Meteor.call('updateInterest', student._id)},
+          function() { Meteor.call('updateInterest', donor._id)},
           "not-authorized1",
           "Error Thrown"
         );
 
-        /*
-        // restore stub
-        studentfind.restore();
-        //fakeCount.restore();
-        */
       });
 
       it('UpdateInterest: throws an error if the person calling this isnt loggedIn', function() {
-
-        //console.log("started updateInterest error thrown test");
-        //console.log(studentId);
 
         // Stub Meteor.userId() so it returns fake loggedIn donor id
         var userId = sinon.stub(Meteor,'userId');
@@ -458,17 +461,126 @@ describe('Users', function () {
           "Error Thrown" );
 
           userId.restore('userId');
-
-        //console.log("fin de updateInterest error thrown test");
       });
+
+      it('updateInterest: throws an error if the person calling this is not a donor', function() {
+
+        var userId = sinon.stub(Meteor,'userId');
+        userId.returns(student._id);
+
+        // call updateInterest to test it properly throws an error
+        assert.throws(
+          function () { Meteor.call('updateInterest', student._id) },
+          "not-authorized3",
+          "Error Thrown"
+        );
+
+        userId.restore('userId');
+
+      });
+
+      // it('updateInterest: throws an error if person has registered interest in this person before', function() {
+      //
+      //   var userId = sinon.stub(Meteor,'userId');
+      //   userId.returns(donor._id);
+      //
+      //   assert.throws(
+      //     function() { Meteor.call('updateInterest', student._id) },
+      //     "not-authorized4",
+      //     "Error Thrown"
+      //   );
+      //
+      //   userId.restore('userId');
+      //
+      // })
+
+      it('updateInterest calls Meteor.users.update twice', function(done) {
+
+        var userId = sinon.stub(Meteor,'userId');
+        userId.returns(donor._id);
+
+        var update = sinon.stub(Meteor.users,'update');
+
+        Meteor.call('updateInterest',student._id);
+
+        userId.restore('userId');
+
+        sinon.assert.calledTwice(update);
+
+        done();
+      })
 
       // write more server-side tests for the updateInterest method here
     }
+
+
 
     // write more non-server side tests for the updateInterest method here
 
   });
 
+
+  // Tests for the updateStatus Method go here
+  // *****************************************
+
+  describe('UpdateStatus Method', function () {
+
+    if(Meteor.isServer) {
+
+      let testStudent;
+
+      beforeEach(function() {
+        resetDatabase();
+
+        // create fake student
+        testStudent = {
+          email: "testStudent@student.net",
+          password: "fakeStudent",
+          password_verification: "fakeStudent",
+          userType: {
+            isStudent: true,
+            isDonor: true,
+            isUniAdmin: false,
+          }
+        },
+
+        testStudent._id = Accounts.createUser(testStudent);
+
+      });
+
+      afterEach(function() {
+
+        if(testStudent._id) {
+          Meteor.users.remove(testStudent._id);
+        };
+
+      });
+
+      it('UpdateStatus: calls Meteor.update once', function(done) {
+
+        // stub the Meteor.update
+        var update = sinon.stub(Meteor.users,'update');
+
+        // create fake status update
+        var newStatus = "fakeNewStatus";
+
+        // call UpdateStatus
+        Meteor.call('updateStatus',testStudent._id,newStatus);
+
+        // correctly restore functionality of stubs
+        update.restore('update');
+
+        // check update was called once
+        sinon.assert.calledOnce(update);
+
+        done();
+      });
+
+      // write more server-side tests for updateStatus method here
+    }
+
+    // write more non-server side tests for updateStatus method here
+  });
 
 // Write more tests for the USER suite here
 
