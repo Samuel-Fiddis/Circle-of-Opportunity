@@ -8,3 +8,11 @@ Meteor.publish('transactions', function () {
 Meteor.publish('topTransactions', function (nT) {
 	return Transactions.find({},{sort: {createdAt: -1}, limit: nT});
 });
+
+Meteor.publish('topStudentTransactions', function(id,nT){
+	return Transactions.find({idStudent: id},{sort: {createdAt: -1}, limit: nT});
+});
+
+Meteor.publish('topDonorTransactions', function(id,nT){
+	return Transactions.find({idDonor: id},{sort: {createdAt: -1}, limit: nT});
+});

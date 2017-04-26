@@ -9,6 +9,7 @@
     "bcrypt": "^1.0.2",
     "fake": "^0.2.2",
     "faker": "^4.1.0",
-    "meteor-node-stubs": "~0.2.0"
+    "meteor-node-stubs": "~0.2.0",
+    "web3": "^0.18.4"
   }
 }

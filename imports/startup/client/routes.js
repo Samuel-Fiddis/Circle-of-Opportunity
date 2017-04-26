@@ -6,6 +6,7 @@ import '../../ui/pages/homepage.js';
 import '../../ui/pages/mainpage.js';
 import '../../ui/pages/howitworks.js';
 import '../../ui/pages/studentoverview.js';
+import '../../ui/pages/donoroverview.js';
 import '../../ui/pages/viewthecircle.js';
 import '../../ui/pages/donorregister.js';
 import '../../ui/pages/studentregister.js';
@@ -36,6 +37,13 @@ FlowRouter.route('/students', {
   name: 'studentsoverview',
   action(){
     BlazeLayout.render('mainpage', {main: 'studentoverview'});
+  },
+});
+
+FlowRouter.route('/donors', {
+  name: 'donorsoverview',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'donoroverview'});
   },
 });
 

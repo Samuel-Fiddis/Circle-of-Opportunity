@@ -9,10 +9,18 @@ Template.livefeed.onCreated( function() {
   // Template level subscriptions
   // ****************************
 
-  // Subscribe transhations publication: returns all transactions
+  // Subscribe transactions publication: returns all transactions
   var self = this;
+
   self.autorun(function() {
-    self.subscribe('topTransactions', 5);
+  if(FlowRouter.getParam('id')){
+    var userId = FlowRouter.getParam('id');
+    self.subscribe('topStudentTransactions', userId, 20);
+    self.subscribe('topDonorTransactions', userId, 20);
+  }
+  else{
+    self.subscribe('topTransactions', 20);
+  }
   });
 
 });
