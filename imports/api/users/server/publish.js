@@ -13,6 +13,16 @@ Meteor.publish('studentDataOverview', function () {
 			'ethereum': 1}});
 });
 
+// publish donordata for overview
+Meteor.publish('donorDataOverview', function () {
+	return Meteor.users.find(
+		{"userType.isDonor": true},
+		{fields:
+			{'_id': 1,
+			'name': 1}
+		});
+});
+
 // Publication of a limited amount of student info (available to all users)
 Meteor.publish('studentData', function () {
 	return Meteor.users.find({"userType.isStudent": true},{fields: {'name': 1,'age': 1}});
