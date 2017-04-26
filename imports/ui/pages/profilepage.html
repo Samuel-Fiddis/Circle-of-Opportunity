@@ -5,9 +5,9 @@
   <!-- IF UNI THEN DISPLAY STUDENTS AND THEIR STATUS -->
   {{#if uniOwnProfile}}
 
-    <h1> University acceptance portal </h1>
+  <h1> University acceptance portal </h1>
 
-    {{ >studentViewUni}}
+  {{ >studentViewUni}}
 
   <!-- IF NOT UNI THEN DISPLAY REGULAR PROFILE PAGE -->
 
@@ -117,16 +117,16 @@
     <!--{{/with}}-->
 
     {{#if ownProfile}}
-      <!-- Submit form button to go to update form -->
-      <a href="/updateForm">Update My Profile</a>
-      {{else}}
+    <!-- Submit form button to go to update form -->
+    <a href="/updateForm">Update My Profile</a>
+    {{else}}
 
-        <input type="number" name="amount" min =0.001 placeholder="Donation Amount" value=0.1 >
-        <button class = "createTrans">Donate To that Student</button>
-      <!-- <a href="/donate/{{userProfile._id}}" id="button" >Link to Donate To Student Page</a> -->
-      {{/if}}
+    <input type="number" name="amount" min =0.001 placeholder="Donation Amount" value=0.1 >
+    <button class = "createTrans">Donate To that Student</button>
+    <!-- <a href="/donate/{{userProfile._id}}" id="button" >Link to Donate To Student Page</a> -->
+    {{/if}}
 
-      {{> livefeed}}
+    {{> livefeed}}
   </div>
-{{/if}}
+  {{/if}}
 </template>

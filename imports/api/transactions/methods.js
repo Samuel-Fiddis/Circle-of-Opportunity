@@ -27,17 +27,35 @@ Meteor.methods({
 
     var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, options.amount);
 
-  //   // insufficient funds
-  //   if (trans == false){
-  //     throw new Meteor.Error("Insuficient funds","Please send ether on your wallet");
-  //   }
-  //   else{
-       options.transactionHash = trans;
+    //   // insufficient funds
+    //   if (trans == false){
+    //     throw new Meteor.Error("Insuficient funds","Please send ether on your wallet");
+    //   }
+    //   else{
+    options.transactionHash = trans;
 
-       return Transactions.insert(options);
+    return Transactions.insert(options);
     //  }
-      //return Transactions.insert(options);
-      //{'type': options.type, 'idStudent': options.idStudent, 'idDonor': options.idDonor, 'amount': options.amount, 'transactionHash': options.transactionHash}
-    },
+    //return Transactions.insert(options);
+    //{'type': options.type, 'idStudent': options.idStudent, 'idDonor': options.idDonor, 'amount': options.amount, 'transactionHash': options.transactionHash}
+  },
 
-  });
+  donatenow: function(options){
+
+    var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
+    
+    var trans = ethSendEtherTransaction(ethD, "jackAccount1", "0xc08ee9c6252fb61271520dacac9a6126255bc81e", options.amount);
+
+    // web3.personal.unlockAccount("general", "0xc08ee9c6252fb61271520dacac9a6126255bc81e")
+      // insufficient funds
+    //   if (trans == false){
+    //     throw new Meteor.Error("Insuficient funds","Please send ether on your wallet");
+    //   }
+    //   else{
+    options.transactionHash = trans;
+    options.idStudent = "general";
+    options.nameStudent = "general";
+
+    return Transactions.insert(options);
+  }
+});

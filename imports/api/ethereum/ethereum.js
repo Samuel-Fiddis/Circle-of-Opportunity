@@ -29,15 +29,12 @@ ethGetBalance = function ethGetBalance(myEthAddr){
 // Send Ether from one account to another, returns the transaction hash
 // fromAccount should be an account in keystore
 ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPassword, toAddress, valueEther){
-  // unlock the account with appropritae passphrase
 
-//  web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'))
-
+  // define the web3 object on the server side
   var Web3 = require('web3');
-
-  //web3 = new Web3();
   web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
 
+  // unlock the account with appropritae passphrase
   web3.personal.unlockAccount(fromAddress, fromPassword);
 
   // TODO: test above function does not fail from no keyfile or incorrect password;
