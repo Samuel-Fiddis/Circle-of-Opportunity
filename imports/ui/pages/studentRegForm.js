@@ -99,10 +99,8 @@ Template.studentRegForm.events({
 
     // Create an ethereum account & store public key address
     // =====================================================
-
-
-    var myAddr = ethCreateAccount();
-    options.ethereum = myAddr;
+    // var myAddr = ethCreateAccount();
+    // options.ethereum = myAddr;
 
 
     // Call signup Method passing options as an argument

@@ -38,7 +38,6 @@ Template.donorregform.events({
 
     event.preventDefault();
 
-
     // Store all the values of the user fields in a variable called options to pass on to the onCreateUser Server function
     // ===================================================================================================================
 
@@ -55,14 +54,12 @@ Template.donorregform.events({
       // personal information
       age: $('input[name=age]').val(),
       image: $('input[name=image]').val()
-
     }
-
     /*
     NOTE: $('input[name=email]') grabs the value in the html file at input[name=email]
-     -> .val turns it into a js value
-     -> all of it gets stored into the field name email
-     */
+    -> .val turns it into a js value
+    -> all of it gets stored into the field name email
+    */
 
     // add in all embedded document information to options
     // ===================================================
@@ -101,7 +98,7 @@ Template.donorregform.events({
 
     // var myAddr = ethCreateAccount();
     // options.ethereum = myAddr;
-options.ethereum = '0x0b0be3d00a30095b38cb4838b355f83ed6693423';
+    options.ethereum = '0x0b0be3d00a30095b38cb4838b355f83ed6693423';
 
     // Call signup Method passing options as an argument
     // =================================================

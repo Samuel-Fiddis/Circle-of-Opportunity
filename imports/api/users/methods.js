@@ -65,6 +65,8 @@ Meteor.methods({
     http://meteortips.com/first-meteor-tutorial/methods/
     */
 
+    var myAddr = ethCreateAccount();
+    options.ethereum = myAddr;
 
     check(options,
       {

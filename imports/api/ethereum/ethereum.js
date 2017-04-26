@@ -1,5 +1,10 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 
+// define the web3 object on the server side
+// Server Configuration
+var Web3 = require('web3');
+web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
+
 // Get the latest block number on whih we are working on
 ethGetLatestBlock = function ethGetLatestBlock() {
   var obj = web3.eth.getBlock("latest");
@@ -9,8 +14,8 @@ ethGetLatestBlock = function ethGetLatestBlock() {
 // creation of account and return the eth public address as a string
 ethCreateAccount = function ethCreateAccount(password) {
   // password 'password' by default
-    var myAdrr = web3.personal.newAccount('password');
-    return myAdrr;
+  var myAdrr = web3.personal.newAccount('password');
+  return myAdrr;
 }
 
 // Return al the accounts stored in our keystore, returns an array of strings of addresses
@@ -29,12 +34,6 @@ ethGetBalance = function ethGetBalance(myEthAddr){
 // Send Ether from one account to another, returns the transaction hash
 // fromAccount should be an account in keystore
 ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPassword, toAddress, valueEther){
-
-  // define the web3 object on the server side
-  var Web3 = require('web3');
-  web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
-  // Server Configuration
-  //web3 = new Web3(new Web3.providers.HttpProvider('http://146.169.45.137:8545'));
 
   // unlock the account with appropritae passphrase
   web3.personal.unlockAccount(fromAddress, fromPassword);
@@ -58,19 +57,19 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
 
 /*
 Template.balance.helpers({
-  balance() {
-    var i =0;
-    eth.accounts.forEach( function(e){
-    console.log("  eth.accounts["+i+"]: " +  e + " \tbalance: " + web3.fromWei(eth.getBalance(e), "ether") + " ether");
-    i++;
-    })
-  },
+balance() {
+var i =0;
+eth.accounts.forEach( function(e){
+console.log("  eth.accounts["+i+"]: " +  e + " \tbalance: " + web3.fromWei(eth.getBalance(e), "ether") + " ether");
+i++;
+})
+},
 });
 
 Template.balance.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    balance();
-  },
+'click button'(event, instance) {
+// increment the counter when button is clicked
+balance();
+},
 });
 */

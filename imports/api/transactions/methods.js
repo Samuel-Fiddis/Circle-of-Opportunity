@@ -43,18 +43,18 @@ Meteor.methods({
   donatenow: function(options){
 
     var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
-    
+
     var trans = ethSendEtherTransaction(ethD, "jackAccount1", "0xc08ee9c6252fb61271520dacac9a6126255bc81e", options.amount);
 
     // web3.personal.unlockAccount("general", "0xc08ee9c6252fb61271520dacac9a6126255bc81e")
-      // insufficient funds
+    // insufficient funds
     //   if (trans == false){
     //     throw new Meteor.Error("Insuficient funds","Please send ether on your wallet");
     //   }
     //   else{
     options.transactionHash = trans;
     options.idStudent = "general";
-    options.nameStudent = "general";
+    options.nameStudent = "the general pot";
 
     return Transactions.insert(options);
   }
