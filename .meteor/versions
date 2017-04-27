@@ -12,6 +12,7 @@ aldeed:simple-schema@1.5.3
 aldeed:tabular@1.4.2
 aldeed:template-extension@3.4.3
 allow-deny@1.0.5
+anti:fake@0.4.1
 autoupdate@1.2.11
 babel-compiler@6.14.1
 babel-runtime@1.0.1
