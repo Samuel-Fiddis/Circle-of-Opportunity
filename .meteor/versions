@@ -13,15 +13,10 @@ aldeed:simple-schema@1.5.3
 aldeed:tabular@1.4.2
 aldeed:template-extension@3.4.3
 allow-deny@1.0.5
-
-anti:fake@0.4.1
-autoupdate@1.2.11
-babel-compiler@6.14.1
-
 amplify@1.0.0
+anti:fake@0.4.1
 autoupdate@1.3.12
 babel-compiler@6.18.1
->>>>>>> 5be8a606a1a69543bac0798a08e7d16122ca4f8e
 babel-runtime@1.0.1
 base64@1.0.10
 binary-heap@1.0.10
