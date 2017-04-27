@@ -18,6 +18,13 @@ header {
     width: 100%;
 }
 
+/* Header */
+#top-navbar {
+ min-width:1200px;   
+}
+
+/* Footer */
+
 
 
 .container {
