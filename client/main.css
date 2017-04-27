@@ -1,10 +1,16 @@
 /* Mainpage */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
     font-family: sans-serif;
     background-color: #3db7ff;
     background-image: linear-gradient(to bottom, #3db7ff, #1061B0 100%);
     background-attachment: fixed;
     font-size: 14px;
+    margin-bottom: 50px;
 }
 
 header {
@@ -13,26 +19,33 @@ header {
     position: relative;
 }
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #e7e7e7;
 }
 
 /* Header */
 #top-navbar {
  min-width:1200px;   
 }
+.header-logo{
+    position:relative; 
+    top: -25px; 
+    left: -10px;
+}
 
 /* Footer */
-
-
-
-.container {
-    text-align: center;
-    width: 100%;
-    background: white;
-    padding: 15px;
-
+.footer-nav {
+    padding: 0 15px;
+}
+.footer-logo {
+    position:absolute; 
+    top:0px; 
+    left:50px; 
+    width:218px; 
+    height:50px;
 }
 
 /* Homepage */
@@ -57,6 +70,14 @@ header {
     padding: 15px;
 
 }
+
+.container3 {
+    text-align: center;
+    width: 100%;
+    background: white;
+    padding: 15px;
+}
+
 
 .livefeedhref {
     color: #000;
