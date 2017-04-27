@@ -3,8 +3,8 @@ import { Factory } from 'meteor/dburles:factory';
 import { chai } from 'meteor/practicalmeteor:chai';
 import { $ } from 'meteor/jquery';
 
-import './profilepage.js';
-import './profilepage.html';
+// import './profilepage.html';
+// import './profilepage.js';
 
 describe('Profilepage events', function() {
 
