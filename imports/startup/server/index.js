@@ -16,3 +16,5 @@ import '../../api/ethereum/ethereum.js';
 import '../../api/ethereum/etherscan.js';
 
 import '../../startup/server/ethereum.js';
+
+import '../../startup/server/universityCreation.js';

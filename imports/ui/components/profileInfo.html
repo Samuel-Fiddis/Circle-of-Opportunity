@@ -1,0 +1,45 @@
+<template name = "publicProfileInfo">
+    <h3> This is your profile information </h3>
+    Name: {{name.first}} {{name.middle}} {{name.last}}
+    <br>
+    Age: {{age}}
+    <br>
+    Bio: {{bio}}
+    <br>
+</template>
+
+<template name = "opportunityInfo">
+  University: {{uni_info.uni}}
+  <br>
+  Program: {{uni_info.program}}
+  <br>
+  Status: {{uni_info.eStatus}}
+</template>
+
+<template name = "ethereumPaymentInfo">
+  Ethereum public key: {{ethereum}}
+  <br>
+  Ethereum balance: {{balance}}
+  <br>
+</template>
+
+<template name = "privateProfileInfo">
+  Phone: {{phone}}
+  <br>
+
+  {{#each emails}}
+  <div>Email: {{address}}</div>
+  {{/each}}
+
+  <!-- Submit form button to go to update form -->
+  <a href="/updateForm">Update My Profile</a>
+</template>
+
+<template name = "UniversityInformation">
+  University:
+  <br>
+  Programs involved with COO:
+  <br>
+  Address:
+  <br>
+</template>

@@ -1,0 +1,23 @@
+<template name="uniProfilePage">
+  <h1> Imperial College Portal </h1>
+
+  <div class = "container">
+
+    <!-- <div class = "UniCollectionInfo">
+      {{ > UniversityInformation }}
+    </div> -->
+
+    <div class = "profileInfo">
+
+      {{ > publicProfileInfo userProfile}}
+      {{ > privateProfileInfo userProfile}}
+
+    </div>
+
+    <div class = "studentViewUni">
+      {{ > studentViewUni }}
+    </div>
+
+  </div>
+
+</template>

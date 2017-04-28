@@ -13,18 +13,27 @@ import '../../ui/pages/studentregister.js';
 import '../../ui/pages/contact.js';
 import '../../ui/pages/donatenow.js';
 import '../../ui/pages/studentRegForm.js';
-import '../../ui/pages/profilepage.js';
+import '../../ui/pages/profilePages/profilepage.js';
 import '../../ui/components/navBar.js';
 import '../../ui/pages/updateForm.js';
 import '../../ui/pages/donorregform.js';
 
+
 // import '../../ui/pages/etherTest.js';
+
 
 
 // Import to override accounts templates
 
 
 // Below here are the route definitions
+
+FlowRouter.route('/playingAround', {
+  name: 'playingAround',
+  action () {
+    BlazeLayout.render('mainpage', {main: 'playingAround'});
+  },
+});
 
 FlowRouter.route('/', {
   name: 'homepage',

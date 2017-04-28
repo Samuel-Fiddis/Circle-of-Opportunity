@@ -1,0 +1,68 @@
+<template name="userProfilePage">
+
+  {{#if ownProfile}}
+  <h1> This is your Profile Page </h1>
+  {{else}}
+  <h1> {{userProfile.name.first}} {{userProfile.name.last}} </h1>
+  {{/if}}
+
+  <div class = "container">
+
+    <div class = "profileInfo">
+
+      <img class="donorImage" src="{{fileURL donorImage}}">
+
+      {{ > publicProfileInfo userProfile}}
+
+      {{#if ownProfile}}
+      {{ > privateProfileInfo userProfile}}
+      {{else}}
+
+      {{#if student}}
+      {{ > opportunityInfo userProfile}}
+      {{/if}}
+
+      {{ > ethereumPaymentInfo userProfile}}
+
+      {{#if student}}
+      <br>
+      <br>
+      {{ > directDonationButton userProfile.name}}
+      {{/if}}
+
+      {{/if}}
+
+    </div>
+
+    {{#if student}}
+
+    <div class = "registerInterest">
+
+      {{ > registerInterestButton }}
+      {{ > studentProfileRegisterInterest userProfile}}
+
+    </div>
+
+    <div class = "donationInfo">
+      {{ > studentProfileDonationInfo }}
+    </div>
+
+
+    {{else}}
+
+    <br>
+    <div class = "registerInterest">
+      {{ > donorProfileRegisterInterest userProfile}}
+    </div>
+
+    <div class = "donationInfo">
+      {{ > donorProfileDonationInfo }}
+    </div>
+
+    {{/if}}
+
+    <!-- {{ > liveFeed }} -->
+
+  </div>
+
+</template>

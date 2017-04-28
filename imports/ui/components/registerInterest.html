@@ -1,0 +1,45 @@
+<template name = "registerInterestButton">
+
+  {{#if hasRegisteredInterest}}
+  You have already registered interest in this student
+  <br>
+  <br>
+  {{else}}
+
+  <button class = "updateinterest"> Register Interest </button>
+  <br>
+  {{/if}}
+</template>
+
+<template name = "studentProfileRegisterInterest">
+    <h3> Donors who have registered interest</h3>
+    <div class = "container">
+      Number of donors interested: {{number_dInterest}}
+      <br>
+      Interested Donors:
+      <br>
+      {{#each interestedDonors}}
+      id: {{.[0]}}
+      {{#with donorInfo @index}}
+      Name: {{name.first}} {{name.last}}
+      <br>
+      {{/with}}
+      {{/each}}
+    </div>
+</template>
+
+<template name = "donorProfileRegisterInterest">
+  <h3> Students interested in </h3>
+  <div class = "container">
+    Name: {{name.first}}
+    <br>
+    Registered interest in:
+    <br>
+    {{#each interestStudent}}
+    Student id: {{.[0]}}
+    {{#with studentInfo @index}}
+    Name: {{name.first}} {{name.last}}
+    {{/with}}
+    {{/each}}
+  </div>
+</template>
