@@ -18,6 +18,9 @@ header {
     /*background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);*/
     position: relative;
 }
+.main-container {
+    padding: 0 0 30px;
+}
 .footer {
   position: absolute;
   bottom: 0;
@@ -205,10 +208,22 @@ p {
     float: left;
     padding: 4px;
 }
+
+/* Profile Page */
+#profile-container {
+    color: #EEE;
+    padding-bottom: 50px;
+}
+button{
+    color: #111;
+}
+.donation-input {
+    color: #444;
+}
+
 .donorImage {
     position: relative;
     display: block;
-    margin: 10px auto;
     width:100px;
     height:100px;
 }

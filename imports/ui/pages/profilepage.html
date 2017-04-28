@@ -1,7 +1,9 @@
 
 <template name="profilepage">
 
-
+    <div id="profile-container" class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
   <!-- IF UNI THEN DISPLAY STUDENTS AND THEIR STATUS -->
   {{#if uniOwnProfile}}
 
@@ -121,7 +123,7 @@
     <a href="/updateForm">Update My Profile</a>
     {{else}}
 
-    <input type="number" name="amount" min =0.001 placeholder="Donation Amount" value=0.1 >
+    <input class="donation-input" type="number" name="amount" min =0.001 placeholder="Donation Amount" value=0.1 >
     <button class = "createTrans">Donate To that Student</button>
     <!-- <a href="/donate/{{userProfile._id}}" id="button" >Link to Donate To Student Page</a> -->
     {{/if}}
@@ -129,4 +131,7 @@
     {{> livefeed}}
   </div>
   {{/if}}
+            </div>
+        </div>
+    </div>
 </template>
