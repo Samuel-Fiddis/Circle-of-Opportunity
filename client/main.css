@@ -32,7 +32,7 @@ header {
     padding:3px 0;
 }
 #navbar-left {
- min-width:1200px;   
+ min-width:1300px;   
 }
 .header-logo{
     position:relative; 
@@ -56,6 +56,22 @@ header {
 }
 
 /* Homepage */
+.homepage-box {
+    background-color: #FFF;
+    border-radius: 8px;
+    color: #0f2a54;
+    font-size: 13px;
+}
+.homepage-box > h2 {
+    text-align: center;
+    color: #0f2a54;
+}
+
+.equal {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .container1 {
     text-align: center;
     max-width: 1800px;
@@ -94,6 +110,7 @@ h1 {
     text-align: center;
     font-size: 3em;
     font-weight: bold;
+    color: #FFF;
     /*margin: 20px;
     margin-bottom: 20px;
     display: inline-block;
@@ -131,7 +148,11 @@ p {
 }
 
 
-
+/* Students Overview */
+#students-container > h1 {
+    text-align: center;
+    color: #fff;
+}
 
 /* Student Registration Form */
 .studentRegForm {
@@ -160,7 +181,7 @@ p {
 }
 
 /* Student View */
-.studentView {
+.student-view {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
@@ -171,14 +192,19 @@ p {
     box-shadow: 0px 2px 4px #ccc;
 
 }
-
-.studentImage {
+.student-view .student-image {
     width:55px;
     height:60px;
     float: left;
-    margin: 5px -40px 5px 15px;
+    margin: 5px 50px 5px 15px;
 }
-
+.student-view .student-link{
+    float: left;
+}
+.student-view .student-info{
+    float: left;
+    padding: 4px;
+}
 .donorImage {
     position: relative;
     display: block;
