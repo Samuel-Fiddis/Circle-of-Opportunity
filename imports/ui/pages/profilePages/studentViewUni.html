@@ -1,0 +1,47 @@
+<template name = "studentViewUni">
+  <div id = "students-container" class = "container">
+    <h1>Students listed with their acceptance status</h1>
+    <!-- Enumerate over each user -->
+    <div class="container">
+
+      {{> orderButton}}
+
+      <div class="row">
+        {{#each user}}
+
+        <!-- Call StudentViewUniHelper for each user -->
+
+        {{ >studentViewUniHelper}}
+
+
+        {{/each}}
+      </div>
+
+    </div>
+  </div>
+</template>
+
+
+
+<template name = "studentViewUniHelper">
+  <div class="student-view col-xs-8 col-xs-offset-1"> <!-- studentView offset-2 -->
+    <img class="student-image" src="images/profile_pics/{{image}}" alt="image of student"> <!--studentImage-->
+    <a class = "student-link" href="/profilepage/{{_id}}"> <h3>{{name.first}} {{name.last}}</h3> </a> <br>
+    <div class = "student-info">
+      <span> <!--Age: {{age}} --> Email(s): {{#each emails}} {{address}} {{/each}} </span>
+      <br>
+      <span> Status: {{uni_info.eStatus}} </span>
+      <br>
+      <span> {{>statusButton}} </span>
+    </div>
+  </div>
+</template>
+
+<template name = "statusButton">
+	<select id=statusselecter>
+ <option value disabled selected>-- Change status to --</option>
+ <option value='Applying'>Applying</option>
+ <option value='Accepted'>Accepted</option>
+ <option value='Rejected'>Rejected</option>
+ </select>
+</template>

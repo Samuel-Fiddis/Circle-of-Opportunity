@@ -13,7 +13,7 @@ import '../../ui/pages/studentregister.js';
 import '../../ui/pages/contact.js';
 import '../../ui/pages/donatenow.js';
 import '../../ui/pages/studentRegForm.js';
-import '../../ui/pages/profilepage.js';
+import '../../ui/pages/profilePages/profilepage.js';
 import '../../ui/components/navBar.js';
 import '../../ui/pages/updateForm.js';
 import '../../ui/pages/donorregform.js';
