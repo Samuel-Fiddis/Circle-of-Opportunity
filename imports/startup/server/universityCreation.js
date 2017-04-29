@@ -15,11 +15,11 @@ if(Meteor.isServer) {
 
       Universities.insert(ImperialUni);
     }
-    
+
     // Create a universityAdmin user for Imperial
 
     var uniUser = Meteor.users.find({'emails.address': "uni@uni.uni"}).count()
-    console.log(uniUser);
+    // console.log(uniUser);
 
     if(uniUser == 0) {
 

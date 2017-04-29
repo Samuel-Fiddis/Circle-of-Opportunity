@@ -1,4 +1,5 @@
 <template name="livefeed">
+  HERE IS THE LIVE FEED OF TRANSACTIONS
   {{#each transaction}}
     <ul><a class="livefeedhref" href="/profilepage/{{this.idDonor}}">{{this.nameDonor}}</a> donated {{this.amount}} Ether to <a class="livefeedhref" href="/profilepage/{{this.idStudent}}"> {{this.nameStudent}} </a>  on {{this.createdAt}}!<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
   {{/each}}

@@ -218,7 +218,7 @@ p {
   box-shadow: 0px 2px 4px #ccc;
 }
 
-/*
+
 .UniCollectionInfo {
   float: left;
   margin-top: 10px;
@@ -231,4 +231,17 @@ p {
   border-radius: 6px;
   box-shadow: 0px 2px 4px #ccc;
 }
-*/
+
+
+.livefeed {
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50%;
+  padding: 10px;
+  height: 50%;
+  background: #eee;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  box-shadow: 0px 2px 4px #ccc;
+}

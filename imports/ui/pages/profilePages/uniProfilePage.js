@@ -22,9 +22,11 @@ Template.uniProfilePage.onCreated( function() {
       self.subscribe('thisUser', userid);
 
       if ( Meteor.users.findOne({"emails.address":"uni@uni.uni"}) ) {
-        console.log("subscribing to uniData here")
-        self.subscribe('uniData');
+        // console.log("subscribing to uniData here")
+        self.subscribe('uniStudentData');
       }
+
+      self.subscribe('uniCollectionData', userid);
 
     }
   });
@@ -40,6 +42,17 @@ Template.uniProfilePage.helpers({
     return Meteor.users.findOne({_id: id});
   },
 
+  // uniProfile: ()=> {
+  //   // var id = FlowRouter.getParam('id');
+  //   // var admin = Meteor.users.findOne({_id: id});
+  //   // var uniId = admin.adminFor;
+  //   // var uni = Universities.findOne({_id: uniId});
+  //   // console.log(uni);
+  //   var uni = Universities.findOne();
+  //   console.log(uni);
+  //   return "hello";
+  // }
+
 });
 
 Template.studentViewUni.helpers({
@@ -51,8 +64,8 @@ Template.studentViewUni.helpers({
     var selectionCriteria = Session.get("orderselection");
     var sortOrder = {};
     sortOrder[selectionCriteria] = 1;
-    console.log("Database query");
-    console.log(selectionCriteria);
+    // console.log("Database query");
+    // console.log(selectionCriteria);
     return Meteor.users.find({}, {sort: sortOrder});
   },
 
