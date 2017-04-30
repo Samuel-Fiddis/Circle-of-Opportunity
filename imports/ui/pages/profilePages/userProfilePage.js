@@ -106,43 +106,26 @@ Template.userProfilePage.events({
       throw new Meteor.Error("Wrong amount","Please fill out a real number");
     }
 
-    // query the database to get th epublic key
-    // var ethD = Meteor.users.findOne({_id: idD}).ethereum;
-    // var ethS = Meteor.users.findOne({_id: idS}).ethereum;
-
     // query the database to get the nameStudent
     var nS = Meteor.users.findOne({_id: idS}).name;
     var nD = Meteor.user().name;
 
     // TODO integrate the first part extern donor's account to COO donor's account
-
-    //second transaction :  COO donor's account to COO student's account
-
-    // call the function to make the transaction
+  // call the function to make the transaction
     // var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);
     // // insufficient funds
     // if (trans == false){
     //   throw new Meteor.Error("Insuficcient funds","Please send ether on your wallet");
     // }
-
-    //else{
-      // buils the options to store the transaction in the db
       var options = {
         type : "DtS",
         idStudent: idS,
         nameStudent: nS.first + " " + nS.last,
         idDonor: idD,
         nameDonor: nD.first + " " + nD.last,
-        amount: a,
-        //transactionHash: trans,
+        amount: a
       }
 
-      //   if(Transactions.insert(options)) {
-      //     console.log("Transaction Added");
-      //   }
-      //   else {
-      //   //  Need error handeling here
-      //  }
       Meteor.call('createTransaction', options, function(error, result) {
         // What happens if methods function returns an error
         // +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -162,7 +145,26 @@ Template.userProfilePage.events({
           //  FlowRouter.go('/??')
         }
       });
-    //}
+
+      var options1 ={
+        idStudent: idS,
+      }
+      Meteor.call('studentEnoughMoney', options1, function(error, result){
+        if(error) {
+          // display the error on the console log of the website
+          console.log("Error Flag");
+          console.log(error.reason);
+        }
+        // What happens if methods function works fine
+        else {
+          // Set the lastError to null
+          //template.lastError.set(null);
+          console.log("transaction done");
+          // redirect the user to another page after registration
+          //  FlowRouter.go('/??')
+        }
+
+      });
   }
 
 });

@@ -71,6 +71,9 @@ Accounts.onCreateUser(function(options,user) {
     user.company_info = options.company_info;
   }
 
+  if(options.money) {
+   user.money = options.money;
+ }
 
   // Add in non-default parameters
   // -----------------------------

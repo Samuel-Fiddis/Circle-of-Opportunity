@@ -73,7 +73,7 @@ Template.studentRegForm.events({
       isDonor: true,
       isUniAdmin: false
     }
-    
+
     // Name embedded document
     options.name = {
       first: $('input[name=firstName]').val(),
@@ -95,6 +95,9 @@ Template.studentRegForm.events({
       program: $('input[name=program]').val(),
       eStatus: $('select[name=enrolmentStatus]').val()
     }
+
+    options.money = $('input[name=money]').val();
+    // options.money = parseFloat($('input[name=money]').val());
 
 
     // Create an ethereum account & store public key address

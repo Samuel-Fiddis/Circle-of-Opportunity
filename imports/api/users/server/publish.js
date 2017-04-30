@@ -10,6 +10,7 @@ Meteor.publish('studentDataOverview', function () {
 			'age': 1,
 			'image': 1,
 			'uni_info': 1,
+			'money': 1,
 			'ethereum': 1}});
 });
 
@@ -57,6 +58,7 @@ Meteor.publish('singleUser', function (id) {
 			'interestedDonors': 1,
 			'interestStudent': 1,
 			'ethereum': 1,
+			'money': 1,
 			'balance': 1
 		}});
 });

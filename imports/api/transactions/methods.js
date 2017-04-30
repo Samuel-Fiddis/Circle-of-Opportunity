@@ -10,18 +10,6 @@ Meteor.methods({
 
   createTransaction: function(options) {
 
-    //     Transactions.schema.validate(options);
-
-    //     check(options,
-    //       {
-    //         // All users will have the following upon registration
-    //         type: String,
-    //         idStudent: String,
-    //         idDonor: String,
-    //         amount: Number,
-    //         transaction: String,
-    //       });
-
     var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
     var ethS = Meteor.users.findOne({_id:  options.idStudent}).ethereum;
 
@@ -35,6 +23,7 @@ Meteor.methods({
     options.transactionHash = trans;
 
     return Transactions.insert(options);
+
     //  }
     //return Transactions.insert(options);
     //{'type': options.type, 'idStudent': options.idStudent, 'idDonor': options.idDonor, 'amount': options.amount, 'transactionHash': options.transactionHash}
@@ -57,5 +46,26 @@ Meteor.methods({
     options.nameStudent = "the general pot";
 
     return Transactions.insert(options);
-  }
+  },
+
+  studentEnoughMoney: function(options){
+    var ethS = Meteor.users.findOne({_id:  options.idStudent}).ethereum;
+    var money = Meteor.users.findOne({_id:  options.idStudent}).money;
+    console.log(ethGetBalance(ethS));
+    console.log(money);
+    money =0.1;
+
+    if(ethGetBalance(ethS)>money){
+      console.log("enough money");
+      // var op = {
+      //   type : "StS",
+      //   idStudent: idS,
+      //   nameStudent: nS.first + " " + nS.last,
+      //   idDonor: idD,
+      //   nameDonor: nD.first + " " + nD.last,
+      //   amount: money
+      // }
+    }
+
+  },
 });

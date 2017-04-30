@@ -82,6 +82,7 @@ Meteor.methods({
         phone: String,
         age: String,
         image: String,
+      //  money: String,
         ethereum: String,
         name:
         {
