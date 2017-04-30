@@ -19,9 +19,10 @@
       Interested Donors:
       <br>
       {{#each interestedDonors}}
-      id: {{.[0]}}
       {{#with donorInfo @index}}
-      Name: {{name.first}} {{name.last}}
+      <a class="livefeedhref" href="/profilepage/{{_id}}">
+        Name: {{name.first}} {{name.last}}
+      </a>
       <br>
       {{/with}}
       {{/each}}
@@ -31,14 +32,15 @@
 <template name = "donorProfileRegisterInterest">
   <h3> Students interested in </h3>
   <div class = "container">
-    Name: {{name.first}}
     <br>
     Registered interest in:
     <br>
     {{#each interestStudent}}
-    Student id: {{.[0]}}
     {{#with studentInfo @index}}
-    Name: {{name.first}} {{name.last}}
+    <a class="livefeedhref" href="/profilepage/{{_id}}">
+      Name: {{name.first}} {{name.last}}
+    </a>
+    <br>
     {{/with}}
     {{/each}}
   </div>
