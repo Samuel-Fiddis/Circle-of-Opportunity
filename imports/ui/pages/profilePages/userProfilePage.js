@@ -6,7 +6,8 @@ import './userProfilePage.html';
 import '/imports/api/users/helpers.js';
 import '/imports/ui/components/liveFeed.js';
 import '/imports/ui/components/profileInfo.js';
-import '/imports/ui/components/donationInfo.html';
+import '/imports/ui/components/donationInfo.js'
+//import '/imports/ui/components/donationInfo.html';
 import '/imports/ui/components/registerInterest.js';
 
 

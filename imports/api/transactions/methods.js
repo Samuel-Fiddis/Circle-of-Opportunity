@@ -57,5 +57,20 @@ Meteor.methods({
     options.nameStudent = "the general pot";
 
     return Transactions.insert(options);
+  },
+
+  totalDonation: function(options) {
+
+    check(options,String);
+
+    var transactionPointer = Transactions.find({idDonor: options});
+    totalAmount = 0;
+
+    transactionPointer.forEach(function(transaction) {
+      totalAmount = totalAmount + transaction.amount;
+    });
+
+    return totalAmount;
+
   }
 });
