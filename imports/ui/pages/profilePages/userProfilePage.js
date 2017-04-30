@@ -5,7 +5,7 @@ import { Transactions } from '/imports/api/transactions/transactions.js';
 import './userProfilePage.html';
 import '/imports/api/users/helpers.js';
 import '/imports/ui/components/liveFeed.js';
-import '/imports/ui/components/profileInfo.html';
+import '/imports/ui/components/profileInfo.js';
 import '/imports/ui/components/donationInfo.html';
 import '/imports/ui/components/registerInterest.js';
 
@@ -17,7 +17,6 @@ Template.userProfilePage.onCreated( function () {
 
   // Subscribe thisUser publication: returns the entire user document for the currently logged in user
   // Subscribe singleUser publication: returns just public info of single user
-  // Subscribe uniData returns data of all students -> relevant for university after login page
 
   var self = this;
 
@@ -25,8 +24,6 @@ Template.userProfilePage.onCreated( function () {
 
     var id = FlowRouter.getParam('id');
     var userid = Meteor.userId();
-
-    // subscribe to personal profile info
 
     if(id == userid){
       self.subscribe('thisUser', userid);
@@ -41,17 +38,17 @@ Template.userProfilePage.onCreated( function () {
 
 });
 
-
-
 Template.userProfilePage.events({
 
-  // Event to define what happens when you submit the register form
-  // **************************************************************
+  // Event to define what happens when you click the updateInterest button
+  // **********************************************************************
 
   'click .updateinterest': function(event,template) {
     if(event)
+
     // get the id of the student with this profile page
     var studentId = FlowRouter.getParam('id');
+
     // call the updateInterest method passing on the studentId
     // =======================================================
 
@@ -62,29 +59,15 @@ Template.userProfilePage.events({
 
     Meteor.call('updateInterest', studentId, function(error, result) {
 
-      // What happens if methods function returns an error
-      // +++++++++++++++++++++++++++++++++++++++++++++++++
-
       if(error) {
-
-        // display the error on the console log of the website
         console.log(error.reason);
 
-        // Set the lastError variable
-        /*
-        template.lastError.set(error.reason);
-        */
       }
-      // What happens if methods function works fine
-      // ++++++++++++++++++++++++++++++++++++++++++++
+
       else {
-        // Set the lastError to null
-        /*
-        template.lastError.set(null);
-        */
-        // redirect the user to another page
-        FlowRouter.go('/')
+        console.log("interest updated");
       };
+
     });
 
 
@@ -169,7 +152,7 @@ Template.userProfilePage.events({
 
 Template.userProfilePage.helpers({
 
-  // userData is the selected User's document
+  // userProfile is the selected User's document
   // **************************************
 
   userProfile: ()=> {
@@ -178,20 +161,11 @@ Template.userProfilePage.helpers({
   },
 
   // test to see if this profile is their profilepage
+  // ************************************************
+
   ownProfile: ()=> {
     var id = FlowRouter.getParam('id');
     return Meteor.userId() == id;
-  },
-
-
-  // balance is the balance on the current user's ethereum account
-  // *************************************************************
-
-  // need to check that the "this" here still works the same way as in studentView
-  // nope it doesnt -- need to fix this
-  balance: function() {
-    var myEthAddr = this.ethereum;
-    return ethGetBalance(myEthAddr);
   },
 
   // checking if profile belongs to a student
