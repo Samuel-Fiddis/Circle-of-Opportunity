@@ -12,16 +12,16 @@ contract mortal {
 }
 
 contract timeout is mortal {
-    mapping (address => uint) public pendingBalance;
+    //mapping (address => uint) public pendingBalance;
 
-    function wait_for_approval(address sendto, uint weiAmount) returns (bool) {
+    function wait_for_approval(address sendto) {
         // TODO: check that sendto address is valid, if not then throw
 
-        pendingBalance[sendto] = weiAmount;
+        //pendingBalance[sendto] = msg.value; // wei value sent with the transaction
 
     }
 
-    function amount_pending(address sendto) returns (uint) {
-        return pendingBalance[sendto];
-    }
+    //function amount_pending(address sendto) returns (uint) {
+    //    return pendingBalance[sendto];
+    //}
 }
