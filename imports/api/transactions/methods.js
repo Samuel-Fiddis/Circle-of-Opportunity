@@ -63,14 +63,71 @@ Meteor.methods({
 
     check(options,String);
 
-    var transactionPointer = Transactions.find({idDonor: options});
-    totalAmount = 0;
+    // For someone who isnt a student
+    // *******************************
+    var user = Meteor.users.findOne({_id: options});
 
-    transactionPointer.forEach(function(transaction) {
-      totalAmount = totalAmount + transaction.amount;
-    });
+    if(user.userType.isStudent) {
+
+      var transactionPointer = Transactions.find({idStudent: options});
+      totalAmount = 0;
+
+      transactionPointer.forEach(function(transaction) {
+        totalAmount = totalAmount + transaction.amount;
+      });
+
+    }
+
+    else {
+
+      var transactionPointer = Transactions.find({idDonor: options});
+      totalAmount = 0;
+
+      transactionPointer.forEach(function(transaction) {
+        totalAmount = totalAmount + transaction.amount;
+      });
+
+    }
 
     return totalAmount;
 
-  }
+  },
+
+  studentDonatedTo: function(id) {
+
+    var student = [];
+
+    var transactionPointer = Transactions.find({idDonor: id});
+
+    transactionPointer.forEach( function(transaction) {
+
+      console.log(transaction.idStudent);
+
+      if(transaction.idStudent != "general") {
+
+        var found = student.find( function(value) {
+          return value.id == transaction.idStudent
+        });
+
+        if(found) {
+          found.amount = found.amount + transaction.amount;
+        }
+        else {
+          student.push(
+            {
+              id: transaction.idStudent,
+              name: transaction.nameStudent,
+              amount: transaction.amount,
+            }
+          )
+        }
+
+      };
+
+    });
+
+  return student;
+
+  },
+
 });
