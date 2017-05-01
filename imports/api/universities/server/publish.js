@@ -33,3 +33,9 @@ Meteor.publish('singleUniversity', function(id){
 
 });
 
+Meteor.publish('uniCollectionData', function(id) {
+	check(id,String);
+	user = Meteor.users.findOne({_id: id});
+	uniId = user.adminFor;
+	return Universities.find({_id: uniId});
+});

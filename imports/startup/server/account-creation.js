@@ -50,9 +50,9 @@ Accounts.onCreateUser(function(options,user) {
 
       // Checking if Imperial College already exists (if it doesnt, create it)
       // NOTE: To be deleted or changed after University interface is set up
-      if(Universities.findOne({name: options.uni_info.uni}) == null) {
-        Universities.insert({name: options.uni_info.uni, address: "huxley"});
-      }
+      // if(Universities.findOne({name: options.uni_info.uni}) == null) {
+      //   Universities.insert({name: options.uni_info.uni, address: "huxley"});
+      // }
 
       // Changing the university name field to the university _id of db doc
       var uni = Universities.findOne({name: options.uni_info.uni});
@@ -109,6 +109,12 @@ Accounts.onCreateUser(function(options,user) {
     user.ethereum = options.ethereum;
   }
 
+  // Store information just for the universityAdmin user
+  if(options.userType.isUniAdmin) {
+    uni = Universities.findOne({name: options.adminFor})
+    user.adminFor = uni._id;
+  }
+
   // Want to keep the default hook's profile behavior
   if(options.profile) {
     user.profile = options.profile;
@@ -119,7 +125,7 @@ Accounts.onCreateUser(function(options,user) {
   //    MAIL_URL='smtp://USERNAME:PASSWORD@HOST:PORT'
   //    export MAIL_URL
   //    For Gmail: HOST=smtp.gmail.com, PORT=587
-  /*  
+  /*
   to_email = user.name.first + " <" + newEmail + ">"
   Meteor.call(
     'sendEmail',

@@ -1,0 +1,92 @@
+<template name="userProfilePage">
+
+  {{#if ownProfile}}
+  <h1> This is your Profile Page </h1>
+  {{else}}
+  <h1> {{userProfile.name.first}} {{userProfile.name.last}} </h1>
+  {{/if}}
+
+  <div id= "profile-container" class = "container">
+
+    <div class = "row">
+
+      <div class = "col-md-5 col-md-offset-2">
+
+        <div class = "profileInfo">
+
+          <img class="donorImage" src="{{fileURL donorImage}}">
+
+          {{ > publicProfileInfo userProfile}}
+
+          {{#if ownProfile}}
+          {{ > privateProfileInfo userProfile}}
+          {{/if}}
+
+          {{#if student}}
+          {{ > opportunityInfo userProfile}}
+          {{/if}}
+
+          {{ > ethereumPaymentInfo userProfile}}
+
+          {{#if ownProfile}}
+          {{ > updateProfileButton }}
+          {{/if}}
+
+          {{#unless ownProfile}}
+          {{#if student}}
+          <br>
+          <br>
+          {{ > directDonationButton userProfile.name}}
+          {{/if}}
+          {{/unless}}
+
+        </div>
+
+      </div>
+
+      <div class = "col-md-4">
+
+        {{#if student}}
+
+        <div class = "registerInterest">
+
+          {{ > registerInterestButton }}
+          {{ > studentProfileRegisterInterest userProfile}}
+
+        </div>
+
+        <div class = "donationInfo">
+          {{ > studentProfileDonationInfo }}
+        </div>
+
+        {{else}}
+
+        <div class = "registerInterest">
+          {{ > donorProfileRegisterInterest userProfile}}
+        </div>
+
+        <div class = "donationInfo">
+          {{ > donorProfileDonationInfo }}
+        </div>
+
+        {{/if}}
+
+      </div>
+
+    </div>
+
+    <div class = "row">
+
+      <div class = "col-md-9 col-md-offset-2">
+
+        <div class = "livefeed">
+          {{ > livefeed }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</template>

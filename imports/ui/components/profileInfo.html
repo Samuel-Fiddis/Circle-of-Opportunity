@@ -1,0 +1,50 @@
+<template name = "publicProfileInfo">
+    <h3> This is your profile information </h3>
+    Name: {{name.first}} {{name.middle}} {{name.last}}
+    <br>
+    Address: {{address.street}}, {{address.city}}, {{address.country}}
+    <br>
+    Age: {{age}}
+    <br>
+    Bio: {{bio}}
+    <br>
+</template>
+
+<template name = "opportunityInfo">
+  University: {{uniProfile.name}}
+  <br>
+  Program: {{uni_info.program}}
+  <br>
+  Status: {{uni_info.eStatus}}
+  <br>
+</template>
+
+<template name = "ethereumPaymentInfo">
+  Ethereum public key: <a href="https://ropsten.etherscan.io/address/{{ethereum}}" class="livefeedhref">{{ethereum}}</a>
+  <br>
+  Ethereum balance: {{balance}}
+  <br>
+</template>
+
+<template name = "privateProfileInfo">
+  Phone: {{phone}}
+  <br>
+
+  {{#each emails}}
+  <div>Email: {{address}}</div>
+  {{/each}}
+</template>
+
+<template name = "updateProfileButton">
+  <a class ="livefeedhref" href="/updateForm">Update My Profile</a>
+  <br>
+</template>
+
+<template name = "UniversityInformation">
+  University: {{name}}
+  <br>
+  Programs involved with COO: Msc of Computing Science
+  <br>
+  Address: {{address}}
+  <br>
+</template>

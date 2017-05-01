@@ -1,0 +1,27 @@
+<template name = "studentProfileDonationInfo">
+    <h3> Donors who have donated </h3>
+    <div class = "container">
+      Donor A : donated amount XXX (link to donorA)
+      <br>
+      Donor B: donated amount XXX (link to donorB)
+      <br>
+    </div>
+</template>
+
+<template name = "donorProfileDonationInfo">
+  <h3> Students donated to </h3>
+  <div class = "container">
+    Total amount donated: {{totalDonation}}
+    <br>
+    Student A: donated amount XXX (link to studentA)
+    <br>
+    Student B: donated amount XXX (link to studentB)
+    <br>
+    <!-- {{ > liveFeed }} -->
+  </div>
+</template>
+
+<template name = "directDonationButton">
+  <input class="donation-input" type="number" name="amount" min =0.001 placeholder="Donation Amount" value=0.1 >
+  <button class = "createTrans">Donate To {{first}} {{last}}</button>
+</template>
