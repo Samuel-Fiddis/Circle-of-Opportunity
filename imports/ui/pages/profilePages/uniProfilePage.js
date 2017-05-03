@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Universities } from '/imports/api/universities/universities.js'
 
 import './uniProfilePage.html';
 import './studentViewUni.html';
@@ -42,16 +43,12 @@ Template.uniProfilePage.helpers({
     return Meteor.users.findOne({_id: id});
   },
 
-  // uniProfile: ()=> {
-  //   // var id = FlowRouter.getParam('id');
-  //   // var admin = Meteor.users.findOne({_id: id});
-  //   // var uniId = admin.adminFor;
-  //   // var uni = Universities.findOne({_id: uniId});
-  //   // console.log(uni);
-  //   var uni = Universities.findOne();
-  //   console.log(uni);
-  //   return "hello";
-  // }
+  uniProfile: ()=> {
+    var id = FlowRouter.getParam('id');
+    var admin = Meteor.users.findOne({_id: id});
+    var uniId = admin.adminFor;
+    return Universities.findOne({_id: uniId});
+  }
 
 });
 
