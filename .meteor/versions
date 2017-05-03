@@ -1,3 +1,4 @@
+3stack:bignumber@2.0.0
 accounts-base@1.2.16
 accounts-password@1.3.5
 alanning:roles@1.2.16
@@ -10,6 +11,7 @@ aldeed:simple-schema@1.5.3
 aldeed:tabular@1.4.2
 aldeed:template-extension@3.4.3
 allow-deny@1.0.5
+amplify@1.0.0
 anti:fake@0.4.1
 anti:i18n@0.4.3
 autoupdate@1.3.12
@@ -41,9 +43,12 @@ ejson@1.0.13
 email@1.2.0
 erasaur:meteor-lodash@4.0.0
 es5-shim@4.6.15
+ethereum:tools-local@0.6.0
 ethereum:web3@0.18.3
 fastclick@1.0.13
 fortawesome:fontawesome@4.7.0
+frozeman:persistent-minimongo@0.1.8
+frozeman:storage@0.1.9
 geojson-utils@1.0.10
 gwendall:auth-client-callbacks@0.1.0
 hot-code-push@1.0.4
@@ -125,7 +130,6 @@ service-configuration@1.0.11
 session@1.1.7
 sha@1.0.9
 shell-server@0.2.3
-simple:reactive-method@1.0.2
 spacebars@1.0.13
 spacebars-compiler@1.1.1
 spiderable@1.0.13
