@@ -37,9 +37,6 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
 
   // unlock the account with appropritae passphrase
   web3.personal.unlockAccount(fromAddress, fromPassword);
-  //if (!web3.personal.unlockAccount(fromAddress, fromPassword)){
-  //  throw "sendFrom account is not unlocked";
-  //};
 
   // TODO: test above function does not fail from no keyfile or incorrect password;
   var transactionObject = {
@@ -54,23 +51,25 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
 
   result = web3.eth.sendTransaction(transactionObject);
   // TODO: test above function does not fail from insufficient funds
-  /*
-  if (result == false) {
-      throw "sendTransaction function failed"
-  }
-
-  for(i = 0; i < 60; i++) {
-    await sleep(1000);
-    status = eth.getTransaction(result);
-    if ( status.blockNumber != null || satus.blockNumber > 0) {
-      break;
-    }
-  }*/
 
   return result;
 }
 
 /*
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}/*
+Template.balance.helpers({
+balance() {
+var i =0;
+eth.accounts.forEach( function(e){
+console.log("  eth.accounts["+i+"]: " +  e + " \tbalance: " + web3.fromWei(eth.getBalance(e), "ether") + " ether");
+i++;
+})
+},
+});
+
+Template.balance.events({
+'click button'(event, instance) {
+// increment the counter when button is clicked
+balance();
+},
+});
+*/

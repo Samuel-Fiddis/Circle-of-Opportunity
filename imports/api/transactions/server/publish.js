@@ -16,13 +16,3 @@ Meteor.publish('topStudentTransactions', function(id,nT){
 Meteor.publish('topDonorTransactions', function(id,nT){
 	return Transactions.find({idDonor: id},{sort: {createdAt: -1}, limit: nT});
 });
-
-Meteor.publish('thisUserTransactions', function(id) {
-	var user = Meteor.users.findOne({_id: id});
-	if(user.userType.isStudent){
-		return Transactions.find({idStudent: id});
-	}
-	else {
-		return Transactions.find({idDonor: id});
-	}
-});
