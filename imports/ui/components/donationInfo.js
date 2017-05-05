@@ -14,6 +14,11 @@ Template.donorProfileDonationInfo.helpers({
     return ReactiveMethod.call('totalDonation',id);
   },
 
+  student: function(){
+    var id = FlowRouter.getParam('id');
+    return ReactiveMethod.call('DonatedTo',id);
+  }
+
 });
 
 // --------------------------------------
@@ -26,5 +31,10 @@ Template.studentProfileDonationInfo.helpers({
     var id = FlowRouter.getParam('id');
     return ReactiveMethod.call('totalDonation',id);
   },
+
+  donor: function(){
+    var id = FlowRouter.getParam('id');
+    return ReactiveMethod.call('DonatedTo',id);
+  }
 
 })

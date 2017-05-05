@@ -92,5 +92,79 @@ Meteor.methods({
 
     return totalAmount;
   },
-  
+
+  DonatedTo: function(id) {
+
+    check(id,String);
+
+    var user = Meteor.users.findOne({_id: id});
+
+    // IF calling this from a student's profile page
+    if(user.userType.isStudent) {
+
+      var donor = [];
+
+      var transactionPointer = Transactions.find({idStudent: id});
+
+      transactionPointer.forEach( function(transaction) {
+
+        if(transaction.idStudent != "general") {
+
+          var found = donor.find(function(value){
+            return value.id == transaction.idDonor
+          });
+
+          if(found) {
+            found.amount = found.amount + transaction.amount;
+          }
+          else {
+            donor.push(
+              {
+                id: transaction.idDonor,
+                name: transaction.nameDonor,
+                amount: transaction.amount,
+              }
+            )
+          }
+
+        };
+
+      });
+
+      return donor;
+
+    }
+
+    // IF not calling this from a student's profile page
+    var student = [];
+
+    var transactionPointer = Transactions.find({idDonor: id});
+
+    transactionPointer.forEach( function(transaction) {
+
+      if(transaction.idStudent != "general") {
+
+        var found = student.find( function(value) {
+          return value.id == transaction.idStudent
+        });
+
+        if(found) {
+          found.amount = found.amount + transaction.amount;
+        }
+        else {
+          student.push(
+            {
+              id: transaction.idStudent,
+              name: transaction.nameStudent,
+              amount: transaction.amount,
+            }
+          )
+        }
+
+      };
+
+    });
+
+    return student;
+  },
 });
