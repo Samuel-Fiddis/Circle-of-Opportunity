@@ -11,6 +11,8 @@ import '/imports/api/users/helpers.js';
 // Import email methods to be used on server
 import '/imports/api/email/methods.js';
 
+// Import general pot allocation method
+import '/imports/api/general_pot_allocation/methods.js';
 
 import '../../api/ethereum/ethereum.js';
 import '../../api/ethereum/etherscan.js';

@@ -17,6 +17,7 @@ import '../../ui/pages/profilePages/profilepage.js';
 import '../../ui/components/navBar.js';
 import '../../ui/pages/updateForm.js';
 import '../../ui/pages/donorregform.js';
+import '../../ui/pages/demoButtons.js';
 
 // import '../../ui/pages/etherTest.js';
 
@@ -108,5 +109,12 @@ FlowRouter.route('/updateForm', {
   name: 'updateForm',
   action () {
     BlazeLayout.render('mainpage', {main: 'updateForm'});
+  },
+});
+
+FlowRouter.route('/demobuttons', {
+  name: 'demobuttons',
+  action(){
+    BlazeLayout.render('mainpage', {main: 'demobuttons'});
   },
 });
