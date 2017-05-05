@@ -63,14 +63,34 @@ Meteor.methods({
 
     check(options,String);
 
-    var transactionPointer = Transactions.find({idDonor: options});
-    totalAmount = 0;
+    // For someone who isnt a student
+    // ******************************
 
-    transactionPointer.forEach(function(transaction) {
-      totalAmount = totalAmount + transaction.amount;
-    });
+    var user = Meteor.users.findOne({_id: options});
+
+    if(user.userType.isStudent) {
+
+      var transactionPointer = Transactions.find({idStudent: options});
+      totalAmount = 0;
+
+      transactionPointer.forEach(function(transaction) {
+        totalAmount = totalAmount + transaction.amount;
+      });
+
+    }
+
+    else {
+
+      var transactionPointer = Transactions.find({idDonor: options});
+      totalAmount = 0;
+
+      transactionPointer.forEach(function(transaction) {
+        totalAmount = totalAmount + transaction.amount;
+      });
+
+    }
 
     return totalAmount;
-
-  }
+  },
+  
 });
