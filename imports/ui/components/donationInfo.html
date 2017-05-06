@@ -1,23 +1,30 @@
 <template name = "studentProfileDonationInfo">
     <h3> Donors who have donated </h3>
     <div class = "container">
-      Donor A : donated amount XXX (link to donorA)
+      Total Amount Raised: {{totalDonation}} Ether
       <br>
-      Donor B: donated amount XXX (link to donorB)
+      {{#each donor}}
+      <a class="livefeedhref" href="/profilepage/{{id}}">
+        Donor {{name}} :
+      </a>
+      donated {{amount}} Ether
       <br>
+      {{/each}}
     </div>
 </template>
 
 <template name = "donorProfileDonationInfo">
   <h3> Students donated to </h3>
   <div class = "container">
-    Total amount donated: {{totalDonation}}
+    Total amount donated: {{totalDonation}} Ether
     <br>
-    Student A: donated amount XXX (link to studentA)
+    {{#each student}}
+    <a class="livefeedhref" href="/profilepage/{{id}}">
+      Student {{name}}:
+    </a>
+    donated {{amount}} Ether
     <br>
-    Student B: donated amount XXX (link to studentB)
-    <br>
-    <!-- {{ > liveFeed }} -->
+    {{/each}}
   </div>
 </template>
 
