@@ -14,10 +14,10 @@ contract mortal {
 contract Timeout {
     mapping (address => uint) storedData;
 
-    function set(uint val, address send_to) payable {
+    function set(address send_to) payable {
         // TODO: check that sendto address is valid, if not then throw
 
-        storedData[send_to] = val;
+        storedData[send_to] = msg.value;
     }
 
     function get(address send_to) constant returns (uint) {
