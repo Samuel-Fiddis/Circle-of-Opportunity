@@ -1,6 +1,6 @@
 pragma solidity ^0.4.0;
 
-contract mortal {
+contract Mortal {
     /* Define variable owner of the type address*/
     address owner;
 
@@ -11,16 +11,30 @@ contract mortal {
     function kill() { if (msg.sender == owner) selfdestruct(owner); }
 }
 
-contract Timeout {
-    mapping (address => uint) storedData;
+contract Timeout is Mortal {
+    struct pot {
+        uint release_block;
+        uint amount;
+    }
+    mapping (address => pot) pending_students;
 
-    function set() payable {
-        // TODO: check that sendto address is valid, if not then throw
-
-        storedData[msg.sender] = msg.value;
+    function set(address send_to) payable {
+        pending_students[send_to].amount = msg.value;
+        pending_students[send_to].release_block = now + 2 minutes;
     }
 
-    function get() constant returns (uint) {
-        return storedData[msg.sender];
+    function forward(address send_to) payable returns (bool) {
+        if (now < pending_students[send_to].release_block) return false;
+        if (!send_to.send(pending_students[send_to].amount)) return false;
+        pending_students[send_to].amount = 0;
+        return true;
+    }
+
+    function get_amount(address send_to) constant returns (uint) {
+        return pending_students[send_to].amount;
+    }
+
+    function get_release_block(address send_to) constant returns (uint) {
+        return pending_students[send_to].release_block;
     }
 }

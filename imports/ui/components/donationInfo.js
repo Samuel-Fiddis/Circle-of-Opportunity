@@ -17,6 +17,10 @@ Template.donorProfileDonationInfo.helpers({
   student: function(){
     var id = FlowRouter.getParam('id');
     return ReactiveMethod.call('DonatedTo',id);
+  },
+
+  generalPot: function(name){
+    return name == "general";
   }
 
 });

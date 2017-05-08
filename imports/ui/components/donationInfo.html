@@ -4,10 +4,10 @@
       Total Amount Raised: {{totalDonation}} Ether
       <br>
       {{#each donor}}
+      {{name}} donated {{amount}} Ether
       <a class="livefeedhref" href="/profilepage/{{id}}">
-        Donor {{name}} :
+        see their profile page
       </a>
-      donated {{amount}} Ether
       <br>
       {{/each}}
     </div>
@@ -19,10 +19,12 @@
     Total amount donated: {{totalDonation}} Ether
     <br>
     {{#each student}}
+    donated {{amount}} Ether to {{name}}
+    {{#unless generalPot id}}
     <a class="livefeedhref" href="/profilepage/{{id}}">
-      Student {{name}}:
+    see their profile page
     </a>
-    donated {{amount}} Ether
+    {{/unless}}
     <br>
     {{/each}}
   </div>

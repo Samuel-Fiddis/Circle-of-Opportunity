@@ -108,26 +108,22 @@ Meteor.methods({
 
       transactionPointer.forEach( function(transaction) {
 
-        if(transaction.idStudent != "general") {
+        var found = donor.find(function(value){
+          return value.id == transaction.idDonor
+        });
 
-          var found = donor.find(function(value){
-            return value.id == transaction.idDonor
-          });
-
-          if(found) {
-            found.amount = found.amount + transaction.amount;
-          }
-          else {
-            donor.push(
-              {
-                id: transaction.idDonor,
-                name: transaction.nameDonor,
-                amount: transaction.amount,
-              }
-            )
-          }
-
-        };
+        if(found) {
+          found.amount = found.amount + transaction.amount;
+        }
+        else {
+          donor.push(
+            {
+              id: transaction.idDonor,
+              name: transaction.nameDonor,
+              amount: transaction.amount,
+            }
+          )
+        }
 
       });
 
@@ -142,26 +138,22 @@ Meteor.methods({
 
     transactionPointer.forEach( function(transaction) {
 
-      if(transaction.idStudent != "general") {
+      var found = student.find( function(value) {
+        return value.id == transaction.idStudent
+      });
 
-        var found = student.find( function(value) {
-          return value.id == transaction.idStudent
-        });
-
-        if(found) {
-          found.amount = found.amount + transaction.amount;
-        }
-        else {
-          student.push(
-            {
-              id: transaction.idStudent,
-              name: transaction.nameStudent,
-              amount: transaction.amount,
-            }
-          )
-        }
-
-      };
+      if(found) {
+        found.amount = found.amount + transaction.amount;
+      }
+      else {
+        student.push(
+          {
+            id: transaction.idStudent,
+            name: transaction.nameStudent,
+            amount: transaction.amount,
+          }
+        )
+      }
 
     });
 
