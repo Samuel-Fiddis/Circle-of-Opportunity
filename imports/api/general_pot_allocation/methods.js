@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Transactions } from '../transactions/transactions.js';
 
 Meteor.methods({
 
@@ -6,7 +7,7 @@ Meteor.methods({
 
     console.log('Entering reallocation method');
     // Set up variables to be used
-    var goalAmount = 0.2;
+    var goalAmount = 0.27;
     var balance_table = [];
     var potBalance = ethGetBalance('0xc08ee9c6252fb61271520dacac9a6126255bc81e');
     var totalEther = potBalance;
@@ -35,6 +36,7 @@ Meteor.methods({
     // Determine who is in the cut off and who isn't
 
     var numAccepted =  Math.floor(totalEther/goalAmount);
+    if(users.length < numAccepted) numAccepted = users.length;
 
     console.log(numAccepted);
 
@@ -60,25 +62,7 @@ Meteor.methods({
         transactionHash: trans,
       }
 
-      Meteor.call('donatenow', options, function(error, result) {
-        // What happens if methods function returns an error
-        // +++++++++++++++++++++++++++++++++++++++++++++++++
-        console.log("Entered Method Flag");
-
-        if(error) {
-          // display the error on the console log of the website
-          console.log("Error Flag");
-          console.log(error.reason);
-        }
-        // What happens if methods function works fine
-        else {
-          // Set the lastError to null
-          //template.lastError.set(null);
-          console.log("transaction done");
-          // redirect the user to another page after registration
-          //  FlowRouter.go('/??')
-        }
-      });
+      Transactions.insert(options);
     }
 
     // Take all of the funds in the general pot and distribute them to the remaining students
@@ -87,8 +71,8 @@ Meteor.methods({
       var transferBalance = goalAmount - balance_table[i].balance;
       console.log(transferBalance);
       if(transferBalance > 0){
-        console.log('doing transfers');
         var trans = ethSendEtherTransaction('0xc08ee9c6252fb61271520dacac9a6126255bc81e',"general",balance_table[i].ethereum,transferBalance);
+        console.log(trans);
 
         var idS = balance_table[i]._id;
         var nS = balance_table[i].name;
@@ -104,25 +88,7 @@ Meteor.methods({
           transactionHash: trans,
         }
 
-        Meteor.call('donatenow', options, function(error, result) {
-          // What happens if methods function returns an error
-          // +++++++++++++++++++++++++++++++++++++++++++++++++
-          console.log("Entered Method Flag");
-
-          if(error) {
-            // display the error on the console log of the website
-            console.log("Error Flag");
-            console.log(error.reason);
-          }
-          // What happens if methods function works fine
-          else {
-            // Set the lastError to null
-            //template.lastError.set(null);
-            console.log("transaction done");
-            // redirect the user to another page after registration
-            //  FlowRouter.go('/??')
-          }
-        });
+        Transactions.insert(options);
       }
     }
 
