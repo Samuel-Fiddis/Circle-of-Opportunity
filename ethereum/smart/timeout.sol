@@ -19,13 +19,19 @@ contract Timeout is Mortal {
     mapping (address => pot) pending_students;
 
     function set(address send_to) payable {
-        pending_students[send_to].amount = msg.value;
+        pending_students[send_to].amount += msg.value;
         pending_students[send_to].release_block = now + 2 minutes;
     }
 
     function forward(address send_to) payable returns (bool) {
         if (now < pending_students[send_to].release_block) return false;
         if (!send_to.send(pending_students[send_to].amount)) return false;
+        pending_students[send_to].amount = 0;
+        return true;
+    }
+
+    function cancel_student(address send_to) payable returns (bool) {
+        if (!owner.send(pending_students[send_to].amount)) return false;
         pending_students[send_to].amount = 0;
         return true;
     }
