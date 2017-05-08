@@ -31,6 +31,7 @@ contract Timeout is Mortal {
     }
 
     function cancel_student(address send_to) payable returns (bool) {
+        if (msg.sender != owner) return false;
         if (!owner.send(pending_students[send_to].amount)) return false;
         pending_students[send_to].amount = 0;
         return true;
