@@ -25,7 +25,9 @@ Meteor.methods({
     var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
     var ethS = Meteor.users.findOne({_id:  options.idStudent}).ethereum;
 
-    var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, options.amount);
+    // look for the password of the account in the secret file
+    var pwdSender = Meteor.settings.pwdDonorCoo;
+    var trans = ethSendEtherTransaction(ethD, pwdSender, ethS, options.amount);
 
     //   // insufficient funds
     //   if (trans == false){
@@ -44,7 +46,11 @@ Meteor.methods({
 
     var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
 
-    var trans = ethSendEtherTransaction(ethD, "jackAccount1", "0xc08ee9c6252fb61271520dacac9a6126255bc81e", options.amount);
+    // look for the password of the account in the secret file
+    var pwdSender = Meteor.settings.pwdDonorCoo;
+    var keyGeneral = Meteor.settings.general.generalKey;
+
+    var trans = ethSendEtherTransaction(ethD, pwdSender, keyGeneral, options.amount);
 
     // web3.personal.unlockAccount("general", "0xc08ee9c6252fb61271520dacac9a6126255bc81e")
     // insufficient funds
@@ -52,9 +58,10 @@ Meteor.methods({
     //     throw new Meteor.Error("Insuficient funds","Please send ether on your wallet");
     //   }
     //   else{
+
     options.transactionHash = trans;
-    options.idStudent = "general";
-    options.nameStudent = "the general pot";
+    options.idStudent =  Meteor.settings.general.generalId;
+    options.nameStudent =  Meteor.settings.general.generalName;
 
     return Transactions.insert(options);
   },

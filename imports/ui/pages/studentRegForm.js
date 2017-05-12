@@ -73,7 +73,7 @@ Template.studentRegForm.events({
       isDonor: true,
       isUniAdmin: false
     }
-    
+
     // Name embedded document
     options.name = {
       first: $('input[name=firstName]').val(),

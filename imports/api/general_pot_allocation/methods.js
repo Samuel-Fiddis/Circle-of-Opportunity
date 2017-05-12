@@ -45,7 +45,7 @@ Meteor.methods({
       console.log('In student to GP reallocation step');
       var transferBalance = balance_table[i].balance - gasPrice;
       console.log(transferBalance);
-      var trans = ethSendEtherTransaction(balance_table[i].ethereum,"password",'0xc08ee9c6252fb61271520dacac9a6126255bc81e',transferBalance);
+      var trans = ethSendEtherTransaction(balance_table[i].ethereum,"password",Meteor.settings.general.generalKey,transferBalance);
       console.log(trans);
 
       var idD = balance_table[i]._id;
@@ -55,9 +55,9 @@ Meteor.methods({
       var options = {
         type : "StG",
         idDonor: idD,
-        idStudent: "generalPotId",
+        idStudent: Meteor.settings.general.generalId,
         nameDonor: nD.first + " " + nD.last,
-        nameStudent: "the general pot",
+        nameStudent: Meteor.settings.general.generalName,
         amount: a,
         transactionHash: trans,
       }
@@ -71,7 +71,7 @@ Meteor.methods({
       var transferBalance = goalAmount - balance_table[i].balance;
       console.log(transferBalance);
       if(transferBalance > 0){
-        var trans = ethSendEtherTransaction('0xc08ee9c6252fb61271520dacac9a6126255bc81e',"general",balance_table[i].ethereum,transferBalance);
+        var trans = ethSendEtherTransaction(Meteor.settings.general.generalKey,Meteor.settings.general.generalPwd, balance_table[i].ethereum,transferBalance);
         console.log(trans);
 
         var idS = balance_table[i]._id;
@@ -80,9 +80,9 @@ Meteor.methods({
 
         var options = {
           type : "GtS",
-          idDonor: "generalPotId",
+          idDonor: Meteor.settings.general.generalPwd,
           idStudent: idS,
-          nameDonor: "the general pot",
+          nameDonor: Meteor.settings.general.generalName,
           nameStudent: nS.first + " " + nS.last,
           amount: a,
           transactionHash: trans,
