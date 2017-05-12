@@ -49,6 +49,7 @@ Accounts.onCreateUser(function(options,user) {
   user.uni_info = {
     uni: uni._id,
     program: "Msc of Computing Science",
+    eStatus: "Pending",
     tuition: 13500,
     allowance: 1256,
     deadline: "Mid-August",
