@@ -1,4 +1,72 @@
 <template name="studentregister">
   <h1>Student Registration</h1>
-  {{> Template.dynamic template=form}}
+  <div class = "container">
+    <div class = "row">
+
+      <div class = "col-md-5">
+
+        <div class = "pledge">
+          {{ > pledge}}
+        </div>
+
+        <div class = "opportunity">
+          {{ > opportunity}}
+        </div>
+
+      </div>
+
+      <div class = "col-md-7">
+
+        <!-- <form class = "studentRegForm"> -->
+          {{> Template.dynamic template=form}}
+        <!-- </form> -->
+
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<template name="pledge">
+  The Circle of Opportunity is a platform kept alive by the same
+  students who are granted the opportunity to study.
+  These opportunities are the bases of how students can follow
+  their dreams and obtain a better education.
+  After students graduate they are expected to pay back into
+  the network to provide back to future student.
+  <br>
+  <br>
+
+
+  By applying for an opportunity you accept and understand that:
+  <br>
+  1. If you are granted an opportunity you are expected to pay it back.
+  <br>
+  2. The details of your opportunity may remain public forever,
+  including how much money you pay back.
+  Your name and some of your identity information will be considered
+  part of the details of your opportunity.
+  <br>
+  3. Your proposed payback scheme that you write below cannot be
+  changed after you are accepted to the educational institute,
+  and may also remain public forever.
+</template>
+
+<template name="opportunity">
+  <h3> Opportunity Info </h3>
+  <!-- <form class = "studentRegForm"> -->
+    University: Imperial College
+    <!-- <input type="text" name="uni" value="Imperial College" readonly class="form-control">  -->
+    <br>
+    Program: Msc of Computing Science
+    <br>
+    Status: Pending
+    <br>
+    Tuition: 13,500GBP
+    <br>
+    Allowance: 1256GBP
+    <br>
+    Deadline: Mid-August
+    <br>
+  <!-- </form> -->
 </template>
