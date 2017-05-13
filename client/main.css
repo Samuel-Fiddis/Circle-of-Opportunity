@@ -6,8 +6,8 @@ html {
 
 body {
     font-family: sans-serif;
-    background-color: #3db7ff;
-    background-image: linear-gradient(to bottom, #3db7ff, #1061B0 100%);
+    background-color: #e8f2fd;
+    background-image: linear-gradient(to bottom, #e8f2fd, #e8f2fd 100%);
     background-attachment: fixed;
     font-size: 14px;
     margin-bottom: 50px;
@@ -27,10 +27,13 @@ header {
   width: 100%;
   height: 56px;
   padding: 3px 30px;
-  background-color: #e7e7e7;;
+  background-color: #fff;
 }
 
 /* Header */
+.navbar-default {
+  background-color: #fff;
+}
 #header-nav{
     padding:3px 0;
 }
@@ -70,6 +73,10 @@ header {
     color: #0f2a54;
 }
 
+.livefeed > h2, .livefeed2 > h2 {
+    text-align: center;
+    color: #0f2a54;
+}
 .equal {
   display: flex;
   flex-wrap: wrap;

@@ -5,5 +5,6 @@ import { Universities } from '../../api/universities/universities.js';
 
 import './homepage.html';
 import '../components/liveFeed.js';
+import '../components/liveFeed2.js';
 
 //import '../components/ticker.js'
