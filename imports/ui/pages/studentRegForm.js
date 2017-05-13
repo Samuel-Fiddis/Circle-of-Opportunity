@@ -35,7 +35,6 @@ Template.studentRegForm.events({
 
   'submit form': function(event, template) {
 
-
     // prevent the default functionality of the form
     // =============================================
 
@@ -88,14 +87,6 @@ Template.studentRegForm.events({
       street: $('input[name=street]').val(),
       zipCode: $('input[name=zipCode]').val()
     }
-
-    // University info embedded document
-    options.uni_info = {
-      uni: $('input[name=uni]').val(),
-      program: $('input[name=program]').val(),
-      eStatus: $('select[name=enrolmentStatus]').val()
-    }
-
 
     // Create an ethereum account & store public key address
     // =====================================================

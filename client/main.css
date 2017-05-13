@@ -159,12 +159,12 @@ p {
 
 /* Student Registration Form */
 .studentRegForm {
-    padding: 10px 30px;
+    padding: 10px 10px;
 }
 .studentRegForm > input {
     display: block;
     text-align: center;
-    width: 250px;
+    width: 250px; 
     margin: 15px auto;
 }
 

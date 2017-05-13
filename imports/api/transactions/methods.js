@@ -159,4 +159,5 @@ Meteor.methods({
 
     return student;
   },
+  
 });
