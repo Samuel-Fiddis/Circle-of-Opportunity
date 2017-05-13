@@ -13,7 +13,8 @@ Meteor.methods({
 
     var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
     var ethS = Meteor.users.findOne({_id:  options.idStudent}).ethereum;
-    var pwdSender = Meteor.settings.pwdDonorCoo;
+    var pwdSender = "jackAccount1";//Meteor.settings.pwdDonorCoo;
+    console.log(pwdSender);
     var trans = ethSendEtherTransaction(ethD, pwdSender, ethS, options.amount);
 
     //   // insufficient funds

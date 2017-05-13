@@ -146,6 +146,8 @@ Template.userProfilePage.events({
           //  FlowRouter.go('/??')
         }
       });
+
+      Meteor.call('checkTarget',idS);
     //}
   }
 
