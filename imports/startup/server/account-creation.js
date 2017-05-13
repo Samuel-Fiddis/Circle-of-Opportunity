@@ -44,21 +44,17 @@ Accounts.onCreateUser(function(options,user) {
 
   if(options.userType.isStudent) {
 
-    // Add in university information to user document
-    if(options.uni_info) {
-      user.uni_info = options.uni_info;
-
-      // Checking if Imperial College already exists (if it doesnt, create it)
-      // NOTE: To be deleted or changed after University interface is set up
-      // if(Universities.findOne({name: options.uni_info.uni}) == null) {
-      //   Universities.insert({name: options.uni_info.uni, address: "huxley"});
-      // }
-
-      // Changing the university name field to the university _id of db doc
-      var uni = Universities.findOne({name: options.uni_info.uni});
-      user.uni_info.uni = uni._id;
-    }
+  // Add in university & opportunity information to user document
+  var uni = Universities.findOne({name: "Imperial College"});
+  user.uni_info = {
+    uni: uni._id,
+    program: "Msc of Computing Science",
+    eStatus: "Pending",
+    tuition: 13500,
+    allowance: 1256,
+    deadline: "Mid-August",
   }
+}
 
   // Add in the userType
   if(options.userType) {
@@ -108,6 +104,10 @@ Accounts.onCreateUser(function(options,user) {
   if(options.ethereum) {
     user.ethereum = options.ethereum;
   }
+
+  // Boolean true if the student receives living allowances
+  user.allowance = options.allowance;
+
 
   // Store information just for the universityAdmin user
   if(options.userType.isUniAdmin) {

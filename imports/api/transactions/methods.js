@@ -8,24 +8,13 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 //Using insert already validates against the schema by default.
 Meteor.methods({
 
+  // Transaction COO Donor to COO Student
   createTransaction: function(options) {
-
-    //     Transactions.schema.validate(options);
-
-    //     check(options,
-    //       {
-    //         // All users will have the following upon registration
-    //         type: String,
-    //         idStudent: String,
-    //         idDonor: String,
-    //         amount: Number,
-    //         transaction: String,
-    //       });
 
     var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
     var ethS = Meteor.users.findOne({_id:  options.idStudent}).ethereum;
-
-    var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, options.amount);
+    var pwdSender = Meteor.settings.pwdDonorCoo;
+    var trans = ethSendEtherTransaction(ethD, pwdSender, ethS, options.amount);
 
     //   // insufficient funds
     //   if (trans == false){
@@ -40,12 +29,15 @@ Meteor.methods({
     //{'type': options.type, 'idStudent': options.idStudent, 'idDonor': options.idDonor, 'amount': options.amount, 'transactionHash': options.transactionHash}
   },
 
+
+  // Transaction COO Donor to COO General Pot
   donatenow: function(options){
 
     var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
+    var pwdSender = Meteor.settings.pwdDonorCoo;
+    var keyGeneral = Meteor.settings.general.generalKey;
 
-    var trans = ethSendEtherTransaction(ethD, "jackAccount1", "0xc08ee9c6252fb61271520dacac9a6126255bc81e", options.amount);
-
+    var trans = ethSendEtherTransaction(ethD, pwdSender, keyGeneral, options.amount);
     // web3.personal.unlockAccount("general", "0xc08ee9c6252fb61271520dacac9a6126255bc81e")
     // insufficient funds
     //   if (trans == false){
@@ -53,8 +45,8 @@ Meteor.methods({
     //   }
     //   else{
     options.transactionHash = trans;
-    options.idStudent = "general";
-    options.nameStudent = "the general pot";
+    options.idStudent =  Meteor.settings.general.generalId;
+    options.nameStudent =  Meteor.settings.general.generalName;
 
     return Transactions.insert(options);
   },
@@ -159,4 +151,5 @@ Meteor.methods({
 
     return student;
   },
+
 });

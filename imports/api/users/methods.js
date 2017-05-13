@@ -12,6 +12,8 @@ Meteor.methods({
 
   signup: function(options) {
 
+    console.log("in signup method function");
+
     var userId;
 
     // Error Handling: making sure the form is properly filled in
@@ -83,6 +85,7 @@ Meteor.methods({
         age: String,
         image: String,
         ethereum: String,
+        allowance: Match.Maybe(Boolean),
         name:
         {
           first: String,
@@ -96,15 +99,6 @@ Meteor.methods({
           street: String,
           zipCode: String,
         },
-
-        // Only students will have the following fields upon registration
-        uni_info: Match.Maybe(
-          {
-            uni: Match.Maybe(String),
-            program: Match.Maybe(String),
-            eStatus: Match.Maybe(String),
-          }
-        ),
 
         // Only donors will have the following fields upon registration
         company_info: Match.Maybe(

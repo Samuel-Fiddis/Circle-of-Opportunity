@@ -35,7 +35,6 @@ Template.studentRegForm.events({
 
   'submit form': function(event, template) {
 
-
     // prevent the default functionality of the form
     // =============================================
 
@@ -73,7 +72,7 @@ Template.studentRegForm.events({
       isDonor: true,
       isUniAdmin: false
     }
-    
+
     // Name embedded document
     options.name = {
       first: $('input[name=firstName]').val(),
@@ -89,18 +88,19 @@ Template.studentRegForm.events({
       zipCode: $('input[name=zipCode]').val()
     }
 
-    // University info embedded document
-    options.uni_info = {
-      uni: $('input[name=uni]').val(),
-      program: $('input[name=program]').val(),
-      eStatus: $('select[name=enrolmentStatus]').val()
-    }
-
-
     // Create an ethereum account & store public key address
     // =====================================================
+
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
+
+
+    if(document.getElementById("allowance").checked){
+      options.allowance = true;
+    }
+    else{
+      options.allowance = false;
+    }
 
 
     // Call signup Method passing options as an argument

@@ -1,0 +1,10 @@
+{
+ "pwdDonorCoo": "jackAccount1",
+ "general": {
+	 "generalKey": "0xc08ee9c6252fb61271520dacac9a6126255bc81e",
+	 "generalId": "general",
+	 "generalPwd": "general",
+	 "generalName": "the general pot"
+ },
+ "pwdStudentCoo":"password"
+}
