@@ -1,87 +1,44 @@
 <template name="homepage">
 <main>
 
+
+  <div id="homepage-container" style="width:100%;">
+
+<!-- LEFT -->
+
+ <div class="visual" style="float:left; width:50%">
+ Left  Column
+ <br />
+ some text goes here
+ <br />
+ </div>
+
+<!-- RIGHT -->
+
+ <div style="float:right; width:50%; ">
+   <div class="row">
+     <div class="col-md-8 col-md-offset-2">
+       <div id="livefeed">
+         <h2>Live Feed</h2>
+         {{> livefeed}}
+       </div>
+     </div>
+     <div class="col-md-8 col-md-offset-2">
+       <div id="livefeed2">
+         <h2>Live Feed2</h2>
+         {{> livefeed2}}
+       </div>
+     </div>
+   </div>
+ </div>
+  </div>
+
   <div id="homepage-container" class="container">
 
-    <div class="row equal">
-      <div class="col-md-4 col-md-offset-1 homepage-box">
-        <h2>The Circle of Opportunity</h2>
-        <p><b>Creating Opportunities Block by Block.</b></p>
-        <p>
-          The Circle of Opportunity is a non-profit organisation started at Imperial College London in 2017.
-          Our aim is to cultivate a culture of investing in underprivledged students education with the expectation that they will one day re-invest themselves.<br>
-          We do this by giving people the chance to choose who they invest in and
-          insuring they understand where their money goes
-          through the use of blockchain technology and the Ethereum cryptocurrency Ether.
-        </p>
-      </div>
-      <div class="col-md-4 col-md-offset-2 homepage-box">
-        <h2>How It Works</h2>
-        <p>
-          Donors fund the students they think are the most deserving of the opportunity to study or donate to the circle as a whole.
-          Students sucsessfully selected are given funding for tuition and living expenses.
-          When students find themselves in a comfortable position financially they begin to donate back.
-          Once they have donated enough to fund one whole student they have come "full circle"!
-          Further donations helps the circle expand.
-          The whole system is financailly transparent through the use of blockchain so you know where your money is going.
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div id="livefeed">
-          <h2>Live Feed</h2>
-          {{> livefeed}}
-        </div>
-      </div>
-      <div class="col-md-8 col-md-offset-2">
-        <div id="livefeed2">
-          <h2>Live Feed2</h2>
-          {{> livefeed2}}
-        </div>
-      </div>
-    </div>
+
+
   </div>
 
-
-
-  <!--
-  <div id="tagline" class="container1">
-
-  </div>
-  -->
-
-<!--
-  <div id="introduction" class="container2">
-<h1 class="whiteheading">The Circle of Opportunity</h1>
-  <p>Creating Opportunities Block by Block.</p>
-  <br>
-    <p>
-      The Circle of Opportunity is a non-profit organisation started at Imperial College London in 2017.
-      Our aim is to cultivate a culture of investing in underprivledged students education with the expectation that they will one day re-invest themselves.<br>
-      We do this by giving people the chance to choose who they invest in and
-      insuring they understand where their money goes
-      through the use of blockchain technology and the Ethereum cryptocurrency Ether.
-    </p>
-  </div>
-
-  <div id="howitworks" class="container3">
-    <h1 class="blueheading">How It Works</h1>
-    <p>
-      Donors fund the students they think are the most deserving of the opportunity to study or donate to the circle as a whole.
-      Students sucsessfully selected are given funding for tuition and living expenses.
-      When students find themselves in a comfortable position financially they begin to donate back.
-      Once they have donated enough to fund one whole student they have come "full circle"!
-      Further donations helps the circle expand.
-      The whole system is financailly transparent through the use of blockchain so you know where your money is going.
-    </p>
-  </div>
-
-  <div id="livefeed" class="container2">
-    <h1 class="whiteheading">Live Feed</h1>
-    {{> livefeed}}
-  </div>
--->
 
 </main>
 

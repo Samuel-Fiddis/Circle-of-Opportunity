@@ -35,7 +35,8 @@ header {
   background-color: #fff;
 }
 #header-nav{
-    padding:3px 0;
+    padding:13px 0;
+    font-size: 1.4em;
 }
 #navbar-left {
  min-width:1300px;
@@ -71,6 +72,12 @@ header {
 .homepage-box > h2 {
     text-align: center;
     color: #0f2a54;
+}
+
+.visual {
+    text-align: right;
+    color: #0f2a54;
+    background-color:lightgrey; /*just for now*/
 }
 
 .livefeed > h2, .livefeed2 > h2 {
