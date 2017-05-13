@@ -10,7 +10,8 @@ Meteor.publish('studentDataOverview', function () {
 			'age': 1,
 			'image': 1,
 			'uni_info': 1,
-			'ethereum': 1}});
+			'ethereum': 1,
+			'userType.isStudent': 1}});
 });
 
 // publish donordata for overview
