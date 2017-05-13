@@ -51,6 +51,13 @@ Template.livefeed.helpers({
     return false;
   },
 
+  isDtG: function(transaction) {
+    if(transaction.type == "DtG"){
+      return true;
+    }
+    return false;
+  },
+
   isStU: function(transaction) {
     if(transaction.type == "StU"){
       return true;
