@@ -9,11 +9,10 @@
       <div class="row">
         {{#each user}}
 
-        <!-- Call StudentViewUniHelper for each user -->
-
-        {{ >studentViewUniHelper}}
-
-
+          <!-- Call StudentViewUniHelper for each user -->
+          {{#if student}}
+            {{ >studentViewUniHelper}}
+          {{/if}}
         {{/each}}
       </div>
 
@@ -33,6 +32,14 @@
       <span> Status: {{uni_info.eStatus}} </span>
       <br>
       <span> {{>statusButton}} </span>
+      <br>
+
+      
+        {{#if acceptedOpportunity}}
+      <span> {{>acceptTuitionButton}} </span>
+        {{/if}}
+      
+
     </div>
   </div>
 </template>
@@ -40,8 +47,16 @@
 <template name = "statusButton">
 	<select id=statusselecter>
  <option value disabled selected>-- Change status to --</option>
- <option value='Applying'>Applying</option>
- <option value='Accepted'>Accepted</option>
- <option value='Rejected'>Rejected</option>
+ <option value='pending'>pending</option>
+ <option value='accepted'>accepted</option>
+ <option value='rejected'>rejected</option>
+ <option value='targetReached'>targetReached</option>
+ <option value='acceptedOpportunity'>acceptedOpportunity</option>
+ <option value='universityPaid'>universityPaid</option>
  </select>
+</template>
+
+
+<template name = "acceptTuitionButton">
+  <button class="acceptTution">Accept Tuition</button>
 </template>

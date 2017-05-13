@@ -1,9 +1,21 @@
 import { Meteor } from 'meteor/meteor';
 import { Transactions } from '../transactions/transactions.js';
 
+/*
 Meteor.methods({
+  create_contract : function() {
+    console.log('Smart contract creation');
+  }
 
-  create_contracts: function() {
+  fill_contract : function() {
+    console.log('Fill smart contract');   
+  }
+
+  forward_contract : function() {
+    console.log('Forward smart contract');
+  }
+
+  create_contract: function() {
 
     console.log('Entering reallocation method');
     // Set up variables to be used
@@ -94,3 +106,4 @@ Meteor.methods({
 
   }
 });
+*/

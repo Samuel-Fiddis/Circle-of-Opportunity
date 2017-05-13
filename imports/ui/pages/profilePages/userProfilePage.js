@@ -147,6 +147,34 @@ Template.userProfilePage.events({
         }
       });
     //}
+  },
+
+  'click .acceptOpportunity': function(event,template) {
+    //change User.uniInfo.estatus to acceptedOpportunity
+
+    // get selected value
+    var newValue = "acceptedOpportunity";
+    //get studentID
+    var studentId = FlowRouter.getParam('id');
+
+    Meteor.call('updateStatus', studentId, newValue, function(error, result) {
+
+      // What happens if methods function returns an error
+      // +++++++++++++++++++++++++++++++++++++++++++++++++
+
+      if(error) {
+
+        // display the error on the console log of the website
+        console.log(error.reason);
+
+        // Set the lastError variable
+        /*
+        template.lastError.set(error.reason);
+        */
+
+      };
+
+    });
   }
 
 });
@@ -176,6 +204,24 @@ Template.userProfilePage.helpers({
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.userType.isStudent;
+  },
+
+  acceptedStudent: function () {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == "accepted";
+  },
+
+  targetReached: function () {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == "targetReached";
+  },
+
+  acceptedOpportunity: function () {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == "acceptedOpportunity";
   },
 
 

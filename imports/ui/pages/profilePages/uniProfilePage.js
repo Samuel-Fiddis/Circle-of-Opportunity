@@ -33,6 +33,7 @@ Template.uniProfilePage.onCreated( function() {
   });
 });
 
+
 Template.uniProfilePage.helpers({
 
   // userData is the selected User's document
@@ -48,7 +49,8 @@ Template.uniProfilePage.helpers({
     var admin = Meteor.users.findOne({_id: id});
     var uniId = admin.adminFor;
     return Universities.findOne({_id: uniId});
-  }
+  },
+  
 
 });
 
@@ -65,6 +67,13 @@ Template.studentViewUni.helpers({
     // console.log(selectionCriteria);
     return Meteor.users.find({}, {sort: sortOrder});
   },
+  student: function () {
+    var user = Meteor.users.findOne({_id: this._id});
+    console.log("HERE!!!");
+    console.log(user);
+    return user.userType.isStudent;
+  },
+
 
   // uni_name returns the name of the university affiliated with this student
   // ************************************************************************
@@ -80,6 +89,12 @@ Template.studentViewUniHelper.helpers({
   balance : function (){
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
+  },
+  acceptedOpportunity: function () {
+    var user = Meteor.users.findOne({_id: this._id});
+    console.log("HERE!!!");
+    console.log(user);
+    return user.uni_info.eStatus == "acceptedOpportunity";
   },
 });
 
@@ -134,4 +149,37 @@ Template.statusButton.events({
     });
 
   },
+});
+
+Template.acceptTuitionButton.events({
+  'click #acceptTuitionButton' : function (evt){
+    //FIRST PAY THE UNIVERSITY
+    // New Transaction
+
+    // get selected value
+    var newValue = "universityPaid";
+    //get studentID
+    var studentId = FlowRouter.getParam('id');
+
+    Meteor.call('updateStatus', studentId, newValue, function(error, result) {
+
+      // What happens if methods function returns an error
+      // +++++++++++++++++++++++++++++++++++++++++++++++++
+
+      if(error) {
+
+        // display the error on the console log of the website
+        console.log(error.reason);
+
+        // Set the lastError variable
+        /*
+        template.lastError.set(error.reason);
+        */
+
+      };
+
+    });
+
+  }
+
 });

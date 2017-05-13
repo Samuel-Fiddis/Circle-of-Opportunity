@@ -33,12 +33,33 @@
           {{/if}}
 
           {{#unless ownProfile}}
-          {{#if student}}
-          <br>
-          <br>
-          {{ > directDonationButton userProfile.name}}
-          {{/if}}
+            {{#if student}}
+              {{#if acceptedStudent}}
+                <br>
+                <br>
+
+                {{ > directDonationButton userProfile.name}}
+              {{/if}}
+            {{/if}}
           {{/unless}}
+          
+          {{#if ownProfile}}
+            {{#if student}}
+              {{#if targetReached}}
+                <br>
+                <br>
+                <button class = "acceptOpportunity">acceptOpportunity</button>
+              {{/if}}
+
+              {{#if accptedOpportunity}}
+                <br>
+                <br>
+                <p><b>Way to go, Opportunity Accepted!</b></p>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+
+
 
         </div>
 
