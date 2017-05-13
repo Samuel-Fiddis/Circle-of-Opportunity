@@ -41,6 +41,12 @@ Template.donorProfileRegisterInterest.helpers({
     return Meteor.users.findOne({_id: studentId});
   },
 
+  isStatus: function(status) {
+    return this.uni_info.eStatus == status;
+  },
+
+
+
 });
 
 Template.registerInterestButton.helpers({

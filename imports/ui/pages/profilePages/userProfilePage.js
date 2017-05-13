@@ -127,6 +127,7 @@ Template.userProfilePage.events({
       //   else {
       //   //  Need error handeling here
       //  }
+
       Meteor.call('createTransaction', options, function(error, result) {
         // What happens if methods function returns an error
         // +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -146,6 +147,9 @@ Template.userProfilePage.events({
           //  FlowRouter.go('/??')
         }
       });
+
+      console.log("about to enter Target Checking");
+      Meteor.call('checkTarget',idS);
     //}
   },
 
@@ -235,5 +239,10 @@ Template.userProfilePage.helpers({
     return currentFile;
   },
 
+  statusIs: function(status) {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == status;
+  },
 
 });
