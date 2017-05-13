@@ -40,6 +40,9 @@
     <a class="livefeedhref" href="/profilepage/{{_id}}">
       Name: {{name.first}} {{name.last}}
     </a>
+    {{#if isStatus "Accepted"}}
+    This student has now been accepted, please consider donating to them!!
+    {{/if}}
     <br>
     {{/with}}
     {{/each}}
