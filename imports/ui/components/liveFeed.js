@@ -28,5 +28,33 @@ Template.livefeed.onCreated( function() {
 Template.livefeed.helpers({
   transaction: ()=> {
     return Transactions.find({});
-  }
+  },
+
+  isDtS: function(transaction) {
+    if(transaction.type == "DtS"){
+      return true;
+    }
+    return false;
+  },
+
+  isGtS: function(transaction) {
+    if(transaction.type == "GtS"){
+      return true;
+    }
+    return false;
+  },
+
+  isStG: function(transaction) {
+    if(transaction.type == "StG"){
+      return true;
+    }
+    return false;
+  },
+
+  isStU: function(transaction) {
+    if(transaction.type == "StU"){
+      return true;
+    }
+    return false;
+  },
 });
