@@ -54,10 +54,10 @@ Meteor.methods({
 
       var options = {
         type : "StG",
-        idDonor: idD,
-        idStudent: "generalPotId",
-        nameDonor: nD.first + " " + nD.last,
-        nameStudent: "the general pot",
+        idSender: idD,
+        idReceiver: "generalPotId",
+        nameSender: nD.first + " " + nD.last,
+        nameReceiver: "the general pot",
         amount: a,
         transactionHash: trans,
       }
@@ -80,10 +80,10 @@ Meteor.methods({
 
         var options = {
           type : "GtS",
-          idDonor: "generalPotId",
-          idStudent: idS,
-          nameDonor: "the general pot",
-          nameStudent: nS.first + " " + nS.last,
+          idSender: "generalPotId",
+          idReceiver: idS,
+          nameSender: "the general pot",
+          nameReceiver: nS.first + " " + nS.last,
           amount: a,
           transactionHash: trans,
         }

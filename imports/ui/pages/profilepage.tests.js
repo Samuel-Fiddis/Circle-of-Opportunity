@@ -18,7 +18,7 @@ describe('Profilepage events', function() {
     Template.profilepage.fireEvent('click button');
 
     // VERIFY
-    chai.assert.typeOf('idStudent', "String");
+    chai.assert.typeOf('idReceiver', "String");
 
   });
 

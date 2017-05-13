@@ -15,21 +15,21 @@ TransactionSchema = new SimpleSchema({
 		type: String,
 		label: "type"
 	},
-	idStudent: {
+	idReceiver: {
 		type: String,
-		label: "idStudent"
+		label: "idReceiver"
 	},
-  nameStudent: {
+  nameReceiver: {
     type: String,
-    label: "nameStudent",
+    label: "nameReceiver",
   },
-  idDonor: {
+  idSender: {
 		type: String,
-		label: "idDonor"
+		label: "idSender"
 	},
-  nameDonor: {
+  nameSender: {
     type: String,
-    label: "nameDonor",
+    label: "nameSender",
   },
   amount: {
 		type: Number,
@@ -54,8 +54,8 @@ Transactions.attachSchema( TransactionSchema );
 
 Factory.define('transaction', Transactions, {
 	type: () => faker.lorem.sentence(),
-	idStudent: () => faker.lorem.sentence(),
-  idDonor: () => faker.lorem.sentence(),
+	idReceiver: () => faker.lorem.sentence(),
+  idSender: () => faker.lorem.sentence(),
   amount: 0.01,
   transactionHash: () => faker.lorem.sentence(),
   createdAt: () => faker.lorem.date(),
