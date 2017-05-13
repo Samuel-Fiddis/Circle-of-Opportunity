@@ -127,7 +127,7 @@ h1 {
     text-align: center;
     font-size: 3em;
     font-weight: bold;
-    color: #FFF;
+    color: #333;
     /*margin: 20px;
     margin-bottom: 20px;
     display: inline-block;
@@ -225,7 +225,7 @@ p {
 
 /* Profile Page */
 #profile-container {
-    color: #EEE;
+    color: #333;
     padding-bottom: 50px;
 }
 button{
@@ -233,6 +233,13 @@ button{
 }
 .donation-input {
     color: #444;
+}
+
+.donorProfileImage {
+    position: relative;
+    display: block;
+    width:100px;
+    height:100px;
 }
 
 .donorImage {

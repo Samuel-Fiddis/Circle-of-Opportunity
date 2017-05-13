@@ -41,6 +41,7 @@ Meteor.publish('thisUser', function(userId) {
 
 // Publish just one users info depending on their id
 Meteor.publish('singleUser', function (id) {
+	
 	check(id, String);
 	return Meteor.users.find(
 		{_id: id},

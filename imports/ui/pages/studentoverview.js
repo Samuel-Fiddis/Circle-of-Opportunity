@@ -66,7 +66,6 @@ Template.studentoverview.helpers({
     var sortOrder = {};
     sortOrder[selectionCriteria] = 1;
     console.log("Database query");
-    console.log(Meteor.users.find({"userType.isStudent":true}, {}));
     console.log(Meteor.users.find());
     return Meteor.users.find({"userType.isStudent": true}, {sort: sortOrder});
 
