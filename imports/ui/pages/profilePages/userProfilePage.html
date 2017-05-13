@@ -34,9 +34,11 @@
 
           {{#unless ownProfile}}
           {{#if student}}
+          {{#if statusIs "Accepted"}}
           <br>
           <br>
           {{ > directDonationButton userProfile.name}}
+          {{/if}}
           {{/if}}
           {{/unless}}
 
@@ -55,9 +57,11 @@
 
         </div>
 
+        {{#unless statusIs "Pending"}}
         <div class = "donationInfo">
           {{ > studentProfileDonationInfo }}
         </div>
+        {{/unless}}
 
         {{else}}
 
@@ -79,10 +83,12 @@
 
       <div class = "col-md-9 col-md-offset-2">
 
+        {{#unless statusIs  "Pending"}}
         <div class = "livefeed">
           <h3> Most Recent Transactions </h3>
           {{ > livefeed }}
         </div>
+        {{/unless}}
 
       </div>
 

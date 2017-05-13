@@ -189,5 +189,10 @@ Template.userProfilePage.helpers({
     return currentFile;
   },
 
+  statusIs: function(status) {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == status;
+  },
 
 });
