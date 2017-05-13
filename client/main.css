@@ -171,7 +171,7 @@ p {
 .studentRegForm > input {
     display: block;
     text-align: center;
-    width: 250px; 
+    width: 250px;
     margin: 15px auto;
 }
 
@@ -234,6 +234,14 @@ button{
     width:100px;
     height:100px;
 }
+
+/* CSS FOR DYNAMIC VISUALIZATION */
+.dynamic-visualization{position:relative; width:800px;}
+.money-donors{position:absolute; bottom:0px; right:20px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-overhead{position:absolute; bottom:200px; left:-230px; font-size:24px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-students{position:absolute; top:200px; left:-215px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-circle{position:absolute; top:440px; right:-270px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+
 
 /*.registerInterest {
   float: right;
