@@ -26,7 +26,7 @@ Meteor.publish('donorDataOverview', function () {
 
 // Publication of a limited amount of student info (available to all users)
 Meteor.publish('studentData', function () {
-	return Meteor.users.find({"userType.isStudent": true},{fields: {'name': 1,'age': 1}});
+	return Meteor.users.find({"userType.isStudent": true},{fields: {'name': 1,'age': 1,'uni_info': 1}});
 });
 
 // Publication of a limited amount of donor info (available to all users)
@@ -41,7 +41,7 @@ Meteor.publish('thisUser', function(userId) {
 
 // Publish just one users info depending on their id
 Meteor.publish('singleUser', function (id) {
-	
+
 	check(id, String);
 	return Meteor.users.find(
 		{_id: id},
