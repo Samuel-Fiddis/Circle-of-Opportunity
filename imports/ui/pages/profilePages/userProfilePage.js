@@ -127,6 +127,7 @@ Template.userProfilePage.events({
       //   else {
       //   //  Need error handeling here
       //  }
+
       Meteor.call('createTransaction', options, function(error, result) {
         // What happens if methods function returns an error
         // +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -147,6 +148,7 @@ Template.userProfilePage.events({
         }
       });
 
+      console.log("about to enter Target Checking");
       Meteor.call('checkTarget',idS);
     //}
   }

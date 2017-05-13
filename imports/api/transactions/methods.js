@@ -12,9 +12,9 @@ Meteor.methods({
   createTransaction: function(options) {
 
     // get the donor's and student's public key
-    var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
-    var ethS = Meteor.users.findOne({_id:  options.idStudent}).ethereum;
-    var pwdSender = "jackAccount1";//Meteor.settings.pwdDonorCoo;
+    var ethD = Meteor.users.findOne({_id:  options.idSender}).ethereum;
+    var ethS = Meteor.users.findOne({_id:  options.idReceiver}).ethereum;
+    var pwdSender = Meteor.settings.pwdDonorCoo;
     console.log(pwdSender);
     var trans = ethSendEtherTransaction(ethD, pwdSender, ethS, options.amount);
 
