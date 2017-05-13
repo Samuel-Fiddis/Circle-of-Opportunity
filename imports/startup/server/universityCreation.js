@@ -3,7 +3,7 @@ import { Universities } from '/imports/api/universities/universities.js';
 if(Meteor.isServer) {
 
   Meteor.startup(function() {
-
+    
     // Create the University that is registered with us
 
     if( Universities.findOne({name: "Imperial College"}) == null ) {

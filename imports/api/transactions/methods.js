@@ -11,6 +11,7 @@ Meteor.methods({
   // Transaction COO Donor to COO Student
   createTransaction: function(options) {
 
+    // get the donor's and student's public key
     var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
     var ethS = Meteor.users.findOne({_id:  options.idStudent}).ethereum;
     var pwdSender = "jackAccount1";//Meteor.settings.pwdDonorCoo;
@@ -34,7 +35,7 @@ Meteor.methods({
   // Transaction COO Donor to COO General Pot
   donatenow: function(options){
 
-    var ethD = Meteor.users.findOne({_id:  options.idDonor}).ethereum;
+    var ethD = Meteor.users.findOne({_id:  options.idSender}).ethereum;
     var pwdSender = Meteor.settings.pwdDonorCoo;
     var keyGeneral = Meteor.settings.general.generalKey;
 
@@ -46,8 +47,8 @@ Meteor.methods({
     //   }
     //   else{
     options.transactionHash = trans;
-    options.idStudent =  Meteor.settings.general.generalId;
-    options.nameStudent =  Meteor.settings.general.generalName;
+    options.idReceiver =  Meteor.settings.general.generalId;
+    options.nameReceiver =  Meteor.settings.general.generalName;
 
     return Transactions.insert(options);
   },
@@ -63,7 +64,7 @@ Meteor.methods({
 
     if(user.userType.isStudent) {
 
-      var transactionPointer = Transactions.find({idStudent: options});
+      var transactionPointer = Transactions.find({idReceiver: options});
       totalAmount = 0;
 
       transactionPointer.forEach(function(transaction) {
@@ -74,7 +75,7 @@ Meteor.methods({
 
     else {
 
-      var transactionPointer = Transactions.find({idDonor: options});
+      var transactionPointer = Transactions.find({idSender: options});
       totalAmount = 0;
 
       transactionPointer.forEach(function(transaction) {
@@ -97,12 +98,12 @@ Meteor.methods({
 
       var donor = [];
 
-      var transactionPointer = Transactions.find({idStudent: id});
+      var transactionPointer = Transactions.find({idReceiver: id});
 
       transactionPointer.forEach( function(transaction) {
 
         var found = donor.find(function(value){
-          return value.id == transaction.idDonor
+          return value.id == transaction.idSender
         });
 
         if(found) {
@@ -111,8 +112,8 @@ Meteor.methods({
         else {
           donor.push(
             {
-              id: transaction.idDonor,
-              name: transaction.nameDonor,
+              id: transaction.idSender,
+              name: transaction.nameSender,
               amount: transaction.amount,
             }
           )
@@ -127,12 +128,12 @@ Meteor.methods({
     // IF not calling this from a student's profile page
     var student = [];
 
-    var transactionPointer = Transactions.find({idDonor: id});
+    var transactionPointer = Transactions.find({idSender: id});
 
     transactionPointer.forEach( function(transaction) {
 
       var found = student.find( function(value) {
-        return value.id == transaction.idStudent
+        return value.id == transaction.idReceiver
       });
 
       if(found) {
@@ -141,8 +142,8 @@ Meteor.methods({
       else {
         student.push(
           {
-            id: transaction.idStudent,
-            name: transaction.nameStudent,
+            id: transaction.idReceiver,
+            name: transaction.nameReceiver,
             amount: transaction.amount,
           }
         )

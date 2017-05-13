@@ -14,6 +14,9 @@ import '/imports/api/email/methods.js';
 // Import general pot allocation method
 import '/imports/api/general_pot_allocation/methods.js';
 
+// Import smart contract methods
+import '/imports/api/smart_contracts/methods.js';
+
 import '../../api/ethereum/ethereum.js';
 import '../../api/ethereum/etherscan.js';
 

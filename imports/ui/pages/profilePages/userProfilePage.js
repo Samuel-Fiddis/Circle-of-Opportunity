@@ -113,10 +113,10 @@ Template.userProfilePage.events({
       // buils the options to store the transaction in the db
       var options = {
         type : "DtS",
-        idStudent: idS,
-        nameStudent: nS.first + " " + nS.last,
-        idDonor: idD,
-        nameDonor: nD.first + " " + nD.last,
+        idReceiver: idS,
+        nameReceiver: nS.first + " " + nS.last,
+        idSender: idD,
+        nameSender: nD.first + " " + nD.last,
         amount: a,
         //transactionHash: trans,
       }
@@ -163,7 +163,7 @@ Template.userProfilePage.helpers({
     return Meteor.users.findOne({_id: id});
   },
 
-  // test to see if this profile is their profilepage
+  // bool to see if this profile is their profilepage
   // ************************************************
 
   ownProfile: ()=> {

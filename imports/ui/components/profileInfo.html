@@ -17,6 +17,14 @@
   <br>
   Status: {{uni_info.eStatus}}
   <br>
+  Tuition Required: {{uni_info.tuition}}GBD
+  <br>
+  {{#if allowance}}
+  Allowance Requested: {{uni_info.allowance}}GBD
+  {{else}}
+  No allowance requested
+  {{/if}}
+  <br>
 </template>
 
 <template name = "ethereumPaymentInfo">

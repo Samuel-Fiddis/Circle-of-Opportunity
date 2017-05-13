@@ -17,8 +17,8 @@ describe('Transactions_test', function () {
     const transaction = Factory.build('transaction');
     assert.typeOf(transaction, 'object');
     assert.typeOf(transaction.type, 'string' );
-    assert.typeOf(transaction.idStudent, 'string');
-    assert.typeOf(transaction.idDonor, 'string');
+    assert.typeOf(transaction.idReceiver, 'string');
+    assert.typeOf(transaction.idSender, 'string');
     assert.typeOf(transaction.amount, 'number');
     assert.typeOf(transaction.transactionHash, 'string');
 
