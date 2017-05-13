@@ -50,9 +50,12 @@ Accounts.onCreateUser(function(options,user) {
     uni: uni._id,
     program: "Msc of Computing Science",
     eStatus: "Pending",
-    tuition: 13500,
+    tuition: 13500, 
+    tuition_eth: .125,
     allowance: 1256,
+    allowance_eth: .0125,
     deadline: "Mid-August",
+    payments_remaining: 10,
   }
 }
 
