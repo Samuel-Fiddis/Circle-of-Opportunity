@@ -34,10 +34,8 @@ ethGetBalance = function ethGetBalance(myEthAddr){
 // Send Ether from one account to another, returns the transaction hash
 // fromAccount should be an account in keystore
 ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPassword, toAddress, valueEther){
-
   // unlock the account with appropritae passphrase
   web3.personal.unlockAccount(fromAddress, fromPassword);
-
   // TODO: test above function does not fail from no keyfile or incorrect password;
   var transactionObject = {
     from: fromAddress,

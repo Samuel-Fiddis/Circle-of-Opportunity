@@ -10,7 +10,8 @@ Meteor.publish('studentDataOverview', function () {
 			'age': 1,
 			'image': 1,
 			'uni_info': 1,
-			'ethereum': 1}});
+			'ethereum': 1,
+			'userType.isStudent': 1}});
 });
 
 // publish donordata for overview
@@ -40,6 +41,7 @@ Meteor.publish('thisUser', function(userId) {
 
 // Publish just one users info depending on their id
 Meteor.publish('singleUser', function (id) {
+	
 	check(id, String);
 	return Meteor.users.find(
 		{_id: id},

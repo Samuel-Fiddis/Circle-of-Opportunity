@@ -3,7 +3,7 @@ import { Transactions } from '../transactions/transactions.js';
 
 Meteor.methods({
 
-  reallocate: function() {
+  create_contracts: function() {
 
     console.log('Entering reallocation method');
     // Set up variables to be used

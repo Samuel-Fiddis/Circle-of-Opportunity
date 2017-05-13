@@ -105,6 +105,10 @@ Accounts.onCreateUser(function(options,user) {
     user.ethereum = options.ethereum;
   }
 
+  // Boolean true if the student receives living allowances
+  user.allowance = options.allowance;
+
+
   // Store information just for the universityAdmin user
   if(options.userType.isUniAdmin) {
     uni = Universities.findOne({name: options.adminFor})

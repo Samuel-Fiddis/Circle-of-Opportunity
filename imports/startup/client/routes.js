@@ -4,7 +4,7 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 // Import to load these templates
 import '../../ui/pages/homepage.js';
 import '../../ui/pages/mainpage.js';
-import '../../ui/pages/howitworks.js';
+import '../../ui/pages/about.js';
 import '../../ui/pages/studentoverview.js';
 import '../../ui/pages/donoroverview.js';
 import '../../ui/pages/viewthecircle.js';
@@ -48,10 +48,10 @@ FlowRouter.route('/donors', {
   },
 });
 
-FlowRouter.route('/howitworks', {
-  name: 'howitworks',
+FlowRouter.route('/about', {
+  name: 'about',
   action(){
-    BlazeLayout.render('mainpage', {main: 'howitworks'});
+    BlazeLayout.render('mainpage', {main: 'about'});
   },
 });
 

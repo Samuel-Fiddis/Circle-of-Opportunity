@@ -1,9 +1,9 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-import './howitworks.html';
+import './about.html';
 
-Template.howitworks.onCreated( function() {
+Template.about.onCreated( function() {
 
   var self = this;
 
@@ -14,7 +14,7 @@ Template.howitworks.onCreated( function() {
 
 });
 
-Template.howitworks.helpers({
+Template.about.helpers({
 
   publicKey: ()=> {
     var userId = Meteor.userId();

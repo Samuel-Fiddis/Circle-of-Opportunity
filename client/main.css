@@ -6,8 +6,8 @@ html {
 
 body {
     font-family: sans-serif;
-    background-color: #3db7ff;
-    background-image: linear-gradient(to bottom, #3db7ff, #1061B0 100%);
+    background-color: #e8f2fd;
+    background-image: linear-gradient(to bottom, #e8f2fd, #e8f2fd 100%);
     background-attachment: fixed;
     font-size: 14px;
     margin-bottom: 50px;
@@ -27,12 +27,16 @@ header {
   width: 100%;
   height: 56px;
   padding: 3px 30px;
-  background-color: #e7e7e7;;
+  background-color: #fff;
 }
 
 /* Header */
+.navbar-default {
+  background-color: #fff;
+}
 #header-nav{
-    padding:3px 0;
+    padding:13px 0;
+    font-size: 1.4em;
 }
 #navbar-left {
  min-width:1300px;
@@ -70,6 +74,16 @@ header {
     color: #0f2a54;
 }
 
+.visual {
+    text-align: right;
+    color: #0f2a54;
+    background-color:lightgrey; /*just for now*/
+}
+
+.livefeed > h2, .livefeed2 > h2 {
+    text-align: center;
+    color: #0f2a54;
+}
 .equal {
   display: flex;
   flex-wrap: wrap;
@@ -113,7 +127,7 @@ h1 {
     text-align: center;
     font-size: 3em;
     font-weight: bold;
-    color: #FFF;
+    color: #333;
     /*margin: 20px;
     margin-bottom: 20px;
     display: inline-block;
@@ -164,7 +178,7 @@ p {
 .studentRegForm > input {
     display: block;
     text-align: center;
-    width: 250px; 
+    width: 250px;
     margin: 15px auto;
 }
 
@@ -211,7 +225,7 @@ p {
 
 /* Profile Page */
 #profile-container {
-    color: #EEE;
+    color: #333;
     padding-bottom: 50px;
 }
 button{
@@ -221,12 +235,27 @@ button{
     color: #444;
 }
 
+.donorProfileImage {
+    position: relative;
+    display: block;
+    width:100px;
+    height:100px;
+}
+
 .donorImage {
     position: relative;
     display: block;
     width:100px;
     height:100px;
 }
+
+/* CSS FOR DYNAMIC VISUALIZATION */
+.dynamic-visualization{position:relative; width:800px;}
+.money-donors{position:absolute; bottom:0px; right:20px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-overhead{position:absolute; bottom:200px; left:-230px; font-size:24px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-students{position:absolute; top:200px; left:-215px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-circle{position:absolute; top:440px; right:-270px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+
 
 /*.registerInterest {
   float: right;

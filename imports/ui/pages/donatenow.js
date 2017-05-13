@@ -36,8 +36,8 @@ Template.donatenow.events({
 
     var options = {
       type : "DtG",
-      idDonor: idD,
-      nameDonor: nD.first + " " + nD.last,
+      idSender: idD,
+      nameSender: nD.first + " " + nD.last,
       amount: a,
       //transactionHash: trans,
     }
