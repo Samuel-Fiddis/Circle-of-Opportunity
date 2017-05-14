@@ -8,10 +8,7 @@
 
 		  	<form class = "studentRegForm col-xs-6 col-xs-offset-3">
 
-          <!-- Trying to see the error messages -->
-          {{#if errorMessage}}
-            <div class="ui error message"> {{errorMessage}} </div>
-          {{/if}}
+
 
           <!-- user info -->
 			    <input type="email" name="email" placeholder="Email" class="form-control">
@@ -23,7 +20,10 @@
           <input type="text" name="middleName" placeholder="Middle Name" class="form-control">
     	    <input type="text" name="lastName" placeholder="Last Name" class="form-control">
 
-          Do you need living allowances ?<input id="allowance" type="checkbox" >
+          <div class="boxForm">Do you need living allowances ?</div><input id="allowance" type="checkbox" > 
+          <div class="pledgeForm">If I am granted an opportunity, I pledge to pay it back in a timely manner
+          as soon as I am in a financial position to do so to grand future students
+          the same opportunity I had.</div><input id="pledge" type="checkbox" >
 
 
           <!-- Contact info -->
@@ -43,8 +43,12 @@
           <!-- submit button -->
 			    <input id="studentRegSubmit" type = "submit" class="btn btn-default" value= "Register">
 
+          <!-- Display error messages -->
+          {{#if errorMessage}}
+            <div class="uiErrorMessage"> {{errorMessage}} </div>
+          {{/if}}
 
-        </form> -->
+        </form>
 	  	</div>
 	</div>
 </template>
