@@ -3,7 +3,7 @@ import { Transactions } from '../transactions/transactions.js';
 
 
 
-var contractAddress = "0xfa9818c32717bac1751ccbbc8e5cdf0b0d9da121";
+var contractAddress = "0x9828c59e25f8c9eeac4db2f676f4395d8b5e46a5";
 
 Meteor.methods({
   create_contract: function() {
@@ -30,7 +30,25 @@ Meteor.methods({
     var fromPassword = "password";
     var toAddress = student.ext_ethereum;
     var amount = student.uni_info.allowance_eth;
-    ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
+    
+
+    var transactionHash = ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
+
+    console.log("transaction Hash");
+    console.log(transactionHash);
+
+    var options = {
+      type : "StC",
+      idSender: student._id,
+      nameSender: student.name.first + " " + student.name.last,
+      amount: amount,
+      //transactionHash: trans,
+    }
+    options.transactionHash = transactionHash;
+    options.idReceiver =  contractAddress;
+    options.nameReceiver =  "Contract";
+
+    return Transactions.insert(options);
   },
 
   fill_all_students: function() {
