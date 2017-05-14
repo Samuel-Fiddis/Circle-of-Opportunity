@@ -4,18 +4,19 @@ import { Transactions } from './transactions.js';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-//I'm not sure this is necessary.
-//Using insert already validates against the schema by default.
 Meteor.methods({
 
   // Transaction COO Donor to COO Student
   createTransaction: function(options) {
 
-    // get the donor's and student's public key
+    // Get the donor's and student's public key stored in mongodb
     var ethD = Meteor.users.findOne({_id:  options.idSender}).ethereum;
     var ethS = Meteor.users.findOne({_id:  options.idReceiver}).ethereum;
+
+    // Get the password of COO's donor account
     var pwdSender = Meteor.settings.pwdDonorCoo;
 
+    // Make the transaction
     var trans = ethSendEtherTransaction(ethD, pwdSender, ethS, options.amount);
 
     //   // insufficient funds
@@ -25,34 +26,42 @@ Meteor.methods({
     //   else{
     options.transactionHash = trans;
 
+    // Store the transaction in the database
     return Transactions.insert(options);
-    //  }
-    //return Transactions.insert(options);
-    //{'type': options.type, 'idStudent': options.idStudent, 'idDonor': options.idDonor, 'amount': options.amount, 'transactionHash': options.transactionHash}
   },
 
 
   // Transaction COO Donor to COO General Pot
   donatenow: function(options){
 
+    // COO's donor public key
     var ethD = Meteor.users.findOne({_id:  options.idSender}).ethereum;
+    // Password of the COO's donor
     var pwdSender = Meteor.settings.pwdDonorCoo;
+    // General pot's public key
     var keyGeneral = Meteor.settings.general.generalKey;
 
+    // Make the transaction
     var trans = ethSendEtherTransaction(ethD, pwdSender, keyGeneral, options.amount);
-    // web3.personal.unlockAccount("general", "0xc08ee9c6252fb61271520dacac9a6126255bc81e")
+
     // insufficient funds
     //   if (trans == false){
     //     throw new Meteor.Error("Insuficient funds","Please send ether on your wallet");
     //   }
     //   else{
+
+    // build the object options to store record of the transaction in MongoDB
     options.transactionHash = trans;
     options.idReceiver =  Meteor.settings.general.generalId;
     options.nameReceiver =  Meteor.settings.general.generalName;
 
+    // Store the transaction in the database
     return Transactions.insert(options);
   },
 
+
+  // If student, return the amount of money received so far
+  // If donor, return the amount of donations given so far
   totalDonation: function(options) {
 
     check(options,String);
@@ -93,7 +102,7 @@ Meteor.methods({
 
     var user = Meteor.users.findOne({_id: id});
 
-    // IF calling this from a student's profile page
+    // If calling this from a student's profile page
     if(user.userType.isStudent) {
 
       var donor = [];

@@ -171,6 +171,12 @@ p {
     color: #333;
 }
 
+/*Error form */
+.uiErrorMessage{
+  color: #FF0000;
+  text-align: center;
+}
+
 /* Student Registration Form */
 .studentRegForm {
     padding: 10px 10px;
@@ -180,6 +186,15 @@ p {
     text-align: center;
     width: 250px;
     margin: 15px auto;
+}
+
+.boxForm{
+  text-align: center;
+  right: 15px;
+}
+.pledgeForm{
+  text-align: center;
+  font-style: italic;
 }
 
 /* Donor Registration Form */
