@@ -3,6 +3,15 @@
     <div class = "container">
       Total Amount Raised: {{totalDonation}} Ether
       <br>
+
+
+      <div class = "progress">
+        <div class ="progress-bar" role="progressbar" aria-valuenow={{progressPerc}} aria-valuemin="0" aria-valuemax="100" style="width:{{progressPerc}}%">
+           {{progressPerc}} %
+        </div>
+      </div>
+
+
       {{#each donor}}
       {{name}} donated {{amount}} Ether
       <a class="livefeedhref" href="/profilepage/{{id}}">

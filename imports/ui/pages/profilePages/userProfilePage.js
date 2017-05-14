@@ -228,7 +228,6 @@ Template.userProfilePage.helpers({
     return user.uni_info.eStatus == "acceptedOpportunity";
   },
 
-
   donorImage : function (){
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});

@@ -39,6 +39,15 @@ Template.studentProfileDonationInfo.helpers({
   donor: function(){
     var id = FlowRouter.getParam('id');
     return ReactiveMethod.call('DonatedTo',id);
+  },
+
+  progressPerc: function(){
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    // max = user.uni_info.tuition_eth;
+    max = 1;
+    current = ReactiveMethod.call('totalDonation',id);
+    return (current/max)*100;
   }
 
 })
