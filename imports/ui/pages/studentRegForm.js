@@ -70,7 +70,7 @@ Template.studentRegForm.events({
     // userType embedded document
     options.userType = {
       isStudent: true,
-      isDonor: true,
+      isDonor: false,
       isUniAdmin: false
     }
 
