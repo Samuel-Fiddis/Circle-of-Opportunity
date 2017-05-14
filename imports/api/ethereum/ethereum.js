@@ -126,7 +126,8 @@ ethGetContractBalance = function ethForwardStudentContract(contractAddress, toAd
 ethForwardStudentContract = function ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword){
   var targetContract = timeoutContractAbi.at(contractAddress);
   web3.personal.unlockAccount(fromAddress, fromPassword);
-  targetContract.forward(toAddress, {from:fromAddress});
+  var transactionHash = targetContract.forward(toAddress, {from:fromAddress});
+  return transactionHash;
 
 }
 

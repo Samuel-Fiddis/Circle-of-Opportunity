@@ -141,19 +141,43 @@ Template.demobuttons.events({
  	Meteor.call('kill_smart_contract', options, function(error, result) {
       
       if(error) {
-        // display the error on the console log of the website
         console.log("Error Flag");
         console.log(error.reason);
-      }
-      // What happens if methods function works fine
-      else {
-        // Set the lastError to null
-        //template.lastError.set(null);
+      } else {
         console.log("Killed");
-        // redirect the user to another page after registration
-        //  FlowRouter.go('/??')
       }
     });
-  }
+  },
+
+  'click .send_funds': function(event,template) {
+    // get ids of studentand donor
+    var senderAddress = String($('input[name=sender_address]').val()) ;
+    var pwdSender = "password";
+
+    var amount = parseFloat($('input[name=sender_return_amount]').val());
+
+    var receiverAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
+    
+    var trans = ethSendEtherTransaction(senderAddress, pwdSender, receiverAddress, amount);
+
+    
+  },
+
+  'click .get_balance': function(event,template) {
+  	// Read the student ID passed in
+    var address = String($('input[name=balance_id]').val()) ;
+    var options = {
+      address : address
+    }
+ 	Meteor.call('get_balance', options, function(error, result) {
+      
+      if(error) {
+        console.log("Error Flag");
+        console.log(error.reason);
+      } else {
+        console.log("Balance Printed");
+      }
+    });
+  },
 
 });
