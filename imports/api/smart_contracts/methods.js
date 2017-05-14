@@ -73,6 +73,23 @@ Meteor.methods({
     
   },
 
+  forward_all_students: function() {
+    console.log('Forward smart contract for all students');  
+    // Crude, need to only forward for users with money in contract
+    var students = Meteor.users.find({"uni_info.eStatus":"universityPaid"});
+
+    students.forEach(function(student){
+        console.log(student);
+        
+        var fromAddress = student.ethereum;
+        //var fromPassword = Meteor.settings.pwdStudentCoo;
+        var fromPassword = "password";
+        var toAddress = student.ext_ethereum;
+
+        ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
+    });
+  },
+
   cancel_student_contract: function(options) {
     console.log('Cancel smart contract for student');
     console.log(options.studentId);   

@@ -54,16 +54,10 @@ Template.demobuttons.events({
  	Meteor.call('get_student_contract_balance', options, function(error, result) {
       
       if(error) {
-        // display the error on the console log of the website
         console.log("Error Flag");
         console.log(error.reason);
-      }
-      // What happens if methods function works fine
-      else {
-        // Set the lastError to null
-        //template.lastError.set(null);
+      } else {
         console.log("Balance returned");
-        // redirect the user to another page after registration
         //  FlowRouter.go('/??')
       }
     });
@@ -80,16 +74,23 @@ Template.demobuttons.events({
  	Meteor.call('forward_student_contract', options, function(error, result) {
       
       if(error) {
-        // display the error on the console log of the website
         console.log("Error Flag");
         console.log(error.reason);
-      }
-      // What happens if methods function works fine
-      else {
-        // Set the lastError to null
-        //template.lastError.set(null);
+      } else {
         console.log("Forwarded");
-        // redirect the user to another page after registration
+        //  FlowRouter.go('/??')
+      }
+    });
+  },
+
+  'click .forward_all_students': function(event,template) {
+ 	Meteor.call('forward_all_students', function(error, result) {
+      
+      if(error) {
+        console.log("Error Flag");
+        console.log(error.reason);
+      } else {
+        console.log("All student funds sent to their accounts");
         //  FlowRouter.go('/??')
       }
     });
