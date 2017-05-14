@@ -98,7 +98,20 @@ Meteor.methods({
     var fromPassword = "password";
     var toAddress = student.ext_ethereum;
 
-    ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
+    var transactionHash = ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
+
+    var amount = student.uni_info.allowance_eth;
+    var options = {
+      type : "CtO",
+      idSender: contractAddress,
+      nameSender: "Smart Contract",
+      amount: amount,
+    }
+    options.transactionHash = transactionHash;
+    options.idReceiver =  toAddress;
+    options.nameReceiver =  student.name.first + " " + student.name.last;
+
+    return Transactions.insert(options);
     
   },
 
@@ -115,7 +128,20 @@ Meteor.methods({
         var fromPassword = "password";
         var toAddress = student.ext_ethereum;
 
-        ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
+        var transactionHash = ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
+        
+        var amount = student.uni_info.allowance_eth;
+        var options = {
+          type : "CtO",
+          idSender: contractAddress,
+          nameSender: "Smart Contract",
+          amount: amount,
+        }
+        options.transactionHash = transactionHash;
+        options.idReceiver =  toAddress;
+        options.nameReceiver =  student.name.first + " " + student.name.last;
+
+        return Transactions.insert(options);
     });
   },
 
