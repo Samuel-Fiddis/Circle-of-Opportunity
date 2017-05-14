@@ -1,19 +1,30 @@
 import { Meteor } from 'meteor/meteor';
 import { Transactions } from '../transactions/transactions.js';
 
-/*
+
 Meteor.methods({
-  create_contract : function() {
+  create_contract: function() {
     console.log('Smart contract creation');
-  }
 
-  fill_contract : function() {
+    var ownerAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
+    var ownerPassword = "jackAccount1";
+    var contractAddress;
+    var contract = ethCreateSmartContract(ownerAddress,ownerPassword, 
+          function(_contractAddress) {
+            contractAddress = _contractAddress;
+            // Must store contract address for use in setting student amount
+    });
+  },
+
+  fill_contract: function() {
     console.log('Fill smart contract');   
-  }
+  },
 
-  forward_contract : function() {
+  forward_contract: function() {
     console.log('Forward smart contract');
   }
+});
+/*
 
   create_contract: function() {
 

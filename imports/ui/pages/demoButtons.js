@@ -9,7 +9,7 @@ Template.demobuttons.events({
     Meteor.call('reallocate');
   },
   'click .smart_contract_creation': function(event,template) {
-    Meteor.call('create_contracts');
+    Meteor.call('create_contract');
   }
 
 });
