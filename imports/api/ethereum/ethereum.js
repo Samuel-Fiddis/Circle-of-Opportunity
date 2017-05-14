@@ -120,6 +120,16 @@ ethForwardStudentContract = function ethForwardStudentContract(contractAddress, 
 }
 
 
+// Forward smart contract
+ethCancelStudentContract = function ethCancelStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword){
+  var targetContract = contractAbi.at(contractAddress);
+  web3.personal.unlockAccount(ownerAddress, ownerPassword);
+
+  targetContract.cancel_student(toAddress, {from:ownerAddress})
+  
+}
+
+
 /*
 Template.balance.helpers({
 balance() {

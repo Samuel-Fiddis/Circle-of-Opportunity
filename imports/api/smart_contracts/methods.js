@@ -57,6 +57,20 @@ Meteor.methods({
     
   },
 
+  cancel_student_contract: function(options) {
+    console.log('Cancel smart contract for student');
+    console.log(options.studentId);   
+    
+    var student = Meteor.users.findOne({_id: options.studentId});
+    var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
+    var ownerAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
+    var ownerPassword = "jackAccount1";
+    var toAddress = student.ext_ethereum;
+
+    ethForwardStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword);
+    
+  },
+
 });
 /*
 

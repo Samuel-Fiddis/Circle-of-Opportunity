@@ -87,6 +87,32 @@ Template.demobuttons.events({
         //  FlowRouter.go('/??')
       }
     });
+  },
+
+  'click .cancel_student_contract': function(event,template) {
+
+    // Read the student ID passed in
+    var studentId = String($('input[name=cancel_id]').val()) ;
+    var options = {
+      studentId : studentId
+    }
+
+ 	Meteor.call('cancel_student_contract', options, function(error, result) {
+      
+      if(error) {
+        // display the error on the console log of the website
+        console.log("Error Flag");
+        console.log(error.reason);
+      }
+      // What happens if methods function works fine
+      else {
+        // Set the lastError to null
+        //template.lastError.set(null);
+        console.log("Cancelled");
+        // redirect the user to another page after registration
+        //  FlowRouter.go('/??')
+      }
+    });
   }
 
 });
