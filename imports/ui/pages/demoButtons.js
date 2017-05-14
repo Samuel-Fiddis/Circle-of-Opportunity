@@ -14,7 +14,7 @@ Template.demobuttons.events({
   'click .fill_student_contract': function(event,template) {
 
     // Read the student ID passed in
-    var studentId = String($('input[name=student_id]').val()) ;
+    var studentId = String($('input[name=fill_id]').val()) ;
     var options = {
       studentId : studentId
     }
@@ -31,6 +31,58 @@ Template.demobuttons.events({
         // Set the lastError to null
         //template.lastError.set(null);
         console.log("transaction done");
+        // redirect the user to another page after registration
+        //  FlowRouter.go('/??')
+      }
+    });
+  },
+
+  'click .get_student_balance': function(event,template) {
+
+    // Read the student ID passed in
+    var studentId = String($('input[name=get_balance_id]').val()) ;
+    var options = {
+      studentId : studentId
+    }
+
+ 	Meteor.call('get_student_contract_balance', options, function(error, result) {
+      
+      if(error) {
+        // display the error on the console log of the website
+        console.log("Error Flag");
+        console.log(error.reason);
+      }
+      // What happens if methods function works fine
+      else {
+        // Set the lastError to null
+        //template.lastError.set(null);
+        console.log("Balance returned");
+        // redirect the user to another page after registration
+        //  FlowRouter.go('/??')
+      }
+    });
+  },
+
+  'click .forward_student_contract': function(event,template) {
+
+    // Read the student ID passed in
+    var studentId = String($('input[name=forward_id]').val()) ;
+    var options = {
+      studentId : studentId
+    }
+
+ 	Meteor.call('forward_student_contract', options, function(error, result) {
+      
+      if(error) {
+        // display the error on the console log of the website
+        console.log("Error Flag");
+        console.log(error.reason);
+      }
+      // What happens if methods function works fine
+      else {
+        // Set the lastError to null
+        //template.lastError.set(null);
+        console.log("Forwarded");
         // redirect the user to another page after registration
         //  FlowRouter.go('/??')
       }

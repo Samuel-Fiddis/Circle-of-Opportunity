@@ -30,9 +30,33 @@ Meteor.methods({
     ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
   },
 
-  forward_contract: function() {
-    console.log('Forward smart contract');
-  }
+  get_student_contract_balance: function(options) {
+    console.log('Get student contract balance');
+    console.log(options.studentId);   
+    
+    var student = Meteor.users.findOne({_id: options.studentId});
+    var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
+    var toAddress = student.ext_ethereum;
+
+    ethGetContractBalance(contractAddress, toAddress);
+    
+  },
+
+  forward_student_contract: function(options) {
+    console.log('Forward smart contract for student');
+    console.log(options.studentId);   
+    
+    var student = Meteor.users.findOne({_id: options.studentId});
+    var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
+    var fromAddress = student.ethereum;
+    //var fromPassword = Meteor.settings.pwdStudentCoo;
+    var fromPassword = "password";
+    var toAddress = student.ext_ethereum;
+
+    ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
+    
+  },
+
 });
 /*
 

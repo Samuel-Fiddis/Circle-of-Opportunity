@@ -97,6 +97,25 @@ ethFillStudentContract = function ethFillStudentContract(contractAddress, toAddr
 
   var newBalance = targetContract.get_amount(toAddress);
   
+
+  
+}
+
+// Forward smart contract
+ethGetContractBalance = function ethForwardStudentContract(contractAddress, toAddress){
+  var targetContract = contractAbi.at(contractAddress);
+
+  var balance = targetContract.get_amount(toAddress);
+  console.log("contract balance in ether");
+  console.log(balance.c[0]/10000);
+}
+
+// Forward smart contract
+ethForwardStudentContract = function ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword){
+  var targetContract = contractAbi.at(contractAddress);
+  web3.personal.unlockAccount(fromAddress, fromPassword);
+
+  targetContract.forward(toAddress, {from:fromAddress})
   
 }
 
