@@ -145,6 +145,14 @@ Meteor.methods({
     
   },
 
+  get_balance: function(options) {
+    console.log('Get balance');
+    console.log(options.address);
+    var balance = ethGetBalance(options.address);
+    console.log(balance);
+    
+  },
+
 });
 /*
 
