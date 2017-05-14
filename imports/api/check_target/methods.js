@@ -12,6 +12,7 @@ Meteor.methods({
     // Need to define how to check the target
     var Target = user.uni_info.tuition_eth;
     Target += user.uni_info.allowance_eth * 10;
+    console.log(Target);
 
     if(Balance == Target){
       Meteor.call('updateStatus',user._id,"targetReached");

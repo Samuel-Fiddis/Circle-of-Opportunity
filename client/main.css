@@ -36,7 +36,7 @@ header {
 }
 #header-nav{
     padding:13px 0;
-    font-size: 1.4em;
+    font-size: 1.1em;
 }
 #navbar-left {
  min-width:1300px;
@@ -75,9 +75,9 @@ header {
 }
 
 .visual {
-    text-align: right;
+    text-align: center;
     color: #0f2a54;
-    background-color:lightgrey; /*just for now*/
+    background-color:white; /*#004d99;*/
 }
 
 .livefeed > h2, .livefeed2 > h2 {
@@ -156,6 +156,13 @@ h1.blueheading {
     margin-left: 8em;*/
 }
 
+h2.blueheading {
+    text-align: center;
+    font-size: 2em;
+    color: #004d99;
+    font-weight: bold;
+}
+
 p {
     text-align: center;
     margin: 10px auto;
@@ -171,6 +178,12 @@ p {
     color: #333;
 }
 
+/*Error form */
+.uiErrorMessage{
+  color: #FF0000;
+  text-align: center;
+}
+
 /* Student Registration Form */
 .studentRegForm {
     padding: 10px 10px;
@@ -180,6 +193,15 @@ p {
     text-align: center;
     width: 250px;
     margin: 15px auto;
+}
+
+.boxForm{
+  text-align: center;
+  right: 15px;
+}
+.pledgeForm{
+  text-align: center;
+  font-style: italic;
 }
 
 /* Donor Registration Form */
@@ -250,8 +272,43 @@ button{
 }
 
 /* CSS FOR DYNAMIC VISUALIZATION */
-.dynamic-visualization{position:relative; width:800px;}
-.money-donors{position:absolute; bottom:0px; right:20px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
-.money-overhead{position:absolute; bottom:200px; left:-230px; font-size:24px; font-family:"Comic Sans MS", cursive, sans-serif;}
-.money-students{position:absolute; top:200px; left:-215px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
-.money-circle{position:absolute; top:440px; right:-270px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.dynamic-visualization{
+  position:relative;
+  width:800px;
+}
+.money-donors{
+  position:absolute;
+  bottom:-70px;
+  right:20px;
+  font-size:30px;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  color: #004d99;
+  font-weight: bold;
+}
+.money-overhead{
+  position:absolute;
+  bottom:100px;
+  left:-100px;
+  font-size:24px;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  color: #004d99;
+  font-weight: bold;
+}
+.money-students{
+  position:absolute;
+  top:80px;
+  left:-150px;
+  font-size:30px;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  color: #004d99;
+  font-weight: bold;
+}
+.money-circle{
+  position:absolute;
+  top:200px;
+  right:-250px;
+  font-size:30px;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  color: #004d99;
+  font-weight: bold;
+}

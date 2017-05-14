@@ -1,5 +1,6 @@
 {
  "pwdDonorCoo": "jackAccount1",
+ "ethDonorCoo": "0x0b0be3d00a30095b38cb4838b355f83ed6693423",
  "general": {
 	 "generalKey": "0xc08ee9c6252fb61271520dacac9a6126255bc81e",
 	 "generalId": "general",

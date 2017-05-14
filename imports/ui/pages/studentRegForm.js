@@ -43,6 +43,7 @@ Template.studentRegForm.events({
     // Store all the values of the user fields in a variable called options to pass on to the onCreateUser Server function
     // ===================================================================================================================
 
+
     var options = {
 
       email: $('input[name=email]').val(),
@@ -94,15 +95,8 @@ Template.studentRegForm.events({
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
 
-
-    if(document.getElementById("allowance").checked){
-      options.allowance = true;
-    }
-    else{
-      options.allowance = false;
-    }
-
-
+    options.allowance = document.getElementById("allowance").checked;
+    options.pledge = document.getElementById("pledge").checked;
     // Call signup Method passing options as an argument
     // =================================================
 
