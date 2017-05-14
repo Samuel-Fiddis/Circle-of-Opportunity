@@ -32,7 +32,6 @@ Meteor.methods({
     return Transactions.insert(options);
   },
 
-
   // Transaction COO Donor to COO General Pot
   donatenow: function(options){
 
@@ -170,18 +169,44 @@ Meteor.methods({
 
     var transactionPointer = Transactions.find({type: {$in: ["DtG", "DtS"]}});
     totalAmount = 0;
-    turns = 0;
 
     transactionPointer.forEach(function(transaction) {
       var donor = Meteor.users.findOne({_id: transaction.idSender});
       if("undefined"=== typeof donor.uni_info) {
         totalAmount = totalAmount + transaction.amount;
       }
-      turns = turns+1;
+    });
+
+    return totalAmount*Meteor.settings.ethToPound;
+  },
+
+  // Returns total amount paid for tuition and allowance
+  totalTuitionAndAllowance: function() {
+
+    var transactionPointer = Transactions.find({type: {$in: ["StU","StC"]}});
+    totalAmount = 0;
+
+    transactionPointer.forEach(function(transaction){
+      totalAmount = totalAmount + transaction.amount;
+    });
+
+    return totalAmount*Meteor.settings.ethToPound;
+  },
+
+  // Returns total amount paid back by previous students
+  totalPaidBack: function() {
+
+    var transactionPointer = Transactions.find({type: {$in: ["DtG","DtS"]}});
+    totalAmount = 0;
+
+    transactionPointer.forEach(function(transaction){
+      var donor = Meteor.users.findOne({_id: transaction.idSender});
+      if("undefined"!=typeof donor.uni_info && donor.uni_info.eStatus=="graduated") {
+        totalAmount = totalAmount + transaction.amount;
+      }
     });
 
     return totalAmount*Meteor.settings.ethToPound;
   }
-
 
 });

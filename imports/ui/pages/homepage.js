@@ -13,5 +13,12 @@ Template.homepage.helpers({
   donorDonations: function(){
     return ReactiveMethod.call('totalDonorDonations');
   },
-  
+
+  tuitionAndAllowance: function(){
+    return ReactiveMethod.call("totalTuitionAndAllowance");
+  },
+
+  paidBack: function(){
+    return ReactiveMethod.call("totalPaidBack");
+  }
 })
