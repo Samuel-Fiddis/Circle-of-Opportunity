@@ -42,7 +42,6 @@ Meteor.methods({
       idSender: student._id,
       nameSender: student.name.first + " " + student.name.last,
       amount: amount,
-      //transactionHash: trans,
     }
     options.transactionHash = transactionHash;
     options.idReceiver =  contractAddress;
@@ -62,7 +61,19 @@ Meteor.methods({
         var fromPassword = "password";
         var toAddress = student.ext_ethereum;
         var amount = student.uni_info.allowance_eth;
-        ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
+        var transactionHash = ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
+
+        var options = {
+          type : "StC",
+          idSender: student._id,
+          nameSender: student.name.first + " " + student.name.last,
+          amount: amount,
+        }
+        options.transactionHash = transactionHash;
+        options.idReceiver =  contractAddress;
+        options.nameReceiver =  "Contract";
+
+        return Transactions.insert(options);
     });
   },
 
