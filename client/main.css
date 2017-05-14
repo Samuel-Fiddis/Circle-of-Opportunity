@@ -171,6 +171,12 @@ p {
     color: #333;
 }
 
+/*Error form */
+.uiErrorMessage{
+  color: #FF0000;
+  text-align: center;
+}
+
 /* Student Registration Form */
 .studentRegForm {
     padding: 10px 10px;
@@ -180,6 +186,15 @@ p {
     text-align: center;
     width: 250px;
     margin: 15px auto;
+}
+
+.boxForm{
+  text-align: center;
+  right: 15px;
+}
+.pledgeForm{
+  text-align: center;
+  font-style: italic;
 }
 
 /* Donor Registration Form */
@@ -251,7 +266,7 @@ button{
 
 /* CSS FOR DYNAMIC VISUALIZATION */
 .dynamic-visualization{position:relative; width:800px;}
-.money-donors{position:absolute; bottom:0px; right:20px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
-.money-overhead{position:absolute; bottom:200px; left:-230px; font-size:24px; font-family:"Comic Sans MS", cursive, sans-serif;}
-.money-students{position:absolute; top:200px; left:-215px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
-.money-circle{position:absolute; top:440px; right:-270px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-donors{position:absolute; bottom:-30px; right:20px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-overhead{position:absolute; bottom:190px; left:-240px; font-size:24px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-students{position:absolute; top:150px; left:-230px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}
+.money-circle{position:absolute; top:440px; right:-350px; font-size:30px; font-family:"Comic Sans MS", cursive, sans-serif;}

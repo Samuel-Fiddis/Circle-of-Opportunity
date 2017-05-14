@@ -41,6 +41,10 @@ Meteor.methods({
       throw new Meteor.Error("No_lastName","Please fill in a last name");
     }
 
+    if(!options.pledge)
+    {
+      throw new Meteor.Error("No_pledge","Please confirm your pledge");
+    }
     /*
     NOTE: Syntax for Meteor.Error("identifier","reason")
     the identifier can be used to reference the error
@@ -86,6 +90,7 @@ Meteor.methods({
         image: String,
         ethereum: String,
         allowance: Match.Maybe(Boolean),
+        pledge: Match.Maybe(Boolean),
         name:
         {
           first: String,
