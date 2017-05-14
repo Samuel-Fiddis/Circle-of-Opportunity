@@ -62,7 +62,7 @@ Meteor.methods({
         var toAddress = student.ext_ethereum;
         var amount = student.uni_info.allowance_eth;
         var transactionHash = ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
-
+        console.log(transactionHash);
         var options = {
           type : "StC",
           idSender: student._id,
@@ -70,7 +70,7 @@ Meteor.methods({
           amount: amount,
         }
         options.transactionHash = transactionHash;
-        options.idReceiver =  contractAddress;
+        options.idReceiver =  "contractAddress";
         options.nameReceiver =  "Contract";
 
         return Transactions.insert(options);
@@ -129,7 +129,7 @@ Meteor.methods({
         var toAddress = student.ext_ethereum;
 
         var transactionHash = ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
-        
+
         var amount = student.uni_info.allowance_eth;
         var options = {
           type : "CtO",

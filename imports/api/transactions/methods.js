@@ -12,8 +12,10 @@ Meteor.methods({
     // Get the donor's and student's public key stored in mongodb
     var ethD = Meteor.users.findOne({_id:  options.idSender}).ethereum;
     var ethS = Meteor.users.findOne({_id:  options.idReceiver}).ethereum;
-    if(ethD == Meteor.settings.ethDonorCoo){
-      var pwdSender = Meteor.settings.pwdDonorCoo;
+    //if(ethD == Meteor.settings.ethDonorCoo){
+    if(ethD == "0x0b0be3d00a30095b38cb4838b355f83ed6693423"){
+      //var pwdSender = Meteor.settings.pwdDonorCoo;
+      var pwdSender = "jackAccount1";
     }
     else var pwdSender = "password";
 
