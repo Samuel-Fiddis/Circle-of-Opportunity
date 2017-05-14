@@ -1,19 +1,19 @@
 <template name="livefeed">
   {{#each transaction}}
     {{#if isDtG this}}
-      <ul><a class="livefeedhref" href="/profilepage/{{this.idDonor}}">{{this.nameSender}}</a> donated {{this.amount}} Ether to <a class="livefeedhref" href="/profilepage/{{this.idStudent}}"> {{this.nameReceiver}} </a>  on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
+      <ul><a class="livefeedhref" href="/profilepage/{{this.idDonor}}">{{this.nameSender}}</a> donated {{this.amount}} Ether to <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}"> {{this.nameReceiver}} </a>  on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
     {{/if}}
     {{#if isDtS this}}
-      <ul><a class="livefeedhref" href="/profilepage/{{this.idDonor}}">{{this.nameSender}}</a> donated {{this.amount}} Ether to <a class="livefeedhref" href="/profilepage/{{this.idStudent}}"> {{this.nameReceiver}} </a>  on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
+      <ul><a class="livefeedhref" href="/profilepage/{{this.idDonor}}">{{this.nameSender}}</a> donated {{this.amount}} Ether to <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}"> {{this.nameReceiver}} </a>  on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
     {{/if}}
     {{#if isGtS this}}
-      <ul>{{this.amount}} Ether was reallocated from <a class="livefeedhref" href="/profilepage/{{this.idDonor}}">{{this.nameSender}}</a> to <a class="livefeedhref" href="/profilepage/{{this.idStudent}}"> {{this.nameReceiver}} </a> to allow them to reach their funding goal on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
+      <ul>{{this.amount}} Ether was reallocated from <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a> to <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}"> {{this.nameReceiver}} </a> to allow them to reach their funding goal on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
     {{/if}}
     {{#if isStG this}}
-      <ul>{{this.amount}} Ether was reallocated from <a class="livefeedhref" href="/profilepage/{{this.idDonor}}">{{this.nameSender}}</a> to <a class="livefeedhref" href="/profilepage/{{this.idStudent}}"> {{this.nameReceiver}} </a> as they did not reach their funding goal on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
+      <ul>{{this.amount}} Ether was reallocated from <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a> to <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}"> {{this.nameReceiver}} </a> as they did not reach their funding goal on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
     {{/if}}
     {{#if isStU this}}
-      <ul>{{this.amount}} Ether was paid from <a class="livefeedhref" href="/profilepage/{{this.idDonor}}">{{this.nameSender}}</a> to <a class="livefeedhref" href="/profilepage/{{this.idStudent}}"> {{this.nameReceiver}} </a> as a tuition payment on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
+      <ul>{{this.amount}} Ether was paid from <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a> to <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}"> {{this.nameReceiver}} </a> as a tuition payment on {{this.createdAt}}<a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}"> Check etherscan</a></ul>
     {{/if}}
   {{/each}}
 </template>
