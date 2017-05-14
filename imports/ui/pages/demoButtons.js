@@ -107,16 +107,24 @@ Template.demobuttons.events({
  	Meteor.call('cancel_student_contract', options, function(error, result) {
       
       if(error) {
-        // display the error on the console log of the website
         console.log("Error Flag");
         console.log(error.reason);
-      }
-      // What happens if methods function works fine
-      else {
-        // Set the lastError to null
-        //template.lastError.set(null);
+      } else {
         console.log("Cancelled");
-        // redirect the user to another page after registration
+        //  FlowRouter.go('/??')
+      }
+    });
+  },
+
+  'click .cancel_all_students': function(event,template) {
+
+ 	Meteor.call('cancel_all_students', function(error, result) {
+      
+      if(error) {
+        console.log("Error Flag");
+        console.log(error.reason);
+      } else {
+        console.log("All students cancelled");
         //  FlowRouter.go('/??')
       }
     });

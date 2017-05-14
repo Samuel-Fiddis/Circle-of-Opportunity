@@ -3,7 +3,7 @@ import { Transactions } from '../transactions/transactions.js';
 
 
 
-var contractAddress = "0x21607d190b10d9eacdf9e6d51d77884a0f3898f3";
+var contractAddress = "0xfa9818c32717bac1751ccbbc8e5cdf0b0d9da121";
 
 Meteor.methods({
   create_contract: function() {
@@ -99,20 +99,30 @@ Meteor.methods({
     var ownerPassword = "jackAccount1";
     var toAddress = student.ext_ethereum;
 
-    ethForwardStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword);
+    ethCancelStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword);
+    
+  },
+
+  cancel_all_students: function() {
+    console.log('Cancel smart contract for all students');
+    var students = Meteor.users.find({"uni_info.eStatus":"universityPaid"});
+    var ownerAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
+    var ownerPassword = "jackAccount1";
+    students.forEach(function(student){
+      var toAddress = student.ext_ethereum;
+
+      ethCancelStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword);
+    });
     
   },
 
   kill_smart_contract: function(options) {
     console.log('Kill smart contract');
     console.log(options.contractId);   
-
     //var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
     var contractAddress = options.contractId;
     var ownerAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
     var ownerPassword = "jackAccount1";
-    
-
     ethKillSmartContract(contractAddress, ownerAddress, ownerPassword);
     
   },
