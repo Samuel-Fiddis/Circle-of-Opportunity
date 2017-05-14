@@ -7,35 +7,44 @@ Meteor.methods({
 
     console.log('Entering reallocation method');
     // Set up variables to be used
-    var goalAmount = 0.27;
     var balance_table = [];
     var potBalance = ethGetBalance('0xc08ee9c6252fb61271520dacac9a6126255bc81e');
     var totalEther = potBalance;
     var gasPrice = 0.002;
 
     // Get all of the students data and store in an array
-    var users = Meteor.users.find({"userType.isStudent": true},{fields:{'_id': 1,'ethereum': 1, 'name': 1}}).fetch();
+    var users = Meteor.users.find({"userType.isStudent": true},{fields:{'_id': 1,'ethereum': 1, 'name': 1, 'uni_info': 1}}).fetch();
 
     console.log(users);
 
-    // Create a table detailing all of the students current funds and get the totla balance
+    // Create a table detailing all of the students current funds and get the total balance
     for(i = 0; i < users.length; i++){
       ethBalance = ethGetBalance(users[i].ethereum);
+      // Get the remaining Ethereum balance required.
+      ethRequired = (users[i].uni_info.allowance_eth * 10) + users[i].uni_info.tuition_eth - ethBalance;
       totalEther += ethBalance;
-      balance_table.push({_id: users[i]._id,ethereum: users[i].ethereum,name: users[i].name, balance: ethBalance});
+      balance_table.push({_id: users[i]._id,ethereum: users[i].ethereum,name: users[i].name, balance: ethBalance, required: ethRequired});
     }
 
     console.log('Total Balance:');
     console.log(totalEther);
 
-    // Sort the table from highest to lowest
-    balance_table.sort(function(a,b) {return (a.balance > b.balance) ? -1 : ((b.balance > a.balance) ? 1 : 0);});
+    // Sort the table from lowest to highest amount of ether required
+    balance_table.sort(function(a,b) {return (a.required > b.required) ? 1 : ((b.required > a.required) ? -1 : 0);});
 
     console.log(balance_table);
 
-    // Determine who is in the cut off and who isn't
+    // Determine who in the balance_table is in the cut off and who isn't
+    var numAccepted = 0;
+    var balanceRemaining = totalEther;
+    for(i = 0; i < users.length; i++){
+      required = balance_table[i].required;
+      if(balanceRemaining > required){
+        numAccepted++;
+        balanceRemaining -= required;
+      }
+    }
 
-    var numAccepted =  Math.floor(totalEther/goalAmount);
     if(users.length < numAccepted) numAccepted = users.length;
 
     console.log(numAccepted);
@@ -68,8 +77,9 @@ Meteor.methods({
     // Take all of the funds in the general pot and distribute them to the remaining students
     for(i = 0; i < numAccepted; i++){
       console.log('In GP to student reallocation step');
-      var transferBalance = goalAmount - balance_table[i].balance;
+      var transferBalance = balance_table[i].required;
       console.log(transferBalance);
+
       if(transferBalance > 0){
         var trans = ethSendEtherTransaction('0xc08ee9c6252fb61271520dacac9a6126255bc81e',"general",balance_table[i].ethereum,transferBalance);
         console.log(trans);
