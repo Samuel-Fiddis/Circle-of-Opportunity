@@ -7,7 +7,6 @@ import '../../ui/pages/mainpage.js';
 import '../../ui/pages/about.js';
 import '../../ui/pages/studentoverview.js';
 import '../../ui/pages/donoroverview.js';
-import '../../ui/pages/viewthecircle.js';
 import '../../ui/pages/donorregister.js';
 import '../../ui/pages/studentregister.js';
 import '../../ui/pages/contact.js';
@@ -52,13 +51,6 @@ FlowRouter.route('/about', {
   name: 'about',
   action(){
     BlazeLayout.render('mainpage', {main: 'about'});
-  },
-});
-
-FlowRouter.route('/viewthecircle', {
-  name: 'viewthecircle',
-  action(){
-    BlazeLayout.render('mainpage', {main: 'viewthecircle'});
   },
 });
 
