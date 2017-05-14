@@ -50,7 +50,7 @@ Template.uniProfilePage.helpers({
     var uniId = admin.adminFor;
     return Universities.findOne({_id: uniId});
   },
-  
+
 
 });
 
@@ -152,16 +152,66 @@ Template.statusButton.events({
 });
 
 Template.acceptTuitionButton.events({
-  'click #acceptTuitionButton' : function (evt){
+  'click .acceptTuition' : function (evt){
     //FIRST PAY THE UNIVERSITY
     // New Transaction
+    console.log("Clicked accept Tuition Button");
+    var idS = this._id;
+    var idU = Meteor.userId();
+    console.log(idU);
+    // read the amount of ethSendEtherTransaction
+
+    var a = this.uni_info.tuition_eth;
+    console.log(a);
+    // check if the amount is a float. If not throw an error
+    if (typeof(a) != "number"){
+      throw new Meteor.Error("Wrong amount","Please fill out a real number");
+    }
+
+    // query the database to get th epublic key
+    // var ethD = Meteor.users.findOne({_id: idD}).ethereum;
+    // var ethS = Meteor.users.findOne({_id: idS}).ethereum;
+
+    // query the database to get the nameStudent
+    var nS = this.name;
+    var nU = Meteor.user().name;
+
+    // Create the transaction options to preform the transaction
+      var options = {
+        type : "StU",
+        idReceiver: idU,
+        nameReceiver: nU.first + " " + nU.last,
+        idSender: idS,
+        nameSender: nS.first + " " + nS.last,
+        amount: a,
+      }
+
+    // Send ether to the uni and create a local transaction record
+      Meteor.call('createTransaction', options, function(error, result) {
+        // What happens if methods function returns an error
+        // +++++++++++++++++++++++++++++++++++++++++++++++++
+        console.log("Entered Method Flag");
+
+        if(error) {
+          // display the error on the console log of the website
+          console.log("Error Flag");
+          console.log(error.reason);
+        }
+        // What happens if methods function works fine
+        else {
+          // Set the lastError to null
+          //template.lastError.set(null);
+          console.log("transaction done");
+          // redirect the user to another page after registration
+          //  FlowRouter.go('/??')
+        }
+      });
 
     // get selected value
     var newValue = "universityPaid";
     //get studentID
-    var studentId = FlowRouter.getParam('id');
 
-    Meteor.call('updateStatus', studentId, newValue, function(error, result) {
+    Meteor.call('updateStatus', idS, newValue, function(error, result) {
 
       // What happens if methods function returns an error
       // +++++++++++++++++++++++++++++++++++++++++++++++++

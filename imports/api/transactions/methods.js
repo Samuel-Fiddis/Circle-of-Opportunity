@@ -14,8 +14,10 @@ Meteor.methods({
     // get the donor's and student's public key
     var ethD = Meteor.users.findOne({_id:  options.idSender}).ethereum;
     var ethS = Meteor.users.findOne({_id:  options.idReceiver}).ethereum;
-    var pwdSender = Meteor.settings.pwdDonorCoo;
-
+    if(ethD == Meteor.settings.ethDonorCoo){
+      var pwdSender = Meteor.settings.pwdDonorCoo;
+    }
+    else var pwdSender = "password";
     var trans = ethSendEtherTransaction(ethD, pwdSender, ethS, options.amount);
 
     //   // insufficient funds
