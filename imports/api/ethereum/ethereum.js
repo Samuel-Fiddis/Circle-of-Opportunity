@@ -101,7 +101,7 @@ ethFillStudentContract = function ethFillStudentContract(contractAddress, toAddr
   
 }
 
-// Forward smart contract
+// Get smart contract balanace for user
 ethGetContractBalance = function ethForwardStudentContract(contractAddress, toAddress){
   var targetContract = contractAbi.at(contractAddress);
 
@@ -114,13 +114,13 @@ ethGetContractBalance = function ethForwardStudentContract(contractAddress, toAd
 ethForwardStudentContract = function ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword){
   var targetContract = contractAbi.at(contractAddress);
   web3.personal.unlockAccount(fromAddress, fromPassword);
-
+  console.log()
   targetContract.forward(toAddress, {from:fromAddress})
   
 }
 
 
-// Forward smart contract
+// Cancel smart contract for one user
 ethCancelStudentContract = function ethCancelStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword){
   var targetContract = contractAbi.at(contractAddress);
   web3.personal.unlockAccount(ownerAddress, ownerPassword);
@@ -128,6 +128,16 @@ ethCancelStudentContract = function ethCancelStudentContract(contractAddress, to
   targetContract.cancel_student(toAddress, {from:ownerAddress})
   
 }
+
+// Kill smart contract
+ethKillSmartContract = function ethCancelStudentContract(contractAddress, ownerAddress, ownerPassword){
+  var targetContract = contractAbi.at(contractAddress);
+  web3.personal.unlockAccount(ownerAddress, ownerPassword);
+
+  targetContract.kill.sendTransaction({from:ownerAddress});
+  
+}
+
 
 
 /*

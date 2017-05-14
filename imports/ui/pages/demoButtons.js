@@ -113,6 +113,32 @@ Template.demobuttons.events({
         //  FlowRouter.go('/??')
       }
     });
+  },
+
+  'click .kill_smart_contract': function(event,template) {
+
+    // Read the student ID passed in
+    var contractId = String($('input[name=kill_contract_id]').val()) ;
+    var options = {
+      contractId : contractId
+    }
+
+ 	Meteor.call('kill_smart_contract', options, function(error, result) {
+      
+      if(error) {
+        // display the error on the console log of the website
+        console.log("Error Flag");
+        console.log(error.reason);
+      }
+      // What happens if methods function works fine
+      else {
+        // Set the lastError to null
+        //template.lastError.set(null);
+        console.log("Killed");
+        // redirect the user to another page after registration
+        //  FlowRouter.go('/??')
+      }
+    });
   }
 
 });

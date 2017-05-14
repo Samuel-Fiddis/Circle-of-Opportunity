@@ -2,6 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import { Transactions } from '../transactions/transactions.js';
 
 
+
+var contractAddress = "0x21607d190b10d9eacdf9e6d51d77884a0f3898f3";
+
 Meteor.methods({
   create_contract: function() {
     console.log('Smart contract creation');
@@ -15,13 +18,13 @@ Meteor.methods({
             // Must store contract address for use in setting student amount
     });
   },
-
+  
+  
   fill_student_contract: function(options) {
     console.log('Fill smart contract for student');
     console.log(options.studentId);   
     
     var student = Meteor.users.findOne({_id: options.studentId});
-    var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
     var fromAddress = student.ethereum;
     //var fromPassword = Meteor.settings.pwdStudentCoo;
     var fromPassword = "password";
@@ -33,9 +36,8 @@ Meteor.methods({
   get_student_contract_balance: function(options) {
     console.log('Get student contract balance');
     console.log(options.studentId);   
-    
     var student = Meteor.users.findOne({_id: options.studentId});
-    var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
+    
     var toAddress = student.ext_ethereum;
 
     ethGetContractBalance(contractAddress, toAddress);
@@ -47,7 +49,6 @@ Meteor.methods({
     console.log(options.studentId);   
     
     var student = Meteor.users.findOne({_id: options.studentId});
-    var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
     var fromAddress = student.ethereum;
     //var fromPassword = Meteor.settings.pwdStudentCoo;
     var fromPassword = "password";
@@ -62,12 +63,25 @@ Meteor.methods({
     console.log(options.studentId);   
     
     var student = Meteor.users.findOne({_id: options.studentId});
-    var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
     var ownerAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
     var ownerPassword = "jackAccount1";
     var toAddress = student.ext_ethereum;
 
     ethForwardStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword);
+    
+  },
+
+  kill_smart_contract: function(options) {
+    console.log('Kill smart contract');
+    console.log(options.contractId);   
+
+    //var contractAddress = "0x80195f5fcc7435d900a9ce726736070ef11d0d93";
+    var contractAddress = options.contractId;
+    var ownerAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
+    var ownerPassword = "jackAccount1";
+    
+
+    ethKillSmartContract(contractAddress, ownerAddress, ownerPassword);
     
   },
 
