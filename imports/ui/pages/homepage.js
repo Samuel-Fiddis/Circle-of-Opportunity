@@ -7,3 +7,11 @@ import './homepage.html';
 import '../components/liveFeed.js';
 
 //import '../components/ticker.js'
+
+Template.homepage.helpers({
+
+  donorDonations: function(){
+    return ReactiveMethod.call('totalDonorDonations');
+  },
+  
+})

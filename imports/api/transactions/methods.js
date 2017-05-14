@@ -59,7 +59,6 @@ Meteor.methods({
     return Transactions.insert(options);
   },
 
-
   // If student, return the amount of money received so far
   // If donor, return the amount of donations given so far
   totalDonation: function(options) {
@@ -96,6 +95,7 @@ Meteor.methods({
     return totalAmount;
   },
 
+  // Return an array of people that have transactions with this particular person and total amount
   DonatedTo: function(id) {
 
     check(id,String);
@@ -162,5 +162,24 @@ Meteor.methods({
 
     return student;
   },
+
+  // Returns total amount paid by non-previousStudent users
+  totalDonorDonations: function() {
+
+    var transactionPointer = Transactions.find({type: {$in: ["DtG", "DtS"]}});
+    totalAmount = 0;
+    turns = 0;
+
+    transactionPointer.forEach(function(transaction) {
+      var donor = Meteor.users.findOne({_id: transaction.idSender});
+      if("undefined"=== typeof donor.uni_info) {
+        totalAmount = totalAmount + transaction.amount;
+      }
+      turns = turns+1;
+    });
+
+    return totalAmount*Meteor.settings.ethToPound;
+  }
+
 
 });
