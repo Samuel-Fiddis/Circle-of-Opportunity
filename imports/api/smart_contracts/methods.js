@@ -33,6 +33,21 @@ Meteor.methods({
     ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
   },
 
+  fill_all_students: function() {
+    console.log('Fill smart contract for all students');  
+    var students = Meteor.users.find({"uni_info.eStatus":"universityPaid"});
+
+    students.forEach(function(student){
+        console.log(student);
+        var fromAddress = student.ethereum;
+        //var fromPassword = Meteor.settings.pwdStudentCoo;
+        var fromPassword = "password";
+        var toAddress = student.ext_ethereum;
+        var amount = student.uni_info.allowance_eth;
+        ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
+    });
+  },
+
   get_student_contract_balance: function(options) {
     console.log('Get student contract balance');
     console.log(options.studentId);   

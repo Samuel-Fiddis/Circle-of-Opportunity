@@ -20,18 +20,24 @@ Template.demobuttons.events({
     }
 
  	Meteor.call('fill_student_contract', options, function(error, result) {
-      
       if(error) {
-        // display the error on the console log of the website
         console.log("Error Flag");
         console.log(error.reason);
+      } else {
+        console.log("Student funds sent to contract");
+        //  FlowRouter.go('/??')
       }
-      // What happens if methods function works fine
-      else {
-        // Set the lastError to null
-        //template.lastError.set(null);
-        console.log("transaction done");
-        // redirect the user to another page after registration
+    });
+  },
+
+  'click .fill_all_students': function(event,template) {
+ 	Meteor.call('fill_all_students', function(error, result) {
+      
+      if(error) {
+        console.log("Error Flag");
+        console.log(error.reason);
+      } else {
+        console.log("All student funds sent to contract");
         //  FlowRouter.go('/??')
       }
     });
