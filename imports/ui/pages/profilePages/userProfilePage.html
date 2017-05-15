@@ -77,6 +77,10 @@
 
         <div class = "registerInterest">
 
+          {{#if errorMessage}}
+            <div class="uiErrorMessage"> {{errorMessage}} </div>
+          {{/if}}
+          
           {{ > registerInterestButton }}
           {{ > studentProfileRegisterInterest userProfile}}
 

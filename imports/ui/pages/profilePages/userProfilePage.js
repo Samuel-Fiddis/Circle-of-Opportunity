@@ -19,6 +19,7 @@ Template.userProfilePage.onCreated( function () {
   // Subscribe thisUser publication: returns the entire user document for the currently logged in user
   // Subscribe singleUser publication: returns just public info of single user
 
+  this.lastError = new ReactiveVar(null);
   var self = this;
 
   self.autorun(function() {
@@ -62,7 +63,7 @@ Template.userProfilePage.events({
 
       if(error) {
         console.log(error.reason);
-
+        template.lastError.set(error.reason);
       }
 
       else {
@@ -110,46 +111,46 @@ Template.userProfilePage.events({
     // }
 
     //else{
-      // buils the options to store the transaction in the db
-      var options = {
-        type : "DtS",
-        idReceiver: idS,
-        nameReceiver: nS.first + " " + nS.last,
-        idSender: idD,
-        nameSender: nD.first + " " + nD.last,
-        amount: a,
-        //transactionHash: trans,
+    // buils the options to store the transaction in the db
+    var options = {
+      type : "DtS",
+      idReceiver: idS,
+      nameReceiver: nS.first + " " + nS.last,
+      idSender: idD,
+      nameSender: nD.first + " " + nD.last,
+      amount: a,
+      //transactionHash: trans,
+    }
+
+    //   if(Transactions.insert(options)) {
+    //     console.log("Transaction Added");
+    //   }
+    //   else {
+    //   //  Need error handeling here
+    //  }
+
+    Meteor.call('createTransaction', options, function(error, result) {
+      // What happens if methods function returns an error
+      // +++++++++++++++++++++++++++++++++++++++++++++++++
+      console.log("Entered Method Flag");
+
+      if(error) {
+        // display the error on the console log of the website
+        console.log("Error Flag");
+        console.log(error.reason);
       }
+      // What happens if methods function works fine
+      else {
+        // Set the lastError to null
+        //template.lastError.set(null);
+        console.log("transaction done");
+        // redirect the user to another page after registration
+        //  FlowRouter.go('/??')
+      }
+    });
 
-      //   if(Transactions.insert(options)) {
-      //     console.log("Transaction Added");
-      //   }
-      //   else {
-      //   //  Need error handeling here
-      //  }
-
-      Meteor.call('createTransaction', options, function(error, result) {
-        // What happens if methods function returns an error
-        // +++++++++++++++++++++++++++++++++++++++++++++++++
-        console.log("Entered Method Flag");
-
-        if(error) {
-          // display the error on the console log of the website
-          console.log("Error Flag");
-          console.log(error.reason);
-        }
-        // What happens if methods function works fine
-        else {
-          // Set the lastError to null
-          //template.lastError.set(null);
-          console.log("transaction done");
-          // redirect the user to another page after registration
-          //  FlowRouter.go('/??')
-        }
-      });
-
-      console.log("about to enter Target Checking");
-      Meteor.call('checkTarget',idS);
+    console.log("about to enter Target Checking");
+    Meteor.call('checkTarget',idS);
     //}
   },
 
@@ -251,6 +252,9 @@ Template.userProfilePage.helpers({
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.uni_info.eStatus == status;
+  },
+  errorMessage: function () {
+    return Template.instance().lastError.get();
   },
 
 });
