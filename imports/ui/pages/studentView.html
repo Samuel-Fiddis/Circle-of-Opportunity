@@ -9,6 +9,16 @@
 			<br>
 			<span class="overview-program">{{uni_info.program}}</span>
 		</div>
-		<span class="overview-story">{{bio}}</span>
+		<span class="overview-story">
+			<b>About {{name.first}} {{name.last}}: </b>
+			{{bio}}
+		</span>
+		<div class="overview-progress">
+			<div class="progress">
+		        <div class="progress-bar" role="progressbar" aria-valuenow={{progressPerc}} aria-valuemin="0" aria-valuemax="100" style="width:{{progressPerc}}%">
+		           {{progressPerc}} %
+		        </div>	
+		    </div>
+		</div>
 	</div>
 </template>

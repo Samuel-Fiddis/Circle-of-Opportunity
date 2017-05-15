@@ -105,7 +105,22 @@ Template.studentoverview.helpers({
       currentFile = user.userImage().currentFile;
     }
     return currentFile;
-  },
+  }
+
+});
+
+Template.studentView.helpers({
+
+  progressPerc: function(){
+    var id = this._id;
+    var user = Meteor.users.findOne({_id: id});
+    max = user.uni_info.tuition_eth + user.uni_info.allowance_eth * 10;
+    // Should be calling balance from Ethereuem
+    // current = ReactiveMethod.call('totalDonation',id);
+    current = ethGetBalance(user.ethereum);
+    percentRaised = Math.round((current/max)*100,2);
+    return percentRaised;
+  }
 
 });
 
