@@ -89,9 +89,9 @@ Meteor.methods({
         age: String,
         image: String,
         ethereum: String,
-        ethereum_ext: String,
         allowance: Match.Maybe(Boolean),
         pledge: Match.Maybe(Boolean),
+        ethereum_ext: Match.Maybe(String),
         name:
         {
           first: String,
