@@ -12,7 +12,7 @@ Meteor.methods({
 
   signup: function(options) {
 
-    console.log("in signup method function");
+    // console.log("in signup method function");
 
     var userId;
 
@@ -41,7 +41,7 @@ Meteor.methods({
       throw new Meteor.Error("No_lastName","Please fill in a last name");
     }
 
-    if(!options.pledge)
+    if(options.userType.isStudent && !options.pledge)
     {
       throw new Meteor.Error("No_pledge","Please confirm your pledge");
     }
