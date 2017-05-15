@@ -51,6 +51,11 @@
       <input type="file" id="photo" name="image" placeholder="Image" class="form-control">
     -->
 
+      {{#if student}}
+        <!-- External Ethereum Account -->
+        <input type="text" name="ethereum_ext" placeholder="External Ethereum Address" value = {{ethereum_ext}} class="form-control">
+      {{/if}}
+
 
     {{/with}}
     <!-- submit button -->

@@ -55,7 +55,10 @@ Template.studentRegForm.events({
 
       // personal information
       age: $('input[name=age]').val(),
-      image: $('input[name=image]').val()
+      image: $('input[name=image]').val(),
+
+      // external Ethereum Account
+      ethereum_ext: $('input[name=ethereum_ext]').val(),
     }
 
     /*
@@ -94,6 +97,7 @@ Template.studentRegForm.events({
 
     var myAddr = ethCreateAccount();
     options.ethereum = myAddr;
+
 
     options.allowance = document.getElementById("allowance").checked;
     options.pledge = document.getElementById("pledge").checked;

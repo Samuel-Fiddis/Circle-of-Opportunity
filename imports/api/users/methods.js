@@ -89,6 +89,7 @@ Meteor.methods({
         age: String,
         image: String,
         ethereum: String,
+        ethereum_ext: String,
         allowance: Match.Maybe(Boolean),
         pledge: Match.Maybe(Boolean),
         name:
@@ -179,7 +180,8 @@ Meteor.methods({
             city: String,
             street: String,
             zipCode: String,
-          }
+          },
+          ethereum_ext: String
         });
 
     // Conditional statement: only LoggedIn User can call this Method

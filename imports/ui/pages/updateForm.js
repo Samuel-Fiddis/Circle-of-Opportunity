@@ -139,4 +139,14 @@ Template.updateForm.helpers({
     return Meteor.user();
   },
 
+  // checking if profile belongs to a student
+  // ****************************************
+  student: function () {
+    var id = this._id;
+    console.log("student function");
+    console.log(id);
+    var user = Meteor.users.findOne({_id: id});
+    return user.userType.isStudent;
+  },
+
 });

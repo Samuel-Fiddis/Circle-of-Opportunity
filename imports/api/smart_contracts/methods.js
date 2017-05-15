@@ -3,7 +3,7 @@ import { Transactions } from '../transactions/transactions.js';
 
 
 
-var contractAddress = "0x9828c59e25f8c9eeac4db2f676f4395d8b5e46a5";
+var contractAddress = "0x09e10d134b8e397c09e1b608abafa90662841784";
 
 Meteor.methods({
   create_contract: function() {
