@@ -6,8 +6,7 @@ html {
 
 body {
     font-family: sans-serif;
-    background-color: #e8f2fd;
-    background-image: linear-gradient(to bottom, #e8f2fd, #e8f2fd 100%);
+    background-color: #f2f2f2;
     background-attachment: fixed;
     font-size: 14px;
     margin-bottom: 50px;
@@ -28,6 +27,7 @@ header {
   height: 56px;
   padding: 3px 30px;
   background-color: #fff;
+  border-top: 1px solid #e7e7e7;
 }
 
 /* Header */
@@ -290,6 +290,7 @@ button{
 .dynamic-visualization{
   position:relative;
   width:800px;
+  margin: 0 auto;
 }
 .money-donors{
   position:absolute;
