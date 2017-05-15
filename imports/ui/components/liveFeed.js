@@ -27,12 +27,15 @@ Template.livefeed.onCreated( function() {
     self.subscribe('topTransactions', 20);
   }
   });
-
 });
 
 Template.livefeed.helpers({
   transaction: ()=> {
     return Transactions.find({});
+  },
+
+  ethToPound: function(amount) {
+    return Number((amount * 100.0).toFixed(2));
   },
 
   isDtS: function(transaction) {
