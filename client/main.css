@@ -290,13 +290,19 @@ button{
 }
 
 /* CSS FOR DYNAMIC VISUALIZATION */
+.homepage-background{
+background-color: #e8f2fd;
+}
+
 .dynamic-visualization{
   position:relative;
   width:800px;
   margin: 0 auto;
+  background-color: #e8f2fd;
 }
 .money-donors{
   position:absolute;
+  
   bottom:-70px;
   right:20px;
   font-size:30px;
