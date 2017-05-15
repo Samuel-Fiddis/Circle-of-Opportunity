@@ -228,6 +228,9 @@ h1.blueheading {
 
 
 /* Students Overview */
+#students-container {
+  padding: 0px 0px 15px;
+}
 #students-container > h1 {
     text-align: center;
     color: #333;
@@ -319,6 +322,14 @@ h1.blueheading {
 /* selected link */
 .overview-name:active {
   text-decoration: none;
+}
+
+.overview-glyph {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 18px;
+  color: #003366
 }
 
 .overview-story {

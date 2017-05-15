@@ -120,7 +120,27 @@ Template.studentView.helpers({
     current = ethGetBalance(user.ethereum);
     percentRaised = Math.round((current/max)*100,2);
     return percentRaised;
-  }
+  },
+
+  pending: function () {
+    var id = this._id;
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == "pending";
+  },
+
+  accepted: function () {
+    var id = this._id;
+    var user = Meteor.users.findOne({_id: id});
+    console.log("accepted");
+    console.log(user);
+    return user.uni_info.eStatus == "accepted";
+  },
+
+  rejected: function () {
+    var id = this._id;
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == "rejected";
+  },
 
 });
 

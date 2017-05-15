@@ -1,6 +1,20 @@
 <template name="studentView">
 	<div class="student-view">
 		<div class="overview-top">
+
+			{{#if pending}}
+			<span class="overview-glyph glyph-pending glyphicon glyphicon-hourglass" aria-hidden="true" data-toggle="tooltip" title="Pending"></span>
+			{{/if}}
+
+			{{#if accepted}}
+			<span class="overview-glyph glyph-accepted glyphicon glyphicon-ok" aria-hidden="true" data-toggle="tooltip" title="Accepted"></span>
+			{{/if}}
+
+			{{#if rejected}}
+			<span class="overview-glyph glyph-rejected glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" title="Rejected"></span>
+			{{/if}}
+
+
 			<img class="overview-image" src="{{userImage.link}}" alt="image of student">
 			<a class="overview-name" href="/profilepage/{{_id}}">
 				{{name.first}} {{name.last}}
