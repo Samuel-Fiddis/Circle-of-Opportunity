@@ -27,7 +27,6 @@ Template.livefeed.onCreated( function() {
     self.subscribe('topTransactions', 20);
   }
   });
-
 });
 
 Template.livefeed.helpers({
