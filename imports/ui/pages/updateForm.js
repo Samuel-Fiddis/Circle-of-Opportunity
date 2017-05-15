@@ -54,6 +54,9 @@ Template.updateForm.events({
 
       // Personal Story
       bio: $('textarea[name=bio]').val(),
+
+      // external Ethereum Account
+      ethereum_ext: $('input[name=ethereum_ext]').val(),
     }
 
     // Name Information
@@ -70,6 +73,8 @@ Template.updateForm.events({
       street: $('input[name=street]').val(),
       zipCode: $('input[name=zipCode]').val()
     }
+
+
 
     // Call the "updateUser" Method
     // ============================

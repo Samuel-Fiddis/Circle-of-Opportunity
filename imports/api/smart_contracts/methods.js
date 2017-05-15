@@ -28,7 +28,7 @@ Meteor.methods({
     var fromAddress = student.ethereum;
     //var fromPassword = Meteor.settings.pwdStudentCoo;
     var fromPassword = "password";
-    var toAddress = student.ext_ethereum;
+    var toAddress = student.ethereum_ext;
     var amount = student.uni_info.allowance_eth;
     
 
@@ -59,7 +59,7 @@ Meteor.methods({
         var fromAddress = student.ethereum;
         //var fromPassword = Meteor.settings.pwdStudentCoo;
         var fromPassword = "password";
-        var toAddress = student.ext_ethereum;
+        var toAddress = student.ethereum_ext;
         var amount = student.uni_info.allowance_eth;
         var transactionHash = ethFillStudentContract(contractAddress, toAddress, fromAddress, fromPassword, amount);
         console.log(transactionHash);
@@ -82,7 +82,7 @@ Meteor.methods({
     console.log(options.studentId);   
     var student = Meteor.users.findOne({_id: options.studentId});
     
-    var toAddress = student.ext_ethereum;
+    var toAddress = student.ethereum_ext;
 
     ethGetContractBalance(contractAddress, toAddress);
     
@@ -96,7 +96,7 @@ Meteor.methods({
     var fromAddress = student.ethereum;
     //var fromPassword = Meteor.settings.pwdStudentCoo;
     var fromPassword = "password";
-    var toAddress = student.ext_ethereum;
+    var toAddress = student.ethereum_ext;
 
     var transactionHash = ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
 
@@ -126,7 +126,7 @@ Meteor.methods({
         var fromAddress = student.ethereum;
         //var fromPassword = Meteor.settings.pwdStudentCoo;
         var fromPassword = "password";
-        var toAddress = student.ext_ethereum;
+        var toAddress = student.ethereum_ext;
 
         var transactionHash = ethForwardStudentContract(contractAddress, toAddress, fromAddress, fromPassword);
 
@@ -152,7 +152,7 @@ Meteor.methods({
     var student = Meteor.users.findOne({_id: options.studentId});
     var ownerAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
     var ownerPassword = "jackAccount1";
-    var toAddress = student.ext_ethereum;
+    var toAddress = student.ethereum_ext;
 
     ethCancelStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword);
     
@@ -164,7 +164,7 @@ Meteor.methods({
     var ownerAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
     var ownerPassword = "jackAccount1";
     students.forEach(function(student){
-      var toAddress = student.ext_ethereum;
+      var toAddress = student.ethereum_ext;
 
       ethCancelStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword);
     });

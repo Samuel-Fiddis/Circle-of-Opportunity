@@ -10,7 +10,7 @@ body {
     background-attachment: fixed;
     font-size: 14px;
     margin-bottom: 50px;
-    min-width: 1080px;
+    min-width: 1195px;
 }
 
 header {
@@ -29,7 +29,7 @@ header {
   padding: 3px 30px;
   background-color: #fff;
   border-top: 1px solid #e7e7e7;
-  min-width: 1080px;
+  min-width: 1195px;
 }
 
 /* Header */
@@ -42,7 +42,7 @@ header {
     margin-bottom: 0px;
 }
 #navbar-left {
- min-width:1050px;
+ min-width:1165px;
 }
 .header-logo{
     position:relative;
@@ -163,7 +163,7 @@ div {
 h2.blueheading {
     text-align: center;
     font-size: 2em;
-    color: #004ddd;
+    color: #004d99;
     font-weight: bold;
 }
 
@@ -243,7 +243,7 @@ h1.blueheading {
     margin-bottom: 10px;
     padding: 10px;
     height: auto;
-    background: #eee;
+    background: #fff;
     border: 1px solid #bbb;
     border-radius: 6px;
     box-shadow: 0px 2px 4px #ccc;
