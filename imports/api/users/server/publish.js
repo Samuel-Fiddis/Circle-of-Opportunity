@@ -75,8 +75,8 @@ Meteor.publish('uniStudentData', function () {
 			'age': 1,
 			'address.city': 1,
 			'address.country': 1,
-			'uni_info.eStatus': 1,
-			'uni_info.tuition_eth': 1,
+			'uni_info': 1,
 			'emails.address': 1,
-			'userType.isStudent': 1}});
+			'userType.isStudent': 1,
+			'image': 1}});
 });

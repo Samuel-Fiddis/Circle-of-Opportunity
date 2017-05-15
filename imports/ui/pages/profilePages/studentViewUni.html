@@ -1,6 +1,6 @@
 <template name = "studentViewUni">
   <div id = "students-container" class = "container">
-    <h1>Students listed with their acceptance status</h1>
+    <h1>Students</h1>
     <!-- Enumerate over each user -->
     <div class="container">
 
@@ -8,10 +8,9 @@
 
       <div class="row">
         {{#each user}}
-
           <!-- Call StudentViewUniHelper for each user -->
           {{#if student}}
-            {{ >studentViewUniHelper}}
+            {{>studentViewUniHelper}}
           {{/if}}
         {{/each}}
       </div>
@@ -23,23 +22,26 @@
 
 
 <template name = "studentViewUniHelper">
-  <div class="student-view col-xs-8 col-xs-offset-1"> <!-- studentView offset-2 -->
-    <img class="student-image" src="images/profile_pics/{{image}}" alt="image of student"> <!--studentImage-->
-    <a class = "student-link" href="/profilepage/{{_id}}"> <h3>{{name.first}} {{name.last}}</h3> </a> <br>
-    <div class = "student-info">
-      <span> <!--Age: {{age}} --> Email(s): {{#each emails}} {{address}} {{/each}} </span>
+  <div class="student-view">
+    <div class="overview-top">
+      <img class="overview-image" src="{{userImage.link}}" alt="image of student">
+      <a class="overview-name" href="/profilepage/{{_id}}">
+        {{name.first}} {{name.last}}
+      </a>
+      <span class="overview-uni">{{uni_info.uni}}</span>
       <br>
-      <span> Status: {{uni_info.eStatus}} </span>
+      <span class="overview-program">{{uni_info.program}}</span>
+    </div>
+    <div>
+      <span>Email(s): {{#each emails}} {{address}} {{/each}} </span>
+      <br>
+      <span> Status: {{uni_info.eStatus}}</span>
       <br>
       <span> {{>statusButton}} </span>
       <br>
-
-
         {{#if acceptedOpportunity}}
-      <span> {{>acceptTuitionButton}} </span>
+          <span> {{>acceptTuitionButton}} </span>
         {{/if}}
-
-
     </div>
   </div>
 </template>

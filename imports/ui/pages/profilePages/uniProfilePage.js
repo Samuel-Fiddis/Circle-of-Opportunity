@@ -69,11 +69,23 @@ Template.studentViewUni.helpers({
   },
   student: function () {
     var user = Meteor.users.findOne({_id: this._id});
-    console.log("HERE!!!");
+    console.log("student");
     console.log(user);
     return user.userType.isStudent;
   },
-
+  userImage : function (){
+    const user = this;
+    //Meteor.users.findOne({"emails.address":{$regex:"@coreygarvey.com"}});
+    if(typeof user.userImage().currentFile !== "undefined"){
+      console.log(user.userImage().currentFile);
+      currentFile = user.userImage().currentFile;
+    }
+    console.log("userImage");
+    console.log(user.userImage());
+    console.log("userImage.currentFile");
+    console.log(user.userImage().currentFile);
+    return currentFile;
+  }
 
   // uni_name returns the name of the university affiliated with this student
   // ************************************************************************
@@ -96,6 +108,7 @@ Template.studentViewUniHelper.helpers({
     console.log(user);
     return user.uni_info.eStatus == "acceptedOpportunity";
   },
+  
 });
 
 Template.orderButton.events({
