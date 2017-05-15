@@ -134,6 +134,29 @@ h1 {
     margin-left: 8em;*/
 }
 
+
+p {
+    text-align: center;
+    margin: 10px auto;
+    font-size: 1.2em;
+    color: #0f2a54;
+    width: 85%;
+}
+
+h2 {
+  text-align: center;
+  margin: 40px auto;
+  font-size: 1.5em;
+  color: #004d99;
+}
+
+h2.blueheading {
+    text-align: center;
+    font-size: 2em;
+    color: #004ddd;
+    font-weight: bold;
+}
+
 h1.whiteheading {
     text-align: center;
     font-size: 3em;
@@ -154,21 +177,6 @@ h1.blueheading {
     margin-bottom: 20px;
     display: inline-block;
     margin-left: 8em;*/
-}
-
-h2.blueheading {
-    text-align: center;
-    font-size: 2em;
-    color: #004d99;
-    font-weight: bold;
-}
-
-p {
-    text-align: center;
-    margin: 10px auto;
-    font-size: 1.2em;
-    color: #0f2a54;
-    width: 85%;
 }
 
 
@@ -311,4 +319,12 @@ button{
   font-family:"Comic Sans MS", cursive, sans-serif;
   color: #004d99;
   font-weight: bold;
+}
+
+/* Contact page */
+
+.mail {
+  font-size:15px;
+  font-weight: bold;
+  font-family: "arial, times, serif"
 }
