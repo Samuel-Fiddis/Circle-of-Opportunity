@@ -325,11 +325,12 @@ button{
 .money-circle{
   position:absolute;
   top:200px;
-  right:-250px;
+  right:50px;
   font-size:30px;
   font-family:"Comic Sans MS", cursive, sans-serif;
   color: #004d99;
   font-weight: bold;
+  width: 150px;
 }
 
 /* Contact page */
