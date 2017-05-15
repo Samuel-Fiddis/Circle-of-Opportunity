@@ -302,16 +302,37 @@ Meteor.methods({
     // update studentUser eStatus field
     // =================================
 
-    Meteor.users.update(
-      { _id: studentId },
-      {
-        // set new status
-        $set:
+    if(newStatus!="graduated") {
+
+      Meteor.users.update(
+        { _id: studentId },
         {
-          "uni_info.eStatus": newStatus,
+          // set new status
+          $set:
+          {
+            "uni_info.eStatus": newStatus,
+          }
         }
-      }
-    );
+      );
+
+    }
+    else {
+      Meteor.users.update(
+        { _id: studentId },
+        {
+          // set new status
+          $set:
+          {
+            "userType.isStudent": false,
+            "userType.isDonor": true,
+            "userType.isFormerStudent": true,
+            "uni_info.eStatus": newStatus,
+          }
+        }
+      );
+
+    }
+
 
   },
 

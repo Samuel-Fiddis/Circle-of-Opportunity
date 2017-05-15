@@ -59,7 +59,8 @@ Meteor.publish('singleUser', function (id) {
 			'interestedDonors': 1,
 			'interestStudent': 1,
 			'ethereum': 1,
-			'balance': 1
+			'balance': 1,
+			'allowance': 1,
 		}});
 });
 
@@ -67,14 +68,14 @@ Meteor.publish('singleUser', function (id) {
 Meteor.publish('uniStudentData', function () {
 	return Meteor.users.find(
 		{"userType.isStudent": true},
-		{fields: 
+		{fields:
 			{'_id': 1,
 			'name': 1,
 			'age': 1,
 			'address.city': 1,
-			'address.country': 1, 
-			'uni_info.eStatus': 1, 
-			'uni_info.tuition_eth': 1, 
+			'address.country': 1,
+			'uni_info.eStatus': 1,
+			'uni_info.tuition_eth': 1,
 			'emails.address': 1,
 			'userType.isStudent': 1}});
 });
