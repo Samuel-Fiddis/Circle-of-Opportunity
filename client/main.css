@@ -127,7 +127,7 @@ h1 {
     text-align: center;
     font-size: 3em;
     font-weight: bold;
-    color: #333;
+    color: #3587A4;
     /*margin: 20px;
     margin-bottom: 20px;
     display: inline-block;
@@ -150,6 +150,10 @@ h2 {
   color: #004d99;
 }
 
+div {
+   text-align: center;
+   margin: 10px auto;
+}
 h2.blueheading {
     text-align: center;
     font-size: 2em;
@@ -327,4 +331,22 @@ button{
   font-size:15px;
   font-weight: bold;
   font-family: "arial, times, serif"
+}
+
+/* Donate Now page*/
+button {
+    background-color: #3587A4; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 30px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+}
+
+input[type=number]{
+  padding: 10px 20px;
+  margin: 30px;
 }
