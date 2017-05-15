@@ -124,24 +124,32 @@ header {
 
 /* LIVEFEED STYLES */
 
+/* CoO Colour Scheme:
+  Orange #f38035
+  Light Blue #01baf2
+  Dark Blue #0d60ac
+  */
+
 .livefeedhref {
-    color: #000;
+    color: #00396d;
     font-size: 1.5em;
 }
 .livefeedtable {
   align: middle;
+  border:solid lightblue 1px;
+  font-family: "Tahoma", Geneva, sans-serif; 
 }
 
 tr {
-  border-bottom: 1px solid grey;
-  border-top: 1px solid grey;
+  border-bottom: 1px solid lightblue;
+  border-top: 1px solid lightblue;
 }
 
-tr:hover {background-color: #f5f5f5;}
-
-td {
-  padding-left: 15px;
-  padding-right: 15px;
+td, th {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .scrollit {
@@ -155,27 +163,27 @@ td {
 }
 
 #DtSRow {
-  background-color: #eaeaea;
+  background-color: #e8f2fd;
 }
 
 #DtGRow {
-  background-color: #ccdfff;
+  background-color: #e8f2fd;
 }
 
 #StURow {
-  background-color: #cfffcc;
+  background-color: #ecffee;
 }
 
 #StGRow {
-  background-color: #ffdbdb;
+  background-color: #fff1e2;
 }
 
 #StCRow, #CtORow {
-  background-color: #ffffdb;
+  background-color: #ecffee;
 }
 
 #GtSRow {
-  background-color: #cfffcc;
+  background-color: #ecffee;
 }
 
 /* LIVEFEED STYLES END */
@@ -377,7 +385,7 @@ h1.blueheading {
     border: 1px solid #bbb;
     border-radius: 6px;
     box-shadow: 0px 2px 4px #ccc;
-    
+
 }
 .uni-student-top {
   position:relative;

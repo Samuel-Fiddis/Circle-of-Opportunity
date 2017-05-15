@@ -1,6 +1,6 @@
 <template name="livefeed">
 <div align="middle" class="scrollit">
-  <table>
+  <table class="livefeedtable">
     {{#each transaction}}
       {{#if isDtG this}}
         <tr id="DtGRow" class="livefeedrow">
@@ -8,7 +8,7 @@
           <td><span class="livefeedhref"> £{{ethToPound this.amount}} </span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">The General Pot</a></td>
-          <td>Donation made to the Circle of Opportunity<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
+          <td class="livefeedhref">Donation made to the Circle of Opportunity<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
         </tr>
       {{/if}}
       {{#if isDtS this}}
@@ -17,7 +17,7 @@
           <td><span class="livefeedhref"> £{{ethToPound this.amount}} </span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
-          <td>Donation made to Student<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
+          <td class="livefeedhref">Donation made to Student<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
         </tr>
       {{/if}}
       {{#if isGtS this}}
@@ -26,7 +26,7 @@
           <td><span class="livefeedhref"> £{{ethToPound this.amount}} </span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
-          <td>Top up to reach Funding Goal<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
+          <td class="livefeedhref">Top up to reach Funding Goal<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
         </tr>
       {{/if}}
       {{#if isStG this}}
@@ -35,7 +35,7 @@
           <td><span class="livefeedhref"> £{{ethToPound this.amount}} </span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">The General Pot</a></td>
-          <td>Funding goal not reached in time<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
+          <td class="livefeedhref">Funding goal not reached in time<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
         </tr>
       {{/if}}
       {{#if isStU this}}
@@ -44,7 +44,7 @@
           <td><span class="livefeedhref"> £{{ethToPound this.amount}} </span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
-          <td>University Tuition Payment<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td></tr>
+          <td class="livefeedhref">University Tuition Payment<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td></tr>
       {{/if}}
       {{#if isStC this}}
         <tr id="StCRow" class="livefeedrow">
@@ -52,7 +52,7 @@
           <td><span class="livefeedhref"> £{{ethToPound this.amount}} </span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
-          <td>Living Allowance Payment into Smart Contract<br><a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
+          <td class="livefeedhref">Living Allowance Payment into Smart Contract<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
         </tr>
       {{/if}}
       {{#if isCtO this}}
@@ -61,7 +61,7 @@
           <td><span class="livefeedhref"> £{{ethToPound this.amount}} </span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
-          <td>Living Allowance Payment to Students Account<br><a class="livefeedhref" href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
+          <td class="livefeedhref">Living Allowance Payment to Students Account<br><a href="http://ropsten.etherscan.io/tx/{{this.transactionHash}}">Check etherscan</a></td>
         </tr>
       {{/if}}
     {{/each}}
