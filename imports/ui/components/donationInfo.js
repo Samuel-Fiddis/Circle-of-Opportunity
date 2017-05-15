@@ -44,8 +44,7 @@ Template.studentProfileDonationInfo.helpers({
   progressPerc: function(){
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
-    // max = user.uni_info.tuition_eth;
-    max = 1;
+    max = user.uni_info.tuition_eth + user.uni_info.allowance_eth;
     current = ReactiveMethod.call('totalDonation',id);
     return (current/max)*100;
   }
