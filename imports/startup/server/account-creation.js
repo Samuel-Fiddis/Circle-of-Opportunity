@@ -108,6 +108,11 @@ Accounts.onCreateUser(function(options,user) {
     user.ethereum = options.ethereum;
   }
 
+  // Store Ethereum external Public Key for user
+  if(options.ethereum) {
+    user.ethereum_ext = options.ethereum_ext;
+  }
+
   // Boolean true if the student receives living allowances
   user.allowance = options.allowance;
 

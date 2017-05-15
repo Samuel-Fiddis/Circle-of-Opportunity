@@ -6,11 +6,11 @@ html {
 
 body {
     font-family: sans-serif;
-    background-color: #e8f2fd;
-    background-image: linear-gradient(to bottom, #e8f2fd, #e8f2fd 100%);
+    background-color: #f2f2f2;
     background-attachment: fixed;
     font-size: 14px;
     margin-bottom: 50px;
+    min-width: 1195px;
 }
 
 header {
@@ -28,6 +28,8 @@ header {
   height: 56px;
   padding: 3px 30px;
   background-color: #fff;
+  border-top: 1px solid #e7e7e7;
+  min-width: 1195px;
 }
 
 /* Header */
@@ -37,9 +39,10 @@ header {
 #header-nav{
     padding:13px 0;
     font-size: 1.1em;
+    margin-bottom: 0px;
 }
 #navbar-left {
- min-width:1300px;
+ min-width:1165px;
 }
 .header-logo{
     position:relative;
@@ -187,14 +190,17 @@ h2 {
   color: #004d99;
 }
 
-/*div {
+/*
+div {
    text-align: center;
    margin: 10px auto;
-}*/
+}
+*/
+
 h2.blueheading {
     text-align: center;
     font-size: 2em;
-    color: #004ddd;
+    color: #004d99;
     font-weight: bold;
 }
 
@@ -270,28 +276,53 @@ h1.blueheading {
 
 /* Student View */
 .student-view {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    width: 30%;
+    margin: 10px 1.5%;
+    float: left;
     padding: 10px;
     height: auto;
-    background: #eee;
+    background: #fff;
     border: 1px solid #bbb;
     border-radius: 6px;
     box-shadow: 0px 2px 4px #ccc;
+    
+}
+.overview-top {
+  position:relative;
+  float: left;
+  margin-bottom: 8px;
+}
+.student-view .overview-image {
+    width:100px;
+    height:100px;
+    float: left;
+    margin: 0 5px 0 0;
+}
+.overview-name {
+    font-size: 24px;
+    color: #004d99;
+}
 
+/* visited link */
+.overview-name:visited {
+    color: #004d99;
+    text-decoration: none;
 }
-.student-view .student-image {
-    width:55px;
-    height:60px;
-    float: left;
-    margin: 5px 50px 5px 15px;
+
+/* mouse over link */
+.overview-name:hover {
+    color: #0066cc;
+    text-decoration: none;
 }
-.student-view .student-link{
-    float: left;
+
+/* selected link */
+.overview-name:active {
+  text-decoration: none;
 }
-.student-view .student-info{
-    float: left;
-    padding: 4px;
+
+.overview-story {
+  position: relative;
+  float: left;  
 }
 
 /* Profile Page */
@@ -321,9 +352,15 @@ button{
 }
 
 /* CSS FOR DYNAMIC VISUALIZATION */
+.homepage-background{
+background-color: #e8f2fd;
+}
+
 .dynamic-visualization{
   position:relative;
   width:800px;
+  margin: 0 auto;
+  background-color: #e8f2fd;
 }
 .money-donors{
   position:absolute;
@@ -336,8 +373,8 @@ button{
 }
 .money-overhead{
   position:absolute;
-  bottom:100px;
-  left:-100px;
+  bottom:0px;
+  left:-60px;
   font-size:24px;
   font-family:"Comic Sans MS", cursive, sans-serif;
   color: #004d99;
@@ -345,8 +382,8 @@ button{
 }
 .money-students{
   position:absolute;
-  top:80px;
-  left:-150px;
+  top:-15px;
+  left:-65px;
   font-size:30px;
   font-family:"Comic Sans MS", cursive, sans-serif;
   color: #004d99;
@@ -354,8 +391,8 @@ button{
 }
 .money-circle{
   position:absolute;
-  top:200px;
-  right:-250px;
+  bottom:60px;
+  left:250px;
   font-size:30px;
   font-family:"Comic Sans MS", cursive, sans-serif;
   color: #004d99;

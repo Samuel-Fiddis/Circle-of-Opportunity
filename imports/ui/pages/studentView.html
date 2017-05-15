@@ -1,15 +1,14 @@
-<template name = "studentView">
-	<div class="student-view col-xs-4 col-xs-offset-1">
-		<img class="student-image" src="{{userImage.link}}" alt="image of student">
-		<a class="student-link" href="/profilepage/{{_id}}"> <h3>{{name.first}} {{name.last}} </h3> </a><br>
-		<div class="student-info">
-			<span> University: {{uni_info.uni}} - {{uni_info.program}} </span>
+<template name="studentView">
+	<div class="student-view">
+		<div class="overview-top">
+			<img class="overview-image" src="{{userImage.link}}" alt="image of student">
+			<a class="overview-name" href="/profilepage/{{_id}}">
+				{{name.first}} {{name.last}}
+			</a>
+			<span class="overview-uni">{{uni_info.uni}}</span>
 			<br>
-			<span> Age: {{age}} </span>
-			<span> Ethereum public key : {{ethereum}} </span>
-			<br>
-			<span> Ethereum balance : {{balance}} </span>
-			<br>
+			<span class="overview-program">{{uni_info.program}}</span>
 		</div>
+		<span class="overview-story">{{bio}}</span>
 	</div>
 </template>

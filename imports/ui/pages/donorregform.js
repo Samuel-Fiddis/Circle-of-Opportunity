@@ -130,7 +130,7 @@ Template.donorregform.events({
         Meteor.loginWithPassword(options.email, options.password);
 
         // redirect the user to another page after registration
-        FlowRouter.go('/howitworks')
+        FlowRouter.go('/')
       }
 
     });

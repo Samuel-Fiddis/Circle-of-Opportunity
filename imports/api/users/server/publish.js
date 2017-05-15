@@ -11,7 +11,8 @@ Meteor.publish('studentDataOverview', function () {
 			'image': 1,
 			'uni_info': 1,
 			'ethereum': 1,
-			'userType.isStudent': 1}});
+			'userType.isStudent': 1,
+			'bio': 1}});
 });
 
 // publish donordata for overview
