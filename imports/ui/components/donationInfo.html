@@ -1,25 +1,34 @@
 <template name = "studentProfileDonationInfo">
-    <h3> Donors who have donated </h3>
-    <div>
-      Total Amount Raised: {{totalDonation}} Ether
-      <br>
 
 
-      <div class = "progress" style="width:80%">
-        <div class ="progress-bar" role="progressbar" aria-valuenow={{progressPerc}} aria-valuemin="0" aria-valuemax="100" style="width:{{progressPerc}}%">
-           {{progressPerc}} %
-        </div>
+  <br>
+  <h3> Donors who have donated </h3>
+  <div>
+
+
+    Tuition Required: {{uni_info.tuition}} GBD
+    <br>
+    {{#if allowance}}
+    Allowance Requested: {{uni_info.allowance}} GBD
+    {{/if}}
+    <br>
+    Total Amount Raised: {{totalDonation}} Ether
+    <br>
+    <div class = "progress" style="width:80%">
+      <div class ="progress-bar" role="progressbar" aria-valuenow={{progressPerc}} aria-valuemin="0" aria-valuemax="100" style="width:{{progressPerc}}%">
+        {{progressPerc}} %
       </div>
-
-
-      {{#each donor}}
-      {{name}} donated {{amount}} Ether
-      <a class="livefeedhref" href="/profilepage/{{id}}">
-        see their profile page
-      </a>
-      <br>
-      {{/each}}
     </div>
+
+
+    {{#each donor}}
+    {{name}} donated {{amount}} Ether
+    <a class="livefeedhref" href="/profilepage/{{id}}">
+      see their profile page
+    </a>
+    <br>
+    {{/each}}
+  </div>
 </template>
 
 <template name = "donorProfileDonationInfo">
@@ -31,7 +40,7 @@
     donated {{amount}} Ether to {{name}}
     {{#unless generalPot id}}
     <a class="livefeedhref" href="/profilepage/{{id}}">
-    see their profile page
+      see their profile page
     </a>
     {{/unless}}
     <br>

@@ -7,6 +7,8 @@ import './donationInfo.html';
 // DONOR PROFILE DONATION INFO Template
 // ------------------------------------
 
+
+
 Template.donorProfileDonationInfo.helpers({
 
   totalDonation: function(){

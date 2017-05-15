@@ -181,7 +181,7 @@ Meteor.methods({
             street: String,
             zipCode: String,
           },
-          ethereum_ext: String
+          ethereum_ext: Match.Maybe(String)
         });
 
     // Conditional statement: only LoggedIn User can call this Method
