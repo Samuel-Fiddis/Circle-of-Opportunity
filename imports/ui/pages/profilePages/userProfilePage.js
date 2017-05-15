@@ -210,6 +210,15 @@ Template.userProfilePage.helpers({
     return user.userType.isStudent;
   },
 
+  // checking if profile belongs to former student
+  // *********************************************
+
+  formerStudent: function(){
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.userType.isFormerStudent;
+  },
+
   acceptedStudent: function () {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});

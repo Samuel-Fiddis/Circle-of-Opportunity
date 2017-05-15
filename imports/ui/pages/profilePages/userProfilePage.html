@@ -28,6 +28,10 @@
 
           {{ > ethereumPaymentInfo userProfile}}
 
+          {{#if formerStudent}}
+          {{> summaryOppInfo userProfile}}
+          {{/if}}
+
           {{#if ownProfile}}
           {{ > updateProfileButton }}
           {{/if}}

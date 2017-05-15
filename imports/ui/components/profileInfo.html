@@ -27,6 +27,22 @@
   <br>
 </template>
 
+<template name = "summaryOppInfo">
+  <h3>Was granted an opportunity at</h3>
+  <br>
+  University: {{uniProfile.name}}
+  <br>
+  Program: {{uni_info.program}}
+  <br>
+  Was donated an ether equivalent to:
+  <br>
+  {{uni_info.tuition}}GBD for tuition
+  <br>
+  {{#if allowance}}
+  and {{uni_info.allowance}}GBD for 10months for allowance
+  {{/if}}
+</template>
+
 <template name = "ethereumPaymentInfo">
   Ethereum public key: <a href="https://ropsten.etherscan.io/address/{{ethereum}}" class="livefeedhref">{{ethereum}}</a>
   <br>
