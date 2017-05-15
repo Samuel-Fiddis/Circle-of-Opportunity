@@ -1,11 +1,11 @@
 <template name = "studentProfileDonationInfo">
     <h3> Donors who have donated </h3>
-    <div class = "container">
+    <div>
       Total Amount Raised: {{totalDonation}} Ether
       <br>
 
 
-      <div class = "progress">
+      <div class = "progress" style="width:80%">
         <div class ="progress-bar" role="progressbar" aria-valuenow={{progressPerc}} aria-valuemin="0" aria-valuemax="100" style="width:{{progressPerc}}%">
            {{progressPerc}} %
         </div>
@@ -24,7 +24,7 @@
 
 <template name = "donorProfileDonationInfo">
   <h3> Students donated to </h3>
-  <div class = "container">
+  <div>
     Total amount donated: {{totalDonation}} Ether
     <br>
     {{#each student}}
