@@ -1,10 +1,10 @@
 <template name="userProfilePage">
 
-  {{#if ownProfile}}
+  <!-- {{#if ownProfile}}
   <h1>Profile</h1>
   {{else}}
   <h1> {{userProfile.name.first}} {{userProfile.name.last}} </h1>
-  {{/if}}
+  {{/if}} -->
 
   <div id= "profile-container" class = "container">
 
@@ -26,8 +26,6 @@
           {{ > opportunityInfo userProfile}}
           {{/if}}
 
-          {{ > ethereumPaymentInfo userProfile}}
-
           {{#if formerStudent}}
           {{> summaryOppInfo userProfile}}
           {{/if}}
@@ -36,33 +34,53 @@
           {{ > updateProfileButton }}
           {{/if}}
 
-          {{#unless ownProfile}}
 
-            {{#if student}}
-              {{#if acceptedStudent}}
-                <br>
-                <br>
+          <!-- {{#if student}}
+          <div class = "registerInterest">
 
-                {{ > directDonationButton userProfile.name}}
-              {{/if}}
+            {{#if errorMessage}}
+            <div class="uiErrorMessage"> {{errorMessage}} </div>
             {{/if}}
+
+            {{ > registerInterestButton }}
+            {{ > studentProfileRegisterInterest userProfile}}
+
+          </div>
+          {{else}}
+          <div class = "registerInterest">
+            {{ > donorProfileRegisterInterest userProfile}}
+          </div>
+
+          {{/if}} -->
+          <!-- {{#unless ownProfile}}
+
+          {{#if student}}
+          {{#if acceptedStudent}}
+          <br>
+          <br>
+
+          {{ > directDonationButton userProfile.name}}
+          {{/if}}
+          {{/if}}
 
           {{/unless}}
+          <br>
+          {{ > ethereumPaymentInfo userProfile}} -->
 
           {{#if ownProfile}}
-            {{#if student}}
-              {{#if targetReached}}
-                <br>
-                <br>
-                <button class = "acceptOpportunity">acceptOpportunity</button>
-              {{/if}}
+          {{#if student}}
+          {{#if targetReached}}
+          <br>
+          <br>
+          <button class = "acceptOpportunity">acceptOpportunity</button>
+          {{/if}}
 
-              {{#if acceptedOpportunity}}
-                <br>
-                <br>
-                <p><b>Way to go, Opportunity Accepted!</b></p>
-              {{/if}}
-            {{/if}}
+          {{#if acceptedOpportunity}}
+          <br>
+          <br>
+          <p><b>Way to go, Opportunity Accepted!</b></p>
+          {{/if}}
+          {{/if}}
           {{/if}}
 
 
@@ -72,36 +90,47 @@
       </div>
 
       <div class = "col-md-4">
+        {{#unless ownProfile}}
+
+        {{#if student}}
+        {{#if acceptedStudent}}
+        <br>
+        <br>
+
+        {{ > directDonationButton userProfile.name}}
+        {{/if}}
+        {{/if}}
+
+        {{/unless}}
+        <br>
+        {{ > ethereumPaymentInfo userProfile}}
 
         {{#if student}}
 
+        {{#unless statusIs "Pending"}}
+        <div class = "donationInfo">
+          {{ > studentProfileDonationInfo userProfile}}
+        </div>
+        {{/unless}}
         <div class = "registerInterest">
 
           {{#if errorMessage}}
-            <div class="uiErrorMessage"> {{errorMessage}} </div>
+          <div class="uiErrorMessage"> {{errorMessage}} </div>
           {{/if}}
-          
+
           {{ > registerInterestButton }}
           {{ > studentProfileRegisterInterest userProfile}}
 
         </div>
-
-        {{#unless statusIs "Pending"}}
-        <div class = "donationInfo">
-          {{ > studentProfileDonationInfo }}
-        </div>
-        {{/unless}}
-
         {{else}}
-
-        <div class = "registerInterest">
-          {{ > donorProfileRegisterInterest userProfile}}
-        </div>
 
         <div class = "donationInfo">
           {{ > donorProfileDonationInfo }}
         </div>
 
+        <div class = "registerInterest">
+          {{ > donorProfileRegisterInterest userProfile}}
+        </div>
         {{/if}}
 
       </div>

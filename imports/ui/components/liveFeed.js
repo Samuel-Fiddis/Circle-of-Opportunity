@@ -34,6 +34,10 @@ Template.livefeed.helpers({
     return Transactions.find({});
   },
 
+  ethToPound: function(amount) {
+    return Number((amount * 100.0).toFixed(2));
+  },
+
   isDtS: function(transaction) {
     return transaction.type == "DtS";
   },

@@ -116,6 +116,7 @@ header {
 
 .container3 {
     text-align: center;
+    align: center;
     width: 100%;
     background: white;
     padding: 15px;
@@ -127,9 +128,8 @@ header {
     color: #000;
     font-size: 1.5em;
 }
-
-table {
-  border-spacing: 2px;
+.livefeedtable {
+  align: middle;
 }
 
 tr {
@@ -137,27 +137,44 @@ tr {
   border-top: 1px solid grey;
 }
 
-.DtSRow {
+tr:hover {background-color: #f5f5f5;}
+
+td {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.scrollit {
+    overflow:scroll;
+    height:500px;
+    align: middle;
+}
+
+.livefeedrow {
+  text-align: center;
+}
+
+#DtSRow {
   background-color: #eaeaea;
 }
 
-.DtGRow {
+#DtGRow {
   background-color: #ccdfff;
 }
 
-.StURow {
+#StURow {
   background-color: #cfffcc;
 }
 
-.StGRow {
+#StGRow {
   background-color: #ffdbdb;
 }
 
-.StCRow, .CtORow {
+#StCRow, #CtORow {
   background-color: #ffffdb;
 }
 
-.GtSRow {
+#GtSRow {
   background-color: #cfffcc;
 }
 
@@ -289,7 +306,7 @@ h1.blueheading {
     border: 1px solid #bbb;
     border-radius: 6px;
     box-shadow: 0px 2px 4px #ccc;
-    
+
 }
 .overview-top {
   position:relative;
@@ -334,7 +351,7 @@ h1.blueheading {
 
 .overview-story {
   position: relative;
-  float: left;  
+  float: left;
 }
 
 .overview-progress {
