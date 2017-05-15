@@ -10,6 +10,7 @@ body {
     background-attachment: fixed;
     font-size: 14px;
     margin-bottom: 50px;
+    min-width: 1080px;
 }
 
 header {
@@ -28,6 +29,7 @@ header {
   padding: 3px 30px;
   background-color: #fff;
   border-top: 1px solid #e7e7e7;
+  min-width: 1080px;
 }
 
 /* Header */
@@ -37,9 +39,10 @@ header {
 #header-nav{
     padding:13px 0;
     font-size: 1.1em;
+    margin-bottom: 0px;
 }
 #navbar-left {
- min-width:1300px;
+ min-width:1050px;
 }
 .header-logo{
     position:relative;
@@ -287,13 +290,19 @@ button{
 }
 
 /* CSS FOR DYNAMIC VISUALIZATION */
+.homepage-background{
+background-color: #e8f2fd;
+}
+
 .dynamic-visualization{
   position:relative;
   width:800px;
   margin: 0 auto;
+  background-color: #e8f2fd;
 }
 .money-donors{
   position:absolute;
+  
   bottom:-70px;
   right:20px;
   font-size:30px;
@@ -322,11 +331,12 @@ button{
 .money-circle{
   position:absolute;
   top:200px;
-  right:-250px;
+  right:50px;
   font-size:30px;
   font-family:"Comic Sans MS", cursive, sans-serif;
   color: #004d99;
   font-weight: bold;
+  width: 150px;
 }
 
 /* Contact page */
