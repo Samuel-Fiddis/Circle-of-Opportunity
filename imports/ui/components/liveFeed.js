@@ -12,11 +12,16 @@ Template.livefeed.onCreated( function() {
   // Subscribe transactions publication: returns all transactions
   var self = this;
 
+  console.log(FlowRouter.getRouteName());
+
   self.autorun(function() {
   if(FlowRouter.getParam('id')){
     var userId = FlowRouter.getParam('id');
     self.subscribe('topStudentTransactions', userId, 20);
     self.subscribe('topDonorTransactions', userId, 20);
+  }
+  else if(FlowRouter.getRouteName() == "donatenow"){
+    self.subscribe('topGeneralPotTransactions', 20);
   }
   else{
     self.subscribe('topTransactions', 20);
@@ -31,37 +36,30 @@ Template.livefeed.helpers({
   },
 
   isDtS: function(transaction) {
-    if(transaction.type == "DtS"){
-      return true;
-    }
-    return false;
+    return transaction.type == "DtS";
   },
 
   isGtS: function(transaction) {
-    if(transaction.type == "GtS"){
-      return true;
-    }
-    return false;
+    return transaction.type == "GtS";
   },
 
   isStG: function(transaction) {
-    if(transaction.type == "StG"){
-      return true;
-    }
-    return false;
+    return transaction.type == "StG";
   },
 
   isDtG: function(transaction) {
-    if(transaction.type == "DtG"){
-      return true;
-    }
-    return false;
+    return transaction.type == "DtG";
   },
 
   isStU: function(transaction) {
-    if(transaction.type == "StU"){
-      return true;
-    }
-    return false;
+    return transaction.type == "StU";
   },
+
+  isStC: function(transaction) {
+    return transaction.type == "StC";
+  },
+
+  isCtO: function(transaction) {
+    return transaction.type == "CtO";
+  }
 });
