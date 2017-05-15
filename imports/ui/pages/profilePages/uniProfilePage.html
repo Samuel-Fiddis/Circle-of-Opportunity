@@ -1,33 +1,18 @@
 <template name="uniProfilePage">
   <h1> Imperial College Portal </h1>
-
   <div class = "container">
-
     <div class = "row" >
-
-      <div class = "col-md-4 col-md-offset-1">
-
+      <div>
         <div id = "profile-container" class = "UniCollectionInfo">
-
           {{ > UniversityInformation uniProfile}}
-
         </div>
-
         <div id = "profile-container" class = "profileInfo">
-
           {{ > publicProfileInfo userProfile}}
           {{ > privateProfileInfo userProfile}}
-
         </div>
-
       </div>
-
-      <div class = "clearfix"> </div>
-
-      <div class = "col-md-4 col-md-offset-1">
-
+      <div>
         <div class = "studentViewUni">
-
           {{ > studentViewUni }}
 
         </div>
