@@ -81,44 +81,45 @@ Meteor.methods({
 
     // Need a timeout to make sure that funds are in the general pot
     console.log("Starting Timeout");
-    setTimeout(function(){
+    Meteor.setTimeout(function(){
         GPtoStudentReallocation(numAccepted, balance_table)
     }, 120000);
 
-  }
+  },
+
 });
 
 function GPtoStudentReallocation(numAccepted, balance_table){
 
-    console.log("Entered GP to Student Reallocation Function");
-    console.log(numAccepted);
-    console.log(balance_table);
-    // Take all of the funds in the general pot and distribute them to the remaining students
-    for(i = 0; i < numAccepted; i++){
-      console.log('In GP to student reallocation step');
-      var transferBalance = balance_table[i].required;
-      console.log(transferBalance);
+      console.log("Entered GP to Student Reallocation Function");
+      console.log(numAccepted);
+      console.log(balance_table);
+      // Take all of the funds in the general pot and distribute them to the remaining students
+      for(i = 0; i < numAccepted; i++){
+        console.log('In GP to student reallocation step');
+        var transferBalance = balance_table[i].required;
+        console.log(transferBalance);
 
-      if(transferBalance > 0){
-        var trans = ethSendEtherTransaction('0xc08ee9c6252fb61271520dacac9a6126255bc81e',"general",balance_table[i].ethereum,transferBalance);
-        console.log(trans);
+        if(transferBalance > 0){
+          var trans = ethSendEtherTransaction('0xc08ee9c6252fb61271520dacac9a6126255bc81e',"general",balance_table[i].ethereum,transferBalance);
+          console.log(trans);
 
-        var idS = balance_table[i]._id;
-        var nS = balance_table[i].name;
-        var a = transferBalance;
+          var idS = balance_table[i]._id;
+          var nS = balance_table[i].name;
+          var a = transferBalance;
 
-        var options = {
-          type : "GtS",
-          idSender: "generalPotId",
-          idReceiver: idS,
-          nameSender: "the general pot",
-          nameReceiver: nS.first + " " + nS.last,
-          amount: a,
-          transactionHash: trans,
+          var options = {
+            type : "GtS",
+            idSender: "generalPotId",
+            idReceiver: idS,
+            nameSender: "the general pot",
+            nameReceiver: nS.first + " " + nS.last,
+            amount: a,
+            transactionHash: trans,
+          }
+
+          Transactions.insert(options);
         }
-
-        Transactions.insert(options);
       }
-    }
-    return true;
+      return true;
   }
