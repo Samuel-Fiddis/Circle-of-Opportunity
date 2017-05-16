@@ -38,6 +38,7 @@ Accounts.onCreateUser(function(options,user) {
   // Add in university & opportunity information to user document
   var uni = Universities.findOne({name: "Imperial College"});
   user.uni_info = {
+    name: uni.name,
     uni: uni._id,
     program: "Msc of Computing Science",
     eStatus: "pending",
