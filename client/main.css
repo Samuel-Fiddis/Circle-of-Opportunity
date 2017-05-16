@@ -119,7 +119,7 @@ header {
     align: center;
     width: 100%;
     background: white;
-    padding: 15px;
+    padding-top: 0.1px;
 }
 
 /* LIVEFEED STYLES */
@@ -132,12 +132,12 @@ header {
 
 .livefeedhref {
     color: #00396d;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 .livefeedtable {
   align: middle;
   border:solid lightblue 1px;
-  font-family: "Tahoma", Geneva, sans-serif; 
+  font-family: "Tahoma", Geneva, sans-serif;
 }
 
 tr {
