@@ -94,18 +94,7 @@ Template.userProfilePage.events({
     var nS = Meteor.users.findOne({_id: idS}).name;
     var nD = Meteor.user().name;
 
-    // TODO integrate the first part extern donor's account to COO donor's account
 
-    //second transaction :  COO donor's account to COO student's account
-
-    // call the function to make the transaction
-    // var trans = ethSendEtherTransaction(ethD, "jackAccount1", ethS, a);
-    // // insufficient funds
-    // if (trans == false){
-    //   throw new Meteor.Error("Insuficcient funds","Please send ether on your wallet");
-    // }
-
-    //else{
     // buils the options to store the transaction in the db
     var options = {
       type : "DtS",
