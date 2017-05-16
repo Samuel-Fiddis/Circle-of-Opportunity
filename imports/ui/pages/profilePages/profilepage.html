@@ -1,9 +1,7 @@
 <template name="profilepage">
-
-        {{#if uniOwnProfile}}
-        {{ > uniProfilePage }}
-        {{else}}
-        {{ > userProfilePage }}
-        {{/if}}
-
+    {{#if uniOwnProfile}}
+    	{{ > uniProfilePage }}
+    {{else}}
+    	{{ > userProfilePage }}
+    {{/if}}
 </template>

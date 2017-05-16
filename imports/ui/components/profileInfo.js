@@ -4,6 +4,18 @@ import { Universities } from '/imports/api/universities/universities.js'
 
 import './profileInfo.html';
 
+
+Template.publicProfileInfo.helpers({
+
+  // total donations to the user
+  totalDonation: function(){
+    var id = FlowRouter.getParam('id');
+    return Math.round(ReactiveMethod.call('totalDonation',id), 2);
+  },
+
+})
+
+
 // TEMPLATE OPPORTUNITY INFO JAVASCRIPT FUNCTIONALITY
 // ==================================================
 

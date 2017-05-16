@@ -10,7 +10,6 @@ import '/imports/ui/components/donationInfo.js'
 //import '/imports/ui/components/donationInfo.html';
 import '/imports/ui/components/registerInterest.js';
 
-
 Template.userProfilePage.onCreated( function () {
 
   // Template level subscriptions
@@ -26,11 +25,11 @@ Template.userProfilePage.onCreated( function () {
 
     var id = FlowRouter.getParam('id');
     var userid = Meteor.userId();
-
+    
     if(id == userid){
       self.subscribe('thisUser', userid);
     }
-
+    
     else{
       self.subscribe('singleUser', id);
       self.subscribe('singleUser', userid);
@@ -43,36 +42,22 @@ Template.userProfilePage.onCreated( function () {
 Template.userProfilePage.events({
 
   // Event to define what happens when you click the updateInterest button
-  // **********************************************************************
-
   'click .updateinterest': function(event,template) {
     if(event)
-
     // get the id of the student with this profile page
     var studentId = FlowRouter.getParam('id');
 
     // call the updateInterest method passing on the studentId
     // =======================================================
 
-    /*
-    NOTE: You should avoid passing userId's to meteor methods (because then anyone can update that field)
-    so this needs to be improved
-    */
-
     Meteor.call('updateInterest', studentId, function(error, result) {
-
       if(error) {
         console.log(error.reason);
         template.lastError.set(error.reason);
-      }
-
-      else {
+      } else {
         console.log("interest updated");
       };
-
     });
-
-
   },
 
   'click .createTrans': function(event,template) {
@@ -83,7 +68,6 @@ Template.userProfilePage.events({
 
     // read the amount of ethSendEtherTransaction
     // default value: 0.001
-
     var a =  parseFloat($('input[name=amount]').val()) ;
 
     // check if the amount is a float. If not throw an error
@@ -119,15 +103,7 @@ Template.userProfilePage.events({
       idSender: idD,
       nameSender: nD.first + " " + nD.last,
       amount: a,
-      //transactionHash: trans,
     }
-
-    //   if(Transactions.insert(options)) {
-    //     console.log("Transaction Added");
-    //   }
-    //   else {
-    //   //  Need error handeling here
-    //  }
 
     Meteor.call('createTransaction', options, function(error, result) {
       // What happens if methods function returns an error
@@ -141,22 +117,16 @@ Template.userProfilePage.events({
       }
       // What happens if methods function works fine
       else {
-        // Set the lastError to null
-        //template.lastError.set(null);
         console.log("transaction done");
-        // redirect the user to another page after registration
-        //  FlowRouter.go('/??')
       }
     });
 
     console.log("about to enter Target Checking");
     Meteor.call('checkTarget',idS);
-    //}
   },
 
   'click .acceptOpportunity': function(event,template) {
     //change User.uniInfo.estatus to acceptedOpportunity
-
     // get selected value
     var newValue = "acceptedOpportunity";
     //get studentID
@@ -164,19 +134,9 @@ Template.userProfilePage.events({
 
     Meteor.call('updateStatus', studentId, newValue, function(error, result) {
 
-      // What happens if methods function returns an error
-      // +++++++++++++++++++++++++++++++++++++++++++++++++
-
       if(error) {
-
         // display the error on the console log of the website
         console.log(error.reason);
-
-        // Set the lastError variable
-        /*
-        template.lastError.set(error.reason);
-        */
-
       };
 
     });
@@ -185,64 +145,48 @@ Template.userProfilePage.events({
 });
 
 Template.userProfilePage.helpers({
-
   // userProfile is the selected User's document
-  // **************************************
-
   userProfile: ()=> {
     var id = FlowRouter.getParam('id');
     return Meteor.users.findOne({_id: id});
   },
-
   // bool to see if this profile is their profilepage
-  // ************************************************
   ownProfile: ()=> {
     var id = FlowRouter.getParam('id');
     return Meteor.userId() == id;
   },
-
   // checking if profile belongs to a student
-  // ****************************************
-
   student: function () {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.userType.isStudent;
   },
-
   // checking if profile belongs to former student
-  // *********************************************
-
   formerStudent: function(){
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.userType.isFormerStudent;
   },
-
   pending: function () {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.uni_info.eStatus == "pending";
   },
-
   acceptedStudent: function () {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.uni_info.eStatus == "accepted";
   },
-
   targetReached: function () {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.uni_info.eStatus == "targetReached";
   },
-
   acceptedOpportunity: function () {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.uni_info.eStatus == "acceptedOpportunity";
   },
-
   userImage : function (){
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
@@ -252,7 +196,6 @@ Template.userProfilePage.helpers({
     }
     return currentFile;
   },
-
   donorImage : function (){
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
@@ -262,7 +205,6 @@ Template.userProfilePage.helpers({
     }
     return currentFile;
   },
-
   statusIs: function(status) {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
@@ -276,20 +218,16 @@ Template.userProfilePage.helpers({
 
 Template.publicProfileInfo.helpers({
   // bool to see if this profile is their profilepage
-  // ************************************************
   ownProfile: ()=> {
     var id = FlowRouter.getParam('id');
     return Meteor.userId() == id;
   },
-
   // checking if profile belongs to a student
-  // ****************************************
   student: function () {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.userType.isStudent;
   },
-
   acceptedStudent: function () {
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});

@@ -54,11 +54,7 @@ Template.donatenow.events({
       }
       // What happens if methods function works fine
       else {
-        // Set the lastError to null
-        //template.lastError.set(null);
         console.log("transaction done");
-        // redirect the user to another page after registration
-        //  FlowRouter.go('/??')
       }
     });
   }
