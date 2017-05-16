@@ -53,16 +53,18 @@ header {
 /* Footer */
 .footer-nav {
     margin-right: 30px;
+    margin-bottom: 0px;
 }
 .footer-brand{
     position: relative;
     float: left;
-    height: 50px;
+    top: 10px;
+    height: 70px;
 }
 .footer-logo {
     position: relative;
-    width: 218px;
-    height: 50px;
+    width: 130px;
+    height: 30px;
 }
 
 /* Homepage */
@@ -137,7 +139,7 @@ header {
 .livefeedtable {
   align: middle;
   border:solid lightblue 1px;
-  font-family: "Tahoma", Geneva, sans-serif; 
+  font-family: "Tahoma", Geneva, sans-serif;
 }
 
 tr {
