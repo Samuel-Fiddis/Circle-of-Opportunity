@@ -6,7 +6,6 @@ Meteor.methods({
 
     console.log("checking if target is reached");
     var user = Meteor.users.findOne({_id: studentId});
-    console.log(user);
     // Set up variables to be used
     var Balance = ethGetBalance(user.ethereum);
     // Need to define how to check the target

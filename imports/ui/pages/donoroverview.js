@@ -11,16 +11,12 @@ import './donoroverview.html';
 // --------------------------------------------------------------------
 
 Template.donoroverview.onCreated( function() {
-
   // Template level subscriptions
   // ****************************
 
   // subscribe to userData publication: returns all documents in user accounts
   this.subscribe('donorDataOverview');
-
 });
-
-
 
 // *****************************************************************************
 // Template level Helpers
@@ -28,14 +24,6 @@ Template.donoroverview.onCreated( function() {
 
 // Helpers function for the template --> defines all the helpers needed
 // ---------------------------------------------------------------------
-
-/* NOTE: javascript syntax for the functions used
-
-user: ()=> { return Meteor.users.find();}
-is equivalent to
-user: function() { return Meteor.users.find(); }
-
-*/
 
 Template.donoroverview.helpers({
 
@@ -56,20 +44,4 @@ Template.donoroverview.helpers({
     return ethGetBalance(myEthAddr);
   },
 
-});
-
-
-Template.orderButton.events({
-  'click': function(){
-        console.log("You clicked something");
-    },
-  'change #orderselecter' : function (evt){
-    var newValue = $(evt.target).val();
-    var oldValue = Session.get("orderselection");
-    if (newValue != oldValue){
-      //something
-    }
-    Session.set("orderselection", newValue)
-    return true;
-  },
 });

@@ -6,8 +6,6 @@ import './profilepage.html';
 import './userProfilePage.js';
 import './uniProfilePage.js';
 
-
-
 // *****************************************************************************
 // Template level Helpers
 // *****************************************************************************
@@ -28,6 +26,4 @@ Template.profilepage.helpers({
     // return ownProfile && uniProfile
     return (Meteor.userId() == id && Meteor.users.findOne({"emails.address":"uni@uni.uni"}));
   },
-
-
 })
