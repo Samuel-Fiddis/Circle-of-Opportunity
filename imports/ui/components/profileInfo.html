@@ -18,7 +18,30 @@
             <span class="profile-allowance">Allowance: {{uni_info.allowance_eth}}</span>
           {{/if}}
           <br>
-          Status: <b>{{uni_info.eStatus}}</b>
+          Status: 
+          <b>
+            {{#if statusIs "pending"}}
+              Awaiting Application Decison
+            {{/if}}
+            {{#if statusIs "accepted"}}
+              Accepted to Uni
+            {{/if}}
+            {{#if statusIs "rejected"}}
+              Rejected :(
+            {{/if}}
+            {{#if statusIs "targetReached"}}
+              Reached target!
+            {{/if}}
+            {{#if statusIs "acceptedOpportunity"}}
+              Awaiting Tuition Acceptance
+            {{/if}}
+            {{#if statusIs "universityPaid"}}
+              Tuition Paid
+            {{/if}}
+            {{#if statusIs "graduated"}}
+              Graduated
+            {{/if}}
+          </b>
           {{#if acceptedStudent}}
             <br>
             <span class="profile-raised">Raised: {{totalDonation}}</span>

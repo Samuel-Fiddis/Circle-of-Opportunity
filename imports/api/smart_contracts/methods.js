@@ -66,7 +66,7 @@ Meteor.methods({
           amount: amount,
         }
         options.transactionHash = transactionHash;
-        options.idReceiver =  "contractAddress";
+        options.idReceiver =  contractAddress;
         options.nameReceiver =  "Contract";
 
         return Transactions.insert(options);

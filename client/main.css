@@ -656,3 +656,12 @@ input[type=number]{
 .donatenow-input{
   margin: 30px;
 }
+
+.demobuttons {
+  text-align: center;
+}
+
+.demobuttons input{
+  padding: 10px;
+  margin-bottom: 3px;
+}
