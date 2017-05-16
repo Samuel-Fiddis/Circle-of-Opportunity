@@ -11,8 +11,8 @@ Template.demobuttons.events({
   'click .smart_contract_creation': function(event,template) {
     Meteor.call('create_contract');
   },
+  
   'click .fill_student_contract': function(event,template) {
-
     // Read the student ID passed in
     var studentId = String($('input[name=fill_id]').val()) ;
     var options = {
@@ -159,7 +159,6 @@ Template.demobuttons.events({
     var receiverAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
     
     var trans = ethSendEtherTransaction(senderAddress, pwdSender, receiverAddress, amount);
-
     
   },
 
