@@ -1,3 +1,35 @@
+<template name = "personalProfileInfo">
+    <div class="profile-info">
+      <img class="profile-image" src="{{userImage.link}}" alt="Image of user">
+      <a class="profile-name" href="/profilepage/{{_id}}">
+        {{name.first}} {{name.last}}
+      </a>
+      <br>
+      <span class="profile-uni">{{uni_info.uni}}</span>
+      <br>
+      <span class="profile-program">{{uni_info.program}}</span>
+      <div class="profile-info-bottom">
+        <span class="profile-bio">
+          {{bio}}
+        </span>
+      </div>  
+    </div>
+    <br>
+</template>
+
+<template name = "donationProfileInfo">
+    <span class="profile-donation-header">
+      <h2>Donate</h2>
+    </span>
+    <span class="profile-donation-pubKey">
+      {{ethereum}} - Student PublicKey
+    </span>
+    <br>
+    <input class="profile-donation-input" type="number" name="amount" min="0.001" placeholder="Donation Amount" value="0.1">
+    <br>
+    <button class="createTrans profile-donation-button">Donate To {{name.first}} {{name.last}}</button>
+</template>
+
 <template name = "publicProfileInfo">
     <h3> This is your profile information </h3>
     Name: {{name.first}} {{name.middle}} {{name.last}}

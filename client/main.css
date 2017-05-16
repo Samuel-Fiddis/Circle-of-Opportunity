@@ -417,10 +417,81 @@ h1.blueheading {
 }
 
 /* Profile Page */
-#profile-container {
+.profile-container {
     color: #333;
     padding-bottom: 50px;
 }
+
+.profile-left-container {
+  position: relative;
+  float: left;
+  width:60%;
+  padding: 25px 3% 10px 7%;
+}
+.profile-right-container {
+  position: relative;
+  float: left;
+  width:40%;
+  padding: 25px 7% 10px 3%;
+}
+
+.profile-info{
+  width: 100%;
+}
+
+.profile-info .profile-image {
+    width:150px;
+    height:150px;
+    float: left;
+    margin: 0 8px 0 0;
+}
+
+.profile-name {
+    font-size: 24px;
+    color: #004d99;
+}
+
+/* visited link */
+.profile-name:visited {
+    color: #004d99;
+    text-decoration: none;
+}
+
+/* mouse over link */
+.profile-name:hover {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+/* selected link */
+.profile-name:active {
+  text-decoration: none;
+}
+
+.profile-info-bottom {
+    float: left;
+    padding: 10px 0 0;
+}
+
+/* DONATIONS */
+.profile-donation-header h2{
+  font-size: 24px;
+  margin: 0px;
+  text-align: left;
+}
+.profile-donation-pubKey{
+  font-size:10px;
+  color:#555;
+}
+.profile-donation-input{
+  margin: 5px 0px;
+  width: 50%;
+  min-width: 180px;
+}
+.profile-donation-button{
+  margin: 5px 0px;
+}
+
 button{
     color: #111;
 }
@@ -500,18 +571,24 @@ background-color: #e8f2fd;
 
 /* Donate Now page*/
 button {
-    background-color: #3587A4; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    margin: 30px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 2px;
+  background-color: #3587A4;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.donatenow{
+  margin: 30px;
 }
 
 input[type=number]{
   padding: 10px 20px;
+}
+
+.donatenow-input{
   margin: 30px;
 }

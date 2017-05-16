@@ -238,6 +238,16 @@ Template.userProfilePage.helpers({
     return user.uni_info.eStatus == "acceptedOpportunity";
   },
 
+  userImage : function (){
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    //Meteor.users.findOne({"emails.address":{$regex:"@coreygarvey.com"}});
+    if(typeof user.userImage().currentFile !== "undefined"){
+      currentFile = user.userImage().currentFile;
+    }
+    return currentFile;
+  },
+
   donorImage : function (){
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});

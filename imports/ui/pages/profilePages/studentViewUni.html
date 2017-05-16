@@ -22,17 +22,18 @@
 
 
 <template name = "studentViewUniHelper">
-  <div class="student-view">
-    <div class="overview-top">
-      <img class="overview-image" src="{{userImage.link}}" alt="image of student">
-      <a class="overview-name" href="/profilepage/{{_id}}">
+  <div class="uni-student-view">
+    <div class="uni-student-top">
+      <img class="uni-student-image" src="{{userImage.link}}" alt="image of student">
+      <a class="uni-student-name" href="/profilepage/{{_id}}">
         {{name.first}} {{name.last}}
       </a>
+      <br>
       <span class="overview-uni">{{uni_info.uni}}</span>
       <br>
       <span class="overview-program">{{uni_info.program}}</span>
     </div>
-    <div>
+    <div class="uni-student-bottom">
       <span>Email(s): {{#each emails}} {{address}} {{/each}} </span>
       <br>
       <span> Status: {{uni_info.eStatus}}</span>
@@ -42,7 +43,8 @@
         {{#if acceptedOpportunity}}
           <span> {{>acceptTuitionButton}} </span>
         {{/if}}
-    </div>
+    </div>  
+    
   </div>
 </template>
 

@@ -6,11 +6,23 @@
   <h1> {{userProfile.name.first}} {{userProfile.name.last}} </h1>
   {{/if}} -->
 
-  <div id= "profile-container" class = "container">
+  <div class="profile-container container">
 
-    <div class = "row">
+    <div class="row">
+      <div class="profile-left-container">
+        {{>personalProfileInfo userProfile}}
+      </div>
 
-      <div class = "col-md-5 col-md-offset-2">
+      <div class="profile-right-container">
+        {{>donationProfileInfo userProfile}}
+      </div>
+    </div>
+    
+
+    <div class="row">
+
+
+      <div class="col-md-5 col-md-offset-2">
 
         <div class = "profileInfo">
 
