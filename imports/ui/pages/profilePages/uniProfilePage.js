@@ -21,7 +21,6 @@ Template.uniProfilePage.onCreated( function() {
       self.subscribe('thisUser', userid);
 
       if ( Meteor.users.findOne({"emails.address":"uni@uni.uni"}) ) {
-        // console.log("subscribing to uniData here")
         self.subscribe('uniStudentData');
       }
 
@@ -64,12 +63,14 @@ Template.studentViewUni.helpers({
     // console.log(selectionCriteria);
     return Meteor.users.find({}, {sort: sortOrder});
   },
+
   student: function () {
     var user = Meteor.users.findOne({_id: this._id});
     console.log("student");
     console.log(user);
     return user.userType.isStudent;
   },
+
   userImage : function (){
     const user = this;
     //Meteor.users.findOne({"emails.address":{$regex:"@coreygarvey.com"}});
@@ -84,32 +85,28 @@ Template.studentViewUni.helpers({
     return currentFile;
   }
 
-  // uni_name returns the name of the university affiliated with this student
-  // ************************************************************************
-
-  /*
-  uni_name: function () {
-  return Universities.findOne({_id:this.uni_info.uni},{name: 1});
-  },*/
-
 });
 
 Template.studentViewUniHelper.helpers({
+
   balance : function (){
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
   },
+
   acceptedOpportunity: function () {
     var user = Meteor.users.findOne({_id: this._id});
     return user.uni_info.eStatus == "acceptedOpportunity";
   },
-  
+
 });
 
 Template.orderButton.events({
+
   'click': function(){
     console.log("You clicked something");
   },
+
   'change #orderselecter' : function (evt){
     var newValue = $(evt.target).val();
     console.log("newValue");
@@ -127,6 +124,7 @@ Template.orderButton.events({
 });
 
 Template.statusButton.events({
+
   'change #statusselecter' : function (evt){
     // get selected value
     var newValue = $(evt.target).val();
@@ -142,7 +140,6 @@ Template.statusButton.events({
 
         // display the error on the console log of the website
         console.log(error.reason);
-
       };
     });
   },
@@ -189,6 +186,7 @@ Template.acceptTuitionButton.events({
         else {
           console.log("transaction done");
           //  FlowRouter.go('/??')
+
         }
       });
 

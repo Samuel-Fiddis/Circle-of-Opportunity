@@ -90,37 +90,18 @@ Template.updateForm.events({
         // display the error on the console log of the website
         console.log(error.reason);
 
-        /*
-        NOTE: Add extra error handling here
-        1. Set the lastError variable
-        2. template.lastError.set(error.reason);
-        */
-
       }
 
       // What happens if methods function works fine
       // +++++++++++++++++++++++++++++++++++++++++++
 
       else {
-
-        /*
-        NOTE: Add extra error handling here
-        1. Set the lastError to null
-        2. template.lastError.set(null);
-        */
         var userid = Meteor.userId();
         // redirect the user to their profile page after update
         FlowRouter.go('profilepage', {id: userid});
       }
 
     });
-
-
-    /*
-    NOTE: Meteor.call syntax
-    function(error,result) is a callback function
-    see: http://docs.meteor.com/api/methods.html#Meteor-call
-    */
 
   }
 

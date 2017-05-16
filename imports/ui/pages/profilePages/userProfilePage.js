@@ -105,7 +105,6 @@ Template.userProfilePage.events({
       amount: a,
     }
 
-
     Meteor.call('createTransaction', options, function(error, result) {
       // What happens if methods function returns an error
       // +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -118,17 +117,12 @@ Template.userProfilePage.events({
       }
       // What happens if methods function works fine
       else {
-        // Set the lastError to null
-        //template.lastError.set(null);
         console.log("transaction done");
-        // redirect the user to another page after registration
-        //  FlowRouter.go('/??')
       }
     });
 
     console.log("about to enter Target Checking");
     Meteor.call('checkTarget',idS);
-    //}
   },
 
   'click .acceptOpportunity': function(event,template) {
