@@ -54,11 +54,6 @@ Template.userProfilePage.events({
     // call the updateInterest method passing on the studentId
     // =======================================================
 
-    /*
-    NOTE: You should avoid passing userId's to meteor methods (because then anyone can update that field)
-    so this needs to be improved
-    */
-
     Meteor.call('updateInterest', studentId, function(error, result) {
 
       if(error) {
@@ -122,13 +117,6 @@ Template.userProfilePage.events({
       //transactionHash: trans,
     }
 
-    //   if(Transactions.insert(options)) {
-    //     console.log("Transaction Added");
-    //   }
-    //   else {
-    //   //  Need error handeling here
-    //  }
-
     Meteor.call('createTransaction', options, function(error, result) {
       // What happens if methods function returns an error
       // +++++++++++++++++++++++++++++++++++++++++++++++++
@@ -141,17 +129,12 @@ Template.userProfilePage.events({
       }
       // What happens if methods function works fine
       else {
-        // Set the lastError to null
-        //template.lastError.set(null);
         console.log("transaction done");
-        // redirect the user to another page after registration
-        //  FlowRouter.go('/??')
       }
     });
 
     console.log("about to enter Target Checking");
     Meteor.call('checkTarget',idS);
-    //}
   },
 
   'click .acceptOpportunity': function(event,template) {
@@ -171,12 +154,6 @@ Template.userProfilePage.events({
 
         // display the error on the console log of the website
         console.log(error.reason);
-
-        // Set the lastError variable
-        /*
-        template.lastError.set(error.reason);
-        */
-
       };
 
     });

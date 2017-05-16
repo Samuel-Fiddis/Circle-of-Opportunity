@@ -61,12 +61,6 @@ Template.studentRegForm.events({
       ethereum_ext: $('input[name=ethereum_ext]').val(),
     }
 
-    /*
-    NOTE: $('input[name=email]') grabs the value in the html file at input[name=email]
-     -> .val turns it into a js value
-     -> all of it gets stored into the field name email
-     */
-
     // Add in all embedded document information to options
     // ===================================================
 
@@ -131,18 +125,9 @@ Template.studentRegForm.events({
 
         // redirect the user to another page after registration
         FlowRouter.go('/students')
-
-        // The code below should work to redirect to the students page but it doesn't
-        //var userid = FlowRouter.getParam('id');
-        //FlowRouter.go('profilepage', if)
       }
 
     });
-
-    /*
-    NOTE: function(error,result) is a callback function
-    see: http://docs.meteor.com/api/methods.html#Meteor-call
-    */
 
   }
 
@@ -165,13 +150,5 @@ Template.studentRegForm.helpers({
   errorMessage: function () {
     return Template.instance().lastError.get();
   },
-
-  // Fake helper to work out how to test template helpers
-  // ****************************************************
-
-  testingHelpers: function() {
-    var arr = [];
-    return arr;
-  }
 
 });

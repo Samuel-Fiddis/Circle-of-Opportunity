@@ -12,8 +12,6 @@ Meteor.methods({
 
   signup: function(options) {
 
-    // console.log("in signup method function");
-
     var userId;
 
     // Error Handling: making sure the form is properly filled in
@@ -45,31 +43,9 @@ Meteor.methods({
     {
       throw new Meteor.Error("No_pledge","Please confirm your pledge");
     }
-    /*
-    NOTE: Syntax for Meteor.Error("identifier","reason")
-    the identifier can be used to reference the error
-    The reason appears in the console log to explain what went wrong
-    */
 
     // Validation check
     // *****************
-
-    /*
-    NOTE: Need to look into an if statement if it gets called from the donor as well
-    or maybe putting somethings as null here...
-    */
-
-    /*
-    NOTE: Doing a validation check on the argument passed to a Method is:
-    1. For security purposes
-    2. Generally recognized as good practice
-    3. Can be done using simpleSchema or check package
-
-    see also:
-    https://docs.meteor.com/api/check.html
-    https://themeteorchef.com/blog/securing-meteor-applications
-    http://meteortips.com/first-meteor-tutorial/methods/
-    */
 
     // var myAddr = ethCreateAccount();
     // options.ethereum = myAddr;
@@ -122,23 +98,6 @@ Meteor.methods({
     userId = Accounts.createUser(options);
     return userId;
 
-    /* NOTE:
-    On the server side, accounts.createUser does not actually have callback capacities
-    Any errors related to actually creating the user are currently stored in the account-creations.js
-    */
-
-    // Add in a send enrollment email for example
-    // ------------------------------------------
-
-    /*
-      if(userID)
-      {
-        console.log("userId");
-        console.log(userId);
-        //Accounts.sendEnrollmentEmail(userID);
-        return userID;
-      }
-    */
   },
 
   // Function for the updateUser method
@@ -148,18 +107,6 @@ Meteor.methods({
 
     // validation check
     // ****************
-
-    /*
-    NOTE: Doing a validation check on the argument passed to a Method is:
-    1. For security purposes
-    2. Generally recognized as good practice
-    3. Can be done using simpleSchema or check package
-
-    see also:
-    https://docs.meteor.com/api/check.html
-    https://themeteorchef.com/blog/securing-meteor-applications
-    http://meteortips.com/first-meteor-tutorial/methods/
-    */
 
     check(options,
         {

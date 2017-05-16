@@ -31,7 +31,7 @@ Template.donorregform.events({
   // Create the submit form function
   // *******************************
 
-  'submit form': function(event, template) {  // not sure what the template is....
+  'submit form': function(event, template) {
 
     // prevents the default functionality of the form
     // ==============================================
@@ -55,11 +55,6 @@ Template.donorregform.events({
       age: $('input[name=age]').val(),
       image: $('input[name=image]').val()
     }
-    /*
-    NOTE: $('input[name=email]') grabs the value in the html file at input[name=email]
-    -> .val turns it into a js value
-    -> all of it gets stored into the field name email
-    */
 
     // add in all embedded document information to options
     // ===================================================
@@ -134,11 +129,6 @@ Template.donorregform.events({
       }
 
     });
-
-    /* Note:
-    function(error,result) is a callback function
-    see: http://docs.meteor.com/api/methods.html#Meteor-call
-    */
   }
 });
 

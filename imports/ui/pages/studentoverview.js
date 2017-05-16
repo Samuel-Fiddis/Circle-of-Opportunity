@@ -23,20 +23,6 @@ Template.studentoverview.onCreated( function() {
   // subscribe to universities publication: returns all documents in Universities
   this.subscribe('universities');
 
-
-
-  /*
-  NOTE: improvements that can be made
-  1. Use following format:
-
-  this.autorun(function() {
-    this.subscribe('userData');
-  });
-
-  this.subscribe() attaches subscriptionReady() (whereas Meteor.subscribe() doesnt)
-  this.autorun automatically re-initializes the subscription if something changes
-  */
-
 });
 
 

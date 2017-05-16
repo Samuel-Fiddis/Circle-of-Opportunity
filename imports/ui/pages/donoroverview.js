@@ -29,14 +29,6 @@ Template.donoroverview.onCreated( function() {
 // Helpers function for the template --> defines all the helpers needed
 // ---------------------------------------------------------------------
 
-/* NOTE: javascript syntax for the functions used
-
-user: ()=> { return Meteor.users.find();}
-is equivalent to
-user: function() { return Meteor.users.find(); }
-
-*/
-
 Template.donoroverview.helpers({
 
   // user returns a pointer to all the user documents in subscription

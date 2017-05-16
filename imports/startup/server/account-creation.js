@@ -6,15 +6,6 @@ import { Universities } from '/imports/api/universities/universities.js';
 
 Accounts.onCreateUser(function(options,user) {
 
-  /*
-  NOTE: : Basic set up of this function that we want to implement
-   Fill all common info
-    If student:
-  fill student info
-    If donor:
-  fill account info
-  */
-
   // Error Handling:
   // ---------------
 
@@ -50,7 +41,7 @@ Accounts.onCreateUser(function(options,user) {
     uni: uni._id,
     program: "Msc of Computing Science",
     eStatus: "pending",
-    tuition: 13500, 
+    tuition: 13500,
     tuition_eth: .125,
     allowance: 1256,
     allowance_eth: .0125,
