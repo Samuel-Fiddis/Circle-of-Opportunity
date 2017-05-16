@@ -120,6 +120,7 @@ function GPtoStudentReallocation(numAccepted, balance_table){
 
           Transactions.insert(options);
         }
+        Meteor.call('updateStatus',balance_table[i]._id,"targetReached");
       }
       return true;
   }
