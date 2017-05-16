@@ -155,7 +155,8 @@ td, th {
 
 .scrollit {
     overflow:scroll;
-    height:500px;
+    min-height:200px;
+    max-height:500px;
     align: middle;
 }
 
