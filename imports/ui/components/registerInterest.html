@@ -1,50 +1,59 @@
 <template name = "registerInterestButton">
-
-  {{#if hasRegisteredInterest}}
-  You have already registered interest in this student
-  <br>
-  <br>
-  {{else}}
-
-  <button class = "updateinterest"> Register Interest </button>
-  <br>
-  {{/if}}
+  <div class="profile-right-section">
+    <div class="profile-right-header">
+      <h2>Register Interest</h2>
+    </div>
+    {{#if hasRegisteredInterest}}
+      <span class="profile-right-text-sorry">
+        Looks like you have already registered interest in this student.
+      </span>
+    {{else}}
+      <button class="updateinterest profile-right-button"> Register Interest </button>
+      <br>
+      <span class="profile-right-text">
+        By registering interest, you will be notified immediately when a decision is made regarding this student's application.
+      </span>
+    {{/if}}
+  </div>
 </template>
 
 <template name = "studentProfileRegisterInterest">
-    <h3> Donors who have registered interest</h3>
-    <div>
-      Number of donors interested: {{number_dInterest}}
-      <br>
-      Interested Donors:
-      <br>
-      {{#each interestedDonors}}
-      {{#with donorInfo @index}}
-      <a class="livefeedhref" href="/profilepage/{{_id}}">
-        Name: {{name.first}} {{name.last}}
-      </a>
-      <br>
-      {{/with}}
-      {{/each}}
+  {{#if hasRegisteredInterest}}
+    <div class="profile-right-section">
+      <div class="profile-right-header">
+        <h2>Interested Donors ({{number_dInterest}})</h2>
+      </div>
+      <span class="profile-interested-donors">
+        {{#each interestedDonors}}
+          {{#with donorInfo @index}}
+            <a href="/profilepage/{{_id}}">
+              {{name.first}} {{name.last}}
+            </a>
+            <br>
+          {{/with}}
+        {{/each}}
+      </span>
     </div>
+  {{/if}}
 </template>
 
 <template name = "donorProfileRegisterInterest">
-  <h3> Students interested in </h3>
-  <div>
-    <br>
-    Registered interest in:
-    <br>
-    {{#each interestStudent}}
-    {{#with studentInfo @index}}
-    <a class="livefeedhref" href="/profilepage/{{_id}}">
-      Name: {{name.first}} {{name.last}}
-    </a>
-    {{#if isStatus "Accepted"}}
-    This student has now been accepted, please consider donating to them!!
-    {{/if}}
-    <br>
-    {{/with}}
-    {{/each}}
+  <div class="profile-right-section">
+    <div class="profile-right-header">
+      <h2>Students Interested In</h2>
+    </div>
+    <span class="profile-interested-donors">
+      {{#each interestedStudent}}
+        {{#with studentInfo @index}}
+          <a href="/profilepage/{{_id}}">
+            {{name.first}} {{name.last}}
+          </a>
+          <br>
+          {{#if isStatus "Accepted"}}
+            This student has now been accepted, <a href="/profilepage/{{_id}}">donate now</a>!!!
+          {{/if}}
+        {{/with}}
+      {{/each}}
+    </span>
   </div>
 </template>

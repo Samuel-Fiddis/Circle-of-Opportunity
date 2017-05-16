@@ -196,7 +196,6 @@ Template.userProfilePage.helpers({
 
   // bool to see if this profile is their profilepage
   // ************************************************
-
   ownProfile: ()=> {
     var id = FlowRouter.getParam('id');
     return Meteor.userId() == id;
@@ -218,6 +217,12 @@ Template.userProfilePage.helpers({
     var id = FlowRouter.getParam('id');
     var user = Meteor.users.findOne({_id: id});
     return user.userType.isFormerStudent;
+  },
+
+  pending: function () {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == "pending";
   },
 
   acceptedStudent: function () {
@@ -267,4 +272,27 @@ Template.userProfilePage.helpers({
     return Template.instance().lastError.get();
   },
 
+});
+
+Template.publicProfileInfo.helpers({
+  // bool to see if this profile is their profilepage
+  // ************************************************
+  ownProfile: ()=> {
+    var id = FlowRouter.getParam('id');
+    return Meteor.userId() == id;
+  },
+
+  // checking if profile belongs to a student
+  // ****************************************
+  student: function () {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.userType.isStudent;
+  },
+
+  acceptedStudent: function () {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    return user.uni_info.eStatus == "accepted";
+  },
 });

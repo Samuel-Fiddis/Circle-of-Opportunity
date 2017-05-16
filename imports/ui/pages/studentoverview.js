@@ -48,14 +48,6 @@ Template.studentoverview.onCreated( function() {
 // Helpers function for the template --> defines all the helpers needed
 // ---------------------------------------------------------------------
 
-/* NOTE: javascript syntax for the functions used
-
-user: ()=> { return Meteor.users.find();}
-is equivalent to
-user: function() { return Meteor.users.find(); }
-
-*/
-
 Template.studentoverview.helpers({
 
   // user returns a pointer to all the user documents in subscription
@@ -70,11 +62,6 @@ Template.studentoverview.helpers({
     return Meteor.users.find({"userType.isStudent": true}, {sort: sortOrder});
 
   },
-
-  // secondStudent returns ??
-  // ************************
-
-  // NOTE: check what secondStudent returns!!!
 
   secondStudent: function (index) {
     return (index + 1) % 2 === 0;
@@ -108,6 +95,7 @@ Template.studentoverview.helpers({
   }
 
 });
+
 
 Template.studentView.helpers({
 
