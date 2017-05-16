@@ -46,7 +46,7 @@ Template.studentProfileDonationInfo.helpers({
     // Should be calling balance from Ethereuem
     // current = ReactiveMethod.call('totalDonation',id);
     current = ethGetBalance(user.ethereum);
-    return (current/max)*100;
+    return Number(((current/max)*100).toFixed(2));
   }
 
 })
