@@ -1,140 +1,76 @@
 <template name="userProfilePage">
 
-  <!-- {{#if ownProfile}}
-  <h1>Profile</h1>
-  {{else}}
-  <h1> {{userProfile.name.first}} {{userProfile.name.last}} </h1>
-  {{/if}} -->
+  <div class="profile-container container">
 
-  <div id= "profile-container" class = "container">
+    <div class="row">
+      <div class="profile-left-container">
+        {{>publicProfileInfo userProfile}}
 
-    <div class = "row">
+        <!--- IS THIS NEEDED?
+        {{#if ownProfile}}
+          {{>privateProfileInfo2 userProfile}}
+        {{/if}}
+        -->
 
-      <div class = "col-md-5 col-md-offset-2">
-
-        <div class = "profileInfo">
-
-          <img class="donorImage" src="{{fileURL donorImage}}">
-
-          {{ > publicProfileInfo userProfile}}
-
-          {{#if ownProfile}}
-          {{ > privateProfileInfo userProfile}}
-          {{/if}}
-
-          {{#if student}}
-          {{ > opportunityInfo userProfile}}
-          {{/if}}
-
-          {{#if formerStudent}}
+        <!-- WHERE TO PUT??
+        {{#if formerStudent}}
           {{> summaryOppInfo userProfile}}
-          {{/if}}
-
-          {{#if ownProfile}}
-          {{ > updateProfileButton }}
-          {{/if}}
-
-
-          <!-- {{#if student}}
-          <div class = "registerInterest">
-
-            {{#if errorMessage}}
-            <div class="uiErrorMessage"> {{errorMessage}} </div>
-            {{/if}}
-
-            {{ > registerInterestButton }}
-            {{ > studentProfileRegisterInterest userProfile}}
-
-          </div>
-          {{else}}
-          <div class = "registerInterest">
-            {{ > donorProfileRegisterInterest userProfile}}
-          </div>
-
-          {{/if}} -->
-          <!-- {{#unless ownProfile}}
-
-          {{#if student}}
-          {{#if acceptedStudent}}
-          <br>
-          <br>
-
-          {{ > directDonationButton userProfile.name}}
-          {{/if}}
-          {{/if}}
-
-          {{/unless}}
-          <br>
-          {{ > ethereumPaymentInfo userProfile}} -->
-
-          {{#if ownProfile}}
-          {{#if student}}
-          {{#if targetReached}}
-          <br>
-          <br>
-          <button class = "acceptOpportunity">acceptOpportunity</button>
-          {{/if}}
-
-          {{#if acceptedOpportunity}}
-          <br>
-          <br>
-          <p><b>Way to go, Opportunity Accepted!</b></p>
-          {{/if}}
-          {{/if}}
-          {{/if}}
-
-
-
-        </div>
-
+        {{/if}}
+        -->
+        
       </div>
 
-      <div class = "col-md-4">
+      <div class="profile-right-container">
+        <!-- Not own profile -->
         {{#unless ownProfile}}
-
-        {{#if student}}
-        {{#if acceptedStudent}}
-        <br>
-        <br>
-
-        {{ > directDonationButton userProfile.name}}
-        {{/if}}
-        {{/if}}
-
-        {{/unless}}
-        <br>
-        {{ > ethereumPaymentInfo userProfile}}
-
-        {{#if student}}
-
-        {{#unless statusIs "Pending"}}
-        <div class = "donationInfo">
-          {{ > studentProfileDonationInfo userProfile}}
-        </div>
-        {{/unless}}
-        <div class = "registerInterest">
-
-          {{#if errorMessage}}
-          <div class="uiErrorMessage"> {{errorMessage}} </div>
+          {{#if acceptedStudent}}
+            {{>profileDonationButton userProfile}}
           {{/if}}
-
-          {{ > registerInterestButton }}
-          {{ > studentProfileRegisterInterest userProfile}}
-
-        </div>
-        {{else}}
-
-        <div class = "donationInfo">
-          {{ > donorProfileDonationInfo }}
-        </div>
-
-        <div class = "registerInterest">
-          {{ > donorProfileRegisterInterest userProfile}}
-        </div>
+          {{#if pending}}
+            {{>registerInterestButton }}
+            {{>studentProfileRegisterInterest userProfile}}
+          {{/if}}
+        {{/unless}}
+        
+        <!-- Own profile -->
+        {{#if targetReached}}
+          {{#if ownProfile}}
+            {{>acceptOpportunityInfo}}
+          {{else}}
+            Target reached!
+          {{/if}}
         {{/if}}
+
+        {{#if acceptedOpportunity}}
+          {{#if ownProfile}}
+            {{>opportunityAcceptedInfo}}
+          {{else}}
+            Opportunity accepted!
+          {{/if}}
+        {{/if}}
+
+        {{#if formerStudent}}
+          {{>summaryOppInfo userProfile}}
+        {{/if}}
+
+        <!-- DO WE NEED THIS?
+        {{>ethereumPaymentInfo2 userProfile}}
+        -->
+        {{#if student}}
+          {{#if accptedStudent}}
+            {{>studentProfileDonationInfo userProfile}}
+          {{/if}}
+        {{else}}
+          <div class="donationInfo">
+            {{>donorProfileDonationInfo }}
+          </div>
+          <div class="registerInterest">
+            {{>donorProfileRegisterInterest userProfile}}
+          </div>
+        {{/if}}
+        
 
       </div>
-
     </div>
 
     <div class = "row">

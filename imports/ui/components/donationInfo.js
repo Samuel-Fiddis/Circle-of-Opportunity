@@ -6,9 +6,6 @@ import './donationInfo.html';
 // ------------------------------------
 // DONOR PROFILE DONATION INFO Template
 // ------------------------------------
-
-
-
 Template.donorProfileDonationInfo.helpers({
 
   totalDonation: function(){
@@ -27,12 +24,11 @@ Template.donorProfileDonationInfo.helpers({
 
 });
 
+
 // --------------------------------------
 // STUDENT PROFILE DONATION INFO Template
 // --------------------------------------
-
 Template.studentProfileDonationInfo.helpers({
-
   totalDonation: function(){
     var id = FlowRouter.getParam('id');
     return ReactiveMethod.call('totalDonation',id);

@@ -53,16 +53,17 @@ header {
 /* Footer */
 .footer-nav {
     margin-right: 30px;
+    margin-bottom: 0px;
 }
 .footer-brand{
     position: relative;
     float: left;
-    height: 50px;
+    top: 10px;
 }
 .footer-logo {
     position: relative;
-    width: 218px;
-    height: 50px;
+    width: 130px;
+    height: 30px;
 }
 
 /* Homepage */
@@ -154,7 +155,8 @@ td, th {
 
 .scrollit {
     overflow:scroll;
-    height:500px;
+    min-height:200px;
+    max-height:500px;
     align: middle;
 }
 
@@ -425,10 +427,125 @@ h1.blueheading {
 }
 
 /* Profile Page */
-#profile-container {
+.profile-container {
     color: #333;
     padding-bottom: 50px;
 }
+
+.profile-left-container {
+  position: relative;
+  float: left;
+  width:60%;
+  padding: 25px 3% 10px 7%;
+}
+.profile-right-container {
+  position: relative;
+  float: left;
+  width:40%;
+  padding: 25px 7% 10px 3%;
+}
+
+.profile-info{
+  width: 100%;
+}
+
+.profile-info .profile-image {
+    width:150px;
+    height:150px;
+    float: left;
+    margin: 0 8px 0 0;
+}
+
+.profile-name {
+    font-size: 24px;
+    color: #004d99;
+}
+
+/* visited link */
+.profile-name:visited {
+    color: #004d99;
+    text-decoration: none;
+}
+
+/* mouse over link */
+.profile-name:hover {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+/* selected link */
+.profile-name:active {
+  text-decoration: none;
+}
+.profile-info-bottom {
+    float: left;
+    padding: 10px 0 0;
+}
+.profile-update-button{
+  float:left;
+}
+
+/* DONATIONS */
+.profile-right-section{
+  margin-bottom: 10px;
+}
+.profile-right-header {
+  margin-bottom: 5px;
+}
+.profile-right-header h2{
+  font-size: 24px;
+  margin: 0px;
+  text-align: left;
+}
+.profile-right-text{
+  font-size:10px;
+  color:#555;
+  width:60%;
+  display: inline-block;
+}
+.profile-right-button{
+  margin: 5px 0px;
+}
+.profile-donation-input{
+  margin: 5px 0px;
+  width: 50%;
+  min-width: 180px;
+}
+.profile-pubKey{
+  font-size:14px;
+  color:#555;
+}
+.profile-pubKey{
+  font-size:14px;
+  color:#555;
+}
+.profile-interested-donors{
+  font-size:14px;
+}
+
+.profile-right-graduate{
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #999;
+  text-align: center
+}
+
+.profile-right-graduate-header h2{
+  font-size: 16px;
+  margin: 0px;
+}
+
+.profile-right-graduate-text{
+  size: 13px;
+  color: #555;
+}
+
+.small-grad-text{
+  font-size:12px;
+}
+
 button{
     color: #111;
 }
@@ -508,18 +625,24 @@ background-color: #e8f2fd;
 
 /* Donate Now page*/
 button {
-    background-color: #3587A4; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    margin: 30px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 2px;
+  background-color: #3587A4;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.donatenow{
+  margin: 30px;
 }
 
 input[type=number]{
   padding: 10px 20px;
+}
+
+.donatenow-input{
   margin: 30px;
 }

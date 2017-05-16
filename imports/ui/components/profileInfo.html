@@ -1,14 +1,110 @@
-<template name = "publicProfileInfo">
-    <h3> This is your profile information </h3>
-    Name: {{name.first}} {{name.middle}} {{name.last}}
+<template name="publicProfileInfo">
+  <div class="profile-info">
+    <img class="profile-image" src="{{userImage.link}}" alt="Image of user">
+    <a class="profile-name" href="/profilepage/{{_id}}">
+      {{name.first}} {{name.last}}
+    </a>
     <br>
-    <!-- Address: {{address.street}}, {{address.city}}, {{address.country}}
-    <br> -->
-    <!-- Age: {{age}}
-    <br> -->
-    Bio: {{bio}}
-    <br>
+    {{#if student}}
+      <span class="profile-uni">{{uni_info.uni}}</span>
+      <br>
+      <span class="profile-program">{{uni_info.program}}</span>
+      <br>
+      <span class="profile-tuition">Tuition: {{uni_info.tuition_eth}}</span>
+      {{#if allowance}}
+        <br>
+        <span class="profile-allowance">Allowance: {{uni_info.allowance_eth}}</span>
+      {{/if}}
+      <br>
+      Status: <b>{{uni_info.eStatus}}</b>
+      {{#if acceptedStudent}}
+        <br>
+        <span class="profile-raised">Raised: {{totalDonation}}</span>
+      {{/if}}
+    {{/if}}
+    <div class="profile-info-bottom">
+      <span class="profile-bio">
+        {{bio}}
+      </span>
+    </div>  
+    {{#if ownProfile}}
+      {{>updateProfileButton }}
+    {{/if}}
+  </div>
 </template>
+
+<template name = "updateProfileButton">
+  <a class="profile-update-button" href="/updateForm">Update My Profile</a>
+  <br>
+</template>
+
+<template name="privateProfileInfo2">
+  Phone: {{phone}}
+  <br>
+  {{#each emails}}
+    <div>Email: {{address}}</div>
+  {{/each}}
+</template>
+
+<template name = "profileDonationButton">
+  <div class="profile-right-section">
+    <div class="profile-right-header">
+      <h2>Donate</h2>
+    </div>
+    <input class="profile-donation-input" type="number" name="amount" min="0.001" placeholder="Donation Amount" value="0.1">
+    <br>
+    <button class="createTrans profile-right-button">Donate To {{name.first}} {{name.last}}</button>
+    <br>
+    <span class="profile-right-text">
+      <a href="https://ropsten.etherscan.io/address/{{ethereum}}">{{ethereum}}</a>
+    </span>
+  </div>
+</template>
+
+<template name = "acceptOpportunityInfo">
+  <div class="profile-right-section">
+    <div class="profile-right-header">
+      <h2>Target reached!</h2>
+    </div>
+    <button class="acceptOpportunity profile-right-button">Accept the Opportunity</button>
+    <br>
+    <span class="profile-right-text">
+      Once accepted, the university will need to confirm acceptance and funds will be transferred. Read more about the process <a href="/about">here</a>.
+    </span>
+  </div>
+</template>
+
+
+<template name = "opportunityAcceptedInfo">
+  <div class="profile-right-section">
+    <div class="profile-right-header">
+      <h2>Accepted Opportunity</h2>
+    </div>
+    <span class="profile-right-text">
+      Thanks for accepting this opportunity. The university will now need to confirm acceptance and funds will be transferred. Read more about the process <a href="/about">here</a>.
+    </span>
+  </div>
+</template>
+
+<template name = "ethereumPaymentInfo2">
+  <div class="profile-right-section">
+    <div class="profile-right-header">
+      <h2>Ethereum Info</h2>
+    </div>
+    <span class="profile-pubKey">
+      Ethereum public key: 
+      <a href="https://ropsten.etherscan.io/address/{{ethereum}}">{{ethereum}}</a>
+    </span>
+    <br>
+    <span class="profile-balance">
+      Ethereum balance: {{balance}}
+    </span>
+    <br>
+  </div>
+</template>
+
+
+
 
 <template name = "opportunityInfo">
   University: {{uniProfile.name}}
@@ -28,19 +124,24 @@
 </template>
 
 <template name = "summaryOppInfo">
-  <h3>Was granted an opportunity at</h3>
-  <br>
-  University: {{uniProfile.name}}
-  <br>
-  Program: {{uni_info.program}}
-  <br>
-  Was donated an ether equivalent to:
-  <br>
-  {{uni_info.tuition}}GBD for tuition
-  <br>
-  {{#if allowance}}
-  and {{uni_info.allowance}}GBD for 10months for allowance
-  {{/if}}
+  <div class="profile-right-graduate">
+    <div class="profile-right-graduate-header">
+      <h2>{{name.first}} Graduated!</h2>
+    </div>
+    <span class="profile-right-graduate-text">
+      <b>{{uni_info.program}}</b> at <b>{{uni_info.uni}}</b>
+      <br>
+      <span class="small-grad-text">thanks to donations of</span>
+      <br>
+      <b>£{{uni_info.tuition}}</b> for tuition
+      <br>
+      {{#if allowance}}
+        <span class="small-grad-text">and</span>
+        <br>
+        <b>£{{uni_info.allowance}}</b> each of 10 months for allowance
+      {{/if}}
+    </span>
+  </div>
 </template>
 
 <template name = "ethereumPaymentInfo">
@@ -59,10 +160,6 @@
   {{/each}}
 </template>
 
-<template name = "updateProfileButton">
-  <a class ="livefeedhref" href="/updateForm">Update My Profile</a>
-  <br>
-</template>
 
 <template name = "UniversityInformation">
   University: {{name}}
