@@ -1,27 +1,31 @@
 <template name="publicProfileInfo">
   <div class="profile-info">
     <img class="profile-image" src="{{userImage.link}}" alt="Image of user">
+    <div class="profile-student-info">
     <a class="profile-name" href="/profilepage/{{_id}}">
       {{name.first}} {{name.last}}
     </a>
     <br>
     {{#if student}}
-      <span class="profile-uni">{{uni_info.uni}}</span>
-      <br>
-      <span class="profile-program">{{uni_info.program}}</span>
-      <br>
-      <span class="profile-tuition">Tuition: {{uni_info.tuition_eth}}</span>
-      {{#if allowance}}
-        <br>
-        <span class="profile-allowance">Allowance: {{uni_info.allowance_eth}}</span>
-      {{/if}}
-      <br>
-      Status: <b>{{uni_info.eStatus}}</b>
-      {{#if acceptedStudent}}
-        <br>
-        <span class="profile-raised">Raised: {{totalDonation}}</span>
-      {{/if}}
+        
+          <span class="profile-uni">{{uni_info.uni}}</span>
+          <br>
+          <span class="profile-program">{{uni_info.program}}</span>
+          <br>
+          <span class="profile-tuition">Tuition: {{uni_info.tuition_eth}}</span>
+          {{#if allowance}}
+            <br>
+            <span class="profile-allowance">Allowance: {{uni_info.allowance_eth}}</span>
+          {{/if}}
+          <br>
+          Status: <b>{{uni_info.eStatus}}</b>
+          {{#if acceptedStudent}}
+            <br>
+            <span class="profile-raised">Raised: {{totalDonation}}</span>
+          {{/if}}
+        
     {{/if}}
+    </div>
     <div class="profile-info-bottom">
       <span class="profile-bio">
         {{bio}}
