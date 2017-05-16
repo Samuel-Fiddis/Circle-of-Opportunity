@@ -177,7 +177,7 @@ Meteor.methods({
       }
     });
 
-    return totalAmount*Meteor.settings.ethToPound;
+    return Number((totalAmount*Meteor.settings.ethToPound).toFixed(2));
   },
 
   // Returns total amount paid for tuition and allowance
@@ -190,7 +190,7 @@ Meteor.methods({
       totalAmount = totalAmount + transaction.amount;
     });
 
-    return totalAmount*Meteor.settings.ethToPound;
+    return Number((totalAmount*Meteor.settings.ethToPound).toFixed(2));
   },
 
   // Returns total amount paid back by previous students
@@ -206,7 +206,7 @@ Meteor.methods({
       }
     });
 
-    return totalAmount*Meteor.settings.ethToPound;
+    return Number((totalAmount*Meteor.settings.ethToPound).toFixed(2));
   }
 
 });

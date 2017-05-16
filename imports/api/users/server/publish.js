@@ -80,3 +80,13 @@ Meteor.publish('uniStudentData', function () {
 			'userType.isStudent': 1,
 			'image': 1}});
 });
+
+
+Meteor.publish('allUserImageInfo', function () {
+	return Meteor.users.find(
+		{},
+		{fields:
+			{'_id': 1,
+			'image':1,
+		}});
+});

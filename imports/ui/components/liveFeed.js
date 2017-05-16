@@ -14,7 +14,7 @@ Template.livefeed.onCreated( function() {
   var self = this;
 
   console.log(FlowRouter.getRouteName());
-
+  self.subscribe('allUserImageInfo');
   self.autorun(function() {
   if(FlowRouter.getParam('id')){
     var userId = FlowRouter.getParam('id');
@@ -72,17 +72,17 @@ Template.livefeed.helpers({
     if(typeof user.userImage().currentFile !== "undefined"){
       console.log(user.userImage().currentFile);
       currentFile = user.userImage().currentFile;
+      image = user.userImage()
     }
-    return currentFile;
+    return image;
   },
 
   senderImage : function (){
-    console.log(this.idSender);
     const user = Meteor.users.findOne({"_id": this.idSender});
     if(typeof user.userImage().currentFile !== "undefined"){
       console.log(user.userImage().currentFile);
-      currentFile = user.userImage().currentFile;
+      image = user.userImage()
     }
-    return currentFile;
+    return image;
   }
 });
