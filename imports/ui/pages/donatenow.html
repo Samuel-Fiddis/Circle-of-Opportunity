@@ -1,7 +1,14 @@
 <template name="donatenow">
-  <h1>Donate to the general pot</h1>
-  <div><input class="donatenow-input" type="number" name="amount" min =0.001 placeholder="Donation Amount" value=0.1 >
-  <button class = "donatenow" align = "middle">Donate To the general pot</button></div>
+  <h1>The General Pot</h1>
+  <p>Donations to the Circle of Opportunites General Pot are used to help
+    students who are close to reaching their funding goal get up bumped to the
+    ammount they need to receive an oppotrunity to study as well as to help the
+    Circle of Opportunity with their very minimal admin costs.
+    </p>
+  <div class="donatenow-div">
+    <input class="donatenow" type="number" name="amount" min =0.001 placeholder="Donation Amount" value=0.1 >
+    <button  class="donatenow">Donate to the General Pot</button>
+  </div>
 
   {{> livefeed}}
 </template>

@@ -642,7 +642,7 @@ button {
 }
 
 .donatenow{
-  margin: 30px;
+  text-align: center;
 }
 
 input[type=number]{
