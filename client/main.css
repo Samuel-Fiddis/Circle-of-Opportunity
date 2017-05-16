@@ -147,8 +147,8 @@ tr {
 }
 
 td, th {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -645,8 +645,8 @@ button {
   border-radius: 2px;
 }
 
-.donatenow{
-  margin: 30px;
+.donatenow-div{
+  text-align: center;
 }
 
 input[type=number]{
