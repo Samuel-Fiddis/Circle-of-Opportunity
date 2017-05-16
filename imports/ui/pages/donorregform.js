@@ -9,15 +9,12 @@ import '../components/uploadForm.js'
 
 // OnCreated function for the template
 // -----------------------------------
-
 Template.donorregform.onCreated(function() {
 
   // Declare a global variable called lastError
   this.lastError = new ReactiveVar(null);
 
 });
-
-
 
 // *****************************************************************************
 // Events allocated to Register Page
@@ -38,11 +35,11 @@ Template.donorregform.events({
 
     event.preventDefault();
 
-    // Store all the values of the user fields in a variable called options to pass on to the onCreateUser Server function
-    // ===================================================================================================================
+    // Store all the values of the user fields in a variable called 
+    // options to pass on to the onCreateUser Server function
+    // ==============================================================
 
     var options = {
-
       // user info
       email: $('input[name=email]').val(),
       password: $('input[name=password]').val(),

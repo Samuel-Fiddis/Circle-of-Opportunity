@@ -4,7 +4,7 @@
     {{#each transaction}}
       {{#if isDtG this}}
         <tr id="DtGRow" class="livefeedrow">
-          <td><img src="images/profile_pics/ada.png" alt="Donor image" width="50px"></td>
+          <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
           <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">The General Pot</a></td>
@@ -14,7 +14,7 @@
       {{/if}}
       {{#if isDtS this}}
         <tr id="DtSRow" class="livefeedrow">
-          <td><img src="images/profile_pics/alan.png" alt="Donor image" width="50px"></td>
+          <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
           <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
@@ -34,7 +34,7 @@
       {{/if}}
       {{#if isStG this}}
         <tr id="StGRow" class="livefeedrow">
-          <td><img src="images/logo final smaller - rgb.png" alt="Donor image" width="50px"></td>
+          <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
           <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">The General Pot</a></td>
@@ -44,7 +44,7 @@
       {{/if}}
       {{#if isStU this}}
         <tr id="StURow" class="livefeedrow">
-          <td><img src="images/profile_pics/alan.png" alt="Donor image" width="50px"></td>
+          <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
           <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
@@ -53,7 +53,7 @@
       {{/if}}
       {{#if isStC this}}
         <tr id="StCRow" class="livefeedrow">
-          <td><img src="images/profile_pics/alan.png" alt="Donor image" width="50px"></td>
+          <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
           <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
@@ -63,7 +63,7 @@
       {{/if}}
       {{#if isCtO this}}
         <tr id="CtORow" class="livefeedrow">
-          <td><img src="images/profile_pics/alan.png" alt="Donor image" width="50px"></td>
+          <td><img src="images/logo final smaller - rgb.png" alt="Donor image" width="50px"></td>
           <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>

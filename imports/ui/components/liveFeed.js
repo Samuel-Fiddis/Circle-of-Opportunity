@@ -3,6 +3,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Transactions } from '/imports/api/transactions/transactions.js';
 
 import './liveFeed.html'
+import '/imports/api/users/helpers.js'
 
 Template.livefeed.onCreated( function() {
 
@@ -64,5 +65,24 @@ Template.livefeed.helpers({
 
   isCtO: function(transaction) {
     return transaction.type == "CtO";
+  },
+
+  receiverImage : function (){
+    const user = Meteor.users.findOne({"_id": this.idReceiver});
+    if(typeof user.userImage().currentFile !== "undefined"){
+      console.log(user.userImage().currentFile);
+      currentFile = user.userImage().currentFile;
+    }
+    return currentFile;
+  },
+
+  senderImage : function (){
+    console.log(this.idSender);
+    const user = Meteor.users.findOne({"_id": this.idSender});
+    if(typeof user.userImage().currentFile !== "undefined"){
+      console.log(user.userImage().currentFile);
+      currentFile = user.userImage().currentFile;
+    }
+    return currentFile;
   }
 });

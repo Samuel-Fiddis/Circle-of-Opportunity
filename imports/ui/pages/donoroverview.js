@@ -11,16 +11,12 @@ import './donoroverview.html';
 // --------------------------------------------------------------------
 
 Template.donoroverview.onCreated( function() {
-
   // Template level subscriptions
   // ****************************
 
   // subscribe to userData publication: returns all documents in user accounts
   this.subscribe('donorDataOverview');
-
 });
-
-
 
 // *****************************************************************************
 // Template level Helpers
@@ -48,20 +44,4 @@ Template.donoroverview.helpers({
     return ethGetBalance(myEthAddr);
   },
 
-});
-
-
-Template.orderButton.events({
-  'click': function(){
-        console.log("You clicked something");
-    },
-  'change #orderselecter' : function (evt){
-    var newValue = $(evt.target).val();
-    var oldValue = Session.get("orderselection");
-    if (newValue != oldValue){
-      //something
-    }
-    Session.set("orderselection", newValue)
-    return true;
-  },
 });

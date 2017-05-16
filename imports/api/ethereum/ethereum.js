@@ -71,7 +71,7 @@ var timeoutContractAbi = web3.eth.contract([{"constant":false,"inputs":[{"name":
 ethCreateSmartContract = function ethCreateSmartContract(ownerAddress, ownerPassword, _callback){
 
   web3.personal.unlockAccount(ownerAddress, ownerPassword);
-  
+
   /* Not currently about to call cancel in contract
   var mortal_contract = mortalContractAbi.new(
      {
@@ -101,7 +101,7 @@ ethCreateSmartContract = function ethCreateSmartContract(ownerAddress, ownerPass
         _callback(contract.address);
       }
    });
-  
+
 }
 
 // Fill smart contract
@@ -147,7 +147,6 @@ ethKillSmartContract = function ethCancelStudentContract(contractAddress, ownerA
   targetContract.kill.sendTransaction({from:ownerAddress});
 
 }
-
 
 
 /*

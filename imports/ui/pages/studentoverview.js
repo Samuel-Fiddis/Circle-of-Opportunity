@@ -25,20 +25,16 @@ Template.studentoverview.onCreated( function() {
 
 });
 
-
-
 // *****************************************************************************
 // Template level Helpers
 // *****************************************************************************
 
 // Helpers function for the template --> defines all the helpers needed
 // ---------------------------------------------------------------------
-
 Template.studentoverview.helpers({
 
   // user returns a pointer to all the user documents in subscription
   // ****************************************************************
-
   user: ()=> {
     var selectionCriteria = Session.get("orderselection");
     var sortOrder = {};
@@ -55,15 +51,11 @@ Template.studentoverview.helpers({
 
   // uni_name returns the name of the university affiliated with this student
   // ************************************************************************
-
   /*
   uni_name: function () {
     return Universities.findOne({_id:this.uni_info.uni},{name: 1});
   },
   */
-
-  // studentoverView Helper to pass on ethereum information based on public key
-  // --------------------------------------------------------------------------
 
   balance : function (){
     var myEthAddr = this.ethereum;
@@ -72,7 +64,6 @@ Template.studentoverview.helpers({
 
   userImage : function (){
     const user = this;
-    //Meteor.users.findOne({"emails.address":{$regex:"@coreygarvey.com"}});
     if(typeof user.userImage().currentFile !== "undefined"){
       console.log(user.userImage().currentFile);
       currentFile = user.userImage().currentFile;
@@ -89,8 +80,6 @@ Template.studentView.helpers({
     var id = this._id;
     var user = Meteor.users.findOne({_id: id});
     max = user.uni_info.tuition_eth + user.uni_info.allowance_eth * 10;
-    // Should be calling balance from Ethereuem
-    // current = ReactiveMethod.call('totalDonation',id);
     current = ethGetBalance(user.ethereum);
     percentRaised = Math.round((current/max)*100,2);
     return percentRaised;
@@ -120,21 +109,13 @@ Template.studentView.helpers({
 
 
 Template.orderButton.events({
-  'click': function(){
-        console.log("You clicked something");
-    },
   'change #orderselecter' : function (evt){
     var newValue = $(evt.target).val();
-    // console.log("newValue");
-    // console.log(newValue);
     var oldValue = Session.get("orderselection");
-    // console.log("oldValue");
-    // console.log(oldValue);
     if (newValue != oldValue){
-      //something
+      
     }
     Session.set("orderselection", newValue)
-    // console.log("done");
     return true;
   },
 });

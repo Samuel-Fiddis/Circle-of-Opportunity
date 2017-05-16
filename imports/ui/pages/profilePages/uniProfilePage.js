@@ -12,12 +12,10 @@ Template.uniProfilePage.onCreated( function() {
   var self = this;
 
   self.autorun( function() {
-
     var id = FlowRouter.getParam('id');
     var userid = Meteor.userId();
-
+    
     // subscribe to personal profile info
-
     if(id == userid) {
 
       self.subscribe('thisUser', userid);
@@ -27,7 +25,6 @@ Template.uniProfilePage.onCreated( function() {
       }
 
       self.subscribe('uniCollectionData', userid);
-
     }
   });
 });
@@ -99,8 +96,6 @@ Template.studentViewUniHelper.helpers({
 
   acceptedOpportunity: function () {
     var user = Meteor.users.findOne({_id: this._id});
-    console.log("HERE!!!");
-    console.log(user);
     return user.uni_info.eStatus == "acceptedOpportunity";
   },
 
@@ -130,10 +125,6 @@ Template.orderButton.events({
 
 Template.statusButton.events({
 
-  'click': function(){
-    console.log("You clicked something");
-  },
-
   'change #statusselecter' : function (evt){
     // get selected value
     var newValue = $(evt.target).val();
@@ -150,9 +141,7 @@ Template.statusButton.events({
         // display the error on the console log of the website
         console.log(error.reason);
       };
-
     });
-
   },
 });
 
@@ -168,14 +157,10 @@ Template.acceptTuitionButton.events({
 
     var a = this.uni_info.tuition_eth;
     console.log(a);
-    // check if the amount is a float. If not throw an error
+    
     if (typeof(a) != "number"){
       throw new Meteor.Error("Wrong amount","Please fill out a real number");
     }
-
-    // query the database to get th epublic key
-    // var ethD = Meteor.users.findOne({_id: idD}).ethereum;
-    // var ethS = Meteor.users.findOne({_id: idS}).ethereum;
 
     // query the database to get the nameStudent
     var nS = this.name;
@@ -190,41 +175,31 @@ Template.acceptTuitionButton.events({
         nameSender: nS.first + " " + nS.last,
         amount: a,
       }
-
     // Send ether to the uni and create a local transaction record
       Meteor.call('createTransaction', options, function(error, result) {
-        // What happens if methods function returns an error
-        // +++++++++++++++++++++++++++++++++++++++++++++++++
         console.log("Entered Method Flag");
 
         if(error) {
-          // display the error on the console log of the website
           console.log("Error Flag");
           console.log(error.reason);
         }
-        // What happens if methods function works fine
         else {
           console.log("transaction done");
+          //  FlowRouter.go('/??')
+
         }
       });
 
-    // get selected value
     var newValue = "universityPaid";
-    //get studentID
 
     Meteor.call('updateStatus', idS, newValue, function(error, result) {
 
-      // What happens if methods function returns an error
-      // +++++++++++++++++++++++++++++++++++++++++++++++++
-
       if(error) {
-
         // display the error on the console log of the website
         console.log(error.reason);
+
       };
-
     });
-
   }
 
 });
