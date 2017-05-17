@@ -37,6 +37,10 @@ The Circle of Opportunity creates transactions on the Ethereum blockchain. These
 git clone https://gitlab.doc.ic.ac.uk/g1653005/circle-of-opportunity.git
 ```
 2. Open terminal in this directory
+3. Download necessary packages with the following command:
+```
+meteor npm install
+```
 3. Run command: 
 ```
 meteor run --settings settings.json
