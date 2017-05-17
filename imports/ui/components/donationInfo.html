@@ -36,13 +36,14 @@
       <h2>Students Donated To</h2>
     </div>
     <div>
-      Amount donated: {{totalDonation}} Ether
+      <b>Ether Donated: {{totalDonation}}</b>
     <br>
     {{#each student}}
       <a href="/profilepage/{{id}}">
         {{name}}
       </a>
-      : {{amount}}
+      : {{amount}} Ether
+      <br>
     {{/each}}
     </div>
   </div>
