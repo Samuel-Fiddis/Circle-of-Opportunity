@@ -11,9 +11,6 @@ import { Universities } from './universities.js';
 //import { withRenderedTemplate } from './test-helpers.js';
 // import {faker} from 'faker';
 
-
-
-
 // Defining a stub for the University Collection Document
 // ******************************************************
 
@@ -48,6 +45,5 @@ describe('Universities', function () {
 
   });
 
-  // more tests can go here
 
 });

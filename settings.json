@@ -8,5 +8,7 @@
 	 "generalName": "the general pot"
  },
  "pwdStudentCoo":"password",
- "ethToPound": 100
+ "ethToPound": 100,
+ "etherscanApiKey":"HBVQZ9YIPPDFF94WR7H4FTRTIMYI8IJN3V",
+ "contractAddress":"0x857df421de33fac094346d579a946534d1a88265"
 }

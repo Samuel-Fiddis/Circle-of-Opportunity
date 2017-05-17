@@ -23,12 +23,4 @@ import '/imports/api/smart_contracts/methods.js';
 import '../../api/ethereum/ethereum.js';
 import '../../api/ethereum/etherscan.js';
 
-import '../../startup/server/ethereum.js';
-
 import '../../startup/server/universityCreation.js';
-
-/*
-db.users.update({"emails.address":{$regex:/uni@uni.uni/} }, { $set:
-
-db.users.update({ "emails.address" : {$regex:/uni@uni.uni/} }, { $set: { "userType.isStudent": false, "userType.isDonor": false, "userType.isUniAdmin": true } })
-*/

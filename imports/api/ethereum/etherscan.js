@@ -1,22 +1,15 @@
-var ETHERSCAN_API_KEY = "HBVQZ9YIPPDFF94WR7H4FTRTIMYI8IJN3V";
-
 etherscanAccountBalance = function etherscanAccountBalance(address) {
     var testnet_url = "https://testnet.etherscan.io/api?";
     var balance_action = "module=account&action=balance&address=";
-    var balance_url = testnet_url + balance_action + address + "&tag=latest&apikey=" + ETHERSCAN_API_KEY;
+    var balance_url = testnet_url + balance_action + address + "&tag=latest&apikey=" + Meteor.settings.etherscanApiKey;
 
     var myresult = jsonValueGet(balance_url, "result");
-    // console.log(myresult);
     if (myresult == "Error!") {
-      // console.log(myresult);
       throw "Address field is empty or invalid";
       return false;
     }
     return myresult * 0.000000000000000001; // convert to ETH
 }
-
-// 8/8 statements
-// 2/2 branches
 
 jsonValueGet = function jsonValueGet(url, key) {
     var xmlhttp = new XMLHttpRequest();
@@ -32,6 +25,3 @@ jsonValueGet = function jsonValueGet(url, key) {
 
     return myresult;
 }
-
-// 10/10 statements
-// 2/2 branches

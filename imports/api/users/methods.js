@@ -21,7 +21,6 @@ Meteor.methods({
     NOTE: the email is automatically checked by meteor
     */
 
-
     // ensure the user filled out a password
     if(!options.password)
     {
@@ -243,10 +242,8 @@ Meteor.methods({
     // ================
     check(studentId, String);
 
-
     // authentication check
     // ====================
-
 
     // update studentUser eStatus field
     // =================================
@@ -279,13 +276,6 @@ Meteor.methods({
           }
         }
       );
-
     }
-
-
   },
-
-
-  // Add more methods that pertain to Metor.users here
-
 });

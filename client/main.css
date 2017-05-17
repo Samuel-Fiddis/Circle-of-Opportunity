@@ -299,6 +299,7 @@ h1.blueheading {
   position:relative;
   float: left;
   margin-bottom: 10px;
+  width:100%;
 }
 .student-view .overview-image {
     width:100px;

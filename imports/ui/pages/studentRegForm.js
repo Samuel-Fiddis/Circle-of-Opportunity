@@ -19,8 +19,6 @@ Template.studentRegForm.onCreated(function() {
 
 });
 
-
-
 // *****************************************************************************
 // Events allocated to Register Page
 // *****************************************************************************
@@ -126,14 +124,9 @@ Template.studentRegForm.events({
         // redirect the user to another page after registration
         FlowRouter.go('/students')
       }
-
     });
-
   }
-
 });
-
-
 
 // *****************************************************************************
 // Template level Helpers

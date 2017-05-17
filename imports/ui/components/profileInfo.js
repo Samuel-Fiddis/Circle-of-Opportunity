@@ -15,7 +15,6 @@ Template.publicProfileInfo.helpers({
 
 })
 
-
 // TEMPLATE OPPORTUNITY INFO JAVASCRIPT FUNCTIONALITY
 // ==================================================
 
@@ -30,9 +29,7 @@ Template.opportunityInfo.onCreated(function() {
     var uniId = user.uni_info.uni;
 
     self.subscribe('singleUniversity', uniId);
-
   });
-
 });
 
 Template.opportunityInfo.helpers({

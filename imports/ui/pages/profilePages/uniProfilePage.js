@@ -17,13 +17,11 @@ Template.uniProfilePage.onCreated( function() {
     
     // subscribe to personal profile info
     if(id == userid) {
-
       self.subscribe('thisUser', userid);
 
       if ( Meteor.users.findOne({"emails.address":"uni@uni.uni"}) ) {
         self.subscribe('uniStudentData');
       }
-
       self.subscribe('uniCollectionData', userid);
     }
   });
@@ -73,7 +71,6 @@ Template.studentViewUni.helpers({
 
   userImage : function (){
     const user = this;
-    //Meteor.users.findOne({"emails.address":{$regex:"@coreygarvey.com"}});
     if(typeof user.userImage().currentFile !== "undefined"){
       console.log(user.userImage().currentFile);
       currentFile = user.userImage().currentFile;
