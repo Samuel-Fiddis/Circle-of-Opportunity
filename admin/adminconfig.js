@@ -11,7 +11,6 @@ collections:
 },
 
 // Below defines the fields that can be used for administration in user collection
-
 userSchema: new SimpleSchema({
 
   "name.first": {
@@ -23,8 +22,7 @@ userSchema: new SimpleSchema({
   },
   "name.last": {
       type: String,
-    },
-
+  },
   "userType.isStudent": {
     type: Boolean,
   },
@@ -34,18 +32,16 @@ userSchema: new SimpleSchema({
   "userType.isUniAdmin": {
     type: Boolean,
   },
-
   age: {
-     type: String,
-   },
+    type: String,
+  },
+  phone: {
+    type: String,
+  },
 
-   phone: {
-     type: String,
-   },
-
-   userType: {
-     type: String,
-   },
+  userType: {
+    type: String,
+  },
 
    "address.country": {
      type: String,

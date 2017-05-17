@@ -18,18 +18,14 @@ header {
     /*background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);*/
     position: relative;
 }
+
 .main-container {
     padding: 0 0 30px;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 56px;
-  padding: 3px 30px;
-  background-color: #fff;
-  border-top: 1px solid #e7e7e7;
-  min-width: 1195px;
+
+.equal {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* Header */
@@ -51,6 +47,16 @@ header {
 }
 
 /* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 56px;
+  padding: 3px 30px;
+  background-color: #fff;
+  border-top: 1px solid #e7e7e7;
+  min-width: 1195px;
+}
 .footer-nav {
     margin-right: 30px;
     margin-bottom: 0px;
@@ -77,7 +83,6 @@ header {
     text-align: center;
     color: #0f2a54;
 }
-
 .visual {
     text-align: center;
     color: #0f2a54;
@@ -88,10 +93,7 @@ header {
     text-align: center;
     color: #0f2a54;
 }
-.equal {
-  display: flex;
-  flex-wrap: wrap;
-}
+
 
 .container1 {
     text-align: center;
@@ -101,16 +103,12 @@ header {
     background-repeat: no-repeat;
     margin: auto;
     min-height: 500px;
-    /*padding: 15px;*/
 }
 
 .container2 {
-
     text-align: center;
     width: 100%;
     margin: 0px;
-    /*margin: 0 auto;
-    /*min-height: 100%;*/
     padding: 15px;
 
 }
@@ -124,17 +122,11 @@ header {
 }
 
 /* LIVEFEED STYLES */
-
-/* CoO Colour Scheme:
-  Orange #f38035
-  Light Blue #01baf2
-  Dark Blue #0d60ac
-  */
-
 .livefeedhref {
     color: #00396d;
     font-size: 1.3em;
 }
+
 .livefeedtable {
   align: middle;
   border:solid lightblue 1px;
@@ -189,7 +181,6 @@ td, th {
 }
 
 /* LIVEFEED STYLES END */
-
 h1 {
     text-align: center;
     font-size: 3em;
@@ -200,8 +191,6 @@ h1 {
     display: inline-block;
     margin-left: 8em;*/
 }
-
-
 p {
     text-align: center;
     margin: 10px auto;
@@ -209,20 +198,12 @@ p {
     color: #0f2a54;
     width: 85%;
 }
-
 h2 {
   text-align: center;
   margin: 40px auto;
   font-size: 1.5em;
   color: #004d99;
 }
-
-/*
-div {
-   text-align: center;
-   margin: 10px auto;
-}
-*/
 
 h2.blueheading {
     text-align: center;
@@ -247,10 +228,6 @@ h1.blueheading {
     font-size: 3em;
     color: #0f2a54;
     font-weight: bold;
-    /*margin: 20px;
-    margin-bottom: 20px;
-    display: inline-block;
-    margin-left: 8em;*/
 }
 
 
@@ -431,7 +408,6 @@ h1.blueheading {
     color: #333;
     padding-bottom: 50px;
 }
-
 .profile-left-container {
   position: relative;
   float: left;
@@ -444,18 +420,15 @@ h1.blueheading {
   width:40%;
   padding: 25px 7% 10px 3%;
 }
-
 .profile-right-section .progress{
   margin: 5px 0;
 }
-
 .profile-info{
   width: 100%;
 }
 .profile-student-info{
   height: 150px;
 }
-
 .profile-info .profile-image {
     width:150px;
     height:150px;
@@ -465,25 +438,18 @@ h1.blueheading {
     box-shadow: -2px 2px 6px #999;
     border: 5px solid #fff;
 }
-
 .profile-name {
     font-size: 24px;
     color: #004d99;
 }
-
-/* visited link */
 .profile-name:visited {
     color: #004d99;
     text-decoration: none;
 }
-
-/* mouse over link */
 .profile-name:hover {
     color: #0066cc;
     text-decoration: none;
 }
-
-/* selected link */
 .profile-name:active {
   text-decoration: none;
 }
@@ -577,7 +543,7 @@ button{
     height:100px;
 }
 
-/* CSS FOR DYNAMIC VISUALIZATION */
+/* Dynamic Vizualisation */
 .homepage-background{
 background-color: #e8f2fd;
 }
@@ -626,7 +592,6 @@ background-color: #e8f2fd;
 }
 
 /* Contact page */
-
 .mail {
   font-size:15px;
   font-weight: bold;
@@ -635,7 +600,7 @@ background-color: #e8f2fd;
 
 /* Donate Now page*/
 button {
-  background-color: #3587A4;
+  background-color: #337ab7;
   border: none;
   color: white;
   padding: 10px 20px;
