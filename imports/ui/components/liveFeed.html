@@ -5,7 +5,7 @@
       {{#if isDtG this}}
         <tr id="DtGRow" class="livefeedrow">
           <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
-          <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
+          <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">The General Pot</a></td>
           <td> <div class="livefeedhref">Donation made to the Circle of Opportunity</div>
@@ -15,7 +15,7 @@
       {{#if isDtS this}}
         <tr id="DtSRow" class="livefeedrow">
           <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
-          <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
+          <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
           <td> <div class="livefeedhref">Donation made to Student</div>
@@ -25,7 +25,7 @@
       {{#if isGtS this}}
         <tr id="GtSRow" class="livefeedrow">
           <td><img src="images/logo final smaller - rgb.png" alt="Donor image" width="50px"></td>
-          <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
+          <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">The General Pot</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
           <td> <div class="livefeedhref">Top up to reach Funding Goal</div>
@@ -35,7 +35,7 @@
       {{#if isStG this}}
         <tr id="StGRow" class="livefeedrow">
           <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
-          <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
+          <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">The General Pot</a></td>
           <td> <div class="livefeedhref">Funding goal not reached in time</div>
@@ -45,7 +45,7 @@
       {{#if isStU this}}
         <tr id="StURow" class="livefeedrow">
           <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
-          <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
+          <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
           <td> <div class="livefeedhref">University Tuition Payment</div>
@@ -54,7 +54,7 @@
       {{#if isStC this}}
         <tr id="StCRow" class="livefeedrow">
           <td><img src="{{senderImage.link}}" alt="Donor image" width="50px"></td>
-          <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
+          <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
           <td> <div class="livefeedhref">Living Allowance Payment into Smart Contract</div>
@@ -64,7 +64,7 @@
       {{#if isCtO this}}
         <tr id="CtORow" class="livefeedrow">
           <td><img src="images/logo final smaller - rgb.png" alt="Donor image" width="50px"></td>
-          <td><span class="livefeedhref"> {{this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
+          <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
           <td> <div class="livefeedhref">Living Allowance Payment to Students Account</div>
