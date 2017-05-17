@@ -39,6 +39,10 @@ Template.livefeed.helpers({
     return Number((amount * 100.0).toFixed(2));
   },
 
+  eth: function(amount) {
+    return Number((amount).toFixed(2));
+  },
+
   isDtS: function(transaction) {
     return transaction.type == "DtS";
   },
