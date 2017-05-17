@@ -18,12 +18,6 @@ import '../../ui/pages/updateForm.js';
 import '../../ui/pages/donorregform.js';
 import '../../ui/pages/demoButtons.js';
 
-// import '../../ui/pages/etherTest.js';
-
-
-// Import to override accounts templates
-
-
 // Below here are the route definitions
 
 FlowRouter.route('/', {

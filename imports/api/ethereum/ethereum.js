@@ -32,17 +32,10 @@ ethGetBalance = function ethGetBalance(myEthAddr){
 }
 
 // Send Ether from one account to another, returns the transaction hash
-// fromAccount should be an account in keystore
 ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPassword, toAddress, valueEther){
-  console.log("fromAddress");
-  console.log(fromAddress);
-  console.log("fromPassword");
-  console.log(fromPassword);
   // unlock the account with appropritae passphrase
-  console.log(fromAddress);
-  console.log(fromPassword);
   web3.personal.unlockAccount(fromAddress, fromPassword);
-  // TODO: test above function does not fail from no keyfile or incorrect password;
+  
   var transactionObject = {
     from: fromAddress,
     to: toAddress,
@@ -52,10 +45,7 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
   var result;
   //with asynchronous callback function
   //result = web3.eth.sendTransaction(transactionObject, function() {  });
-
   result = web3.eth.sendTransaction(transactionObject);
-  // TODO: test above function does not fail from insufficient funds
-
   return result;
 }
 
@@ -71,22 +61,6 @@ var timeoutContractAbi = web3.eth.contract([{"constant":false,"inputs":[{"name":
 ethCreateSmartContract = function ethCreateSmartContract(ownerAddress, ownerPassword, _callback){
 
   web3.personal.unlockAccount(ownerAddress, ownerPassword);
-
-  /* Not currently about to call cancel in contract
-  var mortal_contract = mortalContractAbi.new(
-     {
-       from: web3.eth.accounts[0],
-       data: '0x6060604052341561000c57fe5b5b61016e8061001c6000396000f30060606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806341c0e1b514610046578063f1eae25c14610058575bfe5b341561004e57fe5b61005661006a565b005b341561006057fe5b6100686100fe565b005b600060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156100fb57600060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16ff5b5b565b33600060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505b5600a165627a7a72305820f57047e1ba54751606ca812d33184f5159c64a66ab5a2fcb5d42573467ccd7d80029',
-       gas: '4700000'
-     }, function (e, contract){
-      console.log(e, contract);
-      if (typeof contract.address !== 'undefined') {
-          console.log('Mortal Contract mined! address: ' + contract.address + ' transactionHash: ' + contract.transactionHash);
-        console.log(contract.address);
-        _callback(contract.address);
-      }
-   });
-  */
 
   var timeout_contract = timeoutContractAbi.new(
      {
@@ -131,7 +105,6 @@ ethForwardStudentContract = function ethForwardStudentContract(contractAddress, 
 
 }
 
-
 // Cancel smart contract for one user
 ethCancelStudentContract = function ethCancelStudentContract(contractAddress, toAddress, ownerAddress, ownerPassword){
   var targetContract = timeoutContractAbi.at(contractAddress);
@@ -145,25 +118,4 @@ ethKillSmartContract = function ethCancelStudentContract(contractAddress, ownerA
   var targetContract = timeoutContractAbi.at(contractAddress);
   web3.personal.unlockAccount(ownerAddress, ownerPassword);
   targetContract.kill.sendTransaction({from:ownerAddress});
-
 }
-
-
-/*
-Template.balance.helpers({
-balance() {
-var i =0;
-eth.accounts.forEach( function(e){
-console.log("  eth.accounts["+i+"]: " +  e + " \tbalance: " + web3.fromWei(eth.getBalance(e), "ether") + " ether");
-i++;
-})
-},
-});
-
-Template.balance.events({
-'click button'(event, instance) {
-// increment the counter when button is clicked
-balance();
-},
-});
-*/
