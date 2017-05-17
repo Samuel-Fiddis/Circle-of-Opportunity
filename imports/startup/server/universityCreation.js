@@ -24,16 +24,16 @@ if(Meteor.isServer) {
 
       var newUniUser = {
         email: "uni@uni.uni",
-        password: "helloWorld",
-        password_verification: "helloWorld",
+        password: "university",
+        password_verification: "university",
         userType: {
           isStudent: false,
           isDonor: false,
           isUniAdmin: true,
         },
         name: {
-          first: "universityAdmin",
-          last: "helloWorld",
+          first: "University",
+          last: "Admin",
         },
         adminFor: "Imperial College",
       };
