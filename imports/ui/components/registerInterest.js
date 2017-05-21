@@ -21,7 +21,7 @@ Template.studentProfileRegisterInterest.helpers({
   },
   // boolean to see if the loggedIn user has registered interest in this student before
   // **********************************************************************************
-  hasRegisteredInterest: function() {
+  ihaveRegisteredInterest: function() {
     var id = Meteor.userId();
     var studentId = FlowRouter.getParam('id');
     var matchingDoc = Meteor.users.find({_id: id, interestStudent: studentId}).count();
@@ -30,6 +30,16 @@ Template.studentProfileRegisterInterest.helpers({
     }
     return true;
   },
+
+  hasRegisteredInterest: function() {
+    var id = FlowRouter.getParam('id');
+    var user = Meteor.users.findOne({_id: id});
+    if(user.interestedDonors.length>0) {
+      return true;
+    }
+    return false;
+  }
+
 });
 
 Template.donorProfileRegisterInterest.onCreated(function(){
@@ -64,4 +74,3 @@ Template.registerInterestButton.helpers({
     return true;
   },
 })
-

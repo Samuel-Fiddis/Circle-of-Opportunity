@@ -18,8 +18,14 @@
             {{>studentProfileRegisterInterest userProfile}}
           {{/if}}
         {{/unless}}
-        
+
         <!-- Own profile -->
+        {{#if pending}}
+        {{#if ownProfile}}
+          {{>studentProfileRegisterInterest userProfile}}
+        {{/if}}
+        {{/if}}
+
         {{#if targetReached}}
           {{#if ownProfile}}
             {{>acceptOpportunityInfo}}
@@ -52,7 +58,7 @@
             {{>donorProfileRegisterInterest userProfile}}
           </div>
         {{/if}}
-        
+
 
       </div>
     </div>
