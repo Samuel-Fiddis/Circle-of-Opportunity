@@ -60,7 +60,7 @@ Meteor.methods({
         email: String,
         password: String,
         password_verification: String,
-        phone: String,
+        phone: Match.Maybe(String),
         age: String,
         image: String,
         ethereum: String,
@@ -70,16 +70,17 @@ Meteor.methods({
         name:
         {
           first: String,
-          middle: String,
+          middle: Match.Maybe(String),
           last: String,
         },
-        address:
+        address: Match.Maybe(
         {
-          country: String,
-          city: String,
-          street: String,
-          zipCode: String,
-        },
+          country: Match.Maybe(String),
+          city: Match.Maybe(String),
+          street: Match.Maybe(String),
+          zipCode: Match.Maybe(String),
+        }
+      ),
 
         // Only donors will have the following fields upon registration
         company_info: Match.Maybe(

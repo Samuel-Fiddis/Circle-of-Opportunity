@@ -25,11 +25,11 @@ Template.userProfilePage.onCreated( function () {
 
     var id = FlowRouter.getParam('id');
     var userid = Meteor.userId();
-    
+
     if(id == userid){
       self.subscribe('thisUser', userid);
     }
-    
+
     else{
       self.subscribe('singleUser', id);
       self.subscribe('singleUser', userid);
@@ -103,6 +103,7 @@ Template.userProfilePage.events({
         // display the error on the console log of the website
         console.log("Error Flag");
         console.log(error.reason);
+        template.lastError.set(error.reason);
       }
       // What happens if methods function works fine
       else {
