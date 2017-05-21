@@ -15,11 +15,20 @@
 	</div>
 </template>
 
-<template name = "donorView">
-	<div class="donorView col-xs-4 col-xs-offset-1">
-		<img class="donorImage" src="images/profile_pics/{{image}}" alt="image of donor">
-		<a href="/profilepage/{{_id}}"> <h3>{{name.first}} {{name.last}} </h3> </a>
-    <br>
-    <span> Donor </span>
+<template name="donorView">
+	<div class="student-view">
+		<div class="overview-top">
+
+			<span class="overview-glyph glyph-pending glyphicon glyphicon-piggy-bank" aria-hidden="true" data-toggle="tooltip" title="Pending"></span>
+
+			<img class="overview-image" src="{{userImage.link}}" alt="image of donor">
+			<a class="overview-name" href="/profilepage/{{_id}}">
+				{{name.first}} {{name.last}}
+			</a>
+			<br>
+			<span class="overview-uni">{{company_info.position}}</span>
+			<br>
+			<span class="overview-program">{{company_info.company}}</span>
+		</div>
 	</div>
 </template>
