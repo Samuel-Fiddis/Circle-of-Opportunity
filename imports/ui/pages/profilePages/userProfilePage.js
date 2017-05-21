@@ -202,7 +202,14 @@ Template.userProfilePage.helpers({
   errorMessage: function () {
     return Template.instance().lastError.get();
   },
-
+  hasDonations: function() {
+    var studentId = FlowRouter.getParam('id');
+    var donationAmount = ReactiveMethod.call('totalDonation',studentId);
+    if(donationAmount > 0){
+      return true;
+    }
+    return false
+  },
 });
 
 Template.publicProfileInfo.helpers({

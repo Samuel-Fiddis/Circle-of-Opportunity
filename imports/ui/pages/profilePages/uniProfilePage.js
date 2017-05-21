@@ -95,6 +95,10 @@ Template.studentViewUniHelper.helpers({
     var user = Meteor.users.findOne({_id: this._id});
     return user.uni_info.eStatus == "acceptedOpportunity";
   },
+  statusIs: function(status) {
+    var user = Meteor.users.findOne({_id: this._id});
+    return user.uni_info.eStatus == status;
+  },
 
 });
 

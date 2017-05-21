@@ -6,7 +6,7 @@
 
       {{> orderButton}}
 
-      <div class="row">
+      <div class="row equal">
         {{#each user}}
           <!-- Call StudentViewUniHelper for each user -->
           {{#if student}}
@@ -27,14 +27,38 @@
         {{name.first}} {{name.last}}
       </a>
       <br>
-      <span class="overview-uni">{{uni_info.uni}}</span>
+      <span class="overview-uni">{{uni_info.name}}</span>
       <br>
       <span class="overview-program">{{uni_info.program}}</span>
     </div>
     <div class="uni-student-bottom">
       <span>Email(s): {{#each emails}} {{address}} {{/each}} </span>
       <br>
-      <span> Status: {{uni_info.eStatus}}</span>
+      <span> Status:
+      <b>
+      {{#if statusIs "pending"}}
+        Awaiting Application Decison
+      {{/if}}
+      {{#if statusIs "accepted"}}
+        Accepted to Uni
+      {{/if}}
+      {{#if statusIs "rejected"}}
+        Rejected
+      {{/if}}
+      {{#if statusIs "targetReached"}}
+        Reached target!
+      {{/if}}
+      {{#if statusIs "acceptedOpportunity"}}
+        Awaiting Tuition Acceptance
+      {{/if}}
+      {{#if statusIs "universityPaid"}}
+        Tuition Paid
+      {{/if}}
+      {{#if statusIs "graduated"}}
+        Graduated
+      {{/if}}
+      </b>
+      </span>
       <br>
       <span> {{>statusButton}} </span>
       <br>
@@ -48,13 +72,13 @@
 <template name = "statusButton">
 	<select id=statusselecter>
     <option value disabled selected>-- Change status to --</option>
-    <option value='pending'>pending</option>
-    <option value='accepted'>accepted</option>
-    <option value='rejected'>rejected</option>
-    <option value='targetReached'>targetReached</option>
-    <option value='acceptedOpportunity'>acceptedOpportunity</option>
-    <option value='universityPaid'>universityPaid</option>
-    <option value='graduated'>graduated</option>
+    <option value='pending'>Pending</option>
+    <option value='accepted'>Accepted</option>
+    <option value='rejected'>Rejected</option>
+    <option value='targetReached'>Target Reached</option>
+    <option value='acceptedOpportunity'>Accepted Opportunity</option>
+    <option value='universityPaid'>University Paid</option>
+    <option value='graduated'>Graduated</option>
   </select>
 </template>
 

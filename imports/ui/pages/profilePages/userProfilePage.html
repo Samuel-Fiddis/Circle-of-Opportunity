@@ -60,10 +60,12 @@
     <div class = "row">
       <div class = "col-md-10 col-md-offset-1">
         {{#unless pending}}
-        <div class = "livefeed">
-          <h3> Most Recent Transactions </h3>
-          {{>livefeed }}
-        </div>
+          {{#if hasDonations}}
+            <div class = "livefeed">
+              <h3> Most Recent Transactions </h3>
+              {{>livefeed }}
+            </div>
+          {{/if}}
         {{/unless}}
 
       </div>
