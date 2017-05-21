@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './donoroverview.html';
+import '/imports/api/users/helpers.js';
 
 // *****************************************************************************
 // What happens when you create the template
@@ -43,5 +44,14 @@ Template.donoroverview.helpers({
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
   },
+
+  userImage : function (){
+    const user = this;
+    if(typeof user.userImage().currentFile !== "undefined"){
+      console.log(user.userImage().currentFile);
+      currentFile = user.userImage().currentFile;
+    }
+    return currentFile;
+  }
 
 });
