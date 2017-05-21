@@ -20,7 +20,8 @@ Meteor.methods({
     // Create a table detailing all of the students current funds and get the total balance
     for(i = 0; i < users.length; i++){
       // Check if the user has their target reached oor hass been accepted
-      if(users[i].uni_info.eStatus == "accepted" || users[i].uni_info.eStatus == "targetReached"){
+      //if(users[i].uni_info.eStatus == "accepted" || users[i].uni_info.eStatus == "targetReached"){
+      if(users[i].uni_info.eStatus == "accepted"){
         ethBalance = ethGetBalance(users[i].ethereum);
         // Get the remaining Ethereum balance required.
         ethRequired = (users[i].uni_info.allowance_eth * 10) + users[i].uni_info.tuition_eth - ethBalance;
