@@ -15,23 +15,18 @@
 
           <!-- Name info -->
 			    <input type="text" name="firstName" placeholder="First Name" class="form-control">
-          <input type="text" name="middleName" placeholder="Middle Name" class="form-control">
+          <!-- <input type="text" name="middleName" placeholder="Middle Name" class="form-control"> -->
     	    <input type="text" name="lastName" placeholder="Last Name" class="form-control">
-
-          <div class="boxForm">Do you need living allowances ?</div><input id="allowance" type="checkbox" > 
-          <div class="pledgeForm">If I am granted an opportunity, I pledge to pay it back in a timely manner
-          as soon as I am in a financial position to do so to grand future students
-          the same opportunity I had.</div><input id="pledge" type="checkbox" >
 
 
           <!-- Contact info -->
-          <input type="text" name="phoneNumber" placeholder="Phone Number" class="form-control">
+          <!-- <input type="text" name="phoneNumber" placeholder="Phone Number" class="form-control"> -->
 
           <!-- Address info -->
-          <input type="text" name="country" placeholder="Country" class="form-control">
+          <!-- <input type="text" name="country" placeholder="Country" class="form-control">
           <input type="text" name="city" placeholder="City" class="form-control">
           <input type="text" name="street" placeholder="Street" class="form-control">
-          <input type="text" name="zipCode" placeholder="Zip Code" class="form-control">
+          <input type="text" name="zipCode" placeholder="Zip Code" class="form-control"> -->
 
           <!-- Personal information -->
 			    <input type="number" name="age" placeholder="Age" class="form-control">
@@ -40,6 +35,11 @@
           <input type="text" name="ethereum_ext" placeholder="External Ethereum Address" class="form-control">
 
           {{> uploadForm}}
+
+          <div class="boxForm">Do you need living allowances ?</div><input id="allowance" type="checkbox" >
+          <div class="pledgeForm">If I am granted an opportunity, I pledge to pay it back in a timely manner
+          as soon as I am in a financial position to do so to grand future students
+          the same opportunity I had.</div><input id="pledge" type="checkbox" >
 
           <!-- submit button -->
 			    <input id="studentRegSubmit" type = "submit" class="btn btn-default" value= "Register">

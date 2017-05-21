@@ -14,7 +14,7 @@ Template.uniProfilePage.onCreated( function() {
   self.autorun( function() {
     var id = FlowRouter.getParam('id');
     var userid = Meteor.userId();
-    
+
     // subscribe to personal profile info
     if(id == userid) {
       self.subscribe('thisUser', userid);
@@ -96,6 +96,12 @@ Template.studentViewUniHelper.helpers({
     return user.uni_info.eStatus == "acceptedOpportunity";
   },
 
+  uniName: function() {
+    var user = Meteor.users.findOne({_id: this._id});
+    var uni = Universities.findOne({_id: user.uni_info.uni})
+    return uni.name;
+  }
+
 });
 
 Template.orderButton.events({
@@ -154,7 +160,7 @@ Template.acceptTuitionButton.events({
 
     var a = this.uni_info.tuition_eth;
     console.log(a);
-    
+
     if (typeof(a) != "number"){
       throw new Meteor.Error("Wrong amount","Please fill out a real number");
     }
