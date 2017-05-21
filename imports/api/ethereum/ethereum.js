@@ -35,7 +35,11 @@ ethGetBalance = function ethGetBalance(myEthAddr){
 ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPassword, toAddress, valueEther){
   // unlock the account with appropritae passphrase
   web3.personal.unlockAccount(fromAddress, fromPassword);
-  
+
+  if(ethGetBalance(fromAddress)<valueEther) {
+    throw 'BalanceError';
+  }
+
   var transactionObject = {
     from: fromAddress,
     to: toAddress,
@@ -43,8 +47,6 @@ ethSendEtherTransaction = function ethSendEtherTransaction(fromAddress, fromPass
   };
 
   var result;
-  //with asynchronous callback function
-  //result = web3.eth.sendTransaction(transactionObject, function() {  });
   result = web3.eth.sendTransaction(transactionObject);
   return result;
 }

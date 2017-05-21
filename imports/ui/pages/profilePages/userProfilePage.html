@@ -8,6 +8,12 @@
       </div>
 
       <div class="profile-right-container">
+        
+        <!-- Display error messages -->
+        {{#if errorMessage}}
+          <div class="uiErrorMessage"> {{errorMessage}} </div>
+        {{/if}}
+
         <!-- Not own profile -->
         {{#unless ownProfile}}
           {{#if acceptedStudent}}

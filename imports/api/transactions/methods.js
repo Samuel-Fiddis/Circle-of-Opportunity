@@ -18,7 +18,12 @@ Meteor.methods({
     }
     else var pwdSender = Meteor.settings.pwdStudentCoo;
 
-    var trans = ethSendEtherTransaction(ethD, pwdSender, ethS, options.amount);
+    try{
+      var trans = ethSendEtherTransaction(ethD, pwdSender, ethS, options.amount);
+    } catch(err) {
+      throw new Meteor.Error(err,"Not enough money in your ethereum wallet");
+    }
+
 
     options.transactionHash = trans;
 
@@ -49,7 +54,7 @@ Meteor.methods({
   // If donor, return the amount of donations given so far
   totalDonation: function(options) {
     check(options,String);
-    
+
     // For someone who isnt a student
     // ******************************
     var user = Meteor.users.findOne({_id: options});
