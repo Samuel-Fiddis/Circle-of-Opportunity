@@ -1,6 +1,6 @@
 <template name="userProfilePage">
 
-  <div class="profile-container container">
+  <div class="profile-container container" style="background-color:white;">
 
     <div class="row">
       <div class="profile-left-container">
@@ -61,7 +61,7 @@
           {{#if targetReached}}
             {{>studentProfileDonationInfo userProfile}}
           {{/if}}
-          
+
         {{else}}
           <div class="donationInfo">
             {{>donorProfileDonationInfo }}
