@@ -8,7 +8,7 @@
       </div>
 
       <div class="profile-right-container">
-        
+
         <!-- Display error messages -->
         {{#if errorMessage}}
           <div class="uiErrorMessage"> {{errorMessage}} </div>
@@ -26,12 +26,6 @@
         {{/unless}}
 
         <!-- Own profile -->
-        {{#if pending}}
-        {{#if ownProfile}}
-          {{>studentProfileRegisterInterest userProfile}}
-        {{/if}}
-        {{/if}}
-
         {{#if targetReached}}
           {{#if ownProfile}}
             {{>acceptOpportunityInfo}}
@@ -53,9 +47,21 @@
         {{/if}}
 
         {{#if student}}
+
+          {{#if pending}}
+          {{#if ownProfile}}
+            {{>studentProfileRegisterInterest userProfile}}
+          {{/if}}
+          {{/if}}
+
           {{#if acceptedStudent}}
             {{>studentProfileDonationInfo userProfile}}
           {{/if}}
+
+          {{#if targetReached}}
+            {{>studentProfileDonationInfo userProfile}}
+          {{/if}}
+          
         {{else}}
           <div class="donationInfo">
             {{>donorProfileDonationInfo }}
