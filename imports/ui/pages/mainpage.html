@@ -1,15 +1,25 @@
 <!-- This is the layout for the overall page -->
 
 <template name="mainpage">
-<body>
-  <header>
-{{> navBar}}
-  </header>
-  <div >
-    	{{> Template.dynamic template=main}}
-  </div>
-  <footer class="footer">
-{{> footBar}}
-  </footer>
-</body>
+  <body>
+    <header>
+      {{> navBar}}
+    </header>
+    <div >
+      {{> Template.dynamic template=main}}
+    </div>
+    <div class="banner">
+      {{#if student}}
+      Logged in as student
+      {{else if donor}}
+      Logged in as donor
+      {{else if uni}}
+      Logged in as uni
+      {{/if}}
+
+    </div>
+    <footer class="footer">
+      {{> footBar}}
+    </footer>
+  </body>
 </template>
