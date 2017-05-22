@@ -43,15 +43,19 @@ Template.donoroverview.helpers({
   balance : function (){
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
-  },
-
-  userImage : function (){
-    const user = this;
-    if(typeof user.userImage().currentFile !== "undefined"){
-      console.log(user.userImage().currentFile);
-      currentFile = user.userImage().currentFile;
-    }
-    return currentFile;
   }
+
+});
+
+Template.donorView.helpers({
+
+userImage : function (){
+  const user = this;
+  if(typeof user.userImage().currentFile !== "undefined"){
+    console.log(user.userImage().currentFile);
+    currentFile = user.userImage().currentFile;
+  }
+  return currentFile;
+},
 
 });

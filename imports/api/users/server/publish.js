@@ -22,7 +22,8 @@ Meteor.publish('donorDataOverview', function () {
 		{fields:
 			{'_id': 1,
 			'name': 1,
-			'company_info': 1}
+			'company_info': 1,
+			'image': 1}
 		});
 });
 
