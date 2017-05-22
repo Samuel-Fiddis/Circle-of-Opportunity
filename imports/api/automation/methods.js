@@ -153,6 +153,8 @@ Meteor.methods({
     console.log(rejectedStudentIds);
 
     // Donate to all students
+    // Donate to General pot
+    // Donate to student 1 -> targetReached
     
     // get ids of studentand donor
     //tx1 =  student1, donor1, 0.16
@@ -204,7 +206,7 @@ Meteor.methods({
         });
       } else {
         var studentId = studentIds[studentIndex];
-        var studentUser = Meteor.users.findOne({_id: donorId});
+        var studentUser = Meteor.users.findOne({_id: studentId});
         var studentName = studentUser.name;
 
         var options = {
@@ -237,20 +239,154 @@ Meteor.methods({
       }
     }
 
+    
+    // Student 1 accepts, 
+    // Accept 3 students
+    for(i = 0; i < acceptedStudentCount; i++){
+      var studentId = acceptedStudentIds[i];
+      var student = Meteor.users.findOne({_id:studentId});
+      if(student.uni_info.eStatus == "targetReached"){
+        Meteor.call('updateStatus', studentId, "acceptedOpportunity", function(error, result) {
+          if(error) {
+            // display the error on the console log of the website
+            console.log(error.reason);
+          };
 
-    /*
-    */
+        });
+      }
+
+    }
+
+    // uni accepts
+    // transaction to uni
+    // status to universityPaid
+    // Timeout to wait for user to get all the necessary funds
+    Meteor.setTimeout(function(){
+      console.log("paying uni");
+      for(i = 0; i < acceptedStudentCount; i++){
+        var studentId = acceptedStudentIds[i];
+        var student = Meteor.users.findOne({_id:studentId});
+        if(student.uni_info.eStatus == "acceptedOpportunity"){
+          var uniUser = Meteor.users.findOne({"userType.isUniAdmin": true});
+          var uniId = uniUser._id;
+          var uniName = uniUser.name;
+
+          var amount = student.uni_info.tuition_eth;
+          var studentName = student.name;
+          var options = {
+            type : "StU",
+            idReceiver: uniId,
+            nameReceiver: uniName.first + " " + uniName.last,
+            idSender: studentId,
+            nameSender: studentName.first + " " + studentName.last,
+            amount: amount,
+          }
+          Meteor.call('createTransaction', options, function(error, result) {
+            console.log("Entered Method Flag");
+
+            if(error) {
+              console.log("Error Flag");
+              console.log(error.reason);
+            }
+            else {
+              console.log("transaction done");
+              //  FlowRouter.go('/??')
+
+            }
+          });
+          Meteor.call('updateStatus', studentId, "universityPaid", function(error, result) {
+            if(error) {
+              // display the error on the console log of the website
+              console.log(error.reason);
+            };
+
+          });
+
+        }
+      }
+    }, 15000);
 
 
-    // Donate to General pot
-    // Donate to student 1 -> targetReached
-    // Student 1 accepts, uni accepts, tuition paid
+    
     // Reallocation
+
     // Smart contract created
+
+    // Fill smart contract
+
+    // Forward smart contract    
+    
     // 10 times
       // Money set into smart contract
       // Money forwarded to student account
     // All studying students graduate
+  },
 
-  }
+  payAllUnis: function() {
+    var targetReachedStudents = Meteor.users.find({"uni_info.eStatus":"targetReached"});
+    console.log("targetReachedStudents");
+    targetReachedStudents.forEach(function(student){
+      console.log("student");
+      console.log(student);
+      var studentId = student._id;
+      Meteor.call('updateStatus', studentId, "acceptedOpportunity", function(error, result) {
+        if(error) {
+          // display the error on the console log of the website
+          console.log(error.reason);
+        };
+
+      });
+      console.log("student2");
+      console.log(student);
+
+      var uniUser = Meteor.users.findOne({"userType.isUniAdmin": true});
+      var uniId = uniUser._id;
+      var uniName = uniUser.name;
+
+      var amount = student.uni_info.tuition_eth;
+      var studentName = student.name;
+      var options = {
+        type : "StU",
+        idReceiver: uniId,
+        nameReceiver: uniName.first + " " + uniName.last,
+        idSender: studentId,
+        nameSender: studentName.first + " " + studentName.last,
+        amount: amount,
+      }
+      Meteor.call('createTransaction', options, function(error, result) {
+        console.log("Entered Method Flag");
+
+        if(error) {
+          console.log("Error Flag");
+          console.log(error.reason);
+        }
+        else {
+          console.log("transaction done");
+          //  FlowRouter.go('/??')
+
+        }
+      });
+      Meteor.call('updateStatus', studentId, "universityPaid", function(error, result) {
+        if(error) {
+          // display the error on the console log of the website
+          console.log(error.reason);
+        };
+      });
+    });
+  },
+
+
+  graduateAll: function() {
+    var uniPaidStudents = Meteor.users.find({"uni_info.eStatus":"universityPaid"});
+    console.log("uniPaidStudents");
+    uniPaidStudents.forEach(function(student){
+      var studentId = student._id;
+      Meteor.call('updateStatus', studentId, "graduated", function(error, result) {
+        if(error) {
+          // display the error on the console log of the website
+          console.log(error.reason);
+        };
+      });
+    });
+  },
 });
