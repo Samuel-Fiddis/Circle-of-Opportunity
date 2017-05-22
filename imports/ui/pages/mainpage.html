@@ -8,6 +8,7 @@
     <div >
       {{> Template.dynamic template=main}}
     </div>
+    {{#if currentUser}}
     <div class="banner">
       {{#if student}}
       Logged in as student
@@ -16,8 +17,8 @@
       {{else if uni}}
       Logged in as uni
       {{/if}}
-
     </div>
+    {{/if}}
     <footer class="footer">
       {{> footBar}}
     </footer>
