@@ -651,14 +651,15 @@ input[type=number]{
 
 
 .left-half {
-  position: absolute;
+  position: relative;
   left: 50px;
   width: 50%;
+    float: left;
 }
 
 .right-half {
-  position: absolute;
+  position: relative;
   right: 0px;
   width: 50%;
-
+  float: left;
 }
