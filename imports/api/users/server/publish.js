@@ -21,7 +21,8 @@ Meteor.publish('donorDataOverview', function () {
 		{"userType.isDonor": true},
 		{fields:
 			{'_id': 1,
-			'name': 1}
+			'name': 1,
+			'company_info': 1}
 		});
 });
 

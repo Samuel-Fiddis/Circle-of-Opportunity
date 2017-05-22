@@ -76,7 +76,7 @@ Meteor.methods({
         totalAmount = totalAmount + transaction.amount;
       });
     }
-    return totalAmount;
+    return Number(totalAmount.toFixed(2));
   },
 
   // Return an array of people that have transactions with this particular person and total amount
@@ -98,15 +98,15 @@ Meteor.methods({
         var found = donor.find(function(value){
           return value.id == transaction.idSender
         });
-
+        var transation_amount = transaction.amount;
         if(found) {
-          found.amount = found.amount + transaction.amount;
+          found.amount = Number((found.amount + transaction.amount).toFixed(2));
         } else {
           donor.push(
             {
               id: transaction.idSender,
               name: transaction.nameSender,
-              amount: transaction.amount,
+              amount: Number((transation_amount).toFixed(2)),
             }
           )
         }
@@ -125,16 +125,16 @@ Meteor.methods({
       var found = student.find( function(value) {
         return value.id == transaction.idReceiver
       });
-
+      var transation_amount = transaction.amount;
       if(found) {
-        found.amount = found.amount + transaction.amount;
+        found.amount = ((found.amount + transaction.amount).toFixed(2));
       }
       else {
         student.push(
           {
             id: transaction.idReceiver,
             name: transaction.nameReceiver,
-            amount: transaction.amount,
+            amount: Number((transation_amount).toFixed(2)),
           }
         )
       }
