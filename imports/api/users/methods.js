@@ -250,7 +250,6 @@ Meteor.methods({
     // =================================
 
     if(newStatus!="graduated") {
-
       Meteor.users.update(
         { _id: studentId },
         {
