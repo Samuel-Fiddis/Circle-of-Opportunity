@@ -7,7 +7,7 @@
     </a>
     <br>
     {{#if student}}
-        
+
           <span class="profile-uni">{{uni_info.name}}</span>
           <br>
           <span class="profile-program">{{uni_info.program}}</span>
@@ -18,7 +18,7 @@
             <span class="profile-allowance">Allowance: {{uni_info.allowance_eth}}</span>
           {{/if}}
           <br>
-          Status: 
+          Status:
           <b>
             {{#if statusIs "pending"}}
               Awaiting Application Decison
@@ -46,14 +46,14 @@
             <br>
             <span class="profile-raised">Raised: {{totalDonation}}</span>
           {{/if}}
-        
+
     {{/if}}
     </div>
     <div class="profile-info-bottom">
       <span class="profile-bio">
         {{bio}}
       </span>
-    </div>  
+    </div>
     {{#if ownProfile}}
       {{>updateProfileButton }}
     {{/if}}
@@ -119,7 +119,7 @@
       <h2>Ethereum Info</h2>
     </div>
     <span class="profile-pubKey">
-      Ethereum public key: 
+      Ethereum public key:
       <a href="https://ropsten.etherscan.io/address/{{ethereum}}">{{ethereum}}</a>
     </span>
     <br>
@@ -156,7 +156,7 @@
       <h2>{{name.first}} Graduated!</h2>
     </div>
     <span class="profile-right-graduate-text">
-      <b>{{uni_info.program}}</b> at <b>{{uni_info.uni}}</b>
+      <b>{{uni_info.program}}</b> at <b>{{uniProfile.name}}</b>
       <br>
       <span class="small-grad-text">thanks to donations of</span>
       <br>

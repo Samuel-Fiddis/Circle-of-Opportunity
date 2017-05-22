@@ -61,7 +61,11 @@
           {{#if targetReached}}
             {{>studentProfileDonationInfo userProfile}}
           {{/if}}
-          
+
+          {{#if acceptedOpportunity}}
+            {{>studentProfileDonationInfo userProfile}}
+          {{/if}}
+
         {{else}}
           <div class="donationInfo">
             {{>donorProfileDonationInfo }}
