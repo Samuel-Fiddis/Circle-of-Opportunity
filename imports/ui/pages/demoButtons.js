@@ -179,4 +179,8 @@ Template.demobuttons.events({
     });
   },
 
+  'click .cycle_one': function(event,template) {
+    Meteor.call('cycleOne');
+  },
+
 });
