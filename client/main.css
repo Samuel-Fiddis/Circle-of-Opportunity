@@ -257,9 +257,7 @@ h3 {
 }
 
 /* Student Registration Form */
-.studentRegForm {
-    padding: 10px 10px;
-}
+
 .studentRegForm > input {
     display: block;
     text-align: center;
@@ -274,6 +272,14 @@ h3 {
 .pledgeForm{
   text-align: center;
   font-style: italic;
+}
+
+.pledge{
+  text-align: center;
+}
+
+.opportunity{
+  text-align: center;
 }
 
 /* Donor Registration Form */
@@ -641,4 +647,18 @@ input[type=number]{
 .demobuttons input{
   padding: 10px;
   margin-bottom: 3px;
+}
+
+
+.left-half {
+  position: absolute;
+  left: 50px;
+  width: 50%;
+}
+
+.right-half {
+  position: absolute;
+  right: 0px;
+  width: 50%;
+
 }
