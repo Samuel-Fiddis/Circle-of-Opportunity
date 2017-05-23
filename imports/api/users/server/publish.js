@@ -3,7 +3,8 @@ import { Meteor } from 'meteor/meteor';
 // All variables to publish are kept in the fields option
 Meteor.publish('studentDataOverview', function () {
 	return Meteor.users.find(
-		{"userType.isStudent": true},
+		{"userType.isStudent": true,
+		 "uni_info.eStatus": {$ne : "rejected"}},
 		{fields:
 			{'_id': 1,
 			'name': 1,
