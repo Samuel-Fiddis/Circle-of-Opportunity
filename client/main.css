@@ -275,7 +275,7 @@ h3 {
 }
 
 .pledge{
-  text-align: center;
+  text-align: justify;
 }
 
 .opportunity{
@@ -614,10 +614,14 @@ background-color: #e8f2fd;
 
 /* Contact page */
 .mail {
-  font-size:15px;
-  font-weight: bold;
+  /*font-size:15px;
+  font-weight: bold;*/
   font-family: "arial, times, serif"
 }
+
+/*.contact {
+  background-color:white;
+}*/
 
 /* Donate Now page*/
 button {
