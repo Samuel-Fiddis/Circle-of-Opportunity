@@ -57,6 +57,8 @@ Template.updateForm.events({
 
       // external Ethereum Account
       ethereum_ext: $('input[name=ethereum_ext]').val(),
+
+      image: $('input[name=image]').val(),
     }
 
     // Name Information

@@ -75,17 +75,6 @@ Template.studentoverview.helpers({
 
 
 Template.studentView.helpers({
-
-  progressPerc: function(){
-    var id = this._id;
-    var user = Meteor.users.findOne({_id: id});
-    max = user.uni_info.tuition_eth + user.uni_info.allowance_eth * 10;
-    // current = ethGetBalance(user.ethereum);
-    current = ReactiveMethod.call('totalDonation',id);
-    percentRaised = Math.round((current/max)*100,2);
-    return percentRaised;
-  },
-
   pending: function () {
     var id = this._id;
     var user = Meteor.users.findOne({_id: id});
@@ -118,5 +107,16 @@ Template.orderButton.events({
     }
     Session.set("orderselection", newValue)
     return true;
+  },
+});
+
+Template.studentViewInner.helpers({
+
+  progressPerc: function(){
+    var id = this._id;
+    var user = Meteor.users.findOne({_id: id});
+    max = user.uni_info.tuition_eth + user.uni_info.allowance_eth * 10;
+    current = ReactiveMethod.call('totalDonation',id);
+    return Number(((current/max)*100).toFixed(2));
   },
 });

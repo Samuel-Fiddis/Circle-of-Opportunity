@@ -128,7 +128,8 @@ Meteor.methods({
             street: String,
             zipCode: String,
           },
-          ethereum_ext: Match.Maybe(String)
+          ethereum_ext: Match.Maybe(String),
+          image: String,
         });
 
     // Conditional statement: only LoggedIn User can call this Method
@@ -150,6 +151,7 @@ Meteor.methods({
             phone: options.phone,
             name: options.name,
             address: options.address,
+            image: options.image,
           }
         }
       );
