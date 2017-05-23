@@ -152,7 +152,7 @@ Template.demobuttons.events({
   'click .send_funds': function(event,template) {
     // get ids of studentand donor
     var senderAddress = String($('input[name=sender_address]').val()) ;
-    var pwdSender = "password";
+    var pwdSender = "general";
 
     var amount = parseFloat($('input[name=sender_return_amount]').val());
 

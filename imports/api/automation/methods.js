@@ -112,11 +112,14 @@ Meteor.methods({
   },
 
   cycleTwo: function() {
-    createStudents2();
-    createDonors2();
-    acceptStudents(5);
-    rejectStudents(1);
-    donateMoney2();
+    var studentIds =[];
+    var donorIds = [];
+    var acceptedStudentIds = [];
+    studentIds = createStudents2();
+    donorIds = createDonors2();
+    acceptedStudentIds = acceptStudents(studentIds, 5);
+    rejectStudents(studentIds, 1);
+    donateMoney2(donorIds, studentIds);
     //acceptOpportunities();
   },
   
@@ -560,6 +563,7 @@ function createStudents2() {
     console.log(studentId);
     studentIds.push(studentId);
   }
+  return studentIds;
 }
     
 function createDonors2() {
@@ -624,9 +628,10 @@ function createDonors2() {
     var donorId = Accounts.createUser(newDonor);
     donorIds.push(donorId);
   }
+  return donorIds;
 }
 
-function donateMoney2(){
+function donateMoney2(donorIds, studentIds){
   // Donate to all students
   // Donate to General pot
   // Donate to student 1 -> targetReached
@@ -641,7 +646,6 @@ function donateMoney2(){
   // Student, Donor, Amount
   var transactions = [
     [1, 1, 0.16],
-    [1, 2, 0.10],
     [2, 3, 0.12],
     [2, 1, 0.05],
     [3, 1, 0.08],

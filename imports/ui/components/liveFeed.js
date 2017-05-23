@@ -23,11 +23,11 @@ Template.livefeed.onCreated( function() {
 
     // Trying to get Contract Transactions Subscribed to
 
-    var student_ext_eth = Meteor.users.findOne({_id: userId}).ethereum_ext;
+    //var student_ext_eth = Meteor.users.findOne({_id: userId}).ethereum_ext;
     //console.log("Contract Address:");
     //console.log(Meteor.settings.contractAddress);
 
-    self.subscribe('topStudentTransactions', stundent_ext_eth, 20);
+    //self.subscribe('topStudentTransactions', student_ext_eth, 20);
     //self.subscribe('topDonorTransactions', Meteor.settings.contractAddress, 20);
   }
   else if(FlowRouter.getRouteName() == "donatenow"){
@@ -41,7 +41,7 @@ Template.livefeed.onCreated( function() {
 
 Template.livefeed.helpers({
   transaction: ()=> {
-    return Transactions.find({});
+    return Transactions.find({}, {sort:{createdAt:-1}, reactive:true});
   },
 
   ethToPound: function(amount) {
