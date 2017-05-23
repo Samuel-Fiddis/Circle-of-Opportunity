@@ -398,6 +398,9 @@ h3 {
     font-size: 24px;
     color: #004d99;
 }
+.acceptTuition{
+  margin-top: 5%;
+}
 
 /* visited link */
 .uni-student-name:visited {
