@@ -44,8 +44,8 @@ Template.studentProfileDonationInfo.helpers({
     var user = Meteor.users.findOne({_id: id});
     max = user.uni_info.tuition_eth + user.uni_info.allowance_eth * 10;
     // Should be calling balance from Ethereuem
-    // current = ReactiveMethod.call('totalDonation',id);
-    current = ethGetBalance(user.ethereum);
+    current = ReactiveMethod.call('totalDonation',id);
+    // current = ethGetBalance(user.ethereum);
     return Number(((current/max)*100).toFixed(2));
   }
 

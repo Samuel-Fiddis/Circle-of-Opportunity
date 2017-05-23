@@ -80,7 +80,8 @@ Template.studentView.helpers({
     var id = this._id;
     var user = Meteor.users.findOne({_id: id});
     max = user.uni_info.tuition_eth + user.uni_info.allowance_eth * 10;
-    current = ethGetBalance(user.ethereum);
+    // current = ethGetBalance(user.ethereum);
+    current = ReactiveMethod.call('totalDonation',id);
     percentRaised = Math.round((current/max)*100,2);
     return percentRaised;
   },
@@ -113,7 +114,7 @@ Template.orderButton.events({
     var newValue = $(evt.target).val();
     var oldValue = Session.get("orderselection");
     if (newValue != oldValue){
-      
+
     }
     Session.set("orderselection", newValue)
     return true;
