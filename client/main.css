@@ -661,6 +661,11 @@ input[type=number]{
   text-align: right;
   bottom:0;
 }
+
+.banner-text{
+  margin-right:2%;
+}
+
 .left-half {
   position: relative;
   left: 50px;
