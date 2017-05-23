@@ -117,7 +117,7 @@ Meteor.methods({
     var acceptedStudentIds = [];
     studentIds = createStudents2();
     donorIds = createDonors2();
-    acceptedStudentIds = acceptStudents(studentIds, 5);
+    acceptedStudentIds = acceptStudents(studentIds, 4);
     rejectStudents(studentIds, 1);
     donateMoney2(donorIds, studentIds);
     //acceptOpportunities();
@@ -651,7 +651,6 @@ function donateMoney2(donorIds, studentIds){
     [3, 1, 0.08],
     [3, 2, 0.06],
     [4, 2, 0.10],
-    [5, 3, 0.08],
     [0, 3, 0.10]
   ]
 

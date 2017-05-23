@@ -1,39 +1,56 @@
 <template name="studentView">
-	<div class="student-view">
-		<div class="overview-top">
+	{{#if pending}}
+	<div class="student-view pending-view">
+		{{ >studentViewInner}}
+	</div>
+	{{/if}}
 
-			{{#if pending}}
-			<span class="overview-glyph glyph-pending glyphicon glyphicon-hourglass" aria-hidden="true" data-toggle="tooltip" title="Pending"></span>
-			{{/if}}
+	{{#if accepted}}
+	<div class="student-view accepted-view">
+		{{ >studentViewInner}}
+	</div>
+	{{/if}}
 
-			{{#if accepted}}
-			<span class="overview-glyph glyph-accepted glyphicon glyphicon-ok" aria-hidden="true" data-toggle="tooltip" title="Accepted"></span>
-			{{/if}}
+	{{#if rejected}}
+	<div class="student-view rejected-view">
+		{{ >studentViewInner}}
+	</div>
+	{{/if}}
+</template>
 
-			{{#if rejected}}
-			<span class="overview-glyph glyph-rejected glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" title="Rejected"></span>
-			{{/if}}
+<template name="studentViewInner">
+	<div class="overview-top">
+		{{#if pending}}
+		<span class="overview-glyph glyph-pending glyphicon glyphicon-hourglass" aria-hidden="true" data-toggle="tooltip" title="Pending"></span>
+		{{/if}}
+
+		{{#if accepted}}
+		<span class="overview-glyph glyph-accepted glyphicon glyphicon-ok" aria-hidden="true" data-toggle="tooltip" title="Accepted"></span>
+		{{/if}}
+
+		{{#if rejected}}
+		<span class="overview-glyph glyph-rejected glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" title="Rejected"></span>
+		{{/if}}
 
 
-			<img class="overview-image" src="{{userImage.link}}" alt="image of student">
-			<a class="overview-name" href="/profilepage/{{_id}}">
-				{{name.first}} {{name.last}}
-			</a>
-			<br>
-			<span class="overview-uni">{{uni_info.name}}</span>
-			<br>
-			<span class="overview-program">{{uni_info.program}}</span>
-		</div>
-		<span class="overview-story">
-			<b>About {{name.first}} {{name.last}}: </b>
-			{{bio}}
-		</span>
-		<div class="overview-progress">
-			<div class="progress">
-		        <div class="progress-bar" role="progressbar" aria-valuenow={{progressPerc}} aria-valuemin="0" aria-valuemax="100" style="width:{{progressPerc}}%">
-		           {{progressPerc}} %
-		        </div>
-		    </div>
-		</div>
+		<img class="overview-image" src="{{userImage.link}}" alt="image of student">
+		<a class="overview-name" href="/profilepage/{{_id}}">
+			{{name.first}} {{name.last}}
+		</a>
+		<br>
+		<span class="overview-uni">{{uni_info.name}}</span>
+		<br>
+		<span class="overview-program">{{uni_info.program}}</span>
+	</div>
+	<span class="overview-story">
+		<b>About {{name.first}} {{name.last}}: </b>
+		{{bio}}
+	</span>
+	<div class="overview-progress">
+		<div class="progress">
+	        <div class="progress-bar" role="progressbar" aria-valuenow={{progressPerc}} aria-valuemin="0" aria-valuemax="100" style="width:{{progressPerc}}%">
+	           {{progressPerc}} %
+	        </div>
+	    </div>
 	</div>
 </template>

@@ -311,6 +311,19 @@ h3 {
     box-shadow: 0px 2px 4px #ccc;
 
 }
+
+.pending-view {
+}
+.accepted-view {
+    border-color: green;
+    border-width: 3px;
+
+}
+.rejected-view {
+    border-color: red;
+    border-width: 3px;
+
+}
 .overview-top {
   position:relative;
   float: left;
@@ -663,7 +676,7 @@ input[type=number]{
     font-size: 30px;
     color: #FFF;
     position: fixed;
-    bottom: 200px;
+    bottom: 300px;
     left: 20px;
     padding: 5px;
 }

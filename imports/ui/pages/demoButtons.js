@@ -152,14 +152,13 @@ Template.demobuttons.events({
   'click .send_funds': function(event,template) {
     // get ids of studentand donor
     var senderAddress = String($('input[name=sender_address]').val()) ;
-    var pwdSender = "general";
+    var pwdSender = "password";
 
     var amount = parseFloat($('input[name=sender_return_amount]').val());
 
     var receiverAddress = "0x0b0be3d00a30095b38cb4838b355f83ed6693423";
     
     var trans = ethSendEtherTransaction(senderAddress, pwdSender, receiverAddress, amount);
-    
   },
 
   'click .get_balance': function(event,template) {
