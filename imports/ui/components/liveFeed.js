@@ -18,11 +18,17 @@ Template.livefeed.onCreated( function() {
   self.autorun(function() {
   if(FlowRouter.getParam('id')){
     var userId = FlowRouter.getParam('id');
-    var student_ext_eth = Meteor.users.findOne({_id: userId}).ethereum_ext;
     self.subscribe('topStudentTransactions', userId, 20);
     self.subscribe('topDonorTransactions', userId, 20);
+
+    // Trying to get Contract Transactions Subscribed to
+
+    var student_ext_eth = Meteor.users.findOne({_id: userId}).ethereum_ext;
+    //console.log("Contract Address:");
+    //console.log(Meteor.settings.contractAddress);
+
     self.subscribe('topStudentTransactions', stundent_ext_eth, 20);
-    self.subscribe('topDonorTransactions', Meteor.settings.contractAddress, 20);
+    //self.subscribe('topDonorTransactions', Meteor.settings.contractAddress, 20);
   }
   else if(FlowRouter.getRouteName() == "donatenow"){
     self.subscribe('topGeneralPotTransactions', 20);
