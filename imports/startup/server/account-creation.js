@@ -101,8 +101,13 @@ Accounts.onCreateUser(function(options,user) {
   }
 
   // Store Ethereum external Public Key for user
-  if(options.ethereum) {
+  if(options.ethereum_ext) {
     user.ethereum_ext = options.ethereum_ext;
+  }
+
+  // Store bio for user
+  if(options.bio) {
+    user.bio = options.bio;
   }
 
   // Boolean true if the student receives living allowances

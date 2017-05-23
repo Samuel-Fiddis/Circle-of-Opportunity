@@ -37,25 +37,28 @@ Template.donoroverview.helpers({
     sortOrder[selectionCriteria] = 1;
     console.log("Database query");
     console.log(selectionCriteria);
+    console.log(Meteor.users.find({}, {sort: sortOrder}));
     return Meteor.users.find({}, {sort: sortOrder});
   },
 
   balance : function (){
     var myEthAddr = this.ethereum;
     return ethGetBalance(myEthAddr);
-  }
+  },
+
 
 });
 
 Template.donorView.helpers({
 
-userImage : function (){
-  const user = this;
-  if(typeof user.userImage().currentFile !== "undefined"){
-    console.log(user.userImage().currentFile);
-    currentFile = user.userImage().currentFile;
-  }
-  return currentFile;
-},
+  userImage : function (){
+    const user = this;
+    if(typeof user.userImage().currentFile !== "undefined"){
+      console.log(user.userImage().currentFile);
+      var currentFile = user.userImage().currentFile;
+    }
+    return currentFile;
+  },
+
 
 });

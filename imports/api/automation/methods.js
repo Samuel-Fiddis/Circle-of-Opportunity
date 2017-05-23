@@ -501,7 +501,7 @@ function createStudents2() {
     "lisette.groeneveld@gmail.com",
     "sam.fiddis@gmail.com",
     "corey.garvey@gmail.com",
-    "jacktanner@gmail.com",
+    "jack.tanner@gmail.com",
   ];
   var eth_ext = [
     "0x18bd045ffd606776494f00a7e2aff21d3341f777",
@@ -511,6 +511,14 @@ function createStudents2() {
     "0x821e45e0dabb6a602fb09ecfa931e3f38da7fa8a",
     "0xd7cdab8d77a3e7dc19cecc6bf502e768dd7f780b"
     ];
+  var bios = [
+    "Imperial College could offer me a wealth of opportunities which I believe no other institution could. With a range of great classes on offer, it's evident that there is no better choice for me that Imperial’s MSc Computing Science.",
+    "After completing an undergraduate in Economics I began work in a hedge fund which I found to be quite engaging and challenging but struggled to feel I was creating any positive changes in the world, or producing anything of value. After much soul searching I believe that undertaking a Masters in Computing Science would help me to achieve my goals.",
+    "Going to university in London has been a dream of mine since I was young. The process for getting into Imperial was long and difficult and I hope that I will not be held back by financial reasons. If I’m able to obtain this education, I look forward to giving back to future students in my position.",
+    "Over the past year I have found a love for programming. I'm attracted to the fields of software development, data analysis and machine learning not just because of the deeply logical reasoning it requires, the continually growing job market and the wide range of learning resources available, but also because of the deep sense of community that exists within the field.",
+    "I’m so happy to be able to apply to the Circle of Opportunity! I believe I’m well suited for this program because I love computer science and math. The skills I learn at Imperial College will help me create a system for predicting when accidents will happen, allowing police and emergency to arrive on time, or even early.",
+    "Towards the end of my undergraduate degree in Mechanical Engineering I began to develop an interest in the Machine Learning aspect of developing AI in robotics. This lead me to the MSc of Computing Science at Imperial, which I believe would give me the perfect set of skills to give me a head start in this exciting area." 
+  ];
   var uni = Universities.findOne({name: "Imperial College"});
   var uni_name = uni.name;
   var studentIds = [];
@@ -520,6 +528,7 @@ function createStudents2() {
     var first_name = studentNames[i][0];
     var last_name = studentNames[i][1];
     var email = emails[i];
+    var bio = bios[i];
     var newStudent = {
       email: email,
       password: "student",
@@ -557,6 +566,7 @@ function createStudents2() {
       ethereum_ext: ethereum_external,
       pledge: true,
       ethereum: myAddr,
+      bio: bio,
     };
     var studentId = Accounts.createUser(newStudent);
     console.log("studentId");
@@ -570,17 +580,17 @@ function createDonors2() {
   // Create 3 donors
   var donorNames = [
     ["Fidellis","Perkonig"],
-    ["Fariba", "Sadri"],
+    ["Daniel","Rueckert"],
     ["Will", "Knottenbelt"]
     ];
   var emails = [
     "fidellis.perkonig@gmail.com",
-    "fariba.sadri@gmail.com",
+    "daniel.rueckert@gmail.com",
     "will.knottenbelt@gmail.com"
   ];
   var companies = [
     "Network Scaffolding",
-    "Proof Consulting",
+    "Head Honcho Hardware",
     "Blockchain Fencing"
   ];
   var eth_ext = [
@@ -588,6 +598,11 @@ function createDonors2() {
     "0x617704c1e7d7d213c299ad41ad90010150315c96",
     "0x93ee1010e6302b2b73a070ad638e579601b2ecaf",
   ];
+  var bios = [
+    "These kids and their 'social' networks, doesn't anyone care about real networks?",
+    "More good students means more good research.",
+    "Enough of the right students, and Imperial can start its own Blockchain!",
+  ]
   var donorIds = [];
   var uni = Universities.findOne({name: "Imperial College"});
   var uni_name = uni.name;
@@ -596,7 +611,8 @@ function createDonors2() {
     var ethereum_external = eth_ext[i];
     var first_name = donorNames[i][0];
     var last_name = donorNames[i][1];
-    var email = emails[i]
+    var email = emails[i];
+    var bio = bios[i];
     var company_name = companies[i];
     var newDonor = {
       email: email,
@@ -608,7 +624,7 @@ function createDonors2() {
         isUniAdmin: false,
       },
       name: {
-        first: "Donor",
+        first: first_name,
         last: last_name,
       },
       phone: "+44-5555-555555",
@@ -624,6 +640,7 @@ function createDonors2() {
       },
       age: (35+i),
       ethereum: '0x0b0be3d00a30095b38cb4838b355f83ed6693423',
+      bio: bio,
     };
     var donorId = Accounts.createUser(newDonor);
     donorIds.push(donorId);

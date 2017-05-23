@@ -24,7 +24,7 @@
       {{/if}}
       {{#if isGtS this}}
         <tr id="GtSRow" class="livefeedrow">
-          <td><img src="images/logo final smaller - rgb.png" alt="Donor image" width="50px"></td>
+          <td><img src="/images/logo final smaller - rgb.png" alt="Donor image" width="50px"></td>
           <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">The General Pot</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
@@ -63,7 +63,7 @@
       {{/if}}
       {{#if isCtO this}}
         <tr id="CtORow" class="livefeedrow">
-          <td><img src="images/logo final smaller - rgb.png" alt="Donor image" width="50px"></td>
+          <td><img src="/images/logo final smaller - rgb.png" alt="Donor image" width="50px"></td>
           <td><span class="livefeedhref"> {{eth this.amount}} Eth </span><span>(£{{ethToPound this.amount}})</span></td>
           <td>From: <a class="livefeedhref" href="/profilepage/{{this.idSender}}">{{this.nameSender}}</a><br>
               To: <a class="livefeedhref" href="/profilepage/{{this.idReceiver}}">{{this.nameReceiver}}</a></td>
