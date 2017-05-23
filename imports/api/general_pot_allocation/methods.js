@@ -84,7 +84,7 @@ Meteor.methods({
     console.log("Starting Timeout");
     Meteor.setTimeout(function(){
         GPtoStudentReallocation(numAccepted, balance_table)
-    }, 120000);
+    }, 90000);
 
   },
 

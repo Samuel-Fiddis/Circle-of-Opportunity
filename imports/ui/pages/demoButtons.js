@@ -183,11 +183,19 @@ Template.demobuttons.events({
     Meteor.call('cycleOne');
   },
 
+  'click .cycle_two': function(event,template) {
+    Meteor.call('cycleTwo');
+  },
+
   'click .pay_all_unis': function(event,template) {
     Meteor.call('payAllUnis');
   },
 
   'click .grad_all_students': function(event,template) {
     Meteor.call('graduateAll');
+  },
+
+  'click .clear_db': function(event,template) {
+    Meteor.call('clearDB');
   },
 });
