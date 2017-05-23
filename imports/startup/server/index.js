@@ -24,3 +24,7 @@ import '../../api/ethereum/ethereum.js';
 import '../../api/ethereum/etherscan.js';
 
 import '../../startup/server/universityCreation.js';
+
+
+// Import automation methods
+import '/imports/api/automation/methods.js';

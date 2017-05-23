@@ -257,9 +257,7 @@ h3 {
 }
 
 /* Student Registration Form */
-.studentRegForm {
-    padding: 10px 10px;
-}
+
 .studentRegForm > input {
     display: block;
     text-align: center;
@@ -274,6 +272,14 @@ h3 {
 .pledgeForm{
   text-align: center;
   font-style: italic;
+}
+
+.pledge{
+  text-align: center;
+}
+
+.opportunity{
+  text-align: center;
 }
 
 /* Donor Registration Form */
@@ -641,4 +647,35 @@ input[type=number]{
 .demobuttons input{
   padding: 10px;
   margin-bottom: 3px;
+}
+
+
+/* Banner*/
+.banner{
+  background-color: #004d99;
+  font-size: 30px;
+  color: #f2f2f2;
+  width: 100%;
+  height: 15%;
+  position: fixed;
+  text-align: right;
+  bottom:0;
+}
+
+.banner-text{
+  margin-right:2%;
+}
+
+.left-half {
+  position: relative;
+  left: 50px;
+  width: 50%;
+    float: left;
+}
+
+.right-half {
+  position: relative;
+  right: 0px;
+  width: 50%;
+  float: left;
 }

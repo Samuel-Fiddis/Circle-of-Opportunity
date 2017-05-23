@@ -1,10 +1,7 @@
 <template name="studentregister">
   <h3>Student Registration</h3>
-  <div class = "container">
-    <div class = "row">
-
-      <div class = "col-md-5">
-
+  <div class="container">
+    <div class="left-half">
         <div class = "pledge">
           {{ > pledge}}
         </div>
@@ -13,17 +10,16 @@
           {{ > opportunity}}
         </div>
 
-      </div>
+    </div>
 
-      <div class = "col-md-7">
+    <div class="right-half">
 
         <!-- <form class = "studentRegForm"> -->
           {{> Template.dynamic template=form}}
         <!-- </form> -->
 
-      </div>
-
     </div>
+
   </div>
 </template>
 
@@ -40,14 +36,15 @@
 
   By applying for an opportunity you accept and understand that:
   <br>
-  1. If you are granted an opportunity you are expected to pay it back.
   <br>
-  2. The details of your opportunity may remain public forever,
+  <b>1.</b> If you are granted an opportunity you are expected to pay it back.
+  <br>
+  <b>2.</b> The details of your opportunity may remain public forever,
   including how much money you pay back.
   Your name and some of your identity information will be considered
   part of the details of your opportunity.
   <br>
-  3. Your proposed payback scheme that you write below cannot be
+  <b>3.</b> Your proposed payback scheme that you write below cannot be
   changed after you are accepted to the educational institute,
   and may also remain public forever.
 </template>
