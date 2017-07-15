@@ -1,12 +1,12 @@
-#The Circle of Opportunity
+# The Circle of Opportunity
 Solving the problem of public mistrust in charities by operating all financial transactions on the Ethereum blockchain. The Circle of Opportunity provides aspiring students with donations to pay for tuition an living expenses, all completely transparent thanks to transactions occuring on the publically accessible Ethereum blockchain. Currently, the project is a proof of concept, running on an Ethereum testnet blockchain.
 
-##Installation
-####Required software
+## Installation
+#### Required software
 * Meteor framework. Operating system specific instructions at [meteor.com/install](https://www.meteor.com/install)
 * Geth Ethereum node manager. Operating system specific instructions at [ethereum.org/cli](https://www.ethereum.org/cli)
 
-####Setting up the Keystore
+#### Setting up the Keystore
 Currently in the Circle of Opportunity, all donor accounts are linked to a single Ethereum account. The general pot is also statically linked to an Ethereum account. To access these accounts, keystore files must be accessible by the Geth node. To do so, do the following:
 1.	Open the circle-of-opportunity/ethereum folder
 2.	Copy the following files 
@@ -15,9 +15,9 @@ Currently in the Circle of Opportunity, all donor accounts are linked to a singl
 3.	Paste these files into  ~/.ethereum/testnet/keystore
 
 
-##Usage
-###Server
-####Run geth
+## Usage
+### Server
+#### Run geth
 The Circle of Opportunity creates transactions on the Ethereum blockchain. These transactions are published to the public blockchain from a local node where the server is running. In order to successfully make transactions, a node must be running on the same machine as the application on port 8545. The instructions below will make that happen.
  1.	Open terminal in folder ~/.ethereum/testnet
  2.	Run command in terminal: 
@@ -31,7 +31,7 @@ The Circle of Opportunity creates transactions on the Ethereum blockchain. These
  	geth --rpc --rpccorsdomain "http://localhost:3000" --rpcapi "db,eth,net,personal,web3" --testnet
  	```
 
-####Run meteor
+#### Run meteor
 1. Clone the code base into your local machine (including the settings.json file)
 ```
 git clone https://gitlab.doc.ic.ac.uk/g1653005/circle-of-opportunity.git
@@ -46,7 +46,7 @@ meteor npm install
 meteor run --settings settings.json
 ```
 
-####Testing Suite
+#### Testing Suite
 1. Open a terminal in the circle-of-opportunity folder
 2. Run command:
 ```
@@ -57,11 +57,11 @@ meteor test --driver-package practicalmeteor:mocha –port 4000
 
 
 ### Application
-####View Application
+#### View Application
 * Open address in browser:
 	localhost:3000
 
-####University Administrator
+#### University Administrator
 A university user will automatically be created with the following credentials:
 Email: *uni@uni.uni*
 Password: *university*
@@ -72,21 +72,21 @@ Password: *university*
 	* Change the student's state to "Accepted"
 	* This will allow donations to the student
 
-####Student
+#### Student
 * Registering as a student will create a user within the Circle of Opportunity as well as an associated Ethereum account for the user. 
 * To view the Ethereum account
 	* Log in as the University Admin
 	* Change the student's status to "Accepted"
 	* Navigate to the student's profile page
 
-####Donor
+#### Donor
 * Registering as a donor will create a user within the Circle of Opportunity. 
 * The donor's associated Ethereum account is currently a single account which as been loaded with Ether for making transactions.
 * To donate to a student
 	* Navigate to a student's profile for an Accepted student
 	* Fill out the form.
 
-####Admin 
+#### Admin 
 * Log in with the university user credentials
 * Open address in browser:
 	localhost:3000/admin
